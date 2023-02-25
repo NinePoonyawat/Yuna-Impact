@@ -5,7 +5,7 @@ using UnityEngine;
 public abstract class Status : MonoBehaviour
 {
     protected Entity entity;
-    protected string name;
+    protected string statusName;
     protected float statusPeriod;
     protected float statusCount = 0;
 

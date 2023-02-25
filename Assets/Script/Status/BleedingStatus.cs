@@ -2,11 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BreedingStatus : ContinuousDamageStatus
+public class BleedingStatus : ContinuousDamageStatus
 {
     
     void Awake()
     {
-        name = "breeding";
+        name = "bleeding";
     }
 }
