@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 2156.788, g: 2259.5083, b: 3279.4985, a: 1}
+  m_IndirectSpecularColor: {r: 2156.788, g: 2259.4956, b: 3279.4854, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -424,17 +424,17 @@ PrefabInstance:
     - target: {fileID: -7552582706839291426, guid: 42a6afa095bb99e4ebf499f89b59b78a,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.57089484
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -7552582706839291426, guid: 42a6afa095bb99e4ebf499f89b59b78a,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1.7048066
+      value: -0.5
       objectReference: {fileID: 0}
     - target: {fileID: -7552582706839291426, guid: 42a6afa095bb99e4ebf499f89b59b78a,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 3.9771118
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -7552582706839291426, guid: 42a6afa095bb99e4ebf499f89b59b78a,
         type: 3}
@@ -518,6 +518,8 @@ GameObject:
   - component: {fileID: 822921254}
   - component: {fileID: 822921255}
   - component: {fileID: 822921256}
+  - component: {fileID: 822921258}
+  - component: {fileID: 822921257}
   m_Layer: 0
   m_Name: Character
   m_TagString: Untagged
@@ -533,7 +535,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 822921253}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.378, y: 2.677, z: -3.9771118}
+  m_LocalPosition: {x: -1.76, y: 0.66, z: -3.9771118}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -568,8 +570,44 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 112
   m_CollisionDetection: 0
+--- !u!114 &822921257
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 822921253}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bc8291d725b57db44a05a90e9e3c6074, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cam: {fileID: 1823688466}
+  agent: {fileID: 822921258}
+--- !u!195 &822921258
+NavMeshAgent:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 822921253}
+  m_Enabled: 1
+  m_AgentTypeID: 0
+  m_Radius: 0.5
+  m_Speed: 3.5
+  m_Acceleration: 8
+  avoidancePriority: 50
+  m_AngularSpeed: 0
+  m_StoppingDistance: 0
+  m_AutoTraverseOffMeshLink: 1
+  m_AutoBraking: 1
+  m_AutoRepath: 1
+  m_Height: 2
+  m_BaseOffset: 0
+  m_WalkableMask: 5
+  m_ObstacleAvoidanceType: 4
 --- !u!1 &1311315838
 GameObject:
   m_ObjectHideFlags: 0
