@@ -22,6 +22,13 @@ public class ManaController : MonoBehaviour,Ivalueable
         currentMana = initialMana;
     }
 
+    public bool spendMana(int spend)
+    {
+        if (spend > currentMana) return false;
+        currentMana -= spend;
+        return true;
+    }
+
     public int getMaxValue()
     {
         return maxMana;

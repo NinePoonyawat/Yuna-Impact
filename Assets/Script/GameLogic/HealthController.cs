@@ -21,12 +21,13 @@ public class HealthController : MonoBehaviour,Ivalueable
         currentHealth = defaultHealth;
     }
 
-    void takeDamage(int damage)
+    public bool takeDamage(int damage)
     {
         currentHealth -= damage;
+        return currentHealth <= 0;
     }
 
-    void Heal(int heal)
+    public void Heal(int heal)
     {
         currentHealth += heal;
         if (currentHealth > maxHealth) currentHealth = maxHealth;
