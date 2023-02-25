@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 2186.539, g: 2335.3516, b: 3516.0938, a: 1}
+  m_IndirectSpecularColor: {r: 2186.5635, g: 2335.625, b: 3517.1719, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -347,6 +347,27 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1808213723}
     m_Modifications:
+    - target: {fileID: 1658630909977345831, guid: c2d0d99cd85f9f745960d34c45a19e15,
+        type: 3}
+      propertyPath: tempName
+      value: B
+      objectReference: {fileID: 0}
+    - target: {fileID: 1658630909977345831, guid: c2d0d99cd85f9f745960d34c45a19e15,
+        type: 3}
+      propertyPath: maxHealth
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 1658630909977345831, guid: c2d0d99cd85f9f745960d34c45a19e15,
+        type: 3}
+      propertyPath: tempSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 4e61c5271e0e81140865ea3da549c00d,
+        type: 3}
+    - target: {fileID: 1658630909977345831, guid: c2d0d99cd85f9f745960d34c45a19e15,
+        type: 3}
+      propertyPath: currentHealth
+      value: 80
+      objectReference: {fileID: 0}
     - target: {fileID: 7030897501715009170, guid: c2d0d99cd85f9f745960d34c45a19e15,
         type: 3}
       propertyPath: m_Pivot.x
@@ -455,7 +476,7 @@ PrefabInstance:
     - target: {fileID: 7030897501715009171, guid: c2d0d99cd85f9f745960d34c45a19e15,
         type: 3}
       propertyPath: m_Name
-      value: CharacterIcon2
+      value: PartyProfile2
       objectReference: {fileID: 0}
     - target: {fileID: 7030897501777312124, guid: c2d0d99cd85f9f745960d34c45a19e15,
         type: 3}
@@ -989,12 +1010,6 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
---- !u!224 &1200181829 stripped
-RectTransform:
-  m_CorrespondingSourceObject: {fileID: 7030897501715009170, guid: c2d0d99cd85f9f745960d34c45a19e15,
-    type: 3}
-  m_PrefabInstance: {fileID: 7030897500717243607}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1269195322
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1002,6 +1017,27 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1808213723}
     m_Modifications:
+    - target: {fileID: 1658630909977345831, guid: c2d0d99cd85f9f745960d34c45a19e15,
+        type: 3}
+      propertyPath: tempName
+      value: C
+      objectReference: {fileID: 0}
+    - target: {fileID: 1658630909977345831, guid: c2d0d99cd85f9f745960d34c45a19e15,
+        type: 3}
+      propertyPath: maxHealth
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 1658630909977345831, guid: c2d0d99cd85f9f745960d34c45a19e15,
+        type: 3}
+      propertyPath: tempSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 4e61c5271e0e81140865ea3da549c00d,
+        type: 3}
+    - target: {fileID: 1658630909977345831, guid: c2d0d99cd85f9f745960d34c45a19e15,
+        type: 3}
+      propertyPath: currentHealth
+      value: 60
+      objectReference: {fileID: 0}
     - target: {fileID: 7030897501715009170, guid: c2d0d99cd85f9f745960d34c45a19e15,
         type: 3}
       propertyPath: m_Pivot.x
@@ -1110,7 +1146,7 @@ PrefabInstance:
     - target: {fileID: 7030897501715009171, guid: c2d0d99cd85f9f745960d34c45a19e15,
         type: 3}
       propertyPath: m_Name
-      value: CharacterIcon3
+      value: PartyProfile3
       objectReference: {fileID: 0}
     - target: {fileID: 7030897501777312124, guid: c2d0d99cd85f9f745960d34c45a19e15,
         type: 3}
@@ -1279,7 +1315,7 @@ GameObject:
   - component: {fileID: 1459204967}
   - component: {fileID: 1459204966}
   m_Layer: 5
-  m_Name: SkillIcon1
+  m_Name: Skill Icon1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1638,7 +1674,7 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1200181829}
+  - {fileID: 7444543135988622782}
   - {fileID: 181434041}
   - {fileID: 1269195323}
   - {fileID: 1459204965}
@@ -1875,7 +1911,7 @@ GameObject:
   - component: {fileID: 1877552265}
   - component: {fileID: 1877552264}
   m_Layer: 5
-  m_Name: SkillIcon3
+  m_Name: Skill Icon3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1952,7 +1988,7 @@ GameObject:
   - component: {fileID: 1976445925}
   - component: {fileID: 1976445924}
   m_Layer: 5
-  m_Name: SkillIcon2
+  m_Name: Skill Icon2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2065,13 +2101,34 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1001 &7030897500717243607
+--- !u!1001 &7444543135988622781
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 1808213723}
     m_Modifications:
+    - target: {fileID: 1658630909977345831, guid: c2d0d99cd85f9f745960d34c45a19e15,
+        type: 3}
+      propertyPath: tempName
+      value: A
+      objectReference: {fileID: 0}
+    - target: {fileID: 1658630909977345831, guid: c2d0d99cd85f9f745960d34c45a19e15,
+        type: 3}
+      propertyPath: maxHealth
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 1658630909977345831, guid: c2d0d99cd85f9f745960d34c45a19e15,
+        type: 3}
+      propertyPath: tempSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 4e61c5271e0e81140865ea3da549c00d,
+        type: 3}
+    - target: {fileID: 1658630909977345831, guid: c2d0d99cd85f9f745960d34c45a19e15,
+        type: 3}
+      propertyPath: currentHealth
+      value: 20
+      objectReference: {fileID: 0}
     - target: {fileID: 7030897501715009170, guid: c2d0d99cd85f9f745960d34c45a19e15,
         type: 3}
       propertyPath: m_Pivot.x
@@ -2180,7 +2237,7 @@ PrefabInstance:
     - target: {fileID: 7030897501715009171, guid: c2d0d99cd85f9f745960d34c45a19e15,
         type: 3}
       propertyPath: m_Name
-      value: CharacterIcon1
+      value: PartyProfile1
       objectReference: {fileID: 0}
     - target: {fileID: 7030897501777312124, guid: c2d0d99cd85f9f745960d34c45a19e15,
         type: 3}
@@ -2194,3 +2251,9 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c2d0d99cd85f9f745960d34c45a19e15, type: 3}
+--- !u!224 &7444543135988622782 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 7030897501715009170, guid: c2d0d99cd85f9f745960d34c45a19e15,
+    type: 3}
+  m_PrefabInstance: {fileID: 7444543135988622781}
+  m_PrefabAsset: {fileID: 0}
