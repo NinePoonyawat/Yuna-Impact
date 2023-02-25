@@ -4,24 +4,35 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
-public class UIPartyProfile : MonoBehaviour
+public class UIProfile : MonoBehaviour
 {
     [Header ("Parameter")]
     [SerializeField] private int maxHealth;
     [SerializeField] private int currentHealth;
-    [SerializeField] private bool KO;
-    public Sprite tempSprite;
     public string tempName;
+    public float tempCooldown;
 
     [Header ("Visualize")]
     [SerializeField] private TMP_Text characterName;
-    [SerializeField] private Image characterIcon;
     [SerializeField] private Slider characterHPBar;
-    [SerializeField] private Animator animator;
+    [SerializeField] private Slider characterSPBar;
+    [SerializeField] private UISkillIcon[] skillIcons;
 
     void Update()
     {
         //Debug
+        if (Input.GetKeyDown(KeyCode.Alpha1))
+        {
+            CastSkill(0);
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha2))
+        {
+            CastSkill(1);
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha3))
+        {
+            CastSkill(2);
+        }
         if (Input.GetKeyDown(KeyCode.Space))
         {
             Init();
@@ -35,24 +46,25 @@ public class UIPartyProfile : MonoBehaviour
     public void Init()
     {
         characterName.text = tempName;
-        characterIcon.sprite = tempSprite;
 
         characterHPBar.maxValue = maxHealth;
         characterHPBar.value = currentHealth;
+
+        foreach (UISkillIcon skillIcon in skillIcons)
+        {
+            skillIcon.Init();
+        }
+    }
+
+    public void CastSkill(int idx)
+    {
+        skillIcons[idx].Cast(tempCooldown);
     }
 
     public void TakeDamage(int damage)
     {
-        if (KO) return;
-
         currentHealth -= damage;
-        if (currentHealth <= 0)
-        {
-            KO = true;
-            animator.SetBool("KnockOut", true);
-        }
         
         characterHPBar.value = currentHealth;
-        animator.SetTrigger("TakeDamage");
     }
 }
