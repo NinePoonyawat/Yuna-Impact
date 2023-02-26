@@ -9,7 +9,7 @@ public class EnemyController : MonoBehaviour
     [SerializeField] private Enemy enemy;
     
     protected EntityState entityState;
-    protected PlayerController focusCharacter = null;
+    [SerializeField] protected PlayerController focusCharacter = null;
     [SerializeField] protected float maxVision = 20f;
 
     [SerializeField] private NavMeshAgent navMeshAgent;

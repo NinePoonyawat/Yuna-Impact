@@ -34,6 +34,7 @@ public class GameController : MonoBehaviour
     {
         if (characters.Count >= 4) return;
         characters.Add(character);
+        if (characters.Count == 1) FindObjectOfType<CamFollowing>().Follow(character.gameObject.transform);
     }
 
     public void AddEnemy(EnemyController enemy)
@@ -55,6 +56,7 @@ public class GameController : MonoBehaviour
 
         takingCharacter = characters[idx];
         takingCharacter.SetTaking(true);
+        FindObjectOfType<CamFollowing>().Follow(takingCharacter.gameObject.transform);
     }
 
     public PlayerController FindNearestCharacter(Vector3 position, float maxDistance)

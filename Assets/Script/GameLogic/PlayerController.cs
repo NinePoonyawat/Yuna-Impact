@@ -23,6 +23,7 @@ public class PlayerController : MonoBehaviour
     public void Awake()
     {
         gameController = GameObject.Find("GameLogic").GetComponent<GameController>();
+        playableCharacter = GetComponent<PlayableCharacter>();
         cam = FindObjectOfType<Camera>();
     }
 

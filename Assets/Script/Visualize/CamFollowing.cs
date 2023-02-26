@@ -5,12 +5,7 @@ using UnityEngine;
 public class CamFollowing : MonoBehaviour
 {
     public Transform player;
-    public Vector3 offset;
-
-    void Start()
-    {
-        offset = transform.position - player.position;
-    }
+    public Vector3 offset = new Vector3(0.2f, 6f, -5.6f);
 
     private void LateUpdate()
     {
