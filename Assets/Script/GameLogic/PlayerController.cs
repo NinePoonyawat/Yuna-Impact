@@ -18,6 +18,8 @@ public class PlayerController : MonoBehaviour
 
     private bool isTaking = false; // is this character taking by player
 
+    private bool isPlayerMoving = false;
+
     public void Awake()
     {
         gameController = GameObject.Find("GameLogic").GetComponent<GameController>();
@@ -32,8 +34,18 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
+        if (isPlayerMoving) UpdatePlayerClickMoving();
+
         if (isTaking) UpdateTaking();
         else UpdateNotTaking();
+    }
+
+    void UpdatePlayerClickMoving()
+    {
+        if (this.transform.position == moveToPos)
+        {
+            isPlayerMoving = false;
+        }
     }
 
     void UpdateTaking()
@@ -55,7 +67,9 @@ public class PlayerController : MonoBehaviour
 
     bool UpdateAttack()
     {
+        if (isPlayerMoving) return false;
         if (focusEnemy == null) return false;
+
         if(playableCharacter.isInAttackRange(focusEnemy.transform.position))
         {
             if (playableCharacter.IsAttackable())
@@ -68,7 +82,7 @@ public class PlayerController : MonoBehaviour
             {
                 entityState = EntityState.PREATTACK;
             }
-            return true;
+            return !(Input.GetMouseButtonDown(0));
         }
         return false;
     }
@@ -99,6 +113,7 @@ public class PlayerController : MonoBehaviour
             {
                 agent.SetDestination(hit.point);
                 moveToPos = hit.point;
+                isPlayerMoving = true;
             }
 
             entityState = EntityState.MOVE;
