@@ -971,6 +971,7 @@ GameObject:
   - component: {fileID: 822921255}
   - component: {fileID: 822921256}
   - component: {fileID: 822921258}
+  - component: {fileID: 822921259}
   - component: {fileID: 822921257}
   m_Layer: 0
   m_Name: Character 1
@@ -1037,8 +1038,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc8291d725b57db44a05a90e9e3c6074, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playableCharacter: {fileID: 0}
+  playableCharacter: {fileID: 822921259}
   cam: {fileID: 0}
+  entityState: 0
   moveToPos: {x: 0, y: 0, z: 0}
   agent: {fileID: 822921258}
 --- !u!195 &822921258
@@ -1063,6 +1065,22 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 5
   m_ObstacleAvoidanceType: 4
+--- !u!114 &822921259
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 822921253}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 05088642718a7dc42af4b0bb34c8c2e6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  healthController: {fileID: 0}
+  manaController: {fileID: 0}
+  attackPeriod: 1.5
+  attackRange: 3.5
 --- !u!1 &1058929239
 GameObject:
   m_ObjectHideFlags: 0
@@ -1212,6 +1230,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   healthController: {fileID: 0}
   manaController: {fileID: 0}
+  attackPeriod: 1.5
+  attackRange: 3
 --- !u!114 &1154522060
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1881,6 +1901,7 @@ GameObject:
   - component: {fileID: 1764940755}
   - component: {fileID: 1764940754}
   - component: {fileID: 1764940753}
+  - component: {fileID: 1764940757}
   - component: {fileID: 1764940752}
   m_Layer: 0
   m_Name: Character 2
@@ -1901,8 +1922,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc8291d725b57db44a05a90e9e3c6074, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playableCharacter: {fileID: 0}
+  playableCharacter: {fileID: 1764940757}
   cam: {fileID: 0}
+  entityState: 0
   moveToPos: {x: 0, y: 0, z: 0}
   agent: {fileID: 1764940753}
 --- !u!195 &1764940753
@@ -1973,6 +1995,22 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1764940757
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1764940751}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 05088642718a7dc42af4b0bb34c8c2e6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  healthController: {fileID: 0}
+  manaController: {fileID: 0}
+  attackPeriod: 1.5
+  attackRange: 3.5
 --- !u!1 &1777204865
 GameObject:
   m_ObjectHideFlags: 0

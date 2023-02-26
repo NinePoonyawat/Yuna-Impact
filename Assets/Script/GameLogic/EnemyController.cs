@@ -7,7 +7,8 @@ public class EnemyController : MonoBehaviour
 {
     private GameController gameController;
     [SerializeField] private Enemy enemy;
-
+    
+    protected EntityState entityState;
     protected PlayerController focusCharacter = null;
     [SerializeField] protected float maxVision = 20f;
 
@@ -20,6 +21,7 @@ public class EnemyController : MonoBehaviour
     public void Start()
     {
         gameController.AddEnemy(this);
+        entityState = EntityState.IDLE;
     }
 
     // Update is called once per frame
@@ -30,6 +32,35 @@ public class EnemyController : MonoBehaviour
 
     void UpdateEnemy()
     {
+        //Update when focus character int attack range
+        bool isAttack = UpdateAttack();
+
+        //Update when character in the vision
+        if(!isAttack) UpdateMoving();
+    }
+
+    bool UpdateAttack()
+    {
+        if (focusCharacter == null) return false;
+        if(enemy.isInAttackRange(focusCharacter.transform.position))
+        {
+            if (enemy.IsAttackable())
+            {
+                Attack(focusCharacter);
+                entityState = EntityState.ATTACK;
+                enemy.Attack();
+            }
+            else
+            {
+                entityState = EntityState.PREATTACK;
+            }
+            return true;
+        }
+        return false;
+    }
+
+    void UpdateMoving()
+    {
         if (focusCharacter == null)
         {
             focusCharacter = gameController.FindNearestCharacter(transform.position, maxVision);
@@ -39,5 +70,10 @@ public class EnemyController : MonoBehaviour
         {
             navMeshAgent.SetDestination(focusCharacter.transform.position);
         }
+    }
+
+    void Attack(PlayerController player)
+    {
+        Debug.Log("attack" + player);
     }
 }

@@ -10,6 +10,7 @@ public class PlayerController : MonoBehaviour
 
     public Camera cam;
 
+    public EntityState entityState;
     public Vector3 moveToPos;
     private EnemyController focusEnemy;
 
@@ -26,6 +27,7 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         gameController.AddCharacter(this);
+        entityState = EntityState.IDLE;
     }
 
     void Update()
@@ -35,6 +37,58 @@ public class PlayerController : MonoBehaviour
     }
 
     void UpdateTaking()
+    {
+        //Update when focus enemy in attack range
+        bool isAttack = UpdateAttack();
+
+        // Update when has enemy in vision
+        if (!isAttack) UpdatePlayerMoving();
+    }
+
+    void UpdateNotTaking()
+    {
+        bool isAttack = UpdateAttack();
+
+        // Update when has enemy in vision
+        if (!isAttack) UpdateAIMoving();
+    }
+
+    bool UpdateAttack()
+    {
+        if (focusEnemy == null) return false;
+        if(playableCharacter.isInAttackRange(focusEnemy.transform.position))
+        {
+            if (playableCharacter.IsAttackable())
+            {
+                Attack(focusEnemy);
+                entityState = EntityState.ATTACK;
+                playableCharacter.Attack();
+            }
+            else
+            {
+                entityState = EntityState.PREATTACK;
+            }
+            return true;
+        }
+        return false;
+    }
+
+    void UpdateAIMoving()
+    {
+        if (focusEnemy == null)
+        {
+            focusEnemy =  gameController.FindNearestEnemy(transform.position);
+            if(focusEnemy != null) agent.SetDestination(focusEnemy.transform.position);
+        }
+        else
+        {
+            agent.SetDestination(focusEnemy.transform.position);
+        }
+        entityState = EntityState.MOVE;
+        moveToPos = focusEnemy.transform.position;
+    }
+
+    void UpdatePlayerMoving()
     {
         if (Input.GetMouseButtonDown(0))
         {
@@ -46,21 +100,14 @@ public class PlayerController : MonoBehaviour
                 agent.SetDestination(hit.point);
                 moveToPos = hit.point;
             }
+
+            entityState = EntityState.MOVE;
         }
     }
 
-    void UpdateNotTaking()
+    void Attack(EnemyController enemy)
     {
-        if (focusEnemy == null)
-        {
-            focusEnemy =  gameController.FindNearestEnemy(transform.position);
-            agent.SetDestination(focusEnemy.transform.position);
-        }
-        else
-        {
-            agent.SetDestination(focusEnemy.transform.position);
-        }
-        moveToPos = focusEnemy.transform.position;
+        Debug.Log("attack" + enemy);
     }
 
     public bool Targetable(EnemyController enemy)
