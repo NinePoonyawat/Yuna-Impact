@@ -11,14 +11,13 @@ public class PlayerController : MonoBehaviour
     public Camera cam;
 
     public EntityState entityState;
-    public Vector3 moveToPos;
+    public Vector3 moveToPos;   //for Gizmos visualize
     private EnemyController focusEnemy;
 
     [SerializeField] private  NavMeshAgent agent;
 
-    private bool isTaking = false; // is this character taking by player
-
-    private bool isPlayerMoving = false;
+    [SerializeField] private bool isTaking = false; // is this character taking by player
+    [SerializeField] private bool isPlayerMoving = false;
 
     public void Awake()
     {
@@ -90,6 +89,8 @@ public class PlayerController : MonoBehaviour
 
     void UpdateAIMoving()
     {
+        if (isPlayerMoving) return;
+
         if (focusEnemy == null)
         {
             focusEnemy =  gameController.FindNearestEnemy(transform.position);

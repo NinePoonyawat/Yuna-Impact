@@ -44,6 +44,7 @@ public class GameController : MonoBehaviour
 
     public void TakingCharacter(int idx)
     {
+        if (idx >= characters.Count) return;
         if (takingCharacter == characters[idx])
         {
             takingCharacter.SetTaking(false);
