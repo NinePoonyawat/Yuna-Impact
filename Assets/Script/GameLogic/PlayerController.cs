@@ -20,6 +20,7 @@ public class PlayerController : MonoBehaviour
     public void Awake()
     {
         gameController = GameObject.Find("GameLogic").GetComponent<GameController>();
+        cam = FindObjectOfType<Camera>();
     }
 
     void Start()
@@ -43,7 +44,7 @@ public class PlayerController : MonoBehaviour
             if (Physics.Raycast(ray,out hit))
             {
                 agent.SetDestination(hit.point);
-                moveToPos = hit.point;  
+                moveToPos = hit.point;
             }
         }
     }
@@ -59,6 +60,7 @@ public class PlayerController : MonoBehaviour
         {
             agent.SetDestination(focusEnemy.transform.position);
         }
+        moveToPos = focusEnemy.transform.position;
     }
 
     public bool Targetable(EnemyController enemy)
@@ -69,7 +71,8 @@ public class PlayerController : MonoBehaviour
     void OnDrawGizmos()
     {
         if (moveToPos == null) return;
-        Gizmos.color = Color.yellow;
+        if (isTaking) Gizmos.color = Color.yellow;
+        else Gizmos.color = Color.blue;
         Gizmos.DrawLine(transform.position, moveToPos);
     }
 

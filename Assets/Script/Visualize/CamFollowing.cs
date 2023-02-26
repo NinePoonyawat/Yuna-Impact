@@ -18,4 +18,9 @@ public class CamFollowing : MonoBehaviour
 
         transform.position = player.position + offset;
     }
+
+    public void Follow(Transform player)
+    {
+        this.player = player;
+    }
 }

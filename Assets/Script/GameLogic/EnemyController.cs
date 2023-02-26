@@ -32,7 +32,7 @@ public class EnemyController : MonoBehaviour
     {
         if (focusCharacter == null)
         {
-            focusCharacter = gameController.FindNearestCharacter(transform.position,maxVision);
+            focusCharacter = gameController.FindNearestCharacter(transform.position, maxVision);
             if (focusCharacter != null) navMeshAgent.SetDestination(focusCharacter.transform.position);
         }
         else

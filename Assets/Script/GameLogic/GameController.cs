@@ -4,52 +4,36 @@ using UnityEngine;
 
 public class GameController : MonoBehaviour
 {
-    private PlayerController character1;
-    private PlayerController character2;
-    private PlayerController character3;
-    private PlayerController character4;
+    [SerializeField] private List<PlayerController> characters = new List<PlayerController>();
 
-    private PlayerController takingCharacter = null;
+    [SerializeField] private PlayerController takingCharacter = null;
 
-    private List<EnemyController> enemies = new List<EnemyController>();
+    [SerializeField] private List<EnemyController> enemies = new List<EnemyController>();
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.T))
+        if (Input.GetKeyDown(KeyCode.Alpha1))
         {
-            if (character1.getTaking())
-            {
-                TakingCharacter(0);
-            }
-            else
-            {
-                TakingCharacter(1);
-            }
+            TakingCharacter(0);
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha2))
+        {
+            TakingCharacter(1);
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha3))
+        {
+            TakingCharacter(2);
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha4))
+        {
+            TakingCharacter(3);
         }
     }
 
     public void AddCharacter(PlayerController character)
     {
-        if (character1 == null)
-        {
-            character1 = character;
-            return;
-        }
-        if (character2 == null)
-        {
-            character2 = character;
-            return;
-        }
-        if (character3 == null)
-        {
-            character3 = character;
-            return;
-        }
-        if (character4 == null)
-        {
-            character4 = character;
-            return;
-        }
+        if (characters.Count >= 4) return;
+        characters.Add(character);
     }
 
     public void AddEnemy(EnemyController enemy)
@@ -57,63 +41,40 @@ public class GameController : MonoBehaviour
         enemies.Add(enemy);
     }
 
-    public void TakingCharacter(int character)
+    public void TakingCharacter(int idx)
     {
-        if (takingCharacter != null)
+        if (takingCharacter == characters[idx])
         {
             takingCharacter.SetTaking(false);
             takingCharacter = null;
+            return;
         }
-        switch (character)
-        {
-            case 1:
-                takingCharacter = character1;
-                break;
-            case 2:
-                takingCharacter = character2;
-                break;
-            case 3:
-                takingCharacter = character3;
-                break;
-            case 4:
-                takingCharacter = character4;
-                break;
-        }
+
+        if (characters[idx] == null) return;
+        if (takingCharacter != null) takingCharacter.SetTaking(false);
+
+        takingCharacter = characters[idx];
         takingCharacter.SetTaking(true);
     }
 
-    public PlayerController FindNearestCharacter(Vector3 position,float maxDistance)
+    public PlayerController FindNearestCharacter(Vector3 position, float maxDistance)
     {
-        float a1 = (character1.transform.position - position).sqrMagnitude;
-        float a2 = (character2 == null)? float.MaxValue : (character2.transform.position - position).sqrMagnitude;
-        float a3 = (character3 == null)? float.MaxValue : (character3.transform.position - position).sqrMagnitude;
-        float a4 = (character4 == null)? float.MaxValue : (character4.transform.position - position).sqrMagnitude;
+        if (characters.Count == 0) return null;
 
-        float distance = a1;
-        int state = 1;
-
-        if (distance > a2)
+        float distance = maxDistance;
+        int state = -1;
+        for (int idx = 0; idx < characters.Count; idx++)
         {
-            distance = a2;
-            state = 2;
-        }
-        if (distance > a3)
-        {
-            distance = a3;
-            state = 3;
-        }
-        if (distance > a4)
-        {
-            distance = a4;
-            state = 4;
+            float d = (characters[idx].transform.position - position).sqrMagnitude;
+            if (distance > d)
+            {
+                distance = d;
+                state = idx;
+            }
         }
 
-        if (distance > maxDistance) return null;
-
-        if (state == 1) return character1;
-        if (state == 2) return character2;
-        if (state == 3) return character3;
-        return character4;
+        if (state == -1) return null;
+        return characters[state];
     }
 
     public EnemyController FindNearestEnemy(Vector3 position)
