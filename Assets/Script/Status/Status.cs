@@ -4,12 +4,13 @@ using UnityEngine;
 
 public abstract class Status : MonoBehaviour
 {
-    protected Entity entity;
-    protected string statusName;
-    protected float statusPeriod;
-    protected float statusCount = 0;
 
-    void Update()
+    protected EntityController entity;
+    protected string statusName;
+    protected float statusPeriod = 0f;
+    protected float statusCount = -10f;
+
+    protected virtual void Update()
     {
         statusCount += Time.deltaTime;
         if (statusCount >= statusPeriod)
@@ -23,7 +24,7 @@ public abstract class Status : MonoBehaviour
         Destroy(this);
     }
 
-    public void SetEntity(Entity newEntity)
+    public void SetEntity(EntityController newEntity)
     {
         entity = newEntity;
     }

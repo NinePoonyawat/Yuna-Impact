@@ -3,14 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class PlayerController : MonoBehaviour
+public class PlayerController : EntityController
 {
     private GameController gameController;
     [SerializeField] private PlayableCharacter playableCharacter;
 
     public Camera cam;
 
-    public EntityState entityState;
     public Vector3 moveToPos;   //for Gizmos visualize
     private EnemyController focusEnemy;
 
@@ -129,6 +128,12 @@ public class PlayerController : MonoBehaviour
 
     public bool Targetable(EnemyController enemy)
     {
+        return true;
+    }
+
+    public override bool TakeDamage(int damage)
+    {
+        playableCharacter.TakeDamage(damage);
         return true;
     }
 

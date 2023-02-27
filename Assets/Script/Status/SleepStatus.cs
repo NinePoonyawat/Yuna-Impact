@@ -4,9 +4,25 @@ using UnityEngine;
 
 public class SleepStatus : Status
 {
+    private float duration = 0;
+    private float duarationCount = -10f;
     
     void Awake()
     {
         name = "sleep";
+    }
+
+    public override void StatusEnd()
+    {
+        entity.SetEntityState(EntityState.IDLE);
+        base.StatusEnd();
+    }
+
+    void Setting(float newDuration,EntityController entityController)
+    {
+        duration = newDuration;
+        duarationCount = 0;
+        SetEntity(entityController);
+        entityController.SetEntityState(EntityState.SLEEP);
     }
 }

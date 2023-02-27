@@ -3,12 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class EnemyController : MonoBehaviour
+public class EnemyController : EntityController
 {
     private GameController gameController;
     [SerializeField] private Enemy enemy;
     
-    protected EntityState entityState;
     [SerializeField] protected PlayerController focusCharacter = null;
     [SerializeField] protected float maxVision = 20f;
 
@@ -70,6 +69,12 @@ public class EnemyController : MonoBehaviour
         {
             navMeshAgent.SetDestination(focusCharacter.transform.position);
         }
+    }
+
+    public override bool TakeDamage(int damage)
+    {
+        enemy.TakeDamage(damage);
+        return true;
     }
 
     void Attack(PlayerController player)
