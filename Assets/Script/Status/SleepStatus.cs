@@ -5,7 +5,7 @@ using UnityEngine;
 public class SleepStatus : Status
 {
     private float duration = 0;
-    private float duarationCount = -10f;
+    private float durationCount = -10f;
     
     void Awake()
     {
@@ -21,7 +21,7 @@ public class SleepStatus : Status
     void Setting(float newDuration,EntityController entityController)
     {
         duration = newDuration;
-        duarationCount = 0;
+        durationCount = 0;
         SetEntity(entityController);
         entityController.SetEntityState(EntityState.SLEEP);
     }

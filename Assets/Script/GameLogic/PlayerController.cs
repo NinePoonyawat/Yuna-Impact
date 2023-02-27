@@ -10,7 +10,8 @@ public class PlayerController : EntityController
 
     public Camera cam;
 
-    public Vector3 moveToPos;   //for Gizmos visualize
+    private Vector3 moveToPos;              //for Gizmos visualize
+    private float acceptanceRadius = 0.8f;
     private EnemyController focusEnemy;
 
     [SerializeField] private  NavMeshAgent agent;
@@ -41,7 +42,7 @@ public class PlayerController : EntityController
 
     void UpdatePlayerClickMoving()
     {
-        if (this.transform.position == moveToPos)
+        if ( (this.transform.position - moveToPos).magnitude <= acceptanceRadius)
         {
             isPlayerMoving = false;
         }

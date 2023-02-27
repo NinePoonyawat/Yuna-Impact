@@ -80,6 +80,19 @@ public class GameController : MonoBehaviour
         return characters[state];
     }
 
+    public List<EnemyController> FindAllNearestEnemy(Vector3 position, float distance)
+    {
+        List<EnemyController> toReturn = new List<EnemyController>();
+        foreach (var enemy in enemies)
+        {
+            if ((enemy.transform.position - position).sqrMagnitude <= distance)
+            {
+                toReturn.Add(enemy);
+            }
+        }
+        return toReturn;
+    }
+
     public EnemyController FindNearestEnemy(Vector3 position)
     {
         float distance = float.MaxValue;
