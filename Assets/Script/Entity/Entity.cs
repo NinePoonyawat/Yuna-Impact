@@ -13,6 +13,9 @@ public abstract class Entity : MonoBehaviour
     protected float attackCount;
     protected bool isAttackable;
 
+    [SerializeField] protected int attack;
+    [SerializeField] protected int defense;
+
     public virtual void Awake()
     {
         gameController = GameObject.Find("GameLogic").GetComponent<GameController>();
@@ -31,20 +34,13 @@ public abstract class Entity : MonoBehaviour
         }
     }
 
-    public void TakeDamage(int damage)
+    public bool TakeDamage(int damage)
     {
-        if (healthController.takeDamage(damage))
-        {
-            Die();
-        }
+        int rdamage = damage - defense;
+        return (healthController.takeDamage(rdamage));
     }
 
     public abstract bool isInAttackRange(Vector3 position);
-
-    public void Die()
-    {
-
-    }
 
     public void Attack()
     {
@@ -59,5 +55,15 @@ public abstract class Entity : MonoBehaviour
     public void SetAttackable(bool newAttackable)
     {
         isAttackable = newAttackable;
+    }
+
+    public int GetAttack()
+    {
+        return attack;
+    }
+
+    public int GetDefense()
+    {
+        return defense;
     }
 }

@@ -42,6 +42,11 @@ public class GameController : MonoBehaviour
         enemies.Add(enemy);
     }
 
+    public void DeleteEnemy(EnemyController enemyController)
+    {
+        enemies.Remove(enemyController);
+    }
+
     public void TakingCharacter(int idx)
     {
         if (idx >= characters.Count) return;
@@ -68,6 +73,8 @@ public class GameController : MonoBehaviour
         int state = -1;
         for (int idx = 0; idx < characters.Count; idx++)
         {
+            if (characters[idx].GetEntityState() == EntityState.DEAD) continue;
+            
             float d = (characters[idx].transform.position - position).sqrMagnitude;
             if (distance > d)
             {

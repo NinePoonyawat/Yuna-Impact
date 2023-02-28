@@ -34,6 +34,8 @@ public class PlayerController : EntityController
 
     void Update()
     {
+        if (entityState == EntityState.DEAD) return;
+
         if (isPlayerMoving) UpdatePlayerClickMoving();
 
         if (isTaking) UpdateTaking();
@@ -74,9 +76,9 @@ public class PlayerController : EntityController
         {
             if (playableCharacter.IsAttackable())
             {
-                Attack(focusEnemy);
+                if (Attack(focusEnemy)) focusEnemy = null;
                 entityState = EntityState.ATTACK;
-                playableCharacter.Attack();
+                playableCharacter.Attack(); // get attack cooldown
             }
             else
             {
@@ -122,9 +124,9 @@ public class PlayerController : EntityController
         }
     }
 
-    void Attack(EnemyController enemy)
+    bool Attack(EnemyController enemy)
     {
-        Debug.Log("attack" + enemy);
+        return enemy.TakeDamage(playableCharacter.GetAttack());
     }
 
     public bool Targetable(EnemyController enemy)
@@ -134,8 +136,12 @@ public class PlayerController : EntityController
 
     public override bool TakeDamage(int damage)
     {
-        playableCharacter.TakeDamage(damage);
-        return true;
+        if (playableCharacter.TakeDamage(damage))
+        {
+            SetEntityState(EntityState.DEAD);
+            return true;
+        }
+        return false;
     }
 
     void OnDrawGizmos()

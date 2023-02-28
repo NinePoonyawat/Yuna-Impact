@@ -17,5 +17,10 @@ public abstract class EntityController : MonoBehaviour
         isSilent = newSilent;
     }
 
+    public EntityState GetEntityState()
+    {
+        return entityState;
+    }
+
     public abstract bool TakeDamage(int damage);
 }

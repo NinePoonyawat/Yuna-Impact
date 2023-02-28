@@ -10,4 +10,5 @@ public enum EntityState
     ATTACK,
     SKILL,
     SLEEP,
+    DEAD,
 }

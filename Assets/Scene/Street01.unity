@@ -486,6 +486,8 @@ GameObject:
   - component: {fileID: 81634879}
   - component: {fileID: 81634883}
   - component: {fileID: 81634878}
+  - component: {fileID: 81634885}
+  - component: {fileID: 81634884}
   m_Layer: 0
   m_Name: Character 2
   m_TagString: Untagged
@@ -578,10 +580,39 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 05088642718a7dc42af4b0bb34c8c2e6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  healthController: {fileID: 0}
-  manaController: {fileID: 0}
+  healthController: {fileID: 81634885}
+  manaController: {fileID: 81634884}
   attackPeriod: 1.5
+  attack: 15
+  defense: 0
   attackRange: 0
+--- !u!114 &81634884
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 81634877}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fd8c92f4a773454cb3ef90cb93799bf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  defaultMaxMana: 0
+  initialMana: 0
+--- !u!114 &81634885
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 81634877}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f8391fe6baa332649a849a82dc3b22df, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  defaultHealth: 200
 --- !u!1001 &124659744
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3494,6 +3525,8 @@ MonoBehaviour:
   healthController: {fileID: 0}
   manaController: {fileID: 0}
   attackPeriod: 1.5
+  attack: 0
+  defense: 0
   attackRange: 0
 --- !u!195 &737856769
 NavMeshAgent:
@@ -4120,6 +4153,8 @@ GameObject:
   - component: {fileID: 851964937}
   - component: {fileID: 851964936}
   - component: {fileID: 851964935}
+  - component: {fileID: 851964941}
+  - component: {fileID: 851964940}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Untagged
@@ -4177,9 +4212,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 633ab122fbfaea347a99506a3b0afe12, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  healthController: {fileID: 0}
-  manaController: {fileID: 0}
+  healthController: {fileID: 851964941}
+  manaController: {fileID: 851964940}
   attackPeriod: 1.5
+  attack: 10
+  defense: 0
   attackRange: 3
 --- !u!4 &851964939
 Transform:
@@ -4189,7 +4226,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 851964934}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -4.96, y: 1.57, z: 7.21}
+  m_LocalPosition: {x: -4.96, y: 0.5, z: 7.21}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -4197,6 +4234,33 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &851964940
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 851964934}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fd8c92f4a773454cb3ef90cb93799bf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  defaultMaxMana: 0
+  initialMana: 0
+--- !u!114 &851964941
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 851964934}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f8391fe6baa332649a849a82dc3b22df, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  defaultHealth: 50
 --- !u!1 &888139431
 GameObject:
   m_ObjectHideFlags: 0
@@ -4568,6 +4632,8 @@ GameObject:
   - component: {fileID: 1016199010}
   - component: {fileID: 1016199014}
   - component: {fileID: 1016199009}
+  - component: {fileID: 1016199016}
+  - component: {fileID: 1016199015}
   m_Layer: 0
   m_Name: Character 1
   m_TagString: Untagged
@@ -4587,7 +4653,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc8291d725b57db44a05a90e9e3c6074, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playableCharacter: {fileID: 0}
+  playableCharacter: {fileID: 1016199014}
   cam: {fileID: 0}
   agent: {fileID: 1016199010}
   isTaking: 0
@@ -4659,10 +4725,39 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 05088642718a7dc42af4b0bb34c8c2e6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  healthController: {fileID: 0}
-  manaController: {fileID: 0}
+  healthController: {fileID: 1016199016}
+  manaController: {fileID: 1016199015}
   attackPeriod: 1.5
+  attack: 20
+  defense: 0
   attackRange: 0
+--- !u!114 &1016199015
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1016199008}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fd8c92f4a773454cb3ef90cb93799bf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  defaultMaxMana: 0
+  initialMana: 0
+--- !u!114 &1016199016
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1016199008}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f8391fe6baa332649a849a82dc3b22df, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  defaultHealth: 200
 --- !u!1 &1021955632
 GameObject:
   m_ObjectHideFlags: 0

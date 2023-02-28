@@ -45,9 +45,9 @@ public class EnemyController : EntityController
         {
             if (enemy.IsAttackable())
             {
-                Attack(focusCharacter);
+                if (Attack(focusCharacter)) focusCharacter = null;
                 entityState = EntityState.ATTACK;
-                enemy.Attack();
+                enemy.Attack(); // get attack cooldown;
             }
             else
             {
@@ -73,12 +73,16 @@ public class EnemyController : EntityController
 
     public override bool TakeDamage(int damage)
     {
-        enemy.TakeDamage(damage);
-        return true;
+        if (enemy.TakeDamage(damage))
+        {
+            gameController.DeleteEnemy(this);
+            return true;
+        };
+        return false;
     }
 
-    void Attack(PlayerController player)
+    public bool Attack(PlayerController player)
     {
-        Debug.Log("attack" + player);
+        return player.TakeDamage(enemy.GetAttack());
     }
 }
