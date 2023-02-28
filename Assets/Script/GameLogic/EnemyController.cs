@@ -76,6 +76,7 @@ public class EnemyController : EntityController
         if (enemy.TakeDamage(damage))
         {
             gameController.DeleteEnemy(this);
+            Destroy(gameObject);
             return true;
         };
         return false;

@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.1831903, g: 0.22679506, b: 0.2945683, a: 1}
+  m_IndirectSpecularColor: {r: 0.18319008, g: 0.22679472, b: 0.29456776, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -321,6 +321,16 @@ PrefabInstance:
       propertyPath: currentHealth
       value: 60
       objectReference: {fileID: 0}
+    - target: {fileID: 3383810409177989981, guid: c2d0d99cd85f9f745960d34c45a19e15,
+        type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3383810409177989981, guid: c2d0d99cd85f9f745960d34c45a19e15,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7030897501715009170, guid: c2d0d99cd85f9f745960d34c45a19e15,
         type: 3}
       propertyPath: m_Pivot.x
@@ -483,7 +493,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc8291d725b57db44a05a90e9e3c6074, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playableCharacter: {fileID: 0}
+  playableCharacter: {fileID: 81634883}
   cam: {fileID: 0}
   agent: {fileID: 81634879}
   isTaking: 0
@@ -561,7 +571,7 @@ MonoBehaviour:
   attackPeriod: 1.5
   attack: 15
   defense: 0
-  attackRange: 0
+  attackRange: 1.5
 --- !u!114 &81634884
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -589,6 +599,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   defaultHealth: 200
+  currentHealth: 0
 --- !u!1001 &124659744
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3573,6 +3584,16 @@ PrefabInstance:
       propertyPath: currentHealth
       value: 20
       objectReference: {fileID: 0}
+    - target: {fileID: 3383810409177989981, guid: c2d0d99cd85f9f745960d34c45a19e15,
+        type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3383810409177989981, guid: c2d0d99cd85f9f745960d34c45a19e15,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7030897501715009170, guid: c2d0d99cd85f9f745960d34c45a19e15,
         type: 3}
       propertyPath: m_Pivot.x
@@ -4489,6 +4510,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   defaultHealth: 50
+  currentHealth: 0
 --- !u!1 &888139431
 GameObject:
   m_ObjectHideFlags: 0
@@ -4958,7 +4980,7 @@ MonoBehaviour:
   attackPeriod: 1.5
   attack: 20
   defense: 0
-  attackRange: 0
+  attackRange: 1.5
 --- !u!114 &1016199015
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4986,6 +5008,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   defaultHealth: 200
+  currentHealth: 0
 --- !u!1 &1021955632
 GameObject:
   m_ObjectHideFlags: 0
@@ -8260,6 +8283,16 @@ PrefabInstance:
         type: 3}
       propertyPath: currentHealth
       value: 80
+      objectReference: {fileID: 0}
+    - target: {fileID: 3383810409177989981, guid: c2d0d99cd85f9f745960d34c45a19e15,
+        type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3383810409177989981, guid: c2d0d99cd85f9f745960d34c45a19e15,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7030897501715009170, guid: c2d0d99cd85f9f745960d34c45a19e15,
         type: 3}

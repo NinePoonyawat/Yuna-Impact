@@ -6,8 +6,8 @@ public abstract class Entity : MonoBehaviour
 {
     protected GameController gameController;
 
-    [SerializeField] private HealthController healthController;
-    [SerializeField] private ManaController manaController;
+    [SerializeField] protected HealthController healthController;
+    [SerializeField] protected ManaController manaController;
 
     [SerializeField] protected float attackPeriod = 1.5f;
     protected float attackCount;

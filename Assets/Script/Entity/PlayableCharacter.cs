@@ -16,4 +16,14 @@ public class PlayableCharacter : Entity
     {
         return (position - transform.position).sqrMagnitude <= attackRange;
     }
+
+    public int getHp()
+    {
+        return healthController.getValue();
+    }
+
+    public int getMaxHp()
+    {
+        return healthController.getMaxValue();
+    }
 }

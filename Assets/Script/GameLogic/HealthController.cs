@@ -8,7 +8,9 @@ public class HealthController : MonoBehaviour,Ivalueable
 
     [SerializeField] private int defaultHealth;
     private int maxHealth;
-    private int currentHealth;
+    public int currentHealth;
+
+    [SerializeField] private UIController uiController;
 
     void Awake()
     {
@@ -24,7 +26,6 @@ public class HealthController : MonoBehaviour,Ivalueable
     public bool takeDamage(int damage)
     {
         currentHealth -= damage;
-        Debug.Log(currentHealth);
         return currentHealth <= 0;
     }
 

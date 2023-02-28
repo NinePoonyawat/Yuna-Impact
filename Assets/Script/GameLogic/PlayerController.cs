@@ -19,6 +19,8 @@ public class PlayerController : EntityController
     [SerializeField] private bool isTaking = false; // is this character taking by player
     [SerializeField] private bool isPlayerMoving = false;
 
+    [SerializeField] private UIController uiController;
+
     public void Awake()
     {
         gameController = GameObject.Find("GameLogic").GetComponent<GameController>();
@@ -76,6 +78,7 @@ public class PlayerController : EntityController
         {
             if (playableCharacter.IsAttackable())
             {
+                Debug.Log("enter");
                 if (Attack(focusEnemy)) focusEnemy = null;
                 entityState = EntityState.ATTACK;
                 playableCharacter.Attack(); // get attack cooldown
@@ -103,7 +106,7 @@ public class PlayerController : EntityController
             agent.SetDestination(focusEnemy.transform.position);
         }
         entityState = EntityState.MOVE;
-        moveToPos = focusEnemy.transform.position;
+        if(focusEnemy != null) moveToPos = focusEnemy.transform.position;
     }
 
     void UpdatePlayerMoving()
@@ -141,6 +144,7 @@ public class PlayerController : EntityController
             SetEntityState(EntityState.DEAD);
             return true;
         }
+        uiController.UpdateHPBar(gameController.getUIIndex(this),playableCharacter.getHp(),playableCharacter.getMaxHp());
         return false;
     }
 

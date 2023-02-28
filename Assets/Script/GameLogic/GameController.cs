@@ -132,4 +132,16 @@ public class GameController : MonoBehaviour
         }
         return toReturn;
     }
+
+    public int getUIIndex(PlayerController character)
+    {
+        if (character == takingCharacter) return 0;
+        int m = 1;
+        for(int i = 0; i != 4; i++)
+        {
+            if (characters[i] == character) return i + m;
+            if (characters[i] == takingCharacter) m = 0;
+        }
+        return 3;
+    }
 }
