@@ -2812,6 +2812,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: RenardYuna(Temp) (1)
       objectReference: {fileID: 0}
+    - target: {fileID: -8653719598885068355, guid: 42a6afa095bb99e4ebf499f89b59b78a,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: -8273958000046428322, guid: 42a6afa095bb99e4ebf499f89b59b78a,
         type: 3}
       propertyPath: m_LocalRotation.w
@@ -5324,7 +5329,7 @@ MonoBehaviour:
   m_Chain:
     m_EffectorTransform: {fileID: 0}
     m_TargetTransform: {fileID: 497774879}
-    m_TransformCount: 3
+    m_TransformCount: 0
     m_Transforms:
     - {fileID: 0}
     - {fileID: 0}
