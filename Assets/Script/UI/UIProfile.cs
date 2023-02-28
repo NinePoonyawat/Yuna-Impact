@@ -33,14 +33,6 @@ public class UIProfile : MonoBehaviour
         {
             CastSkill(2);
         }
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            Init();
-        }
-        if (Input.GetKeyDown(KeyCode.G))
-        {
-            TakeDamage(1);
-        }
     }
 
     public void Init()
@@ -61,10 +53,11 @@ public class UIProfile : MonoBehaviour
         skillIcons[idx].Cast(tempCooldown);
     }
 
-    public void TakeDamage(int damage)
+    public void UpdateHPBar(int current, int max)
     {
-        currentHealth -= damage;
-        
-        characterHPBar.value = currentHealth;
+        characterHPBar.value = current;
+
+        currentHealth = current;
     }
+
 }

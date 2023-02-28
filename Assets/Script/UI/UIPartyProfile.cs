@@ -21,15 +21,7 @@ public class UIPartyProfile : MonoBehaviour
 
     void Update()
     {
-        //Debug
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            Init();
-        }
-        if (Input.GetKeyDown(KeyCode.G))
-        {
-            TakeDamage(1);
-        }
+
     }
 
     public void Init()
@@ -41,18 +33,23 @@ public class UIPartyProfile : MonoBehaviour
         characterHPBar.value = currentHealth;
     }
 
-    public void TakeDamage(int damage)
+    public void UpdateHPBar(int current, int max)
     {
         if (KO) return;
 
-        currentHealth -= damage;
+        characterHPBar.value = current;
+        characterHPBar.maxValue = max;
+
         if (currentHealth <= 0)
         {
             KO = true;
             animator.SetBool("KnockOut", true);
         }
         
-        characterHPBar.value = currentHealth;
-        animator.SetTrigger("TakeDamage");
+        if (current < currentHealth) animator.SetTrigger("TakeDamage");
+
+        currentHealth = current;
+        maxHealth = max;
     }
+
 }
