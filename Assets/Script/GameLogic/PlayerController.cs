@@ -144,7 +144,7 @@ public class PlayerController : EntityController
             SetEntityState(EntityState.DEAD);
             return true;
         }
-        uiController.UpdateHPBar(gameController.getUIIndex(this),playableCharacter.getHp(),playableCharacter.getMaxHp());
+        //uiController.UpdateHPBar(gameController.getUIIndex(this),playableCharacter.getHp(),playableCharacter.getMaxHp());
         return false;
     }
 
