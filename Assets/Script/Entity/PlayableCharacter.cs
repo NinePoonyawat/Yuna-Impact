@@ -14,7 +14,7 @@ public class PlayableCharacter : Entity
 
     public override bool isInAttackRange(Vector3 position)
     {
-        return (position - transform.position).sqrMagnitude <= attackRange;
+        return Vector3.Distance(position,transform.position) <= attackRange;
     }
 
     public int getHp()

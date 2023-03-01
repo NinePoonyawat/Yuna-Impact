@@ -45,9 +45,8 @@ public class EnemyController : EntityController
         {
             if (enemy.IsAttackable())
             {
-                if (Attack(focusCharacter)) focusCharacter = null;
-                entityState = EntityState.ATTACK;
-                enemy.Attack(); // get attack cooldown;
+                if (enemy.GetIsProjectile()) RangeAttack();
+                else MeleeAttack();
             }
             else
             {
@@ -56,6 +55,22 @@ public class EnemyController : EntityController
             return true;
         }
         return false;
+    }
+
+    public void MeleeAttack()
+    {
+        if (Attack(focusCharacter)) focusCharacter = null;
+        entityState = EntityState.ATTACK;
+        enemy.AfterAttack(); // get attack cooldown;
+    }
+
+    public void RangeAttack()
+    {
+        GameObject GO = Instantiate(enemy.GetPrefab(),gameController.projectileRoot) as GameObject;
+        Projectile projectile = GO.GetComponent<Projectile>();
+        projectile.SetUp(this,focusCharacter,enemy.GetProjectileSpeed());
+        entityState = EntityState.ATTACK;
+        enemy.AfterAttack(); // get attack cooldown;
     }
 
     void UpdateMoving()
@@ -68,6 +83,7 @@ public class EnemyController : EntityController
         else
         {
             navMeshAgent.SetDestination(focusCharacter.transform.position);
+            UpdateDirection();
         }
     }
 
@@ -82,7 +98,7 @@ public class EnemyController : EntityController
         return false;
     }
 
-    public bool Attack(PlayerController player)
+    public override bool Attack(EntityController player)
     {
         return player.TakeDamage(enemy.GetAttack());
     }

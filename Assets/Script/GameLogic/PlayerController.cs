@@ -76,12 +76,11 @@ public class PlayerController : EntityController
 
         if(playableCharacter.isInAttackRange(focusEnemy.transform.position))
         {
+            agent.SetDestination(this.transform.position);
             if (playableCharacter.IsAttackable())
             {
-                Debug.Log("enter");
-                if (Attack(focusEnemy)) focusEnemy = null;
-                entityState = EntityState.ATTACK;
-                playableCharacter.Attack(); // get attack cooldown
+                if (playableCharacter.GetIsProjectile()) RangeAttack();
+                else MeleeAttack();
             }
             else
             {
@@ -92,9 +91,25 @@ public class PlayerController : EntityController
         return false;
     }
 
+    public void MeleeAttack()
+    {
+        if (Attack(focusEnemy)) focusEnemy = null;
+        entityState = EntityState.ATTACK;
+        playableCharacter.AfterAttack(); // get attack cooldown;
+    }
+
+    public void RangeAttack()
+    {
+        GameObject GO = Instantiate(playableCharacter.GetPrefab(),gameController.projectileRoot) as GameObject;
+        Projectile projectile = GO.GetComponent<Projectile>();
+        projectile.SetUp(this,focusEnemy,playableCharacter.GetProjectileSpeed());
+        entityState = EntityState.ATTACK;
+        playableCharacter.AfterAttack(); // get attack cooldown;
+    }
+
     void UpdateAIMoving()
     {
-        if (isPlayerMoving) return;
+        if (isPlayerMoving) return; // there is player point destination since this character still control by player
 
         if (focusEnemy == null)
         {
@@ -104,6 +119,7 @@ public class PlayerController : EntityController
         else
         {
             agent.SetDestination(focusEnemy.transform.position);
+            UpdateDirection();
         }
         entityState = EntityState.MOVE;
         if(focusEnemy != null) moveToPos = focusEnemy.transform.position;
@@ -124,10 +140,11 @@ public class PlayerController : EntityController
             }
 
             entityState = EntityState.MOVE;
+            UpdateDirection();
         }
     }
 
-    bool Attack(EnemyController enemy)
+    public override bool Attack(EntityController enemy)
     {
         return enemy.TakeDamage(playableCharacter.GetAttack());
     }

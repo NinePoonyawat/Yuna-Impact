@@ -10,6 +10,8 @@ public class GameController : MonoBehaviour
 
     [SerializeField] private List<EnemyController> enemies = new List<EnemyController>();
 
+    [SerializeField] public Transform projectileRoot;
+
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Alpha1))
@@ -75,7 +77,7 @@ public class GameController : MonoBehaviour
         {
             if (characters[idx].GetEntityState() == EntityState.DEAD) continue;
             
-            float d = (characters[idx].transform.position - position).sqrMagnitude;
+            float d = Vector3.Distance(characters[idx].transform.position,position);
             if (distance > d)
             {
                 distance = d;

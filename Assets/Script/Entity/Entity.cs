@@ -15,6 +15,9 @@ public abstract class Entity : MonoBehaviour
 
     [SerializeField] protected int attack;
     [SerializeField] protected int defense;
+    [SerializeField] protected bool isProjectile;
+    [SerializeField] protected GameObject projectilePf;
+    [SerializeField] protected float projectileSpeed = 5f;
 
     public virtual void Awake()
     {
@@ -29,7 +32,6 @@ public abstract class Entity : MonoBehaviour
             if (attackCount >= attackPeriod)
             {
                 isAttackable = true;
-                attackCount = 0;
             }
         }
     }
@@ -42,9 +44,10 @@ public abstract class Entity : MonoBehaviour
 
     public abstract bool isInAttackRange(Vector3 position);
 
-    public void Attack()
+    public void AfterAttack()
     {
         isAttackable = false;
+        attackCount = 0;
     }
 
     public bool IsAttackable()
@@ -65,5 +68,20 @@ public abstract class Entity : MonoBehaviour
     public int GetDefense()
     {
         return defense;
+    }
+
+    public bool GetIsProjectile()
+    {
+        return isProjectile;
+    }
+
+    public GameObject GetPrefab()
+    {
+        return projectilePf;
+    }
+
+    public float GetProjectileSpeed()
+    {
+        return projectileSpeed;
     }
 }

@@ -8,6 +8,6 @@ public class Enemy : Entity
 
     public override bool isInAttackRange(Vector3 position)
     {
-        return (position - transform.position).sqrMagnitude <= attackRange;
+        return Vector3.Distance(position,transform.position) <= attackRange;
     }
 }
