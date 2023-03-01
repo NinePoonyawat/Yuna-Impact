@@ -14,7 +14,7 @@ public class UIController : MonoBehaviour
     }
 
     //idx 0 : Taking Character //idx 1-3 : Other Character
-    public void UpdateHPBar(int idx, StatusValueSet statusValue)
+    public void UpdateStatusBar(int idx, StatusValueSet statusValue)
     {
         int currentHealth = statusValue.getHp();
         int maxHealth = statusValue.getMaxHp();

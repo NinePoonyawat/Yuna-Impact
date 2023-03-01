@@ -43,7 +43,11 @@ public class GameController : MonoBehaviour
     {
         if (characters.Count >= 4) return;
         characters.Add(character);
-        if (characters.Count == 1) FindObjectOfType<CamFollowing>().Follow(character.gameObject.transform);
+        if (characters.Count == 1)
+        {
+            TakingCharacter(0);
+            FindObjectOfType<CamFollowing>().Follow(character.gameObject.transform);
+        }
     }
 
     public void AddEnemy(EnemyController enemy)

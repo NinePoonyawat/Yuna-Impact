@@ -20,11 +20,6 @@ public class UIPartyProfile : MonoBehaviour
     [SerializeField] private Slider characterSPBar;
     [SerializeField] private Animator animator;
 
-    void Update()
-    {
-
-    }
-
     public void Init(StatusValueSet statusValue)
     {
         characterName.text = tempName;
@@ -40,8 +35,8 @@ public class UIPartyProfile : MonoBehaviour
     {
         if (KO) return;
 
-        characterHPBar.value = current;
         characterHPBar.maxValue = max;
+        characterHPBar.value = current;
 
         if (currentHealth <= 0)
         {

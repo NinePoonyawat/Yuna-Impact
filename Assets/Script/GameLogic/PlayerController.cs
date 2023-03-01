@@ -162,7 +162,7 @@ public class PlayerController : EntityController
             SetEntityState(EntityState.DEAD);
             return true;
         }
-        uiController.UpdateHPBar(gameController.getUIIndex(this), playableCharacter.GetStatusValue());
+        uiController.UpdateStatusBar(gameController.getUIIndex(this), playableCharacter.GetStatusValue());
         return false;
     }
 

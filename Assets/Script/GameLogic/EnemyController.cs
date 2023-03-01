@@ -12,9 +12,13 @@ public class EnemyController : EntityController
     [SerializeField] protected float maxVision = 20f;
 
     [SerializeField] private NavMeshAgent navMeshAgent;
+
+    [SerializeField] private UIEnemyProfile uiEnemy;
+
     public void Awake()
     {
         gameController = GameObject.Find("GameLogic").GetComponent<GameController>();
+        uiEnemy = GetComponentInChildren<UIEnemyProfile>();
     }
 
     public void Start()
@@ -95,6 +99,7 @@ public class EnemyController : EntityController
             Destroy(gameObject);
             return true;
         };
+        uiEnemy.UpdateHPBar(enemy.GetStatusValue());
         return false;
     }
 

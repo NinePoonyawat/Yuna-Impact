@@ -10,8 +10,6 @@ public class HealthController : MonoBehaviour,Ivalueable
     private int maxHealth;
     public int currentHealth;
 
-    [SerializeField] private UIController uiController;
-
     void Awake()
     {
         entity = gameObject.GetComponent<Entity>();
