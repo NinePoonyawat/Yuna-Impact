@@ -5,12 +5,19 @@ using UnityEngine;
 public class GameController : MonoBehaviour
 {
     [SerializeField] private List<PlayerController> characters = new List<PlayerController>();
-
     [SerializeField] private PlayerController takingCharacter = null;
-
     [SerializeField] private List<EnemyController> enemies = new List<EnemyController>();
 
     [SerializeField] public Transform projectileRoot;
+
+    [SerializeField] private UIController uiController;
+    [SerializeField] private CamFollowing cam;
+
+    void Awake()
+    {
+        uiController = FindObjectOfType<UIController>();
+        cam = FindObjectOfType<CamFollowing>();
+    }
 
     void Update()
     {
@@ -64,7 +71,9 @@ public class GameController : MonoBehaviour
 
         takingCharacter = characters[idx];
         takingCharacter.SetTaking(true);
-        FindObjectOfType<CamFollowing>().Follow(takingCharacter.gameObject.transform);
+
+        uiController.SetProfile(characters);
+        cam.Follow(takingCharacter.gameObject.transform);
     }
 
     public PlayerController FindNearestCharacter(Vector3 position, float maxDistance)

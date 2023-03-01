@@ -35,12 +35,14 @@ public class UIProfile : MonoBehaviour
         }
     }
 
-    public void Init()
+    public void Init(StatusValueSet statusValue)
     {
         characterName.text = tempName;
 
-        characterHPBar.maxValue = maxHealth;
-        characterHPBar.value = currentHealth;
+        characterHPBar.maxValue = statusValue.getMaxHp();
+        characterHPBar.value = statusValue.getHp();
+        characterSPBar.maxValue = statusValue.getMaxMp();
+        characterSPBar.value = statusValue.getMp();
 
         foreach (UISkillIcon skillIcon in skillIcons)
         {

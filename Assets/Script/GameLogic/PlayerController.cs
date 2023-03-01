@@ -24,6 +24,7 @@ public class PlayerController : EntityController
     public void Awake()
     {
         gameController = GameObject.Find("GameLogic").GetComponent<GameController>();
+        uiController = FindObjectOfType<UIController>();
         playableCharacter = GetComponent<PlayableCharacter>();
         cam = FindObjectOfType<Camera>();
     }
@@ -161,7 +162,7 @@ public class PlayerController : EntityController
             SetEntityState(EntityState.DEAD);
             return true;
         }
-        //uiController.UpdateHPBar(gameController.getUIIndex(this),playableCharacter.getHp(),playableCharacter.getMaxHp());
+        uiController.UpdateHPBar(gameController.getUIIndex(this), playableCharacter.GetStatusValue());
         return false;
     }
 
@@ -181,5 +182,10 @@ public class PlayerController : EntityController
     public bool getTaking()
     {
         return isTaking;
+    }
+
+    public PlayableCharacter GetCharacter()
+    {
+        return playableCharacter;
     }
 }

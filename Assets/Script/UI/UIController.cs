@@ -14,8 +14,10 @@ public class UIController : MonoBehaviour
     }
 
     //idx 0 : Taking Character //idx 1-3 : Other Character
-    public void UpdateHPBar(int idx, int currentHealth, int maxHealth)
+    public void UpdateHPBar(int idx, StatusValueSet statusValue)
     {
+        int currentHealth = statusValue.getHp();
+        int maxHealth = statusValue.getMaxHp();
         if (idx == 0) playerProfile.UpdateHPBar(currentHealth, maxHealth);
         else partyProfiles[idx-1].UpdateHPBar(currentHealth, maxHealth);
     }
@@ -27,11 +29,11 @@ public class UIController : MonoBehaviour
         {
             if (characters[i].getTaking())
             {
-                playerProfile.Init();
+                playerProfile.Init(characters[i].GetCharacter().GetStatusValue());
             }
             else 
             {
-                partyProfiles[idx++].Init();
+                partyProfiles[idx++].Init(characters[i].GetCharacter().GetStatusValue());
             }
         }
     }

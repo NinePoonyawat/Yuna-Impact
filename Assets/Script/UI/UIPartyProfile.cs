@@ -17,6 +17,7 @@ public class UIPartyProfile : MonoBehaviour
     [SerializeField] private TMP_Text characterName;
     [SerializeField] private Image characterIcon;
     [SerializeField] private Slider characterHPBar;
+    [SerializeField] private Slider characterSPBar;
     [SerializeField] private Animator animator;
 
     void Update()
@@ -24,13 +25,15 @@ public class UIPartyProfile : MonoBehaviour
 
     }
 
-    public void Init()
+    public void Init(StatusValueSet statusValue)
     {
         characterName.text = tempName;
         characterIcon.sprite = tempSprite;
 
-        characterHPBar.maxValue = maxHealth;
-        characterHPBar.value = currentHealth;
+        characterHPBar.maxValue = statusValue.getMaxHp();
+        characterHPBar.value = statusValue.getHp();
+        characterSPBar.maxValue = statusValue.getMaxMp();
+        characterSPBar.value = statusValue.getMp();
     }
 
     public void UpdateHPBar(int current, int max)

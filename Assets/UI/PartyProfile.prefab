@@ -363,6 +363,7 @@ MonoBehaviour:
   characterName: {fileID: 4190981829807435011}
   characterIcon: {fileID: 7444543136936097787}
   characterHPBar: {fileID: 7030897502213904795}
+  characterSPBar: {fileID: 692928623683381320}
   animator: {fileID: 1849945274938343725}
 --- !u!1 &7030897501777312125
 GameObject:

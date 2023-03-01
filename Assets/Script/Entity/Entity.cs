@@ -60,6 +60,15 @@ public abstract class Entity : MonoBehaviour
         isAttackable = newAttackable;
     }
 
+    public StatusValueSet GetStatusValue()
+    {
+        int hp = healthController.getValue();
+        int maxHp = healthController.getMaxValue();
+        int mp = manaController.getValue();
+        int maxMp = manaController.getMaxValue();
+        return new StatusValueSet(hp, maxHp, mp, maxMp);
+    }
+
     public int GetAttack()
     {
         return attack;
