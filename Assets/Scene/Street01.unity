@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.1831903, g: 0.22679506, b: 0.2945683, a: 1}
+  m_IndirectSpecularColor: {r: 0.18319008, g: 0.22679472, b: 0.29456776, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -260,6 +260,7 @@ MonoBehaviour:
   cam: {fileID: 0}
   focusEnemy: {fileID: 0}
   agent: {fileID: 81634879}
+  animator: {fileID: 0}
   isTaking: 0
   isPlayerMoving: 0
   uiController: {fileID: 0}
@@ -1802,7 +1803,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &737856767
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1821,6 +1822,7 @@ MonoBehaviour:
   cam: {fileID: 0}
   focusEnemy: {fileID: 0}
   agent: {fileID: 737856769}
+  animator: {fileID: 0}
   isTaking: 0
   isPlayerMoving: 0
   uiController: {fileID: 0}
@@ -2483,7 +2485,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1016199009
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2502,6 +2504,7 @@ MonoBehaviour:
   cam: {fileID: 0}
   focusEnemy: {fileID: 0}
   agent: {fileID: 1016199010}
+  animator: {fileID: 0}
   isTaking: 0
   isPlayerMoving: 0
   uiController: {fileID: 0}

@@ -18,7 +18,7 @@ public class PlayerController : EntityController
     [SerializeField] private Animator animator;
 
     [SerializeField] private bool isTaking = false; // is this character taking by player
-    [SerializeField] private bool isPlayerMoving = false;
+    [SerializeField] public bool isPlayerMoving = false;
 
     [SerializeField] private UIController uiController;
 
@@ -53,6 +53,7 @@ public class PlayerController : EntityController
         if ( (this.transform.position - moveToPos).magnitude <= acceptanceRadius)
         {
             isPlayerMoving = false;
+            if (animator != null) animator.SetBool("isWalk",false);
         }
     }
 
@@ -88,6 +89,7 @@ public class PlayerController : EntityController
             if (playableCharacter.IsAttackable())
             {
                 playableCharacter.CallAttack(focusEnemy);
+                if (animator != null) animator.SetBool("isWalk",false);
             }
             else
             {
@@ -113,7 +115,15 @@ public class PlayerController : EntityController
         }
         entityState = EntityState.MOVE;
         UpdateDirection();
-        if(focusEnemy != null) moveToPos = focusEnemy.transform.position;
+        if(focusEnemy != null)
+        {
+            if (animator != null) animator.SetBool("isWalk",true);
+            moveToPos = focusEnemy.transform.position;
+        }
+        else
+        {
+            if (animator != null) animator.SetBool("isWalk",false);
+        }
     }
 
     void UpdatePlayerMoving()
@@ -129,8 +139,8 @@ public class PlayerController : EntityController
                 moveToPos = hit.point;
                 isPlayerMoving = true;
             }
-
             entityState = EntityState.MOVE;
+            if (animator != null) animator.SetBool("isWalk",true);
         }
         UpdateDirection();
     }
@@ -150,6 +160,7 @@ public class PlayerController : EntityController
         if (playableCharacter.TakeDamage(damage,attackType))
         {
             SetEntityState(EntityState.DEAD);
+            if (animator != null) animator.SetBool("isKO",true);
             return true;
         }
         uiController.UpdateStatusBar(gameController.getUIIndex(this), playableCharacter.GetStatusValue());
