@@ -6,7 +6,7 @@ using UnityEngine.AI;
 public class EnemyController : EntityController
 {
     private GameController gameController;
-    [SerializeField] private Enemy enemy;
+    private Enemy enemy;
     
     [SerializeField] protected PlayerController focusCharacter = null;
     [SerializeField] protected float maxVision = 20f;
@@ -17,6 +17,7 @@ public class EnemyController : EntityController
 
     public void Awake()
     {
+        enemy = gameObject.GetComponent<Enemy>();
         gameController = GameObject.Find("GameLogic").GetComponent<GameController>();
         uiEnemy = GetComponentInChildren<UIEnemyProfile>();
     }
@@ -47,7 +48,7 @@ public class EnemyController : EntityController
         if (focusCharacter == null) return false;
         if(enemy.isInAttackRange(focusCharacter.transform.position))
         {
-            if (enemy.IsAttackable())
+            if (enemy.isAttackable)
             {
                 enemy.CallAttack(focusCharacter);
             }
@@ -58,6 +59,14 @@ public class EnemyController : EntityController
             return true;
         }
         return false;
+    }
+
+    public override void AfterAttack()
+    {
+         if(focusCharacter != null)
+         {
+            navMeshAgent.SetDestination((transform.position - focusCharacter.transform.position) + transform.position);
+         }
     }
 
     public void MeleeAttack()

@@ -47,4 +47,5 @@ public abstract class EntityController : MonoBehaviour
 
     public abstract bool Attack(EntityController entity);
     public abstract bool TakeDamage(int damage,AttackType attackType);
+    public abstract void AfterAttack();
 }

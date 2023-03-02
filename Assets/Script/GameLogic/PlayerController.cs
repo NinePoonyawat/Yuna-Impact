@@ -167,6 +167,11 @@ public class PlayerController : EntityController
         return false;
     }
 
+    public override void AfterAttack()
+    {
+        return;
+    }
+
     void OnDrawGizmos()
     {
         if (moveToPos == null) return;

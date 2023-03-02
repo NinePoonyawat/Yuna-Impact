@@ -12,7 +12,7 @@ public abstract class Entity : MonoBehaviour
 
     [SerializeField] protected float attackPeriod = 1.5f;
     protected float attackCount;
-    public bool isAttackable;
+    public bool isAttackable = false;
 
     [SerializeField] protected int attack;
     [SerializeField] protected int defense;
@@ -28,7 +28,7 @@ public abstract class Entity : MonoBehaviour
 
     public virtual void Update()
     {
-        if (attackCount <= attackPeriod)
+        if (attackCount < attackPeriod)
         {
             attackCount += Time.deltaTime;
             if (attackCount >= attackPeriod)
@@ -63,7 +63,7 @@ public abstract class Entity : MonoBehaviour
 
     public abstract bool isInAttackRange(Vector3 position);
 
-    public void AfterAttack()
+    public virtual void AfterAttack()
     {
         isAttackable = false;
         attackCount = 0;
