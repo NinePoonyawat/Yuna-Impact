@@ -5,6 +5,7 @@ using UnityEngine;
 public class PlayableCharacter : Entity
 {
     // Start is called before the first frame update
+    [SerializeField] public CharacterProfile characterProfile;
     [SerializeField] private float attackRange;
     
     public bool Targetable(Enemy enemy)

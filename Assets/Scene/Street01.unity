@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.1831903, g: 0.22679506, b: 0.2945683, a: 1}
+  m_IndirectSpecularColor: {r: 0.18319008, g: 0.22679472, b: 0.29456776, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -338,6 +338,10 @@ MonoBehaviour:
   isProjectile: 0
   projectilePf: {fileID: 0}
   projectileSpeed: 5
+  characterProfile:
+    name: Renard Yuna2
+    characterIcon: {fileID: 0}
+    skills: []
   attackRange: 1.5
 --- !u!114 &81634884
 MonoBehaviour:
@@ -2319,6 +2323,10 @@ MonoBehaviour:
   projectilePf: {fileID: 8178185800508563784, guid: aed4d7b5f2a54574c93d4e7b2735ecf1,
     type: 3}
   projectileSpeed: 5
+  characterProfile:
+    name: Renard Yuna3
+    characterIcon: {fileID: 0}
+    skills: []
   attackRange: 1000
 --- !u!195 &737856769
 NavMeshAgent:
@@ -3109,6 +3117,10 @@ MonoBehaviour:
   isProjectile: 0
   projectilePf: {fileID: 0}
   projectileSpeed: 5
+  characterProfile:
+    name: Renard Yuna1
+    characterIcon: {fileID: 0}
+    skills: []
   attackRange: 1.5
 --- !u!114 &1016199015
 MonoBehaviour:

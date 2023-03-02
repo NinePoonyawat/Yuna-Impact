@@ -120,9 +120,9 @@ public class PlayerController : EntityController
         else
         {
             agent.SetDestination(focusEnemy.transform.position);
-            UpdateDirection();
         }
         entityState = EntityState.MOVE;
+        UpdateDirection();
         if(focusEnemy != null) moveToPos = focusEnemy.transform.position;
     }
 
@@ -141,8 +141,8 @@ public class PlayerController : EntityController
             }
 
             entityState = EntityState.MOVE;
-            UpdateDirection();
         }
+        UpdateDirection();
     }
 
     public override bool Attack(EntityController enemy)
