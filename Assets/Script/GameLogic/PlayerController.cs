@@ -12,7 +12,7 @@ public class PlayerController : EntityController
 
     private Vector3 moveToPos;              //for Gizmos visualize
     private float acceptanceRadius = 0.8f;
-    private EnemyController focusEnemy;
+    public EnemyController focusEnemy;
 
     [SerializeField] private  NavMeshAgent agent;
 
@@ -73,15 +73,18 @@ public class PlayerController : EntityController
     bool UpdateAttack()
     {
         if (isPlayerMoving) return false;
-        if (focusEnemy == null) return false;
+        if (focusEnemy == null)
+        {
+            focusEnemy = gameController.FindNearestEnemy(transform.position);
+            if (focusEnemy == null) return false;
+        }
 
         if(playableCharacter.isInAttackRange(focusEnemy.transform.position))
         {
             agent.SetDestination(this.transform.position);
             if (playableCharacter.IsAttackable())
             {
-                if (playableCharacter.GetIsProjectile()) RangeAttack();
-                else MeleeAttack();
+                playableCharacter.CallAttack(focusEnemy);
             }
             else
             {
@@ -90,22 +93,6 @@ public class PlayerController : EntityController
             return !(Input.GetMouseButtonDown(0));
         }
         return false;
-    }
-
-    public void MeleeAttack()
-    {
-        if (Attack(focusEnemy)) focusEnemy = null;
-        entityState = EntityState.ATTACK;
-        playableCharacter.AfterAttack(); // get attack cooldown;
-    }
-
-    public void RangeAttack()
-    {
-        GameObject GO = Instantiate(playableCharacter.GetPrefab(),gameController.projectileRoot) as GameObject;
-        Projectile projectile = GO.GetComponent<Projectile>();
-        projectile.SetUp(this,focusEnemy,playableCharacter.GetProjectileSpeed());
-        entityState = EntityState.ATTACK;
-        playableCharacter.AfterAttack(); // get attack cooldown;
     }
 
     void UpdateAIMoving()
@@ -147,7 +134,7 @@ public class PlayerController : EntityController
 
     public override bool Attack(EntityController enemy)
     {
-        return enemy.TakeDamage(playableCharacter.GetAttack());
+        return enemy.TakeDamage(playableCharacter.GetAttack(),playableCharacter.attackType);
     }
 
     public bool Targetable(EnemyController enemy)
@@ -155,9 +142,9 @@ public class PlayerController : EntityController
         return true;
     }
 
-    public override bool TakeDamage(int damage)
+    public override bool TakeDamage(int damage,AttackType attackType)
     {
-        if (playableCharacter.TakeDamage(damage))
+        if (playableCharacter.TakeDamage(damage,attackType))
         {
             SetEntityState(EntityState.DEAD);
             return true;

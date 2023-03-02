@@ -5,23 +5,25 @@ using UnityEngine;
 public abstract class Entity : MonoBehaviour
 {
     protected GameController gameController;
+    public EntityController entityController;
 
     [SerializeField] protected HealthController healthController;
     [SerializeField] protected ManaController manaController;
 
     [SerializeField] protected float attackPeriod = 1.5f;
     protected float attackCount;
-    protected bool isAttackable;
+    public bool isAttackable;
 
     [SerializeField] protected int attack;
     [SerializeField] protected int defense;
-    [SerializeField] protected bool isProjectile;
+    [SerializeField] public AttackType attackType;
     [SerializeField] protected GameObject projectilePf;
     [SerializeField] protected float projectileSpeed = 5f;
 
     public virtual void Awake()
     {
         gameController = GameObject.Find("GameLogic").GetComponent<GameController>();
+        entityController = gameObject.GetComponent<EntityController>();
     }
 
     public virtual void Update()
@@ -36,7 +38,24 @@ public abstract class Entity : MonoBehaviour
         }
     }
 
-    public bool TakeDamage(int damage)
+    public virtual bool CallAttack(EntityController toAttack)
+    {
+        if (attackType == AttackType.Melee)
+        {
+            if (Attack(toAttack)) return true;
+            AfterAttack();
+        }
+        else
+        {
+            GameObject GO = Instantiate(GetPrefab(),gameController.projectileRoot) as GameObject;
+            Projectile projectile = GO.GetComponent<Projectile>();
+            projectile.SetUp(entityController,toAttack,GetProjectileSpeed());
+            AfterAttack();
+        }
+        return false;
+    }
+
+    public virtual bool TakeDamage(int damage,AttackType attackType)
     {
         int rdamage = damage - defense;
         return (healthController.takeDamage(rdamage));
@@ -69,6 +88,11 @@ public abstract class Entity : MonoBehaviour
         return new StatusValueSet(hp, maxHp, mp, maxMp);
     }
 
+    public virtual bool Attack(EntityController toAttack)
+    {
+        return toAttack.TakeDamage(attack,attackType);
+    }
+
     public int GetAttack()
     {
         return attack;
@@ -77,11 +101,6 @@ public abstract class Entity : MonoBehaviour
     public int GetDefense()
     {
         return defense;
-    }
-
-    public bool GetIsProjectile()
-    {
-        return isProjectile;
     }
 
     public GameObject GetPrefab()

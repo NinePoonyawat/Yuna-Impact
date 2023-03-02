@@ -49,8 +49,7 @@ public class EnemyController : EntityController
         {
             if (enemy.IsAttackable())
             {
-                if (enemy.GetIsProjectile()) RangeAttack();
-                else MeleeAttack();
+                enemy.CallAttack(focusCharacter);
             }
             else
             {
@@ -91,9 +90,9 @@ public class EnemyController : EntityController
         }
     }
 
-    public override bool TakeDamage(int damage)
+    public override bool TakeDamage(int damage,AttackType attackType)
     {
-        if (enemy.TakeDamage(damage))
+        if (enemy.TakeDamage(damage,attackType))
         {
             gameController.DeleteEnemy(this);
             Destroy(gameObject);
@@ -105,6 +104,6 @@ public class EnemyController : EntityController
 
     public override bool Attack(EntityController player)
     {
-        return player.TakeDamage(enemy.GetAttack());
+        return player.TakeDamage(enemy.GetAttack(),enemy.attackType);
     }
 }

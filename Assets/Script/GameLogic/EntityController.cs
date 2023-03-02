@@ -16,12 +16,12 @@ public abstract class EntityController : MonoBehaviour
         Vector3 newPosition = transform.position;
         float x = newPosition.x - prevPosition.x;
 
-        if (isRight && x < 0)
+        if (isRight && x < -0.01f)
         {
             isRight = false;
             entityTransform.localScale = new Vector3(entityTransform.localScale.x * -1, entityTransform.localScale.y, entityTransform.localScale.z);
         }
-        if (!isRight && x > 0)
+        if (!isRight && x > 0.01f)
         {
             isRight = true;
             entityTransform.localScale = new Vector3(entityTransform.localScale.x * -1, entityTransform.localScale.y, entityTransform.localScale.z);
@@ -46,5 +46,5 @@ public abstract class EntityController : MonoBehaviour
     }
 
     public abstract bool Attack(EntityController entity);
-    public abstract bool TakeDamage(int damage);
+    public abstract bool TakeDamage(int damage,AttackType attackType);
 }

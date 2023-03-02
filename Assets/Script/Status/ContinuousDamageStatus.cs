@@ -15,7 +15,7 @@ public class ContinuousDamageStatus : Status
         damageCount += Time.deltaTime;
         if (damageCount >= damagePeriod)
         {
-            entity.TakeDamage(damage);
+            entity.TakeDamage(damage,AttackType.Melee);
             damageCount -= damagePeriod;
         }
     }
