@@ -14,7 +14,8 @@ public class PlayerController : EntityController
     private float acceptanceRadius = 0.8f;
     public EnemyController focusEnemy;
 
-    [SerializeField] private  NavMeshAgent agent;
+    [SerializeField] private NavMeshAgent agent;
+    [SerializeField] private Animator animator;
 
     [SerializeField] private bool isTaking = false; // is this character taking by player
     [SerializeField] private bool isPlayerMoving = false;
@@ -27,6 +28,8 @@ public class PlayerController : EntityController
         uiController = FindObjectOfType<UIController>();
         playableCharacter = GetComponent<PlayableCharacter>();
         cam = FindObjectOfType<Camera>();
+        agent = GetComponent<NavMeshAgent>();
+        animator = GetComponentInChildren<Animator>();
     }
 
     void Start()
