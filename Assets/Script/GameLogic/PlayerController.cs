@@ -19,6 +19,7 @@ public class PlayerController : EntityController
 
     [SerializeField] private bool isTaking = false; // is this character taking by player
     [SerializeField] public bool isPlayerMoving = false;
+    private TeleportController focusTeleport;
 
     [SerializeField] private UIController uiController;
 
@@ -79,7 +80,7 @@ public class PlayerController : EntityController
         if (isPlayerMoving) return false;
         if (focusEnemy == null)
         {
-            focusEnemy = gameController.FindNearestEnemy(transform.position);
+            focusEnemy = gameController.FindNearestEnemy(transform.position,currentArea);
             if (focusEnemy == null) return false;
         }
 
@@ -106,8 +107,23 @@ public class PlayerController : EntityController
 
         if (focusEnemy == null)
         {
-            focusEnemy =  gameController.FindNearestEnemy(transform.position);
+            focusEnemy =  gameController.FindNearestEnemy(transform.position,currentArea);
             if(focusEnemy != null) agent.SetDestination(focusEnemy.transform.position);
+            else if (focusTeleport == null)
+            {
+                TeleportController teleport = gameController.FindTeleport(transform.position,currentArea);
+                focusTeleport = teleport;
+                if (teleport != null)
+                {
+                    agent.SetDestination(focusTeleport.transform.position);
+                    if (animator != null) animator.SetBool("isWalk",true);
+                }
+            }
+            else if (focusTeleport != null)
+            {
+                agent.SetDestination(focusTeleport.transform.position);
+                if (animator != null) animator.SetBool("isWalk",true);
+            }
         }
         else
         {
@@ -119,6 +135,11 @@ public class PlayerController : EntityController
         {
             if (animator != null) animator.SetBool("isWalk",true);
             moveToPos = focusEnemy.transform.position;
+        }
+        else if (focusTeleport != null)
+        {
+            if (animator != null) animator.SetBool("isWalk",true);
+            if (focusTeleport.Teleport(this)) focusTeleport = null;
         }
         else
         {

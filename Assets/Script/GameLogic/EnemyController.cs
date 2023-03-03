@@ -24,7 +24,7 @@ public class EnemyController : EntityController
 
     public void Start()
     {
-        gameController.AddEnemy(this);
+        if (currentArea != -1) gameController.AddEnemy(this,currentArea);
         entityState = EntityState.IDLE;
     }
 
@@ -89,7 +89,7 @@ public class EnemyController : EntityController
     {
         if (focusCharacter == null)
         {
-            focusCharacter = gameController.FindNearestCharacter(transform.position, maxVision);
+            focusCharacter = gameController.FindNearestCharacter(transform.position, maxVision,currentArea);
             if (focusCharacter != null) navMeshAgent.SetDestination(focusCharacter.transform.position);
         }
         else
@@ -103,7 +103,7 @@ public class EnemyController : EntityController
     {
         if (enemy.TakeDamage(damage,attackType))
         {
-            gameController.DeleteEnemy(this);
+            gameController.DeleteEnemy(this,currentArea);
             Destroy(gameObject);
             return true;
         };

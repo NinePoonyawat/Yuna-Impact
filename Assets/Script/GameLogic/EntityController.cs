@@ -11,6 +11,8 @@ public abstract class EntityController : MonoBehaviour
     private Vector3 prevPosition;
     [SerializeField] private bool isRight = false;
 
+    [SerializeField] public int currentArea = -1;
+
     public void UpdateDirection()
     {
         Vector3 newPosition = transform.position;

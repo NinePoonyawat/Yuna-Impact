@@ -7,6 +7,7 @@ public class GameController : MonoBehaviour
     [SerializeField] private List<PlayerController> characters = new List<PlayerController>();
     [SerializeField] private PlayerController takingCharacter = null;
     [SerializeField] private List<EnemyController> enemies = new List<EnemyController>();
+    [SerializeField] private List<AreaController> areas = new List<AreaController>();
 
     [SerializeField] public Transform projectileRoot;
 
@@ -50,14 +51,14 @@ public class GameController : MonoBehaviour
         }
     }
 
-    public void AddEnemy(EnemyController enemy)
+    public void AddEnemy(EnemyController enemy,int idx)
     {
-        enemies.Add(enemy);
+        areas[idx].areaEnemies.Add(enemy);
     }
 
-    public void DeleteEnemy(EnemyController enemyController)
+    public void DeleteEnemy(EnemyController enemyController,int idx)
     {
-        enemies.Remove(enemyController);
+        areas[idx].areaEnemies.Remove(enemyController);
     }
 
     public void TakingCharacter(int idx)
@@ -80,7 +81,7 @@ public class GameController : MonoBehaviour
         cam.Follow(takingCharacter.gameObject.transform);
     }
 
-    public PlayerController FindNearestCharacter(Vector3 position, float maxDistance)
+    public PlayerController FindNearestCharacter(Vector3 position, float maxDistance,int area)
     {
         if (characters.Count == 0) return null;
 
@@ -88,6 +89,7 @@ public class GameController : MonoBehaviour
         int state = -1;
         for (int idx = 0; idx < characters.Count; idx++)
         {
+            if (characters[idx].currentArea != area) continue;
             if (characters[idx].GetEntityState() == EntityState.DEAD) continue;
             
             float d = Vector3.Distance(characters[idx].transform.position,position);
@@ -115,12 +117,12 @@ public class GameController : MonoBehaviour
         return toReturn;
     }
 
-    public EnemyController FindNearestEnemy(Vector3 position)
+    public EnemyController FindNearestEnemy(Vector3 position,int idx)
     {
         float distance = float.MaxValue;
         float temp;
         EnemyController toReturn = null;
-        foreach (var enemy in enemies)
+        foreach (var enemy in areas[idx].areaEnemies)
         {
             if ((temp = (enemy.transform.position - position).sqrMagnitude) <= distance)
             {
@@ -137,7 +139,8 @@ public class GameController : MonoBehaviour
         float distance = float.MaxValue;
         float temp;
         EnemyController toReturn = null;
-        foreach (var enemy in enemies)
+        Debug.Log(playableCharacter.currentArea);
+        foreach (var enemy in areas[playableCharacter.currentArea].areaEnemies)
         {
             if (playableCharacter.Targetable(enemy) && (temp = (enemy.transform.position - position).sqrMagnitude) <= distance)
             {
@@ -146,6 +149,11 @@ public class GameController : MonoBehaviour
             }
         }
         return toReturn;
+    }
+
+    public TeleportController FindTeleport(Vector3 pos,int idx)
+    {
+        return areas[idx].FindNearestTeleport(pos);
     }
 
     public int getUIIndex(PlayerController character)
