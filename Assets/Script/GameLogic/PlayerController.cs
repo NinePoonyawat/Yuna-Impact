@@ -13,8 +13,6 @@ public class PlayerController : EntityController
     private Vector3 moveToPos;              //for Gizmos visualize
     private float acceptanceRadius = 0.8f;
     public EnemyController focusEnemy;
-
-    [SerializeField] private NavMeshAgent agent;
     [SerializeField] private Animator animator;
 
     [SerializeField] private bool isTaking = false; // is this character taking by player

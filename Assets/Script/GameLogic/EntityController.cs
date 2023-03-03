@@ -1,12 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public abstract class EntityController : MonoBehaviour
 {
     protected EntityState entityState;
     protected bool isSilent = false;
 
+    public NavMeshAgent agent;
     [SerializeField] private Transform entityTransform;
     private Vector3 prevPosition;
     [SerializeField] private bool isRight = false;

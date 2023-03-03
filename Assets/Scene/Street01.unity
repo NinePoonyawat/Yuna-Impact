@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.1831903, g: 0.22679506, b: 0.2945683, a: 1}
+  m_IndirectSpecularColor: {r: 0.18319008, g: 0.22679472, b: 0.29456776, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -351,13 +351,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc8291d725b57db44a05a90e9e3c6074, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  agent: {fileID: 81634879}
   entityTransform: {fileID: 81634882}
   isRight: 0
   currentArea: 0
   playableCharacter: {fileID: 81634883}
   cam: {fileID: 0}
   focusEnemy: {fileID: 0}
-  agent: {fileID: 81634879}
   animator: {fileID: 0}
   isTaking: 0
   isPlayerMoving: 0
@@ -1327,6 +1327,11 @@ PrefabInstance:
         type: 3}
     - target: {fileID: 7021507413587811045, guid: 0380a6e10b1ce984a91b41e62f479446,
         type: 3}
+      propertyPath: agent
+      value: 
+      objectReference: {fileID: 359126269}
+    - target: {fileID: 7021507413587811045, guid: 0380a6e10b1ce984a91b41e62f479446,
+        type: 3}
       propertyPath: enemy
       value: 
       objectReference: {fileID: 359126267}
@@ -1494,6 +1499,12 @@ MonoBehaviour:
   isShieldActivate: 1
   shieldMaxHp: 200
   shieldCurrentHp: 0
+--- !u!195 &359126269 stripped
+NavMeshAgent:
+  m_CorrespondingSourceObject: {fileID: 7021507413587811050, guid: 0380a6e10b1ce984a91b41e62f479446,
+    type: 3}
+  m_PrefabInstance: {fileID: 359126261}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &374126774
 GameObject:
   m_ObjectHideFlags: 0
@@ -4038,13 +4049,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc8291d725b57db44a05a90e9e3c6074, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  agent: {fileID: 737856769}
   entityTransform: {fileID: 737856771}
   isRight: 0
   currentArea: 0
   playableCharacter: {fileID: 737856768}
   cam: {fileID: 0}
   focusEnemy: {fileID: 0}
-  agent: {fileID: 737856769}
   animator: {fileID: 0}
   isTaking: 0
   isPlayerMoving: 0
@@ -4711,6 +4722,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7021507413587811045, guid: 0380a6e10b1ce984a91b41e62f479446,
         type: 3}
+      propertyPath: agent
+      value: 
+      objectReference: {fileID: 1041508145}
+    - target: {fileID: 7021507413587811045, guid: 0380a6e10b1ce984a91b41e62f479446,
+        type: 3}
       propertyPath: currentArea
       value: 0
       objectReference: {fileID: 0}
@@ -4836,13 +4852,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc8291d725b57db44a05a90e9e3c6074, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  agent: {fileID: 1016199010}
   entityTransform: {fileID: 1016199013}
   isRight: 0
   currentArea: 0
   playableCharacter: {fileID: 1016199014}
   cam: {fileID: 0}
   focusEnemy: {fileID: 0}
-  agent: {fileID: 1016199010}
   animator: {fileID: 0}
   isTaking: 0
   isPlayerMoving: 0
@@ -5086,6 +5102,12 @@ Transform:
   m_Father: {fileID: 1484715901}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!195 &1041508145 stripped
+NavMeshAgent:
+  m_CorrespondingSourceObject: {fileID: 7021507413587811050, guid: 0380a6e10b1ce984a91b41e62f479446,
+    type: 3}
+  m_PrefabInstance: {fileID: 999810675}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1043810874
 GameObject:
   m_ObjectHideFlags: 0
@@ -7098,6 +7120,12 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1399700923}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!195 &1403653656 stripped
+NavMeshAgent:
+  m_CorrespondingSourceObject: {fileID: 7021507413587811050, guid: 0380a6e10b1ce984a91b41e62f479446,
+    type: 3}
+  m_PrefabInstance: {fileID: 7021507414355324653}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1441518755
 GameObject:
   m_ObjectHideFlags: 0
@@ -8799,6 +8827,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7021507413587811045, guid: 0380a6e10b1ce984a91b41e62f479446,
         type: 3}
+      propertyPath: agent
+      value: 
+      objectReference: {fileID: 1928859079}
+    - target: {fileID: 7021507413587811045, guid: 0380a6e10b1ce984a91b41e62f479446,
+        type: 3}
       propertyPath: currentArea
       value: 0
       objectReference: {fileID: 0}
@@ -10195,6 +10228,12 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1927914642}
   m_Mesh: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!195 &1928859079 stripped
+NavMeshAgent:
+  m_CorrespondingSourceObject: {fileID: 7021507413587811050, guid: 0380a6e10b1ce984a91b41e62f479446,
+    type: 3}
+  m_PrefabInstance: {fileID: 1645634993}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1972693240
 GameObject:
   m_ObjectHideFlags: 0
@@ -10764,6 +10803,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7021507413587811045, guid: 0380a6e10b1ce984a91b41e62f479446,
         type: 3}
+      propertyPath: agent
+      value: 
+      objectReference: {fileID: 2138645795}
+    - target: {fileID: 7021507413587811045, guid: 0380a6e10b1ce984a91b41e62f479446,
+        type: 3}
       propertyPath: currentArea
       value: 0
       objectReference: {fileID: 0}
@@ -10855,6 +10899,12 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 2138645788}
   m_PrefabAsset: {fileID: 0}
+--- !u!195 &2138645795 stripped
+NavMeshAgent:
+  m_CorrespondingSourceObject: {fileID: 7021507413587811050, guid: 0380a6e10b1ce984a91b41e62f479446,
+    type: 3}
+  m_PrefabInstance: {fileID: 2138645788}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &2146431494
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -10883,6 +10933,11 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 8178185800508563784, guid: aed4d7b5f2a54574c93d4e7b2735ecf1,
         type: 3}
+    - target: {fileID: 7021507413587811045, guid: 0380a6e10b1ce984a91b41e62f479446,
+        type: 3}
+      propertyPath: agent
+      value: 
+      objectReference: {fileID: 2146431501}
     - target: {fileID: 7021507413587811045, guid: 0380a6e10b1ce984a91b41e62f479446,
         type: 3}
       propertyPath: currentArea
@@ -10976,6 +11031,12 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 2146431494}
   m_PrefabAsset: {fileID: 0}
+--- !u!195 &2146431501 stripped
+NavMeshAgent:
+  m_CorrespondingSourceObject: {fileID: 7021507413587811050, guid: 0380a6e10b1ce984a91b41e62f479446,
+    type: 3}
+  m_PrefabInstance: {fileID: 2146431494}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &7021507414355324653
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -10988,6 +11049,11 @@ PrefabInstance:
       propertyPath: attackPeriod
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 7021507413587811045, guid: 0380a6e10b1ce984a91b41e62f479446,
+        type: 3}
+      propertyPath: agent
+      value: 
+      objectReference: {fileID: 1403653656}
     - target: {fileID: 7021507413587811045, guid: 0380a6e10b1ce984a91b41e62f479446,
         type: 3}
       propertyPath: currentArea

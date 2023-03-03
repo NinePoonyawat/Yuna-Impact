@@ -11,8 +11,6 @@ public class EnemyController : EntityController
     [SerializeField] protected PlayerController focusCharacter = null;
     [SerializeField] protected float maxVision = 20f;
 
-    [SerializeField] private NavMeshAgent navMeshAgent;
-
     [SerializeField] private UIEnemyProfile uiEnemy;
 
     public void Awake()
@@ -45,8 +43,7 @@ public class EnemyController : EntityController
 
     bool UpdateAttack()
     {
-        if (focusCharacter == null) return false;
-        if(enemy.isInAttackRange(focusCharacter.transform.position))
+        if(focusCharacter != null && enemy.isInAttackRange(focusCharacter.transform.position))
         {
             if (enemy.isAttackable)
             {
@@ -65,7 +62,7 @@ public class EnemyController : EntityController
     {
          if(focusCharacter != null)
          {
-            navMeshAgent.SetDestination((transform.position - focusCharacter.transform.position) + transform.position);
+            agent.SetDestination((transform.position - focusCharacter.transform.position) + transform.position);
          }
     }
 
@@ -87,14 +84,16 @@ public class EnemyController : EntityController
 
     void UpdateMoving()
     {
+        if(focusCharacter != null && focusCharacter.GetEntityState() == EntityState.DEAD) focusCharacter = null;
+
         if (focusCharacter == null)
         {
             focusCharacter = gameController.FindNearestCharacter(transform.position, maxVision,currentArea);
-            if (focusCharacter != null) navMeshAgent.SetDestination(focusCharacter.transform.position);
+            if (focusCharacter != null) agent.SetDestination(focusCharacter.transform.position);
         }
         else
         {
-            navMeshAgent.SetDestination(focusCharacter.transform.position);
+            agent.SetDestination(focusCharacter.transform.position);
             UpdateDirection();
         }
     }
