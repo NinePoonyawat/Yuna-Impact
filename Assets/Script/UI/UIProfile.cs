@@ -37,6 +37,7 @@ public class UIProfile : MonoBehaviour
 
     public void Init(StatusValueSet statusValue)
     {
+        gameObject.SetActive(true);
         characterName.text = tempName;
 
         characterHPBar.maxValue = statusValue.getMaxHp();
@@ -60,6 +61,11 @@ public class UIProfile : MonoBehaviour
         characterHPBar.value = current;
 
         currentHealth = current;
+    }
+
+    public void HideUI()
+    {
+        gameObject.SetActive(false);
     }
 
 }

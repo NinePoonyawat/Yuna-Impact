@@ -46,9 +46,9 @@ public class GameController : MonoBehaviour
         characters.Add(character);
         if (characters.Count == 1)
         {
-            TakingCharacter(0);
             FindObjectOfType<CamFollowing>().Follow(character.gameObject.transform);
         }
+        TakingCharacter(0);
     }
 
     public void AddEnemy(EnemyController enemy,int idx)
@@ -68,6 +68,9 @@ public class GameController : MonoBehaviour
         {
             takingCharacter.SetTaking(false);
             takingCharacter = null;
+
+            uiController.SetProfile(characters);
+            
             return;
         }
 

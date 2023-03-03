@@ -29,6 +29,7 @@ public class UISkillIcon : MonoBehaviour
 
     public void Init()
     {
+        gameObject.SetActive(true);
         skillIcon.sprite = tempSprite;
         CooldownIcon.fillAmount = 0f;
     }
@@ -37,5 +38,10 @@ public class UISkillIcon : MonoBehaviour
     {
         cooldownTimer = time;
         cooldownTime = time;
+    }
+
+    public void HideUI()
+    {
+        gameObject.SetActive(false);
     }
 }

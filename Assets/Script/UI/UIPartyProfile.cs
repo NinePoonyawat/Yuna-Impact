@@ -18,12 +18,16 @@ public class UIPartyProfile : MonoBehaviour
     [SerializeField] private Image characterIcon;
     [SerializeField] private Slider characterHPBar;
     [SerializeField] private Slider characterSPBar;
+    [SerializeField] private TMP_Text numkey;
     [SerializeField] private Animator animator;
 
-    public void Init(StatusValueSet statusValue)
+    public void Init(StatusValueSet statusValue, int idx)
     {
+        gameObject.SetActive(true);
+
         characterName.text = tempName;
         characterIcon.sprite = tempSprite;
+        numkey.text = idx.ToString();
 
         characterHPBar.maxValue = statusValue.getMaxHp();
         characterHPBar.value = statusValue.getHp();
@@ -48,6 +52,11 @@ public class UIPartyProfile : MonoBehaviour
 
         currentHealth = current;
         maxHealth = max;
+    }
+
+    public void HideUI()
+    {
+        gameObject.SetActive(false);
     }
 
 }
