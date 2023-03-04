@@ -20,6 +20,9 @@ public abstract class Entity : MonoBehaviour
     [SerializeField] protected GameObject projectilePf;
     [SerializeField] protected float projectileSpeed = 5f;
 
+    public float defaultSpeed = 3.5f;
+    public float walkbackSpeed = 1f;
+
     public virtual void Awake()
     {
         gameController = GameObject.Find("GameLogic").GetComponent<GameController>();
@@ -47,7 +50,7 @@ public abstract class Entity : MonoBehaviour
         }
         else
         {
-            GameObject GO = Instantiate(GetPrefab(),gameController.projectileRoot) as GameObject;
+            GameObject GO = Instantiate(GetPrefab(),transform.position,Quaternion.identity,gameController.projectileRoot) as GameObject;
             Projectile projectile = GO.GetComponent<Projectile>();
             projectile.SetUp(entityController,toAttack,GetProjectileSpeed());
             AfterAttack();

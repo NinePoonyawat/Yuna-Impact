@@ -25,6 +25,7 @@ public class EnemyController : EntityController,IPlayerClickable
 
     public void Start()
     {
+        agent.speed = enemy.defaultSpeed;
         if (currentArea != -1) gameController.AddEnemy(this,currentArea);
         entityState = EntityState.IDLE;
     }
@@ -32,6 +33,7 @@ public class EnemyController : EntityController,IPlayerClickable
     // Update is called once per frame
     void Update()
     {
+        UpdateDirection();
         UpdateState();
         GetNextState();
        // UpdateEnemy();
@@ -48,6 +50,7 @@ public class EnemyController : EntityController,IPlayerClickable
             case EntityState.ATTACK :
                 if (enemy.CallAttack(focusCharacter)) focusCharacter = null;
                 if (focusCharacter != null) agent.SetDestination((transform.position - focusCharacter.transform.position) + transform.position);
+                agent.speed = enemy.walkbackSpeed;
                 break;
         }
     }
@@ -80,11 +83,16 @@ public class EnemyController : EntityController,IPlayerClickable
                 entityState = EntityState.PREATTACK;
                 break;
             case EntityState.PREATTACK :
-                if (focusCharacter == null) entityState = EntityState.IDLE;
+                if (focusCharacter == null)
+                {
+                    entityState = EntityState.IDLE;
+                    agent.speed = enemy.defaultSpeed;
+                }
                 else
                 {
                     if (enemy.isAttackable)
                     {
+                        agent.speed = enemy.defaultSpeed;
                         if (enemy.isInAttackRange(focusCharacter.transform.position)) entityState = EntityState.ATTACK;
                         else entityState = EntityState.MOVE;
                     }

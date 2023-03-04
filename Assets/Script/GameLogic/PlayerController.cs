@@ -36,10 +36,13 @@ public class PlayerController : EntityController
     {
         gameController.AddCharacter(this);
         entityState = EntityState.IDLE;
+
+        agent.speed = playableCharacter.defaultSpeed;
     }
 
     void Update()
     {
+        UpdateDirection();
         if (entityState == EntityState.DEAD) return;
 
         if (isPlayerMoving) UpdatePlayerClickMoving();
@@ -89,7 +92,7 @@ public class PlayerController : EntityController
                 if (focusEnemy != null)
                 {
                     if(animator != null) animator.SetBool("isWalk",true);
-                    entityState = EntityState.MOVE;
+                    if(!playableCharacter.isInAttackRange(focusEnemy.transform.position)) entityState = EntityState.MOVE;
                 }
                 else
                 {
@@ -99,7 +102,6 @@ public class PlayerController : EntityController
                 }
                 break;
             case EntityState.MOVE :
-                UpdateDirection();
                 if (focusEnemy == null)
                 {
                     if(animator != null) animator.SetBool("isWalk",false);
@@ -157,7 +159,7 @@ public class PlayerController : EntityController
                     agent.SetDestination(hit.point);
                     moveToPos = hit.point;
                     isPlayerMoving = true;
-                    animator.SetBool("isWalk",true);
+                    if(animator != null) animator.SetBool("isWalk",true);
                 }
                 else
                 {
