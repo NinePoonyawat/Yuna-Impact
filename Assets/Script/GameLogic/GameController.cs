@@ -7,7 +7,7 @@ public class GameController : MonoBehaviour
     [SerializeField] private List<PlayerController> characters = new List<PlayerController>();
     [SerializeField] private PlayerController takingCharacter = null;
     [SerializeField] private List<EnemyController> enemies = new List<EnemyController>();
-    [SerializeField] private List<AreaController> areas = new List<AreaController>();
+    [SerializeField] public List<AreaController> areas = new List<AreaController>();
 
     [SerializeField] public Transform projectileRoot;
 
@@ -134,6 +134,22 @@ public class GameController : MonoBehaviour
             }
         }
         return toReturn;
+    }
+
+    public EnemyController FindNearestEnemy(Vector3 position,int idx,float maxDistance)
+    {
+        float distance = float.MaxValue;
+        float temp;
+        EnemyController toReturn = null;
+        foreach (var enemy in areas[idx].areaEnemies)
+        {
+            if ((temp = Vector3.Distance(enemy.transform.position,position)) <= distance)
+            {
+                distance = temp;
+                toReturn = enemy;
+            }
+        }
+        return (distance <= maxDistance)? toReturn : null;
     }
 
     public EnemyController FindNearestEnemy(PlayerController playableCharacter)

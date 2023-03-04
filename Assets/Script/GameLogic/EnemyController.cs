@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class EnemyController : EntityController
+public class EnemyController : EntityController,IPlayerClickable
 {
     private GameController gameController;
     private Enemy enemy;
@@ -165,5 +165,11 @@ public class EnemyController : EntityController
     public override bool Attack(EntityController player)
     {
         return player.TakeDamage(enemy.GetAttack(),enemy.attackType);
+    }
+
+    public void click(PlayerController playerController)
+    {
+        playerController.focusEnemy = this;
+        playerController.isPlayerTarget = true;
     }
 }

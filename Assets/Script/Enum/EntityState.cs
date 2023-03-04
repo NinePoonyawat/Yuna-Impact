@@ -11,4 +11,5 @@ public enum EntityState
     SKILL,
     SLEEP,
     DEAD,
+    MOVETOTELEPORT,
 }

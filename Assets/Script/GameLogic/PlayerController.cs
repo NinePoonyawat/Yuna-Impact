@@ -14,12 +14,13 @@ public class PlayerController : EntityController
     private float acceptanceRadius = 0.8f;
     public EnemyController focusEnemy;
     [SerializeField] private Animator animator;
-
-    [SerializeField] private bool isTaking = false; // is this character taking by player
-    [SerializeField] public bool isPlayerMoving = false;
     private TeleportController focusTeleport;
 
     [SerializeField] private UIController uiController;
+
+    [SerializeField] private bool isTaking = false; // is this character taking by player
+    [SerializeField] public bool isPlayerMoving = false;
+    [SerializeField] public bool isPlayerTarget = false;
 
     public void Awake()
     {
@@ -42,9 +43,127 @@ public class PlayerController : EntityController
         if (entityState == EntityState.DEAD) return;
 
         if (isPlayerMoving) UpdatePlayerClickMoving();
+        if (isPlayerTarget)
+        {
+            if (focusEnemy == null) isPlayerTarget = false;
+        }
 
-        if (isTaking) UpdateTaking();
-        else UpdateNotTaking();
+        // if (isTaking) UpdateTaking();
+        // else UpdateNotTaking();
+
+        if (isTaking) UpdatePlayerClick();
+
+        UpdateState();
+        GetNextState();
+    }
+
+    void UpdateState()
+    {
+        switch (entityState)
+        {
+            case EntityState.MOVE :
+                if(focusEnemy != null && !isPlayerMoving) agent.SetDestination(focusEnemy.transform.position);
+                break;
+            case EntityState.ATTACK :
+                if (playableCharacter.CallAttack(focusEnemy)) focusEnemy = null;
+                break;
+            case EntityState.MOVETOTELEPORT :
+                if (focusTeleport != null)
+                {
+                    agent.SetDestination(focusTeleport.transform.position);
+                    if (focusTeleport.Teleport(this))
+                    {
+                        focusTeleport = null;
+                    }
+                }
+                break;
+        }
+    }
+
+    public void GetNextState()
+    {
+        switch (entityState)
+        {
+            case EntityState.IDLE :
+                if (!isPlayerTarget && !isTaking) focusEnemy = gameController.FindNearestEnemy(this.transform.position,currentArea);
+                if (focusEnemy != null)
+                {
+                    if(animator != null) animator.SetBool("isWalk",true);
+                    entityState = EntityState.MOVE;
+                }
+                else
+                {
+                    if(animator != null) animator.SetBool("isWalk",true);
+                    if(gameController.areas[currentArea].areaEnemies.Count == 0) focusTeleport = gameController.FindTeleport(transform.position,currentArea);
+                    entityState = EntityState.MOVETOTELEPORT;
+                }
+                break;
+            case EntityState.MOVE :
+                UpdateDirection();
+                if (focusEnemy == null)
+                {
+                    if(animator != null) animator.SetBool("isWalk",false);
+                    entityState = EntityState.IDLE;
+                }
+                else if (playableCharacter.isInAttackRange(focusEnemy.transform.position) && playableCharacter.isAttackable && !isPlayerMoving)
+                {
+                    entityState = EntityState.ATTACK;
+                }
+                break;
+            case EntityState.ATTACK :
+                entityState = EntityState.PREATTACK;
+                break;
+            case EntityState.PREATTACK :
+                if (focusEnemy == null)
+                {
+                    if(animator != null) animator.SetBool("isWalk",false);
+                    entityState = EntityState.IDLE;
+                }
+                else
+                {
+                    if (playableCharacter.isAttackable)
+                    {
+                        if(animator != null) animator.SetBool("isWalk",true);
+                        if (playableCharacter.isInAttackRange(focusEnemy.transform.position)) entityState = EntityState.ATTACK;
+                        else entityState = EntityState.MOVE;
+                    }
+                }
+                break;
+            case EntityState.MOVETOTELEPORT :
+                if (focusTeleport == null)
+                {
+                    if(animator != null) animator.SetBool("isWalk",false);
+                    entityState = EntityState.IDLE;
+                }
+                break;                
+        }
+    }
+                    
+
+    void UpdatePlayerClick()
+    {
+        if (Input.GetMouseButtonDown(0) && isTaking)
+        {
+            Ray ray = cam.ScreenPointToRay(Input.mousePosition);
+            RaycastHit hit;
+            IPlayerClickable iClick;
+
+            if (Physics.Raycast(ray,out hit))
+            {
+                focusEnemy = gameController.FindNearestEnemy(hit.point,currentArea,2f);
+                if (focusEnemy == null)
+                {
+                    agent.SetDestination(hit.point);
+                    moveToPos = hit.point;
+                    isPlayerMoving = true;
+                    animator.SetBool("isWalk",true);
+                }
+                else
+                {
+                    isPlayerTarget = true;
+                }
+            }
+        }
     }
 
     void UpdatePlayerClickMoving()
