@@ -15,6 +15,8 @@ public abstract class EntityController : MonoBehaviour
 
     [SerializeField] public int currentArea = -1;
 
+    public List<Skill> skills = new List<Skill>();
+
     public void UpdateDirection()
     {
         Vector3 newPosition = transform.position;
