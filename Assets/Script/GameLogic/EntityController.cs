@@ -5,7 +5,7 @@ using UnityEngine.AI;
 
 public abstract class EntityController : MonoBehaviour
 {
-    protected EntityState entityState;
+    public EntityState entityState;
     protected bool isSilent = false;
 
     public NavMeshAgent agent;

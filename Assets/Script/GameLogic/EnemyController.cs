@@ -29,7 +29,59 @@ public class EnemyController : EntityController
     // Update is called once per frame
     void Update()
     {
-        UpdateEnemy();
+        UpdateState();
+        GetNextState();
+       // UpdateEnemy();
+    }
+
+    void UpdateState()
+    {
+        switch (entityState)
+        {
+            case EntityState.MOVE :
+                agent.SetDestination(focusCharacter.transform.position);
+                UpdateDirection();
+                break;
+            case EntityState.ATTACK :
+                if (enemy.CallAttack(focusCharacter)) focusCharacter = null;
+                if (focusCharacter != null) agent.SetDestination((transform.position - focusCharacter.transform.position) + transform.position);
+                break;
+        }
+    }
+
+    public void GetNextState()
+    {
+        switch (entityState)
+        {
+            case EntityState.IDLE :
+                focusCharacter = gameController.FindNearestCharacter(transform.position,maxVision,currentArea);
+                if (focusCharacter != null) entityState = EntityState.MOVE;
+                break;
+            case EntityState.MOVE :
+                if (focusCharacter == null)
+                {
+                    entityState = EntityState.IDLE;
+                }
+                else if (enemy.isInAttackRange(focusCharacter.transform.position) && enemy.isAttackable)
+                {
+                    entityState = EntityState.ATTACK;
+                }
+                break;
+            case EntityState.ATTACK :
+                entityState = EntityState.PREATTACK;
+                break;
+            case EntityState.PREATTACK :
+                if (focusCharacter == null) entityState = EntityState.IDLE;
+                else
+                {
+                    if (enemy.isAttackable)
+                    {
+                        if (enemy.isInAttackRange(focusCharacter.transform.position)) entityState = EntityState.ATTACK;
+                        else entityState = EntityState.MOVE;
+                    }
+                }
+                break;
+        }
     }
 
     void UpdateEnemy()
