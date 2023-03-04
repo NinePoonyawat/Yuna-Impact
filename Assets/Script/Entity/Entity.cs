@@ -27,6 +27,8 @@ public abstract class Entity : MonoBehaviour
     {
         gameController = GameObject.Find("GameLogic").GetComponent<GameController>();
         entityController = gameObject.GetComponent<EntityController>();
+        healthController = GetComponent<HealthController>();
+        manaController = GetComponent<ManaController>();
     }
 
     public virtual void Update()
