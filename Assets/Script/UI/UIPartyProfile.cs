@@ -21,9 +21,11 @@ public class UIPartyProfile : MonoBehaviour
     [SerializeField] private TMP_Text numkey;
     [SerializeField] private Animator animator;
 
-    public void Init(StatusValueSet statusValue, int idx)
+    public void Init(StatusValueSet statusValue, int idx, bool isTake)
     {
         gameObject.SetActive(true);
+        characterHPBar.gameObject.SetActive(true);
+        characterSPBar.gameObject.SetActive(true);
 
         characterName.text = tempName;
         characterIcon.sprite = tempSprite;
@@ -33,6 +35,12 @@ public class UIPartyProfile : MonoBehaviour
         characterHPBar.value = statusValue.getHp();
         characterSPBar.maxValue = statusValue.getMaxMp();
         characterSPBar.value = statusValue.getMp();
+
+        if (isTake)
+        {
+            characterHPBar.gameObject.SetActive(false);
+            characterSPBar.gameObject.SetActive(false);
+        }
     }
 
     public void UpdateHPBar(int current, int max)

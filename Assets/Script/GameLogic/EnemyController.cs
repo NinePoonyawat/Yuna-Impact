@@ -46,7 +46,7 @@ public class EnemyController : EntityController,IPlayerClickable
         switch (entityState)
         {
             case EntityState.MOVE :
-                agent.SetDestination(focusCharacter.transform.position);
+                if (focusCharacter != null) agent.SetDestination(focusCharacter.transform.position);
                 UpdateDirection();
                 break;
             case EntityState.ATTACK :

@@ -298,13 +298,14 @@ public class PlayerController : EntityController
 
     public override bool TakeDamage(int damage,AttackType attackType)
     {
+        uiController.UpdateStatusBar(gameController.getUIIndex(this), playableCharacter.GetStatusValue());
+        
         if (playableCharacter.TakeDamage(damage,attackType))
         {
             SetEntityState(EntityState.DEAD);
             if (animator != null) animator.SetBool("isKO",true);
             return true;
         }
-        uiController.UpdateStatusBar(gameController.getUIIndex(this), playableCharacter.GetStatusValue());
         return false;
     }
 

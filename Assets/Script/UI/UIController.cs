@@ -36,19 +36,14 @@ public class UIController : MonoBehaviour
                 skillProfile.Init();
                 isTake = true;
             }
-            else 
-            {
-                partyProfiles[idx++].Init(characters[i].GetCharacter().GetStatusValue(), i+1);
-            }
+            partyProfiles[idx++].Init(characters[i].GetCharacter().GetStatusValue(), i+1, characters[i].getTaking());
         }
-        idx = -1;
         if (!isTake)
         {
             playerProfile.HideUI();
             skillProfile.HideUI();
-            idx = 0;
         }
-        for (int i = characters.Count + idx; i < 4; i++)
+        for (int i = characters.Count; i < 4; i++)
         {
             partyProfiles[i].HideUI();
         }
