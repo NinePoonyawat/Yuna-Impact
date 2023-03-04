@@ -12,6 +12,11 @@ public class UIEnemyProfile : MonoBehaviour
     [Header ("Visualize")]
     [SerializeField] private Slider characterHPBar;
 
+    void Awake()
+    {
+        characterHPBar = GetComponentInChildren<Slider>();
+    }
+
     public void UpdateHPBar(StatusValueSet statusValue)
     {
         int current = statusValue.getHp();

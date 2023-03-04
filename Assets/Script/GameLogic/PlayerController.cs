@@ -107,6 +107,7 @@ public class PlayerController : EntityController
                 }
                 else if (playableCharacter.isInAttackRange(focusEnemy.transform.position) && playableCharacter.isAttackable && !isPlayerMoving)
                 {
+                    if(animator != null) animator.SetTrigger("RAttack");
                     entityState = EntityState.ATTACK;
                 }
                 break;

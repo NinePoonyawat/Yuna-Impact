@@ -11,6 +11,8 @@ public class EnemyController : EntityController,IPlayerClickable
     [SerializeField] protected PlayerController focusCharacter = null;
     [SerializeField] protected float maxVision = 20f;
 
+    [SerializeField] private Animator animator;
+
     [SerializeField] private UIEnemyProfile uiEnemy;
 
     public void Awake()
@@ -18,6 +20,7 @@ public class EnemyController : EntityController,IPlayerClickable
         enemy = gameObject.GetComponent<Enemy>();
         gameController = GameObject.Find("GameLogic").GetComponent<GameController>();
         uiEnemy = GetComponentInChildren<UIEnemyProfile>();
+        animator = GetComponentInChildren<Animator>();
     }
 
     public void Start()
@@ -55,16 +58,22 @@ public class EnemyController : EntityController,IPlayerClickable
         {
             case EntityState.IDLE :
                 focusCharacter = gameController.FindNearestCharacter(transform.position,maxVision,currentArea);
-                if (focusCharacter != null) entityState = EntityState.MOVE;
+                if (focusCharacter != null)
+                {
+                    if(animator != null) animator.SetBool("isWalk", true);
+                    entityState = EntityState.MOVE;
+                }
                 break;
             case EntityState.MOVE :
                 if (focusCharacter == null)
                 {
                     entityState = EntityState.IDLE;
+                    if(animator != null) animator.SetBool("isWalk", false);
                 }
                 else if (enemy.isInAttackRange(focusCharacter.transform.position) && enemy.isAttackable)
                 {
                     entityState = EntityState.ATTACK;
+                    if(animator != null) animator.SetTrigger("LAttack");
                 }
                 break;
             case EntityState.ATTACK :
