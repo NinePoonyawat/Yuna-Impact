@@ -7,6 +7,7 @@ public class EnemyController : EntityController,IPlayerClickable
 {
     private GameController gameController;
     private Enemy enemy;
+    public GameObject main;
     
     [SerializeField] protected PlayerController focusCharacter = null;
     [SerializeField] protected float maxVision = 20f;
@@ -21,6 +22,7 @@ public class EnemyController : EntityController,IPlayerClickable
         gameController = GameObject.Find("GameLogic").GetComponent<GameController>();
         uiEnemy = GetComponentInChildren<UIEnemyProfile>();
         animator = GetComponentInChildren<Animator>();
+        if (main == null) main = transform.parent.gameObject;
     }
 
     public void Start()
@@ -48,7 +50,7 @@ public class EnemyController : EntityController,IPlayerClickable
                 UpdateDirection();
                 break;
             case EntityState.ATTACK :
-                if (enemy.CallAttack(focusCharacter)) focusCharacter = null;
+                //if (focusCharacter != null && enemy.CallAttack(focusCharacter)) focusCharacter = null;
                 if (focusCharacter != null) agent.SetDestination((transform.position - focusCharacter.transform.position) + transform.position);
                 agent.speed = enemy.walkbackSpeed;
                 break;
@@ -99,6 +101,11 @@ public class EnemyController : EntityController,IPlayerClickable
                 }
                 break;
         }
+    }
+
+    public void AttackFocus()
+    {
+        if (enemy.CallAttack(focusCharacter)) focusCharacter = null;
     }
 
     void UpdateEnemy()
@@ -172,7 +179,7 @@ public class EnemyController : EntityController,IPlayerClickable
         if (enemy.TakeDamage(damage,attackType))
         {
             gameController.DeleteEnemy(this,currentArea);
-            Destroy(gameObject);
+            Destroy(main);
             return true;
         };
         uiEnemy.UpdateHPBar(enemy.GetStatusValue());
