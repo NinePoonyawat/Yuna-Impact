@@ -4,9 +4,12 @@ using UnityEngine;
 
 public class UIController : MonoBehaviour
 {
-    public UIPartyProfile[] partyProfiles;
-    public UIProfile playerProfile;
-    public UISkillIcon skillProfile;
+    [SerializeField] private UIPartyProfile[] partyProfiles;
+    [SerializeField] private UIProfile playerProfile;
+    [SerializeField] private UISkillIcon skillProfile;
+
+    [Header ("Color")]
+    [SerializeField] private Color[] partyColors;
 
     void Start()
     {
