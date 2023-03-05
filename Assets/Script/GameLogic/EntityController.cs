@@ -6,6 +6,7 @@ using UnityEngine.AI;
 public abstract class EntityController : MonoBehaviour
 {
     public EntityState entityState;
+    protected bool isSetState = false;
     protected bool isSilent = false;
 
     public NavMeshAgent agent;
@@ -49,6 +50,12 @@ public abstract class EntityController : MonoBehaviour
     public EntityState GetEntityState()
     {
         return entityState;
+    }
+
+    public void SetState(EntityState newState)
+    {
+        entityState = newState;
+        isSetState = true;
     }
 
     public abstract bool Attack(EntityController entity);

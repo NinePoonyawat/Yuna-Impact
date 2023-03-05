@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.1831903, g: 0.22679506, b: 0.2945683, a: 1}
+  m_IndirectSpecularColor: {r: 0.18319008, g: 0.22679472, b: 0.29456776, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -326,7 +326,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &81634878
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -420,7 +420,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 05088642718a7dc42af4b0bb34c8c2e6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  entityController: {fileID: 0}
+  entityController: {fileID: 81634878}
   healthController: {fileID: 81634885}
   manaController: {fileID: 81634884}
   attackPeriod: 1.5
@@ -3632,7 +3632,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 05088642718a7dc42af4b0bb34c8c2e6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  entityController: {fileID: 0}
+  entityController: {fileID: 737856767}
   healthController: {fileID: 737856773}
   manaController: {fileID: 737856772}
   attackPeriod: 1.5
@@ -4682,7 +4682,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1016199009
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4777,7 +4777,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 05088642718a7dc42af4b0bb34c8c2e6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  entityController: {fileID: 0}
+  entityController: {fileID: 1016199009}
   healthController: {fileID: 1016199016}
   manaController: {fileID: 1016199015}
   attackPeriod: 1.5

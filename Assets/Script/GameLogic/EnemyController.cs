@@ -81,9 +81,6 @@ public class EnemyController : EntityController,IPlayerClickable
                     if(animator != null) animator.SetTrigger("LAttack");
                 }
                 break;
-            case EntityState.ATTACK :
-                entityState = EntityState.PREATTACK;
-                break;
             case EntityState.PREATTACK :
                 if (focusCharacter == null)
                 {
@@ -105,6 +102,7 @@ public class EnemyController : EntityController,IPlayerClickable
 
     public void AttackFocus()
     {
+        if (!enemy.isInAttackRange(focusCharacter.transform.position)) return; 
         if (enemy.CallAttack(focusCharacter)) focusCharacter = null;
     }
 

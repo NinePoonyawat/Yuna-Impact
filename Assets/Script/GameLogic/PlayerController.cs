@@ -85,6 +85,11 @@ public class PlayerController : EntityController
 
     public void GetNextState()
     {
+        if (isSetState)
+        {
+            isSetState = false;
+            return;
+        }
         switch (entityState)
         {
             case EntityState.IDLE :
@@ -93,6 +98,7 @@ public class PlayerController : EntityController
                 {
                     if(animator != null) animator.SetBool("isWalk",true);
                     if(!playableCharacter.isInAttackRange(focusEnemy.transform.position)) entityState = EntityState.MOVE;
+                    else entityState = EntityState.ATTACK;
                 }
                 else
                 {
@@ -149,7 +155,6 @@ public class PlayerController : EntityController
         {
             Ray ray = cam.ScreenPointToRay(Input.mousePosition);
             RaycastHit hit;
-            IPlayerClickable iClick;
 
             if (Physics.Raycast(ray,out hit))
             {

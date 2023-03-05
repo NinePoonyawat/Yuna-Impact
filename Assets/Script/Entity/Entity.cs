@@ -45,6 +45,7 @@ public abstract class Entity : MonoBehaviour
 
     public virtual bool CallAttack(EntityController toAttack)
     {
+        if (toAttack == null) return true;
         if (attackType == AttackType.Melee)
         {
             if (Attack(toAttack)) return true;
