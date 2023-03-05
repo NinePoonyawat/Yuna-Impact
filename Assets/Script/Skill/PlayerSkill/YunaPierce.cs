@@ -6,17 +6,20 @@ using UnityEngine.UI;
 public class YunaPierce : PlayerSkill
 {
     public Image skillIndicator;
+    public Transform floorTransform;
     private Vector3 playerPos = new Vector3(0,100,0);
     public Vector3 areaEffect;
 
     public override void ActivateSkill()
     {
         //if (Vector3.Distance(playerPos,transform.position) > areaEffect.x) return;
-        Vector3 unit = Vector3.Normalize(transform.position - playerPos);
-        Collider[] hitColliders = Physics.OverlapBox(transform.position + (unit * areaEffect.x / 2), areaEffect / 2,Quaternion.LookRotation(transform.position,playerPos),mask);
+        Vector3 unit = Vector3.Normalize(playerPos - floorTransform.position);
+        unit.y = 0;
+        Collider[] hitColliders = Physics.OverlapBox(floorTransform.position + (unit * areaEffect.x / 2), areaEffect / 2,Quaternion.LookRotation(floorTransform.position,playerPos),mask);
         foreach (var collider in hitColliders)
         {
-            collider.gameObject.GetComponent<Enemy>().TakeDamage(40,AttackType.Melee);
+            Debug.Log(collider);
+            collider.gameObject.GetComponent<EnemyController>().TakeDamage(40,AttackType.Melee);
         }
     }
 
@@ -30,5 +33,17 @@ public class YunaPierce : PlayerSkill
             playerPos = hit.point;
             //skillIndicator.GetComponent<Image>().enabled = true;
         }
+    }
+
+    void OnDrawGizmos()
+    {
+        Vector3 unit = Vector3.Normalize(floorTransform.position - playerPos);
+        unit.y = 0;
+        Gizmos.matrix = transform.localToWorldMatrix;
+        Matrix4x4 matrix = Gizmos.matrix;
+        matrix *= Matrix4x4.TRS(floorTransform.position + (unit * areaEffect.x / 2),Quaternion.LookRotation(floorTransform.position,playerPos),Vector3.one);
+        Gizmos.matrix = matrix;
+        Gizmos.DrawCube(floorTransform.position + (unit * areaEffect.x / 2), areaEffect);
+        Gizmos.matrix = Matrix4x4.identity;
     }
 }

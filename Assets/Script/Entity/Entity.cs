@@ -61,6 +61,24 @@ public abstract class Entity : MonoBehaviour
         return false;
     }
 
+    public virtual bool CallAttack(EntityController toAttack,int dam)
+    {
+        if (toAttack == null) return true;
+        if (attackType == AttackType.Melee)
+        {
+            if (Attack(toAttack,dam)) return true;
+            AfterAttack();
+        }
+        else
+        {
+            GameObject GO = Instantiate(GetPrefab(),transform.position,Quaternion.identity,gameController.projectileRoot) as GameObject;
+            Projectile projectile = GO.GetComponent<Projectile>();
+            projectile.SetUp(entityController,toAttack,GetProjectileSpeed());
+            AfterAttack();
+        }
+        return false;
+    }
+
     public virtual bool TakeDamage(int damage,AttackType attackType)
     {
         int rdamage = damage - defense;
@@ -97,6 +115,11 @@ public abstract class Entity : MonoBehaviour
     public virtual bool Attack(EntityController toAttack)
     {
         return toAttack.TakeDamage(attack,attackType);
+    }
+
+    public virtual bool Attack(EntityController toAttack,int dam)
+    {
+        return toAttack.TakeDamage(dam,attackType);
     }
 
     public int GetAttack()
