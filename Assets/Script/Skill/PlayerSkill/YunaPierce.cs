@@ -12,9 +12,12 @@ public class YunaPierce : PlayerSkill
     public override void ActivateSkill()
     {
         //if (Vector3.Distance(playerPos,transform.position) > areaEffect.x) return;
-        Vector3 unit = Vector3.Normalize(playerPos - transform.position);
+        Vector3 unit = Vector3.Normalize(transform.position - playerPos);
         Collider[] hitColliders = Physics.OverlapBox(transform.position + (unit * areaEffect.x / 2), areaEffect / 2,Quaternion.LookRotation(transform.position,playerPos),mask);
-        Debug.Log(hitColliders.Length);
+        foreach (var collider in hitColliders)
+        {
+            collider.gameObject.GetComponent<Enemy>().TakeDamage(40,AttackType.Melee);
+        }
     }
 
     public override void PlayerInput()

@@ -4822,7 +4822,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f8391fe6baa332649a849a82dc3b22df, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  defaultHealth: 200
+  defaultHealth: 2000
   currentHealth: 0
 --- !u!114 &1016199017
 MonoBehaviour:
@@ -4840,7 +4840,8 @@ MonoBehaviour:
   skillDuration: 10
   isActivateable: 0
   initialDuration: 0
-  maxDistance: 3.5
+  skillIndicator: {fileID: 0}
+  areaEffect: {x: 3.5, y: 1, z: 1}
 --- !u!1 &1040796430
 GameObject:
   m_ObjectHideFlags: 0
