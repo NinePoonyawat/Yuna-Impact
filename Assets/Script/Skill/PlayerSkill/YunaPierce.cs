@@ -18,7 +18,7 @@ public class YunaPierce : PlayerSkill
         Collider[] hitColliders = Physics.OverlapBox(floorTransform.position + (unit * areaEffect.x / 2), areaEffect / 2,Quaternion.LookRotation(floorTransform.position,playerPos),mask);
         foreach (var collider in hitColliders)
         {
-            Debug.Log(collider);
+            //Debug.Log(collider);
             collider.gameObject.GetComponent<EnemyController>().TakeDamage(40,AttackType.Melee);
         }
         skillIndicator.GetComponent<SpriteRenderer>().enabled = false;

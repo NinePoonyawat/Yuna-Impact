@@ -11,13 +11,16 @@ public class GameController : MonoBehaviour
 
     [SerializeField] public Transform projectileRoot;
 
-    [SerializeField] private UIController uiController;
+    [Header ("Visualize and UI")]
     [SerializeField] private CamFollowing cam;
+    [SerializeField] private UIController uiController;
+    [SerializeField] private UITarget uiTarget;
 
     void Awake()
     {
         uiController = FindObjectOfType<UIController>();
         cam = FindObjectOfType<CamFollowing>();
+        uiTarget = FindObjectOfType<UITarget>();
     }
 
     void Update()
@@ -131,6 +134,7 @@ public class GameController : MonoBehaviour
             {
                 distance = temp;
                 toReturn = enemy;
+                uiTarget.SetTarget(enemy);
             }
         }
         return toReturn;
