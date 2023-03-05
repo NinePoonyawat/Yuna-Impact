@@ -8,15 +8,15 @@ public class PlayerController : EntityController
     private GameController gameController;
     [SerializeField] private PlayableCharacter playableCharacter;
 
-    public List<PlayerSkill> skills = new List<PlayerSkill>();
+    public PlayerSkill[] skills;
 
     public Camera cam;
 
     private Vector3 moveToPos;              //for Gizmos visualize
     private float acceptanceRadius = 0.8f;
     public EnemyController focusEnemy;
-    [SerializeField] private Animator animator;
     private TeleportController focusTeleport;
+    [SerializeField] private Animator animator;
 
     [SerializeField] private UIController uiController;
 
@@ -32,6 +32,7 @@ public class PlayerController : EntityController
         cam = FindObjectOfType<Camera>();
         agent = GetComponent<NavMeshAgent>();
         animator = GetComponentInChildren<Animator>();
+        skills = GetComponents<PlayerSkill>();
     }
 
     void Start()
@@ -61,11 +62,11 @@ public class PlayerController : EntityController
             UpdatePlayerClick();
             if (Input.GetKey(KeyCode.Q))
             {
-                if (skills.Count >= 1) skills[0].PlayerInput();
+                if (skills.Length >= 1) skills[0].PlayerInput();
             }
             if (Input.GetKeyUp(KeyCode.Q))
             {
-                if (skills.Count >= 1) skills[0].ActivateSkill();
+                if (skills.Length >= 1) skills[0].ActivateSkill();
             }
         }
 
