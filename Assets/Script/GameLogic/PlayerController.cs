@@ -8,6 +8,8 @@ public class PlayerController : EntityController
     private GameController gameController;
     [SerializeField] private PlayableCharacter playableCharacter;
 
+    public List<PlayerSkill> skills = new List<PlayerSkill>();
+
     public Camera cam;
 
     private Vector3 moveToPos;              //for Gizmos visualize
@@ -54,7 +56,18 @@ public class PlayerController : EntityController
         // if (isTaking) UpdateTaking();
         // else UpdateNotTaking();
 
-        if (isTaking) UpdatePlayerClick();
+        if (isTaking)
+        {
+            UpdatePlayerClick();
+            if (Input.GetKey(KeyCode.Q))
+            {
+                if (skills.Count >= 1) skills[0].PlayerInput();
+            }
+            if (Input.GetKeyUp(KeyCode.Q))
+            {
+                if (skills.Count >= 1) skills[0].ActivateSkill();
+            }
+        }
 
         UpdateState();
         GetNextState();

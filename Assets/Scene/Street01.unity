@@ -344,8 +344,8 @@ MonoBehaviour:
   entityTransform: {fileID: 81634882}
   isRight: 0
   currentArea: 0
-  skills: []
   playableCharacter: {fileID: 81634883}
+  skills: []
   cam: {fileID: 0}
   focusEnemy: {fileID: 0}
   animator: {fileID: 0}
@@ -3593,7 +3593,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &737856767
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3611,8 +3611,8 @@ MonoBehaviour:
   entityTransform: {fileID: 737856771}
   isRight: 0
   currentArea: 0
-  skills: []
   playableCharacter: {fileID: 737856768}
+  skills: []
   cam: {fileID: 0}
   focusEnemy: {fileID: 0}
   animator: {fileID: 0}
@@ -4676,13 +4676,14 @@ GameObject:
   - component: {fileID: 1016199009}
   - component: {fileID: 1016199016}
   - component: {fileID: 1016199015}
+  - component: {fileID: 1016199017}
   m_Layer: 0
   m_Name: Character 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1016199009
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4700,8 +4701,9 @@ MonoBehaviour:
   entityTransform: {fileID: 1016199013}
   isRight: 0
   currentArea: 0
-  skills: []
   playableCharacter: {fileID: 1016199014}
+  skills:
+  - {fileID: 1016199017}
   cam: {fileID: 0}
   focusEnemy: {fileID: 0}
   animator: {fileID: 0}
@@ -4822,6 +4824,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   defaultHealth: 200
   currentHealth: 0
+--- !u!114 &1016199017
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1016199008}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 28b9eef90bc0c0441b05035d2a31f326, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  skillName: Yuna Piece
+  skillDuration: 10
+  isActivateable: 0
+  initialDuration: 0
+  maxDistance: 3.5
 --- !u!1 &1040796430
 GameObject:
   m_ObjectHideFlags: 0

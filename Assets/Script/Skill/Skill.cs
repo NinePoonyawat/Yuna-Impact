@@ -10,6 +10,13 @@ public abstract class Skill : MonoBehaviour
     public float initialDuration;
     protected float skillDurationCount;
 
+    protected LayerMask mask;
+
+    public virtual void Start()
+    {
+        mask = LayerMask.GetMask("Entity");
+    }
+
     public virtual void Update()
     {
         if (skillDurationCount < skillDuration)
