@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class YunaPierce : PlayerSkill
 {
-    public SpriteRenderer skillIndicator;
+    public GameObject skillIndicator;
     public Transform floorTransform;
     private Vector3 playerPos = new Vector3(0,100,0);
     public Vector3 areaEffect;
@@ -21,7 +21,7 @@ public class YunaPierce : PlayerSkill
             //Debug.Log(collider);
             collider.gameObject.GetComponent<EnemyController>().TakeDamage(40,AttackType.Melee);
         }
-        skillIndicator.GetComponent<SpriteRenderer>().enabled = false;
+        skillIndicator.SetActive(false);
     }
 
     public override void PlayerInput()
@@ -33,7 +33,7 @@ public class YunaPierce : PlayerSkill
         {
             playerPos = hit.point;
 
-            skillIndicator.GetComponent<SpriteRenderer>().enabled = true;
+            skillIndicator.SetActive(true);
             Quaternion transRot = Quaternion.LookRotation(hit.point - transform.position);
             transRot.eulerAngles = new Vector3(90, transRot.eulerAngles.y,transRot.eulerAngles.z);
             skillIndicator.transform.rotation = Quaternion.Lerp(transRot, skillIndicator.transform.rotation, 0f);

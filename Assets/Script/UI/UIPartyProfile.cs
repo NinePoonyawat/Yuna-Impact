@@ -50,7 +50,7 @@ public class UIPartyProfile : MonoBehaviour
         characterHPBar.maxValue = max;
         characterHPBar.value = current;
 
-        if (currentHealth <= 0)
+        if (current <= 0)
         {
             KO = true;
             animator.SetBool("KnockOut", true);

@@ -13,12 +13,12 @@ public class UITarget : MonoBehaviour
             gameObject.SetActive(false);
             return;
         }
-        transform.position = Vector3.Lerp(transform.position, target.position, 0f);
+        transform.position = Vector3.Lerp(transform.position, target.position, 1f);
     }
 
     public void SetTarget(EnemyController enemy)
     {
         gameObject.SetActive(true);
-        target = enemy.transform;
+        target = enemy.transform.parent;
     }
 }
