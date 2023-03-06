@@ -24,6 +24,8 @@ public class PlayerController : EntityController
     [SerializeField] public bool isPlayerMoving = false;
     [SerializeField] public bool isPlayerTarget = false;
 
+    private LayerMask layerClickMask;
+
     public void Awake()
     {
         gameController = GameObject.Find("GameLogic").GetComponent<GameController>();
@@ -33,6 +35,8 @@ public class PlayerController : EntityController
         agent = GetComponent<NavMeshAgent>();
         animator = GetComponentInChildren<Animator>();
         skills = GetComponents<PlayerSkill>();
+
+        layerClickMask = LayerMask.GetMask("Entity");
     }
 
     void Start()
@@ -116,9 +120,16 @@ public class PlayerController : EntityController
                 }
                 else
                 {
-                    if(animator != null) animator.SetBool("isWalk",true);
-                    if(gameController.areas[currentArea].areaEnemies.Count == 0) focusTeleport = gameController.FindTeleport(transform.position,currentArea);
-                    entityState = EntityState.MOVETOTELEPORT;
+                    if (isTaking)
+                    {
+                        focusEnemy = gameController.FindNearestEnemy(this.transform.position,currentArea);
+                    }
+                    else
+                    {
+                        if(animator != null) animator.SetBool("isWalk",true);
+                        if(gameController.areas[currentArea].areaEnemies.Count == 0) focusTeleport = gameController.FindTeleport(transform.position,currentArea);
+                        entityState = EntityState.MOVETOTELEPORT;
+                    }
                 }
                 break;
             case EntityState.MOVE :
@@ -165,23 +176,30 @@ public class PlayerController : EntityController
 
     void UpdatePlayerClick()
     {
-        if (Input.GetMouseButtonDown(0) && isTaking)
+        if (Input.GetMouseButtonDown(0))
         {
             Ray ray = cam.ScreenPointToRay(Input.mousePosition);
             RaycastHit hit;
 
             if (Physics.Raycast(ray,out hit))
             {
-                focusEnemy = gameController.FindNearestEnemy(hit.point,currentArea,2f);
-                if (focusEnemy == null)
+                agent.SetDestination(hit.point);
+                moveToPos = hit.point;
+                isPlayerMoving = true;
+                if(animator != null) animator.SetBool("isWalk",true);
+            }
+        }
+        if (Input.GetMouseButtonDown(1))
+        {
+            Ray ray = cam.ScreenPointToRay(Input.mousePosition);
+            RaycastHit hit;
+
+            if (Physics.Raycast(ray,out hit,999f,layerClickMask))
+            {
+                EnemyController enim = hit.transform.GetComponent<EnemyController>();
+                if (enim != null)
                 {
-                    agent.SetDestination(hit.point);
-                    moveToPos = hit.point;
-                    isPlayerMoving = true;
-                    if(animator != null) animator.SetBool("isWalk",true);
-                }
-                else
-                {
+                    focusEnemy = enim;
                     isPlayerTarget = true;
                 }
             }
