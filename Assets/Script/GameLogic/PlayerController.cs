@@ -114,6 +114,7 @@ public class PlayerController : EntityController
                 if (!isPlayerTarget && !isTaking) focusEnemy = gameController.FindNearestEnemy(this.transform.position,currentArea);
                 if (focusEnemy != null)
                 {
+                    gameController.SetNewTarget(focusEnemy);
                     if(animator != null) animator.SetBool("isWalk",true);
                     if(!playableCharacter.isInAttackRange(focusEnemy.transform.position)) entityState = EntityState.MOVE;
                     else entityState = EntityState.ATTACK;
@@ -123,6 +124,7 @@ public class PlayerController : EntityController
                     if (isTaking)
                     {
                         focusEnemy = gameController.FindNearestEnemy(this.transform.position,currentArea);
+                        if (focusEnemy != null) gameController.SetNewTarget(focusEnemy);
                     }
                     else
                     {
@@ -199,6 +201,7 @@ public class PlayerController : EntityController
                 EnemyController enim = hit.transform.GetComponent<EnemyController>();
                 if (enim != null)
                 {
+                    gameController.SetNewTarget(enim);
                     focusEnemy = enim;
                     isPlayerTarget = true;
                 }

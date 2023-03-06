@@ -134,10 +134,14 @@ public class GameController : MonoBehaviour
             {
                 distance = temp;
                 toReturn = enemy;
-                uiTarget.SetTarget(enemy);
             }
         }
         return toReturn;
+    }
+
+    public void SetNewTarget(EnemyController enemy)
+    {
+        uiTarget.SetTarget(enemy);
     }
 
     public EnemyController FindNearestEnemy(Vector3 position,int idx,float maxDistance)
