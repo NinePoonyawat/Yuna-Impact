@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.1831903, g: 0.22679506, b: 0.2945683, a: 1}
+  m_IndirectSpecularColor: {r: 0.18319008, g: 0.22679472, b: 0.29456776, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -355,7 +355,9 @@ MonoBehaviour:
   isRight: 0
   currentArea: 0
   playableCharacter: {fileID: 81634883}
-  skills: []
+  skills:
+  - {fileID: 81634886}
+  - {fileID: 81634887}
   cam: {fileID: 0}
   focusEnemy: {fileID: 0}
   animator: {fileID: 0}
