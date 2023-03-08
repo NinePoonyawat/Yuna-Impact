@@ -18,27 +18,13 @@ public class UIProfile : MonoBehaviour
     [SerializeField] private Slider characterSPBar;
     [SerializeField] private UISkillIcon[] skillIcons;
 
-    void Update()
-    {
-        //Debug
-        if (Input.GetKeyDown(KeyCode.Alpha1))
-        {
-            CastSkill(0);
-        }
-        if (Input.GetKeyDown(KeyCode.Alpha2))
-        {
-            CastSkill(1);
-        }
-        if (Input.GetKeyDown(KeyCode.Alpha3))
-        {
-            CastSkill(2);
-        }
-    }
-
-    public void Init(StatusValueSet statusValue)
+    public void Init(PlayableCharacter character)
     {
         gameObject.SetActive(true);
-        characterName.text = tempName;
+        StatusValueSet statusValue = character.GetStatusValue();
+        CharacterProfile profile = character.GetProfile();
+
+        characterName.text = profile.name;
 
         characterHPBar.maxValue = statusValue.getMaxHp();
         characterHPBar.value = statusValue.getHp();

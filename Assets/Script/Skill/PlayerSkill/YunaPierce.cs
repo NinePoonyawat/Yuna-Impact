@@ -29,11 +29,12 @@ public class YunaPierce : PlayerSkill
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         RaycastHit hit;
 
+        skillIndicator.SetActive(true);
+        
         if (Physics.Raycast(ray,out hit))
         {
             playerPos = hit.point;
 
-            skillIndicator.SetActive(true);
             Quaternion transRot = Quaternion.LookRotation(hit.point - transform.position);
             transRot.eulerAngles = new Vector3(90, transRot.eulerAngles.y,transRot.eulerAngles.z);
             skillIndicator.transform.rotation = Quaternion.Lerp(transRot, skillIndicator.transform.rotation, 0f);

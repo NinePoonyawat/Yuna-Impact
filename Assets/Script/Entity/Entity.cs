@@ -79,10 +79,15 @@ public abstract class Entity : MonoBehaviour
         return false;
     }
 
-    public virtual bool TakeDamage(int damage,AttackType attackType)
+    public virtual bool TakeDamage(int damage, AttackType attackType)
     {
         int rdamage = damage - defense;
-        return (healthController.takeDamage(rdamage));
+        return (healthController.TakeDamage(rdamage));
+    }
+
+    public virtual bool TakeHeal(int amount)
+    {
+        return (healthController.Heal(amount));
     }
 
     public abstract bool isInAttackRange(Vector3 position);

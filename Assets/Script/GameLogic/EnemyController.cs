@@ -179,9 +179,20 @@ public class EnemyController : EntityController,IPlayerClickable
             gameController.DeleteEnemy(this,currentArea);
             Destroy(main);
             return true;
-        };
+        }
         uiEnemy.UpdateHPBar(enemy.GetStatusValue());
         return false;
+    }
+
+    public override bool TakeHeal(int amount)
+    {
+        if (!enemy.TakeHeal(amount));
+        {
+            return false;
+        }
+
+        uiEnemy.UpdateHPBar(enemy.GetStatusValue());
+        return true;
     }
 
     public override bool Attack(EntityController player)

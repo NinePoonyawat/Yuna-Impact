@@ -4,16 +4,20 @@ using UnityEngine;
 
 public abstract class Skill : MonoBehaviour
 {
+    [Header ("Skill")]
     public string skillName;
     public float skillDuration;
-    public bool isActivateable = false;
     public float initialDuration;
+
     protected float skillDurationCount;
+    private bool isActivateable = false;
+    protected GameController gameController;
 
     protected LayerMask mask;
 
     public virtual void Start()
     {
+        gameController = FindObjectOfType<GameController>();
         mask = LayerMask.GetMask("Entity");
     }
 

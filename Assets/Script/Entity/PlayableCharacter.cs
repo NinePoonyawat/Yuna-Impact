@@ -27,4 +27,9 @@ public class PlayableCharacter : Entity
     {
         return healthController.getMaxValue();
     }
+    
+    public CharacterProfile GetProfile()
+    {
+        return characterProfile;
+    }
 }

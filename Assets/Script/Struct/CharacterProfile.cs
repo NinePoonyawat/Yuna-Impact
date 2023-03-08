@@ -7,6 +7,6 @@ using System;
 public struct CharacterProfile
 {
     public string name;
-    public Sprite characterIcon;
+    public Sprite icon;
     public List<SkillProfile> skills;
 }

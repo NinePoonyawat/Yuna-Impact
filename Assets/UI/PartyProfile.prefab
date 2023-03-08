@@ -389,6 +389,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7030897501715009170}
   - component: {fileID: 1658630909977345831}
+  - component: {fileID: 1453443445156560250}
   m_Layer: 5
   m_Name: PartyProfile
   m_TagString: Untagged
@@ -443,7 +444,27 @@ MonoBehaviour:
   characterHPBar: {fileID: 7030897502213904795}
   characterSPBar: {fileID: 692928623683381320}
   numkey: {fileID: 353313794181095335}
-  animator: {fileID: 1849945274938343725}
+  animator: {fileID: 1453443445156560250}
+--- !u!95 &1453443445156560250
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7030897501715009171}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 5fedbdc1ef3a0c14cbf42bafaa2e0342, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &7030897501777312125
 GameObject:
   m_ObjectHideFlags: 0
@@ -620,7 +641,6 @@ GameObject:
   - component: {fileID: 7444543136936097784}
   - component: {fileID: 7444543136936097786}
   - component: {fileID: 7444543136936097787}
-  - component: {fileID: 1849945274938343725}
   m_Layer: 5
   m_Name: Character Icon
   m_TagString: Untagged
@@ -686,26 +706,6 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!95 &1849945274938343725
-Animator:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7444543136936097785}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 5fedbdc1ef3a0c14cbf42bafaa2e0342, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &7633783087901385391
 GameObject:
   m_ObjectHideFlags: 0

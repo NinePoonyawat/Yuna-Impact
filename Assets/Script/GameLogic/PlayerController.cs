@@ -72,6 +72,14 @@ public class PlayerController : EntityController
             {
                 if (skills.Length >= 1) skills[0].ActivateSkill();
             }
+            if (Input.GetKey(KeyCode.W))
+            {
+                if (skills.Length >= 2) skills[1].PlayerInput();
+            }
+            if (Input.GetKeyUp(KeyCode.W))
+            {
+                if (skills.Length >= 2) skills[1].ActivateSkill();
+            }
         }
 
         UpdateState();
@@ -338,15 +346,27 @@ public class PlayerController : EntityController
 
     public override bool TakeDamage(int damage,AttackType attackType)
     {
-        uiController.UpdateStatusBar(gameController.getUIIndex(this), playableCharacter.GetStatusValue());
-        
         if (playableCharacter.TakeDamage(damage,attackType))
         {
+            uiController.UpdateStatusBar(gameController.getUIIndex(this), playableCharacter.GetStatusValue());
             SetEntityState(EntityState.DEAD);
             if (animator != null) animator.SetBool("isKO",true);
             return true;
         }
+        
+        uiController.UpdateStatusBar(gameController.getUIIndex(this), playableCharacter.GetStatusValue());
         return false;
+    }
+
+    public override bool TakeHeal(int amount)
+    {
+        if (!playableCharacter.TakeHeal(amount));
+        {
+            return false;
+        }
+
+        uiController.UpdateStatusBar(gameController.getUIIndex(this), playableCharacter.GetStatusValue());
+        return true;
     }
 
     public override void AfterAttack()

@@ -21,14 +21,17 @@ public class UIPartyProfile : MonoBehaviour
     [SerializeField] private TMP_Text numkey;
     [SerializeField] private Animator animator;
 
-    public void Init(StatusValueSet statusValue, int idx, bool isTake)
+    public void Init(PlayableCharacter character, int idx, bool isTake)
     {
         gameObject.SetActive(true);
+        StatusValueSet statusValue = character.GetStatusValue();
+        CharacterProfile profile = character.GetProfile();
+
         characterHPBar.gameObject.SetActive(true);
         characterSPBar.gameObject.SetActive(true);
 
-        characterName.text = tempName;
-        characterIcon.sprite = tempSprite;
+        characterName.text = profile.name;
+        characterIcon.sprite = profile.icon;
         numkey.text = idx.ToString();
 
         characterHPBar.maxValue = statusValue.getMaxHp();
@@ -36,8 +39,11 @@ public class UIPartyProfile : MonoBehaviour
         characterSPBar.maxValue = statusValue.getMaxMp();
         characterSPBar.value = statusValue.getMp();
 
+        animator.SetBool("Control", false);
+        
         if (isTake)
         {
+            animator.SetBool("Control", true);
             characterHPBar.gameObject.SetActive(false);
             characterSPBar.gameObject.SetActive(false);
         }

@@ -35,11 +35,11 @@ public class UIController : MonoBehaviour
         {
             if (characters[i].getTaking())
             {
-                playerProfile.Init(characters[i].GetCharacter().GetStatusValue());
+                playerProfile.Init(characters[i].GetCharacter());
                 skillProfile.Init();
                 isTake = true;
             }
-            partyProfiles[idx++].Init(characters[i].GetCharacter().GetStatusValue(), i+1, characters[i].getTaking());
+            partyProfiles[idx++].Init(characters[i].GetCharacter(), i+1, characters[i].getTaking());
         }
         if (!isTake)
         {
