@@ -5,7 +5,7 @@ using UnityEngine;
 public abstract class Skill : MonoBehaviour
 {
     [Header ("Skill")]
-    public string skillName;
+    public SkillProfile profile;
     public float skillDuration;
     public float initialDuration;
 

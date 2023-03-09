@@ -9,4 +9,12 @@ public struct CharacterProfile
     public string name;
     public Sprite icon;
     public List<SkillProfile> skills;
+
+    public void SetSkill(PlayerSkill[] characterSkills)
+    {
+        for (int idx = 0; idx < characterSkills.Length; idx++)
+        {
+            skills.Add(characterSkills[idx].profile);
+        }
+    }
 }

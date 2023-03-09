@@ -110,6 +110,29 @@ public class GameController : MonoBehaviour
         return characters[state];
     }
 
+    public List<PlayerController> FindAllCharacter()
+    {
+        return FindAllCharacter(Vector3.zero, -1f);
+    }
+
+    public List<PlayerController> FindAllCharacter(Vector3 position, float distance)
+    {
+        if (characters.Count == 0) return null;
+
+        List<PlayerController> toReturn = new List<PlayerController>();
+        for (int idx = 0; idx < characters.Count; idx++)
+        {
+            if (characters[idx].GetEntityState() == EntityState.DEAD) continue;
+            
+            float d = Vector3.Distance(characters[idx].transform.position, position);
+            if (d < distance || distance == -1)
+            {
+                toReturn.Add(characters[idx]);
+            }
+        }
+        return toReturn;
+    }
+
     public List<EnemyController> FindAllNearestEnemy(Vector3 position, float distance)
     {
         List<EnemyController> toReturn = new List<EnemyController>();
@@ -185,13 +208,10 @@ public class GameController : MonoBehaviour
 
     public int getUIIndex(PlayerController character)
     {
-        if (character == takingCharacter) return 0;
-        int m = 1;
         for(int i = 0; i != 4; i++)
         {
-            if (characters[i] == character) return i + m;
-            if (characters[i] == takingCharacter) m = 0;
+            if (characters[i] == character) return i;
         }
-        return 3;
+        return 0;
     }
 }

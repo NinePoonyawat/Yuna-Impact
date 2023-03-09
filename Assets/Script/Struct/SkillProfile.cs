@@ -6,7 +6,9 @@ using System;
 [Serializable]
 public struct SkillProfile
 {
-    public string skillName;
-    public Sprite skillIcon;
-    public string skillDescription;
+    public string name;
+    public Sprite icon;
+    public string description;
+    public float cooldown;
+    public float cost;
 }

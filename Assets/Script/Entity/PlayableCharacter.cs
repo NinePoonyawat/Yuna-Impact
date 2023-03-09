@@ -5,7 +5,7 @@ using UnityEngine;
 public class PlayableCharacter : Entity
 {
     // Start is called before the first frame update
-    [SerializeField] public CharacterProfile characterProfile;
+    [SerializeField] private CharacterProfile characterProfile;
     [SerializeField] private float attackRange;
     
     public bool Targetable(Enemy enemy)
@@ -26,6 +26,11 @@ public class PlayableCharacter : Entity
     public int getMaxHp()
     {
         return healthController.getMaxValue();
+    }
+
+    public void SetProfileSkill(PlayerSkill[] skills)
+    {
+        characterProfile.SetSkill(skills);
     }
     
     public CharacterProfile GetProfile()

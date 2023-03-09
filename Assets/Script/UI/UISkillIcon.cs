@@ -6,7 +6,7 @@ using TMPro;
 
 public class UISkillIcon : MonoBehaviour
 {
-    [Header ("Parameter")]
+    [Header ("Variable")]
     [SerializeField] private float cooldownTimer;
     [SerializeField] private float cooldownTime;
     public Sprite tempSprite;
@@ -27,17 +27,17 @@ public class UISkillIcon : MonoBehaviour
         }
     }
 
-    public void Init()
+    public void Init(SkillProfile skill)
     {
         gameObject.SetActive(true);
-        skillIcon.sprite = tempSprite;
-        CooldownIcon.fillAmount = 0f;
+        skillIcon.sprite = skill.icon;
+        cooldownTime = skill.cooldown;
+        CooldownIcon.fillAmount = cooldownTimer/cooldownTime;
     }
 
-    public void Cast(float time)
+    public void Cast()
     {
-        cooldownTimer = time;
-        cooldownTime = time;
+        cooldownTimer = cooldownTime;
     }
 
     public void HideUI()

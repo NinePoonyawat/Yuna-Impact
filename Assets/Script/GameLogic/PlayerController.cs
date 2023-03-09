@@ -37,6 +37,8 @@ public class PlayerController : EntityController
         animator = GetComponentInChildren<Animator>();
         skills = GetComponents<PlayerSkill>();
 
+        playableCharacter.SetProfileSkill(skills);
+
         layerClickMask = LayerMask.GetMask("Entity");
     }
 
@@ -112,6 +114,7 @@ public class PlayerController : EntityController
             else
             {
                 skills[idx].ActivateSkill();
+                uiController.CastSkill(idx);
                 usingSkill = -1;
                 Time.timeScale = 1f;
             }
@@ -380,13 +383,13 @@ public class PlayerController : EntityController
     {
         if (playableCharacter.TakeDamage(damage,attackType))
         {
-            uiController.UpdateStatusBar(gameController.getUIIndex(this), playableCharacter.GetStatusValue());
+            uiController.UpdateStatusBar(gameController.getUIIndex(this), isTaking, playableCharacter.GetStatusValue());
             SetEntityState(EntityState.DEAD);
             if (animator != null) animator.SetTrigger("Stun");
             return true;
         }
         
-        uiController.UpdateStatusBar(gameController.getUIIndex(this), playableCharacter.GetStatusValue());
+        uiController.UpdateStatusBar(gameController.getUIIndex(this), isTaking, playableCharacter.GetStatusValue());
         return false;
     }
 
@@ -397,7 +400,7 @@ public class PlayerController : EntityController
             return false;
         }
 
-        uiController.UpdateStatusBar(gameController.getUIIndex(this), playableCharacter.GetStatusValue());
+        uiController.UpdateStatusBar(gameController.getUIIndex(this), isTaking, playableCharacter.GetStatusValue());
         return true;
     }
 

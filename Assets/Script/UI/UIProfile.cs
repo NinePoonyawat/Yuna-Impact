@@ -10,7 +10,6 @@ public class UIProfile : MonoBehaviour
     [SerializeField] private int maxHealth;
     [SerializeField] private int currentHealth;
     public string tempName;
-    public float tempCooldown;
 
     [Header ("Visualize")]
     [SerializeField] private TMP_Text characterName;
@@ -31,15 +30,16 @@ public class UIProfile : MonoBehaviour
         characterSPBar.maxValue = statusValue.getMaxMp();
         characterSPBar.value = statusValue.getMp();
 
-        foreach (UISkillIcon skillIcon in skillIcons)
+        for (int idx = 0; idx < skillIcons.Length; idx++)
         {
-            skillIcon.Init();
+            if (idx < profile.skills.Count) skillIcons[idx].Init(profile.skills[idx]);
+            else skillIcons[idx].HideUI();
         }
     }
 
     public void CastSkill(int idx)
     {
-        skillIcons[idx].Cast(tempCooldown);
+        skillIcons[idx].Cast();
     }
 
     public void UpdateHPBar(int current, int max)

@@ -4,8 +4,9 @@ using UnityEngine;
 
 public class HealSkill : PlayerSkill
 {
+    public enum HealType { Self, Friendly, Area, Global }
     [Header ("Ability")]
-    public bool canHealOther;
+    public HealType type;
     public int healAmount = 1;
     public float range = 1.5f;
 
@@ -16,7 +17,23 @@ public class HealSkill : PlayerSkill
 
     public override void ActivateSkill()
     {
-        if (!canHealOther || target == null)
+        if (type == HealType.Global)
+        {
+            List<PlayerController> characters = gameController.FindAllCharacter();
+            foreach(PlayerController target in characters)
+            {
+                target.TakeHeal(healAmount);
+            }
+        }
+        else if (type == HealType.Area)
+        {
+            List<PlayerController> characters = gameController.FindAllCharacter(transform.position, range);
+            foreach(PlayerController target in characters)
+            {
+                target.TakeHeal(healAmount);
+            }
+        }
+        else if (type == HealType.Self || target == null)
         {
             GetComponent<EntityController>().TakeHeal(healAmount);
         }
@@ -31,7 +48,7 @@ public class HealSkill : PlayerSkill
 
     public override void PlayerInput()
     {
-        if (!canHealOther) return;
+        if (type != HealType.Friendly) return;
 
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         RaycastHit hit;

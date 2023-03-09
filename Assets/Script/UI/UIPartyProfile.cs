@@ -63,6 +63,7 @@ public class UIPartyProfile : MonoBehaviour
         }
         
         if (current < currentHealth) animator.SetTrigger("TakeDamage");
+        if (current > currentHealth) animator.SetTrigger("TakeHeal");
 
         currentHealth = current;
         maxHealth = max;
