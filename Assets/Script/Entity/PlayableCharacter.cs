@@ -5,6 +5,7 @@ using UnityEngine;
 public class PlayableCharacter : Entity
 {
     // Start is called before the first frame update
+    [Header ("Character")]
     [SerializeField] private CharacterProfile characterProfile;
     [SerializeField] private float attackRange;
     public int blockCount = 3;
