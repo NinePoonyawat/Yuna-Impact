@@ -12,7 +12,7 @@ public class BashSkill : PlayerSkill
     [Header ("Indicator")]
     public GameObject rangeIndicator;
     public GameObject targetIndicator;
-    private EnemyController target;
+    public EnemyController target;
 
     public override void ActivateSkill()
     {
@@ -41,8 +41,17 @@ public class BashSkill : PlayerSkill
                 if (range >= Vector3.Distance(enemy.transform.position, transform.position))
                 {
                     target = enemy;
+                    targetIndicator.transform.position = target.transform.position;
                 }
-                else target = null;
+                else
+                {
+                    target = null;
+                    targetIndicator.transform.position = transform.position;
+                }
+            }
+            else
+            {
+                targetIndicator.transform.position = transform.position;
             }
         }
     }

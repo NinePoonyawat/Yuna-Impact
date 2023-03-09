@@ -19,7 +19,8 @@ public class YunaPierce : PlayerSkill
         foreach (var collider in hitColliders)
         {
             //Debug.Log(collider);
-            collider.gameObject.GetComponent<EnemyController>().TakeDamage(40,AttackType.Melee);
+            EnemyController target = collider.gameObject.GetComponent<EnemyController>();
+            if (target != null) target.TakeDamage(40,AttackType.Melee);
         }
         skillIndicator.SetActive(false);
     }

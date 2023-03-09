@@ -12,7 +12,7 @@ public class HealSkill : PlayerSkill
     [Header ("Indicator")]
     public GameObject rangeIndicator;
     public GameObject targetIndicator;
-    private PlayerController target;
+    public PlayerController target;
 
     public override void ActivateSkill()
     {
@@ -47,8 +47,17 @@ public class HealSkill : PlayerSkill
                 if (range >= Vector3.Distance(character.transform.position, transform.position))
                 {
                     target = character;
+                    targetIndicator.transform.position = target.transform.position;
                 }
-                else target = null;
+                else
+                {
+                    target = null;
+                    targetIndicator.transform.position = transform.position;
+                }
+            }
+            else
+            {
+                targetIndicator.transform.position = transform.position;
             }
         }
     }
