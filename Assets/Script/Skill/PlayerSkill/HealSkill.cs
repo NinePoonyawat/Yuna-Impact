@@ -48,13 +48,16 @@ public class HealSkill : PlayerSkill
 
     public override void PlayerInput()
     {
+        if (type == HealType.Self || type == HealType.Global) return;
+
+        rangeIndicator.SetActive(true);
+        
         if (type != HealType.Friendly) return;
+
+        targetIndicator.SetActive(true);
 
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         RaycastHit hit;
-
-        rangeIndicator.SetActive(true);
-        targetIndicator.SetActive(true);
 
         if (Physics.Raycast(ray, out hit, 999f, mask))
         {

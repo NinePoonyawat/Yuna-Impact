@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18319008, g: 0.22679472, b: 0.29456776, a: 1}
+  m_IndirectSpecularColor: {r: 0.1831903, g: 0.22679506, b: 0.2945683, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -495,10 +495,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 987dfa5dedc0a1146a48fe91d66753b6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  skillName: Quick Aid
+  profile:
+    name: 
+    icon: {fileID: 21300000, guid: cfb83dd92e4b4b14e94030569585cf31, type: 3}
+    description: 
+    cooldown: 5
+    cost: 0
   skillDuration: 0
   initialDuration: 0
-  canHealOther: 1
+  type: 1
   healAmount: 20
   range: 3
   rangeIndicator: {fileID: 1757861964}
@@ -516,7 +521,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 58efa1aab99d71f4c858888069d34bfd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  skillName: Smack
+  profile:
+    name: 
+    icon: {fileID: 21300000, guid: 00bf0fdaa1081fb4ca589f1ddf282171, type: 3}
+    description: 
+    cooldown: 10
+    cost: 0
   skillDuration: 0.5
   initialDuration: 0
   damage: 50
@@ -5312,7 +5322,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 28b9eef90bc0c0441b05035d2a31f326, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  skillName: Yuna Piece
+  profile:
+    name: 
+    icon: {fileID: 21300000, guid: 00bf0fdaa1081fb4ca589f1ddf282171, type: 3}
+    description: 
+    cooldown: 3
+    cost: 0
   skillDuration: 10
   initialDuration: 0
   skillIndicator: {fileID: 804103608}
