@@ -10,8 +10,6 @@ public class UIPartyProfile : MonoBehaviour
     [SerializeField] private int maxHealth;
     [SerializeField] private int currentHealth;
     [SerializeField] private bool KO;
-    public Sprite tempSprite;
-    public string tempName;
 
     [Header ("Visualize")]
     [SerializeField] private TMP_Text characterName;
@@ -62,8 +60,8 @@ public class UIPartyProfile : MonoBehaviour
             animator.SetBool("KnockOut", true);
         }
         
-        if (current < currentHealth) animator.SetTrigger("TakeDamage");
-        if (current > currentHealth) animator.SetTrigger("TakeHeal");
+        if (current < currentHealth || currentHealth == 0) animator.SetTrigger("TakeDamage");
+        if (current > currentHealth && currentHealth != 0) animator.SetTrigger("TakeHeal");
 
         currentHealth = current;
         maxHealth = max;

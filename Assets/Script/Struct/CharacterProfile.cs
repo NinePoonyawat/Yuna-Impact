@@ -8,6 +8,7 @@ public struct CharacterProfile
 {
     public string name;
     public Sprite icon;
+    [TextArea] public string description;
     public List<SkillProfile> skills;
 
     public void SetSkill(PlayerSkill[] characterSkills)
