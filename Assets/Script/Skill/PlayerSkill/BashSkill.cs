@@ -55,4 +55,19 @@ public class BashSkill : PlayerSkill
             }
         }
     }
+
+    public override void AIActivate()
+    {
+        target = player.focusEnemy;
+        ActivateSkill();
+    }
+
+    public override int AICalculate()
+    {
+        if (Vector3.Distance(player.focusEnemy.transform.position,transform.position) < range - 0.1f)
+        {
+            return 10;
+        }
+        return -1;
+    }
 }

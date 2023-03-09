@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class GameController : MonoBehaviour
 {
-    [SerializeField] private List<PlayerController> characters = new List<PlayerController>();
+    [SerializeField] public List<PlayerController> characters = new List<PlayerController>();
     [SerializeField] private PlayerController takingCharacter = null;
     [SerializeField] private List<EnemyController> enemies = new List<EnemyController>();
     [SerializeField] public List<AreaController> areas = new List<AreaController>();
@@ -108,6 +108,29 @@ public class GameController : MonoBehaviour
 
         if (state == -1) return null;
         return characters[state];
+    }
+
+    public PlayerController FindBestCharacter(Vector3 position, float maxDistance,int area)
+    {
+        List<PlayerController> players = new List<PlayerController>(areas[area].areaCharacter);
+        if (players.Count == 0) return null;
+
+        players.Sort(delegate(PlayerController x, PlayerController y)
+        {
+            if (Vector3.Distance(position,x.transform.position) < Vector3.Distance(position,y.transform.position)) return -1;
+            else return 1;
+        });
+
+        for (int idx = 0; idx < players.Count; idx++)
+        {
+            if (players[idx].GetEntityState() == EntityState.DEAD) continue;
+            
+            if (players[idx].IsBlockable())
+            {
+                return players[idx];
+            }
+        }
+        return null;
     }
 
     public List<EnemyController> FindAllNearestEnemy(Vector3 position, float distance)

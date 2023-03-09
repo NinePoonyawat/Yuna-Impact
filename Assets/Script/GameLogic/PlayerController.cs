@@ -15,6 +15,7 @@ public class PlayerController : EntityController
     private Vector3 moveToPos;              //for Gizmos visualize
     private float acceptanceRadius = 0.8f;
     public EnemyController focusEnemy;
+    public List<EnemyController> blockedEnemy;
     private TeleportController focusTeleport;
     [SerializeField] private Animator animator;
 
@@ -43,6 +44,7 @@ public class PlayerController : EntityController
     void Start()
     {
         gameController.AddCharacter(this);
+        gameController.areas[currentArea].AddCharacter(this);
         entityState = EntityState.IDLE;
 
         agent.speed = playableCharacter.defaultSpeed;
@@ -364,6 +366,11 @@ public class PlayerController : EntityController
             if (animator != null) animator.SetBool("isWalk",true);
         }
         UpdateDirection();
+    }
+
+    public bool IsBlockable()
+    {
+        return blockedEnemy.Count < playableCharacter.blockCount;
     }
 
     public override bool Attack(EntityController enemy)

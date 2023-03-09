@@ -16,4 +16,6 @@ public abstract class PlayerSkill : Skill
     }
 
     public abstract void PlayerInput();
+    public abstract void AIActivate();
+    public abstract int AICalculate();
 }
