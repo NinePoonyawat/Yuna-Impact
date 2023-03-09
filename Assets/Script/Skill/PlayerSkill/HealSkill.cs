@@ -78,4 +78,13 @@ public class HealSkill : PlayerSkill
             }
         }
     }
+
+    public override void AIActivate()
+    {
+    }
+
+    public override int AICalculate()
+    {
+        return 0;
+    }
 }

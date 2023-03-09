@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.1831903, g: 0.22679506, b: 0.2945683, a: 1}
+  m_IndirectSpecularColor: {r: 0.18319008, g: 0.22679472, b: 0.29456776, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -359,6 +359,7 @@ MonoBehaviour:
   skills: []
   cam: {fileID: 0}
   focusEnemy: {fileID: 0}
+  blockedEnemy: []
   animator: {fileID: 0}
   uiController: {fileID: 0}
   isTaking: 0
@@ -453,6 +454,7 @@ MonoBehaviour:
     icon: {fileID: 0}
     skills: []
   attackRange: 1.5
+  blockCount: 3
 --- !u!114 &81634884
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3975,6 +3977,7 @@ MonoBehaviour:
   skills: []
   cam: {fileID: 0}
   focusEnemy: {fileID: 0}
+  blockedEnemy: []
   animator: {fileID: 0}
   uiController: {fileID: 0}
   isTaking: 0
@@ -4011,6 +4014,7 @@ MonoBehaviour:
     icon: {fileID: 0}
     skills: []
   attackRange: 1000
+  blockCount: 3
 --- !u!195 &737856769
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -5174,6 +5178,7 @@ MonoBehaviour:
   skills: []
   cam: {fileID: 0}
   focusEnemy: {fileID: 0}
+  blockedEnemy: []
   animator: {fileID: 0}
   uiController: {fileID: 0}
   isTaking: 0
@@ -5266,6 +5271,7 @@ MonoBehaviour:
     icon: {fileID: 0}
     skills: []
   attackRange: 1.5
+  blockCount: 3
 --- !u!114 &1016199015
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8304,6 +8310,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   areaIdx: 1
+  areaCharacter: []
   areaEnemies: []
   teleports: []
 --- !u!4 &1511959634 stripped
@@ -12414,6 +12421,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   areaIdx: 0
+  areaCharacter: []
   areaEnemies: []
   teleports:
   - {fileID: 1181581554}

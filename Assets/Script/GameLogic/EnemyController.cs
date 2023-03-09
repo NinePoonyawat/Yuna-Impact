@@ -62,7 +62,7 @@ public class EnemyController : EntityController,IPlayerClickable
         switch (entityState)
         {
             case EntityState.IDLE :
-                focusCharacter = gameController.FindNearestCharacter(transform.position,maxVision,currentArea);
+                focusCharacter = gameController.FindBestCharacter(transform.position,maxVision,currentArea);
                 if (focusCharacter != null)
                 {
                     if(animator != null) animator.SetBool("isWalk", true);
@@ -70,6 +70,11 @@ public class EnemyController : EntityController,IPlayerClickable
                 }
                 break;
             case EntityState.MOVE :
+                if (!focusCharacter.IsBlockable())
+                {
+                    focusCharacter.blockedEnemy.Remove(this);
+                    focusCharacter = null;
+                }
                 if (focusCharacter == null)
                 {
                     entityState = EntityState.IDLE;
@@ -78,6 +83,7 @@ public class EnemyController : EntityController,IPlayerClickable
                 else if (enemy.isInAttackRange(focusCharacter.transform.position) && enemy.isAttackable)
                 {
                     entityState = EntityState.ATTACK;
+                    focusCharacter.blockedEnemy.Add(this);
                     if(animator != null) animator.SetTrigger("LAttack");
                 }
                 break;
@@ -92,7 +98,11 @@ public class EnemyController : EntityController,IPlayerClickable
                     if (enemy.isAttackable)
                     {
                         agent.speed = enemy.defaultSpeed;
-                        if (enemy.isInAttackRange(focusCharacter.transform.position)) entityState = EntityState.ATTACK;
+                        if (enemy.isInAttackRange(focusCharacter.transform.position))
+                        {
+                            entityState = EntityState.ATTACK;
+                            if(animator != null) animator.SetTrigger("LAttack");
+                        }
                         else entityState = EntityState.MOVE;
                     }
                 }
@@ -103,7 +113,11 @@ public class EnemyController : EntityController,IPlayerClickable
     public void AttackFocus()
     {
         if (!enemy.isInAttackRange(focusCharacter.transform.position)) return; 
-        if (enemy.CallAttack(focusCharacter)) focusCharacter = null;
+        if (enemy.CallAttack(focusCharacter))
+        {
+            focusCharacter.blockedEnemy.Remove(this);
+            focusCharacter = null;
+        }
     }
 
     void UpdateEnemy()

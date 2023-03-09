@@ -13,8 +13,9 @@ public class YunaPierce : PlayerSkill
     public override void ActivateSkill()
     {
         //if (Vector3.Distance(playerPos,transform.position) > areaEffect.x) return;
-        Vector3 unit = Vector3.Normalize(playerPos - floorTransform.position);
-        unit.y = 0;
+        Vector3 d = playerPos - floorTransform.position;
+        d.y = 0;
+        Vector3 unit = Vector3.Normalize(d);
         Collider[] hitColliders = Physics.OverlapBox(floorTransform.position + (unit * areaEffect.x / 2), areaEffect / 2,Quaternion.LookRotation(floorTransform.position,playerPos),mask);
         foreach (var collider in hitColliders)
         {
@@ -42,15 +43,15 @@ public class YunaPierce : PlayerSkill
         }
     }
 
-    void OnDrawGizmos()
+    public override void AIActivate()
     {
-        Vector3 unit = Vector3.Normalize(floorTransform.position - playerPos);
-        unit.y = 0;
-        Gizmos.matrix = transform.localToWorldMatrix;
-        Matrix4x4 matrix = Gizmos.matrix;
-        matrix *= Matrix4x4.TRS(floorTransform.position + (unit * areaEffect.x / 2),Quaternion.LookRotation(floorTransform.position,playerPos),Vector3.one);
-        Gizmos.matrix = matrix;
-        //Gizmos.DrawCube(floorTransform.position + (unit * areaEffect.x / 2), areaEffect);
-        Gizmos.matrix = Matrix4x4.identity;
+        playerPos = player.focusEnemy.transform.position;
+        ActivateSkill();
+    }
+
+    public override int AICalculate()
+    {
+        if (Vector3.Distance(player.focusEnemy.transform.position,transform.position) <= areaEffect.x / 2) return 10;
+        return -1;
     }
 }

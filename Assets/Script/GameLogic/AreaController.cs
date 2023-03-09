@@ -5,8 +5,19 @@ using UnityEngine;
 public class AreaController : MonoBehaviour
 {
     public int areaIdx;
+    public List<PlayerController> areaCharacter;
     public List<EnemyController> areaEnemies;
     public List<TeleportController> teleports;
+
+    public void AddCharacter(PlayerController character)
+    {
+        areaCharacter.Add(character);
+    }
+
+    public void RemoveCharacter(PlayerController character)
+    {
+        areaCharacter.Remove(character);
+    }
 
     public void AddEnemy(EnemyController enemy)
     {
