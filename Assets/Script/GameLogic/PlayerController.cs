@@ -64,6 +64,12 @@ public class PlayerController : EntityController
         if (isTaking)
         {
             UpdatePlayerClick();
+
+            //skill1
+            if (Input.GetKeyDown(KeyCode.Q))
+            {
+                Time.timeScale = 0.3f;
+            }
             if (Input.GetKey(KeyCode.Q))
             {
                 if (skills.Length >= 1) skills[0].PlayerInput();
@@ -71,6 +77,13 @@ public class PlayerController : EntityController
             if (Input.GetKeyUp(KeyCode.Q))
             {
                 if (skills.Length >= 1) skills[0].ActivateSkill();
+                Time.timeScale = 1f;
+            }
+
+            //skill2
+            if (Input.GetKeyDown(KeyCode.W))
+            {
+                Time.timeScale = 0.3f;
             }
             if (Input.GetKey(KeyCode.W))
             {
@@ -79,6 +92,7 @@ public class PlayerController : EntityController
             if (Input.GetKeyUp(KeyCode.W))
             {
                 if (skills.Length >= 2) skills[1].ActivateSkill();
+                Time.timeScale = 1f;
             }
         }
 
@@ -360,7 +374,7 @@ public class PlayerController : EntityController
 
     public override bool TakeHeal(int amount)
     {
-        if (!playableCharacter.TakeHeal(amount));
+        if (!playableCharacter.TakeHeal(amount))
         {
             return false;
         }

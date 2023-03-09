@@ -330,6 +330,7 @@ GameObject:
   - component: {fileID: 81634884}
   - component: {fileID: 81634886}
   - component: {fileID: 81634887}
+  - component: {fileID: 81634888}
   m_Layer: 0
   m_Name: Character 2
   m_TagString: Untagged
@@ -516,6 +517,19 @@ MonoBehaviour:
   range: 1.5
   damageType: 0
   skillIndicator: {fileID: 2040980572}
+--- !u!65 &81634888
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 81634877}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.4393525, y: 1.3942156, z: 1}
+  m_Center: {x: 0.16131616, y: 0.7775898, z: 0}
 --- !u!1 &152064273
 GameObject:
   m_ObjectHideFlags: 0
@@ -4800,6 +4814,7 @@ GameObject:
   - component: {fileID: 1016199016}
   - component: {fileID: 1016199015}
   - component: {fileID: 1016199017}
+  - component: {fileID: 1016199018}
   m_Layer: 0
   m_Name: Character 1
   m_TagString: Untagged
@@ -4966,6 +4981,19 @@ MonoBehaviour:
   skillIndicator: {fileID: 804103608}
   floorTransform: {fileID: 393333356}
   areaEffect: {x: 3.5, y: 1, z: 1}
+--- !u!65 &1016199018
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1016199008}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.440135, y: 1.4418797, z: 1}
+  m_Center: {x: 0.16254139, y: 0.76785386, z: 0}
 --- !u!1 &1040796430
 GameObject:
   m_ObjectHideFlags: 0
