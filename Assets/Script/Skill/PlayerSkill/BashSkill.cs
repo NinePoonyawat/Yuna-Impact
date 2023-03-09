@@ -10,7 +10,8 @@ public class BashSkill : PlayerSkill
     public AttackType damageType;
     
     [Header ("Indicator")]
-    public GameObject skillIndicator;
+    public GameObject rangeIndicator;
+    public GameObject targetIndicator;
     private EnemyController target;
 
     public override void ActivateSkill()
@@ -20,7 +21,8 @@ public class BashSkill : PlayerSkill
             target.TakeDamage(damage, damageType);
             target = null;
         }
-        skillIndicator.SetActive(false);
+        rangeIndicator.SetActive(false);
+        targetIndicator.SetActive(false);
     }
 
     public override void PlayerInput()
@@ -28,7 +30,8 @@ public class BashSkill : PlayerSkill
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         RaycastHit hit;
 
-        skillIndicator.SetActive(true);
+        rangeIndicator.SetActive(true);
+        targetIndicator.SetActive(true);
 
         if (Physics.Raycast(ray, out hit, 999f, mask))
         {

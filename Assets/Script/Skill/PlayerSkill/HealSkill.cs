@@ -10,7 +10,8 @@ public class HealSkill : PlayerSkill
     public float range = 1.5f;
 
     [Header ("Indicator")]
-    public GameObject skillIndicator;
+    public GameObject rangeIndicator;
+    public GameObject targetIndicator;
     private PlayerController target;
 
     public override void ActivateSkill()
@@ -18,10 +19,14 @@ public class HealSkill : PlayerSkill
         if (!canHealOther || target == null)
         {
             GetComponent<EntityController>().TakeHeal(healAmount);
-            return;
+        }
+        else
+        {
+            target.TakeHeal(healAmount);
         }
 
-        target.TakeHeal(healAmount);
+        rangeIndicator.SetActive(false);
+        targetIndicator.SetActive(false);
     }
 
     public override void PlayerInput()
@@ -31,7 +36,8 @@ public class HealSkill : PlayerSkill
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         RaycastHit hit;
 
-        skillIndicator.SetActive(true);
+        rangeIndicator.SetActive(true);
+        targetIndicator.SetActive(true);
 
         if (Physics.Raycast(ray, out hit, 999f, mask))
         {

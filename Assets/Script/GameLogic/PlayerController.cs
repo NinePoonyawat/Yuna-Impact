@@ -23,6 +23,7 @@ public class PlayerController : EntityController
     [SerializeField] private bool isTaking = false; // is this character taking by player
     [SerializeField] public bool isPlayerMoving = false;
     [SerializeField] public bool isPlayerTarget = false;
+    [SerializeField] private int usingSkill = -1;
 
     private LayerMask layerClickMask;
 
@@ -72,12 +73,11 @@ public class PlayerController : EntityController
             }
             if (Input.GetKey(KeyCode.Q))
             {
-                if (skills.Length >= 1) skills[0].PlayerInput();
+                UsingSkill(0, true);
             }
             if (Input.GetKeyUp(KeyCode.Q))
             {
-                if (skills.Length >= 1) skills[0].ActivateSkill();
-                Time.timeScale = 1f;
+                UsingSkill(0, false);
             }
 
             //skill2
@@ -87,17 +87,35 @@ public class PlayerController : EntityController
             }
             if (Input.GetKey(KeyCode.W))
             {
-                if (skills.Length >= 2) skills[1].PlayerInput();
+                UsingSkill(1, true);
             }
             if (Input.GetKeyUp(KeyCode.W))
             {
-                if (skills.Length >= 2) skills[1].ActivateSkill();
-                Time.timeScale = 1f;
+                UsingSkill(1, false);
             }
         }
 
         UpdateState();
         GetNextState();
+    }
+
+    void UsingSkill(int idx, bool keyDown)
+    {
+        if (usingSkill != idx && usingSkill != -1) return;
+        if (skills.Length > idx)
+        {
+            if (keyDown)
+            {
+                skills[idx].PlayerInput();
+                usingSkill = idx;
+            }
+            else
+            {
+                skills[idx].ActivateSkill();
+                usingSkill = -1;
+                Time.timeScale = 1f;
+            }
+        }
     }
 
     void UpdateState()
@@ -364,7 +382,7 @@ public class PlayerController : EntityController
         {
             uiController.UpdateStatusBar(gameController.getUIIndex(this), playableCharacter.GetStatusValue());
             SetEntityState(EntityState.DEAD);
-            if (animator != null) animator.SetBool("isKO",true);
+            if (animator != null) animator.SetTrigger("Stun");
             return true;
         }
         

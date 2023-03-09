@@ -49,7 +49,7 @@ public class YunaPierce : PlayerSkill
         Matrix4x4 matrix = Gizmos.matrix;
         matrix *= Matrix4x4.TRS(floorTransform.position + (unit * areaEffect.x / 2),Quaternion.LookRotation(floorTransform.position,playerPos),Vector3.one);
         Gizmos.matrix = matrix;
-        Gizmos.DrawCube(floorTransform.position + (unit * areaEffect.x / 2), areaEffect);
+        //Gizmos.DrawCube(floorTransform.position + (unit * areaEffect.x / 2), areaEffect);
         Gizmos.matrix = Matrix4x4.identity;
     }
 }
