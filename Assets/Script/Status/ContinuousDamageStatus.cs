@@ -29,4 +29,11 @@ public class ContinuousDamageStatus : Status
     {
         damagePeriod = newDamagePeriod;
     }
+
+    public void SetUp(int newDamage,float newDamagePeriod,float duration)
+    {
+        StartStatus(duration);
+        damage = newDamage;
+        damagePeriod = newDamagePeriod;
+    }
 }

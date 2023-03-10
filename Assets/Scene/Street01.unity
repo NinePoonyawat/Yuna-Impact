@@ -356,6 +356,7 @@ MonoBehaviour:
   isRight: 0
   currentArea: 0
   playableCharacter: {fileID: 81634883}
+  statusController: {fileID: 0}
   skills: []
   cam: {fileID: 0}
   focusEnemy: {fileID: 0}
@@ -3958,7 +3959,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &737856767
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3977,6 +3978,7 @@ MonoBehaviour:
   isRight: 0
   currentArea: 0
   playableCharacter: {fileID: 737856768}
+  statusController: {fileID: 0}
   skills: []
   cam: {fileID: 0}
   focusEnemy: {fileID: 0}
@@ -5179,6 +5181,7 @@ MonoBehaviour:
   isRight: 0
   currentArea: 0
   playableCharacter: {fileID: 1016199014}
+  statusController: {fileID: 0}
   skills: []
   cam: {fileID: 0}
   focusEnemy: {fileID: 0}
@@ -5323,7 +5326,11 @@ MonoBehaviour:
   isActivateable: 0
   skillIndicator: {fileID: 804103608}
   floorTransform: {fileID: 393333356}
+  damage: 30
   areaEffect: {x: 3.5, y: 1, z: 1}
+  bleedingDamage: 2
+  statusDuration: 3
+  bleedingDuration: 1
 --- !u!65 &1016199018
 BoxCollider:
   m_ObjectHideFlags: 0

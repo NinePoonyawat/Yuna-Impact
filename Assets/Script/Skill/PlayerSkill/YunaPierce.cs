@@ -8,7 +8,13 @@ public class YunaPierce : PlayerSkill
     public GameObject skillIndicator;
     public Transform floorTransform;
     private Vector3 playerPos = new Vector3(0,100,0);
+
+    [Header ("Skill Information")]
+    public int damage = 30;
     public Vector3 areaEffect;
+    public int bleedingDamage = 2;
+    public float statusDuration = 3f;
+    public float bleedingDuration = 1f;
 
     public override void ActivateSkill()
     {
@@ -22,7 +28,13 @@ public class YunaPierce : PlayerSkill
         {
             //Debug.Log(collider);
             EnemyController target = collider.gameObject.GetComponent<EnemyController>();
-            if (target != null) target.TakeDamage(40,AttackType.Melee);
+            if (target != null)
+            {
+                target.TakeDamage(40,AttackType.Melee);
+                BleedingStatus status = target.gameObject.AddComponent<BleedingStatus>();
+                status = (BleedingStatus) target.statusController.AddStatus(status);
+                status.SetUp(bleedingDamage,bleedingDuration,statusDuration);
+            }
         }
         skillIndicator.SetActive(false);
     }

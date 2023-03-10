@@ -7,6 +7,7 @@ public class PlayerController : EntityController
 {
     private GameController gameController;
     [SerializeField] private PlayableCharacter playableCharacter;
+    public StatusController statusController;
 
     public PlayerSkill[] skills;
 

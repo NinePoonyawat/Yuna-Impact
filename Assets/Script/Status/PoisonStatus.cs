@@ -7,5 +7,6 @@ public class PoisonStatus : ContinuousDamageStatus
     void Awake()
     {
         name = "poison";
+        isStackable = false;
     }
 }

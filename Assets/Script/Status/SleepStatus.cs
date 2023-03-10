@@ -10,6 +10,7 @@ public class SleepStatus : Status
     void Awake()
     {
         name = "sleep";
+        isStackable = false;
     }
 
     public override void StatusEnd()

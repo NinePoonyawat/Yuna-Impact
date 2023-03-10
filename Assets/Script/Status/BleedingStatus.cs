@@ -4,9 +4,10 @@ using UnityEngine;
 
 public class BleedingStatus : ContinuousDamageStatus
 {
-    
+
     void Awake()
     {
         name = "bleeding";
+        isStackable = true;
     }
 }

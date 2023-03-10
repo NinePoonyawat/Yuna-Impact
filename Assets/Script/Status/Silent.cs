@@ -9,6 +9,7 @@ public class Silent : Status
     void Awake()
     {
         name = "silent";
+        isStackable = false;
     }
 
     public override void StatusEnd()

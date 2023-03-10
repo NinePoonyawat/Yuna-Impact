@@ -8,7 +8,8 @@ public class EnemyController : EntityController,IPlayerClickable
     private GameController gameController;
     private Enemy enemy;
     public GameObject main;
-    
+    public StatusController statusController;
+
     [SerializeField] protected PlayerController focusCharacter = null;
     [SerializeField] protected float maxVision = 20f;
 
