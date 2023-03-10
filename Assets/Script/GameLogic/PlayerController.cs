@@ -72,7 +72,7 @@ public class PlayerController : EntityController
             UpdatePlayerClick();
 
             //skill1
-            if (skills.Length > 0 && skills[0].isActivateable)
+            if (skills.Length > 0 && skills[0].isActivatable)
             {
                 if (Input.GetKeyDown(KeyCode.Q))
                 {
@@ -88,7 +88,7 @@ public class PlayerController : EntityController
                 }
             }
 
-            if (skills.Length > 1 && skills[1].isActivateable)
+            if (skills.Length > 1 && skills[1].isActivatable)
             {
                 //skill2
                 if (Input.GetKeyDown(KeyCode.W))
@@ -119,6 +119,7 @@ public class PlayerController : EntityController
             {
                 skills[idx].PlayerInput();
                 usingSkill = idx;
+                uiController.HoldSkill(idx);
             }
             else
             {

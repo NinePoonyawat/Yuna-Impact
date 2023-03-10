@@ -14,30 +14,45 @@ public class UISkillIcon : MonoBehaviour
     [Header ("Visualize")]
     [SerializeField] private Image skillIcon;
     [SerializeField] private Image CooldownIcon;
+    [SerializeField] private Image HoldingIcon;
     [SerializeField] private Animator animator;
     [SerializeField] private TMP_Text text;
 
     void Update()
     {
-        if (cooldownTimer > 0)
+        if (cooldownTimer < cooldownTime)
         {
-            cooldownTimer -= Time.deltaTime;
-            text.text = cooldownTimer.ToString("#.##");
-            CooldownIcon.fillAmount = cooldownTimer / cooldownTime;
+            cooldownTimer += Time.deltaTime;
+            UpdateTimer();
         }
     }
 
-    public void Init(SkillProfile skill)
+    public void Init(SkillProfile skill, float current, float max)
     {
         gameObject.SetActive(true);
         skillIcon.sprite = skill.icon;
-        cooldownTime = skill.cooldown;
-        CooldownIcon.fillAmount = cooldownTimer/cooldownTime;
+        cooldownTimer = current;
+        cooldownTime = max;
+        UpdateTimer();
+    }
+
+    void UpdateTimer()
+    {
+        float cooldownLeft = cooldownTime - cooldownTimer;
+        if (cooldownLeft > 0) text.text = cooldownLeft.ToString("#.##");
+        else text.text = "";
+        CooldownIcon.fillAmount = cooldownLeft / cooldownTime;
+    }
+
+    public void Hold()
+    {
+        HoldingIcon.enabled = true;
     }
 
     public void Cast()
     {
-        cooldownTimer = cooldownTime;
+        HoldingIcon.enabled = false;
+        cooldownTimer = 0;
     }
 
     public void HideUI()

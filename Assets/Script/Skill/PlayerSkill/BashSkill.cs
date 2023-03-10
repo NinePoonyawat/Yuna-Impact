@@ -16,6 +16,7 @@ public class BashSkill : PlayerSkill
 
     public override void ActivateSkill()
     {
+        SetCooldown();
         if (target != null)
         {
             target.TakeDamage(damage, damageType);

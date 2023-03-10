@@ -6,11 +6,10 @@ public abstract class Skill : MonoBehaviour
 {
     [Header ("Skill")]
     public SkillProfile profile;
-    public float skillDuration;
-    public float initialDuration;
+    public float cooldown;
 
-    protected float skillDurationCount;
-    public bool isActivateable = false;
+    public float cooldownCount;
+    public bool isActivatable = true;
     protected GameController gameController;
 
     protected LayerMask mask;
@@ -19,25 +18,27 @@ public abstract class Skill : MonoBehaviour
     {
         gameController = FindObjectOfType<GameController>();
         mask = LayerMask.GetMask("Entity");
-        if (skillDuration == initialDuration) isActivateable = true;
+
+        cooldown = profile.cooldown;
+        cooldownCount = cooldown;
     }
 
     public virtual void Update()
     {
-        if (skillDurationCount < skillDuration)
+        if (cooldownCount < cooldown)
         {
-            skillDurationCount += Time.deltaTime;
-            if (skillDurationCount >= skillDuration)
+            cooldownCount += Time.deltaTime;
+            if (cooldownCount >= cooldown)
             {
-                isActivateable = true;
+                isActivatable = true;
             }
         }
     }
 
     public virtual void SetCooldown()
     {
-        isActivateable = false;
-        skillDurationCount = 0f;
+        isActivatable = false;
+        cooldownCount = 0f;
     }
 
     public abstract void ActivateSkill();

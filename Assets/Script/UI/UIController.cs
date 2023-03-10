@@ -23,7 +23,7 @@ public class UIController : MonoBehaviour
         {
             if (characters[i].getTaking())
             {
-                playerProfile.Init(characters[i].GetCharacter());
+                playerProfile.Init(characters[i]);
                 isTake = true;
             }
             partyProfiles[i].Init(characters[i].GetCharacter(), i+1, characters[i].getTaking());
@@ -44,6 +44,11 @@ public class UIController : MonoBehaviour
         int maxHealth = statusValue.getMaxHp();
         if (isTaking) playerProfile.UpdateHPBar(currentHealth, maxHealth);
         partyProfiles[idx].UpdateHPBar(currentHealth, maxHealth);
+    }
+
+    public void HoldSkill(int idx)
+    {
+        playerProfile.HoldSkill(idx);
     }
 
     public void CastSkill(int idx)

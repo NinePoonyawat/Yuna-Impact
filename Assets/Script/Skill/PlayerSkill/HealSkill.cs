@@ -17,6 +17,7 @@ public class HealSkill : PlayerSkill
 
     public override void ActivateSkill()
     {
+        SetCooldown();
         if (type == HealType.Global)
         {
             List<PlayerController> characters = gameController.FindAllCharacter();
