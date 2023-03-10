@@ -21,7 +21,7 @@ public class TeleportController : MonoBehaviour
             return false;
         }
         entity.agent.Warp(destinateTransform.position);
-        entity.currentArea = destinateAreaIdx;
+        entity.SetCurrentArea(destinateAreaIdx);
         return true;
     }
 }

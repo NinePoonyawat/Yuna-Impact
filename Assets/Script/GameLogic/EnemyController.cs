@@ -111,42 +111,6 @@ public class EnemyController : EntityController,IPlayerClickable
         }
     }
 
-    public void AttackFocus()
-    {
-        if (!enemy.isInAttackRange(focusCharacter.transform.position)) return; 
-        if (enemy.CallAttack(focusCharacter))
-        {
-            focusCharacter.blockedEnemy.Remove(this);
-            focusCharacter = null;
-        }
-    }
-
-    void UpdateEnemy()
-    {
-        //Update when focus character int attack range
-        bool isAttack = UpdateAttack();
-
-        //Update when character in the vision
-        if(!isAttack) UpdateMoving();
-    }
-
-    bool UpdateAttack()
-    {
-        if(focusCharacter != null && enemy.isInAttackRange(focusCharacter.transform.position))
-        {
-            if (enemy.isAttackable)
-            {
-                enemy.CallAttack(focusCharacter);
-            }
-            else
-            {
-                entityState = EntityState.PREATTACK;
-            }
-            return true;
-        }
-        return false;
-    }
-
     public override void AfterAttack()
     {
          if(focusCharacter != null)
@@ -201,7 +165,7 @@ public class EnemyController : EntityController,IPlayerClickable
 
     public override bool TakeHeal(int amount)
     {
-        if (!enemy.TakeHeal(amount));
+        if (!enemy.TakeHeal(amount))
         {
             return false;
         }
@@ -213,6 +177,19 @@ public class EnemyController : EntityController,IPlayerClickable
     public override bool Attack(EntityController player)
     {
         return player.TakeDamage(enemy.GetAttack(),enemy.attackType);
+    }
+
+    public bool AttackFocus()
+    {
+        if (enemy.isInAttackRange(focusCharacter.transform.position)) return focusCharacter.TakeDamage(enemy.GetAttack(),enemy.attackType);
+        else return false;
+    }
+
+    public override void SetCurrentArea(int newArea)
+    {
+        gameController.areas[currentArea].RemoveEnemy(this);
+        currentArea = newArea;
+        gameController.areas[currentArea].AddEnemy(this);
     }
 
     public void click(PlayerController playerController)

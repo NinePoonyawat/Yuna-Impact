@@ -270,112 +270,11 @@ public class PlayerController : EntityController
         }
     }
 
-    void UpdateTaking()
+    public override void SetCurrentArea(int newArea)
     {
-        //Update when focus enemy in attack range
-        bool isAttack = UpdateAttack();
-
-        // Update when has enemy in vision
-        if (!isAttack) UpdatePlayerMoving();
-    }
-
-    void UpdateNotTaking()
-    {
-        bool isAttack = UpdateAttack();
-
-        // Update when has enemy in vision
-        if (!isAttack) UpdateAIMoving();
-    }
-
-    bool UpdateAttack()
-    {
-        if (isPlayerMoving) return false;
-        if (focusEnemy == null)
-        {
-            focusEnemy = gameController.FindNearestEnemy(transform.position,currentArea);
-            if (focusEnemy == null) return false;
-        }
-
-        if(playableCharacter.isInAttackRange(focusEnemy.transform.position))
-        {
-            agent.SetDestination(this.transform.position);
-            if (playableCharacter.IsAttackable())
-            {
-                playableCharacter.CallAttack(focusEnemy);
-                if (animator != null) animator.SetBool("isWalk",false);
-            }
-            else
-            {
-                entityState = EntityState.PREATTACK;
-            }
-            return !(Input.GetMouseButtonDown(0));
-        }
-        return false;
-    }
-
-    void UpdateAIMoving()
-    {
-        if (isPlayerMoving) return; // there is player point destination since this character still control by player
-
-        if (focusEnemy == null)
-        {
-            focusEnemy =  gameController.FindNearestEnemy(transform.position,currentArea);
-            if(focusEnemy != null) agent.SetDestination(focusEnemy.transform.position);
-            else if (focusTeleport == null)
-            {
-                TeleportController teleport = gameController.FindTeleport(transform.position,currentArea);
-                focusTeleport = teleport;
-                if (teleport != null)
-                {
-                    agent.SetDestination(focusTeleport.transform.position);
-                    if (animator != null) animator.SetBool("isWalk",true);
-                }
-            }
-            else if (focusTeleport != null)
-            {
-                agent.SetDestination(focusTeleport.transform.position);
-                if (animator != null) animator.SetBool("isWalk",true);
-            }
-        }
-        else
-        {
-            agent.SetDestination(focusEnemy.transform.position);
-        }
-        entityState = EntityState.MOVE;
-        UpdateDirection();
-        if(focusEnemy != null)
-        {
-            if (animator != null) animator.SetBool("isWalk",true);
-            moveToPos = focusEnemy.transform.position;
-        }
-        else if (focusTeleport != null)
-        {
-            if (animator != null) animator.SetBool("isWalk",true);
-            if (focusTeleport.Teleport(this)) focusTeleport = null;
-        }
-        else
-        {
-            if (animator != null) animator.SetBool("isWalk",false);
-        }
-    }
-
-    void UpdatePlayerMoving()
-    {
-        if (Input.GetMouseButtonDown(0))
-        {
-            Ray ray = cam.ScreenPointToRay(Input.mousePosition);
-            RaycastHit hit;
-
-            if (Physics.Raycast(ray,out hit))
-            {
-                agent.SetDestination(hit.point);
-                moveToPos = hit.point;
-                isPlayerMoving = true;
-            }
-            entityState = EntityState.MOVE;
-            if (animator != null) animator.SetBool("isWalk",true);
-        }
-        UpdateDirection();
+        gameController.areas[currentArea].RemoveCharacter(this);
+        currentArea = newArea;
+        gameController.areas[currentArea].AddCharacter(this);
     }
 
     public bool IsBlockable()

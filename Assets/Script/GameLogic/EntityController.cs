@@ -60,4 +60,5 @@ public abstract class EntityController : MonoBehaviour
     public abstract bool TakeDamage(int damage,AttackType attackType);
     public abstract bool TakeHeal(int amount);
     public abstract void AfterAttack();
+    public abstract void SetCurrentArea(int newArea);
 }

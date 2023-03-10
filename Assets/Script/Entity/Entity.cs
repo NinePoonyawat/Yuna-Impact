@@ -43,6 +43,11 @@ public abstract class Entity : MonoBehaviour
         }
     }
 
+    public int CalculateDamage(int damage)
+    {
+        return (damage *  100) / (100 + defense);
+    }
+
     public virtual bool CallAttack(EntityController toAttack)
     {
         if (toAttack == null) return true;
@@ -81,7 +86,7 @@ public abstract class Entity : MonoBehaviour
 
     public virtual bool TakeDamage(int damage, AttackType attackType)
     {
-        int rdamage = damage - defense;
+        int rdamage = CalculateDamage(damage);
         return (healthController.TakeDamage(rdamage));
     }
 
