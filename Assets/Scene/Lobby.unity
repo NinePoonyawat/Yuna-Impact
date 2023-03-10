@@ -328,11 +328,7 @@ MonoBehaviour:
 
       Multi Target'
     skills:
-    - name: Pierce Stab
-      icon: {fileID: 21300000, guid: 00bf0fdaa1081fb4ca589f1ddf282171, type: 3}
-      description: Deal AOE damage to enemies in range, Apply 'Bleed' to them.
-      cooldown: 0
-      cost: 0
+    - {fileID: 11400000, guid: 72f956d6bcde3dc4d8fde3d2d5c26c4a, type: 2}
   - name: Reserve (Hammer)
     icon: {fileID: 21300000, guid: a738f32d679d67847ac2d0f0e1127e2a, type: 3}
     description: 'Heavy Dmg
@@ -341,16 +337,8 @@ MonoBehaviour:
 
       Healing'
     skills:
-    - name: Quick Aid
-      icon: {fileID: 21300000, guid: cfb83dd92e4b4b14e94030569585cf31, type: 3}
-      description: Heal a friendly character by 20.
-      cooldown: 0
-      cost: 0
-    - name: Hammer Smash
-      icon: {fileID: 21300000, guid: 00bf0fdaa1081fb4ca589f1ddf282171, type: 3}
-      description: Perform a Heavy attack to an enemy, Make it stun for 2 seconds.
-      cooldown: 0
-      cost: 0
+    - {fileID: 11400000, guid: 506da57efbd6e754a81adb866103a2b4, type: 2}
+    - {fileID: 11400000, guid: ad24673b9b7e7f0419c435c7157e2bd4, type: 2}
   characterPanel: {fileID: 1785939511}
   skillPanel: {fileID: 77167679}
   skillIcons: []

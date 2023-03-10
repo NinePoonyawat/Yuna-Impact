@@ -34,6 +34,7 @@ public class UILobby : MonoBehaviour
         {
             characterIdx = -1;
             CloseCharacterPanel();
+            ToggleSkill(skillIdx);
         }
     }
 

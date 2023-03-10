@@ -452,6 +452,7 @@ MonoBehaviour:
   characterProfile:
     name: Reserve (Hammer)
     icon: {fileID: 21300000, guid: a738f32d679d67847ac2d0f0e1127e2a, type: 3}
+    description: 
     skills: []
   attackRange: 1.5
   blockCount: 3
@@ -495,12 +496,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 987dfa5dedc0a1146a48fe91d66753b6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  profile:
-    name: 
-    icon: {fileID: 21300000, guid: cfb83dd92e4b4b14e94030569585cf31, type: 3}
-    description: 
-    cooldown: 5
-    cost: 0
+  profile: {fileID: 11400000, guid: 506da57efbd6e754a81adb866103a2b4, type: 2}
   skillDuration: 0
   initialDuration: 0
   type: 1
@@ -521,12 +517,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 58efa1aab99d71f4c858888069d34bfd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  profile:
-    name: 
-    icon: {fileID: 21300000, guid: 00bf0fdaa1081fb4ca589f1ddf282171, type: 3}
-    description: 
-    cooldown: 10
-    cost: 0
+  profile: {fileID: 11400000, guid: ad24673b9b7e7f0419c435c7157e2bd4, type: 2}
   skillDuration: 0.5
   initialDuration: 0
   damage: 50
@@ -4022,6 +4013,7 @@ MonoBehaviour:
   characterProfile:
     name: Renard Yuna3
     icon: {fileID: 0}
+    description: 
     skills: []
   attackRange: 1000
   blockCount: 3
@@ -5279,6 +5271,7 @@ MonoBehaviour:
   characterProfile:
     name: Renard Yuna
     icon: {fileID: 21300000, guid: ea2d221ce74c2da4fb665387d73c3df8, type: 3}
+    description: 
     skills: []
   attackRange: 1.5
   blockCount: 3
@@ -5322,12 +5315,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 28b9eef90bc0c0441b05035d2a31f326, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  profile:
-    name: 
-    icon: {fileID: 21300000, guid: 00bf0fdaa1081fb4ca589f1ddf282171, type: 3}
-    description: 
-    cooldown: 3
-    cost: 0
+  profile: {fileID: 11400000, guid: 72f956d6bcde3dc4d8fde3d2d5c26c4a, type: 2}
   skillDuration: 10
   initialDuration: 0
   skillIndicator: {fileID: 804103608}
