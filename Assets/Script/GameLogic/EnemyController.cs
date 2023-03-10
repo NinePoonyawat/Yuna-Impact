@@ -73,7 +73,7 @@ public class EnemyController : EntityController,IPlayerClickable
             case EntityState.MOVE :
                 if (!focusCharacter.IsBlockable())
                 {
-                    focusCharacter.blockedEnemy.Remove(this);
+                    if (enemy.attackType != AttackType.Range) focusCharacter.blockedEnemy.Remove(this);
                     focusCharacter = null;
                 }
                 if (focusCharacter == null)
@@ -84,7 +84,7 @@ public class EnemyController : EntityController,IPlayerClickable
                 else if (enemy.isInAttackRange(focusCharacter.transform.position) && enemy.isAttackable)
                 {
                     entityState = EntityState.ATTACK;
-                    focusCharacter.blockedEnemy.Add(this);
+                    if (enemy.attackType != AttackType.Range) focusCharacter.blockedEnemy.Add(this);
                     if(animator != null) animator.SetTrigger("LAttack");
                 }
                 break;
@@ -155,7 +155,7 @@ public class EnemyController : EntityController,IPlayerClickable
     {
         if (enemy.TakeDamage(damage,attackType))
         {
-            if (focusCharacter != null)
+            if (focusCharacter != null && enemy.attackType != AttackType.Range)
             {
                 foreach (var member in focusCharacter.blockedEnemy)
                 {
