@@ -23,6 +23,7 @@ public class UIController : MonoBehaviour
         {
             if (characters[i].getTaking())
             {
+                Debug.Log(characters[i]);
                 playerProfile.Init(characters[i]);
                 isTake = true;
             }
