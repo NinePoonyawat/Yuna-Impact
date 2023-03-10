@@ -10,7 +10,7 @@ public abstract class Skill : MonoBehaviour
     public float initialDuration;
 
     protected float skillDurationCount;
-    private bool isActivateable = false;
+    public bool isActivateable = false;
     protected GameController gameController;
 
     protected LayerMask mask;
@@ -19,6 +19,7 @@ public abstract class Skill : MonoBehaviour
     {
         gameController = FindObjectOfType<GameController>();
         mask = LayerMask.GetMask("Entity");
+        if (skillDuration == initialDuration) isActivateable = true;
     }
 
     public virtual void Update()
@@ -31,6 +32,12 @@ public abstract class Skill : MonoBehaviour
                 isActivateable = true;
             }
         }
+    }
+
+    public virtual void SetCooldown()
+    {
+        isActivateable = false;
+        skillDurationCount = 0f;
     }
 
     public abstract void ActivateSkill();

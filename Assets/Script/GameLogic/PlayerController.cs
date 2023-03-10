@@ -71,31 +71,37 @@ public class PlayerController : EntityController
             UpdatePlayerClick();
 
             //skill1
-            if (Input.GetKeyDown(KeyCode.Q))
+            if (skills.Length > 0 && skills[0].isActivateable)
             {
-                Time.timeScale = 0.3f;
-            }
-            if (Input.GetKey(KeyCode.Q))
-            {
-                UsingSkill(0, true);
-            }
-            if (Input.GetKeyUp(KeyCode.Q))
-            {
-                UsingSkill(0, false);
+                if (Input.GetKeyDown(KeyCode.Q))
+                {
+                    Time.timeScale = 0.3f;
+                }
+                if (Input.GetKey(KeyCode.Q))
+                {
+                    UsingSkill(0, true);
+                }
+                if (Input.GetKeyUp(KeyCode.Q))
+                {
+                    UsingSkill(0, false);
+                }
             }
 
-            //skill2
-            if (Input.GetKeyDown(KeyCode.W))
+            if (skills.Length > 1 && skills[1].isActivateable)
             {
-                Time.timeScale = 0.3f;
-            }
-            if (Input.GetKey(KeyCode.W))
-            {
-                UsingSkill(1, true);
-            }
-            if (Input.GetKeyUp(KeyCode.W))
-            {
-                UsingSkill(1, false);
+                //skill2
+                if (Input.GetKeyDown(KeyCode.W))
+                {
+                    Time.timeScale = 0.3f;
+                }
+                if (Input.GetKey(KeyCode.W))
+                {
+                    UsingSkill(1, true);
+                }
+                if (Input.GetKeyUp(KeyCode.W))
+                {
+                    UsingSkill(1, false);
+                }
             }
         }
 

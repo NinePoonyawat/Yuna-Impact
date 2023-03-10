@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.1831903, g: 0.22679506, b: 0.2945683, a: 1}
+  m_IndirectSpecularColor: {r: 0.18319008, g: 0.22679472, b: 0.29456776, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -499,6 +499,7 @@ MonoBehaviour:
   profile: {fileID: 11400000, guid: 506da57efbd6e754a81adb866103a2b4, type: 2}
   skillDuration: 0
   initialDuration: 0
+  isActivateable: 0
   type: 1
   healAmount: 20
   range: 3
@@ -520,6 +521,7 @@ MonoBehaviour:
   profile: {fileID: 11400000, guid: ad24673b9b7e7f0419c435c7157e2bd4, type: 2}
   skillDuration: 0.5
   initialDuration: 0
+  isActivateable: 0
   damage: 50
   range: 1.5
   damageType: 0
@@ -5317,7 +5319,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   profile: {fileID: 11400000, guid: 72f956d6bcde3dc4d8fde3d2d5c26c4a, type: 2}
   skillDuration: 10
-  initialDuration: 0
+  initialDuration: 10
+  isActivateable: 0
   skillIndicator: {fileID: 804103608}
   floorTransform: {fileID: 393333356}
   areaEffect: {x: 3.5, y: 1, z: 1}

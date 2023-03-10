@@ -12,6 +12,7 @@ public class YunaPierce : PlayerSkill
 
     public override void ActivateSkill()
     {
+        SetCooldown();
         //if (Vector3.Distance(playerPos,transform.position) > areaEffect.x) return;
         Vector3 d = playerPos - floorTransform.position;
         d.y = 0;
