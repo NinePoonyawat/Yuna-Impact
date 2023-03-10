@@ -357,7 +357,9 @@ MonoBehaviour:
   currentArea: 0
   playableCharacter: {fileID: 81634883}
   statusController: {fileID: 0}
-  skills: []
+  skills:
+  - {fileID: 81634887}
+  - {fileID: 81634886}
   cam: {fileID: 0}
   focusEnemy: {fileID: 0}
   blockedEnemy: []
@@ -498,9 +500,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   profile: {fileID: 11400000, guid: 506da57efbd6e754a81adb866103a2b4, type: 2}
-  skillDuration: 0
-  initialDuration: 0
-  isActivateable: 0
+  cooldown: 0
+  cooldownCount: 0
+  isActivatable: 1
   type: 1
   healAmount: 20
   range: 3
@@ -520,9 +522,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   profile: {fileID: 11400000, guid: ad24673b9b7e7f0419c435c7157e2bd4, type: 2}
-  skillDuration: 0.5
-  initialDuration: 0
-  isActivateable: 0
+  cooldown: 0
+  cooldownCount: 0
+  isActivatable: 1
   damage: 50
   range: 1.5
   damageType: 0
@@ -5542,7 +5544,8 @@ MonoBehaviour:
   currentArea: 0
   playableCharacter: {fileID: 1016199014}
   statusController: {fileID: 0}
-  skills: []
+  skills:
+  - {fileID: 1016199017}
   cam: {fileID: 0}
   focusEnemy: {fileID: 0}
   blockedEnemy: []
@@ -5681,9 +5684,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   profile: {fileID: 11400000, guid: 72f956d6bcde3dc4d8fde3d2d5c26c4a, type: 2}
-  skillDuration: 10
-  initialDuration: 10
-  isActivateable: 0
+  cooldown: 0
+  cooldownCount: 0
+  isActivatable: 1
   skillIndicator: {fileID: 804103608}
   floorTransform: {fileID: 393333356}
   damage: 30

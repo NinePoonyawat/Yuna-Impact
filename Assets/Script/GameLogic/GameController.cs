@@ -85,6 +85,8 @@ public class GameController : MonoBehaviour
 
         uiController.SetProfile(characters);
         cam.Follow(takingCharacter.gameObject.transform);
+
+        if (takingCharacter.focusEnemy != null) SetNewTarget(takingCharacter.focusEnemy);
     }
 
     public PlayerController FindNearestCharacter(Vector3 position, float maxDistance,int area)

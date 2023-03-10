@@ -155,9 +155,20 @@ public class EnemyController : EntityController,IPlayerClickable
     {
         if (enemy.TakeDamage(damage,attackType))
         {
-            gameController.DeleteEnemy(this,currentArea);
-            Destroy(main);
-            return true;
+            if (focusCharacter != null)
+            {
+                foreach (var member in focusCharacter.blockedEnemy)
+                {
+                    if (member == this)
+                    {
+                        focusCharacter.blockedEnemy.Remove(this);
+                        break;
+                    }
+                }
+                gameController.DeleteEnemy(this,currentArea);
+                Destroy(main);
+                return true;
+            }
         }
         uiEnemy.UpdateHPBar(enemy.GetStatusValue());
         return false;

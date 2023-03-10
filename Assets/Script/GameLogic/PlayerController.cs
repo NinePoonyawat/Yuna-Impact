@@ -167,7 +167,7 @@ public class PlayerController : EntityController
                 if (!isPlayerTarget && !isTaking) focusEnemy = gameController.FindNearestEnemy(this.transform.position,currentArea);
                 if (focusEnemy != null)
                 {
-                    gameController.SetNewTarget(focusEnemy);
+                    if(isTaking) gameController.SetNewTarget(focusEnemy);
                     if(animator != null) animator.SetBool("isWalk",true);
                     if(!playableCharacter.isInAttackRange(focusEnemy.transform.position)) entityState = EntityState.MOVE;
                     else entityState = EntityState.ATTACK;
