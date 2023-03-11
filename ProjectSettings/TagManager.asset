@@ -41,6 +41,9 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: VFX
+    uniqueID: 1613899445
+    locked: 0
   - name: UI
     uniqueID: 166342083
     locked: 0

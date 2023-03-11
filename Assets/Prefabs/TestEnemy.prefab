@@ -208,7 +208,7 @@ RectTransform:
   m_Children:
   - {fileID: 4362705699008888200}
   m_Father: {fileID: 4218884187981121715}
-  m_RootOrder: 21
+  m_RootOrder: 23
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -589,6 +589,11 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 6
       objectReference: {fileID: 0}
+    - target: {fileID: -6711659011818566009, guid: ad323d76251eb2c4eb5b11690025146b,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: -6557272225445831754, guid: ad323d76251eb2c4eb5b11690025146b,
         type: 3}
       propertyPath: m_Layer
@@ -829,10 +834,40 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 6
       objectReference: {fileID: 0}
+    - target: {fileID: -1915221433328328581, guid: ad323d76251eb2c4eb5b11690025146b,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -1712199369271212235, guid: ad323d76251eb2c4eb5b11690025146b,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -1441264184804785857, guid: ad323d76251eb2c4eb5b11690025146b,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: -953401465320447754, guid: ad323d76251eb2c4eb5b11690025146b,
         type: 3}
       propertyPath: m_Layer
       value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: -485664005692640686, guid: ad323d76251eb2c4eb5b11690025146b,
+        type: 3}
+      propertyPath: m_Bounds.m_Center.x
+      value: 0.019896269
+      objectReference: {fileID: 0}
+    - target: {fileID: -485664005692640686, guid: ad323d76251eb2c4eb5b11690025146b,
+        type: 3}
+      propertyPath: m_Bounds.m_Center.y
+      value: -0.009998083
+      objectReference: {fileID: 0}
+    - target: {fileID: -485664005692640686, guid: ad323d76251eb2c4eb5b11690025146b,
+        type: 3}
+      propertyPath: m_Bounds.m_Extent.y
+      value: 1.3449999
       objectReference: {fileID: 0}
     - target: {fileID: -335390243851590071, guid: ad323d76251eb2c4eb5b11690025146b,
         type: 3}
@@ -1358,7 +1393,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   effects: {fileID: 6032667677240842778, guid: 53830e3b56aa4ee4fa51c27b5088388b, type: 3}
-  point: {fileID: 5606960037803816429}
+  point: {fileID: 0}
+  onThis: 0
 --- !u!114 &5074109866653897150
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1406,6 +1442,7 @@ MonoBehaviour:
   entityTransform: {fileID: 7021507413587811046}
   isRight: 0
   currentArea: 0
+  enemy: {fileID: 0}
   main: {fileID: 0}
   skills: []
   focusCharacter: {fileID: 0}
@@ -1441,12 +1478,6 @@ MonoBehaviour:
 --- !u!4 &4218884187981121715 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -7552582706839291426, guid: ad323d76251eb2c4eb5b11690025146b,
-    type: 3}
-  m_PrefabInstance: {fileID: 3288660014297084269}
-  m_PrefabAsset: {fileID: 0}
---- !u!4 &5606960037803816429 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: -2275366018317679488, guid: ad323d76251eb2c4eb5b11690025146b,
     type: 3}
   m_PrefabInstance: {fileID: 3288660014297084269}
   m_PrefabAsset: {fileID: 0}
