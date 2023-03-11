@@ -6,11 +6,11 @@ using UnityEngine.AI;
 public class EnemyController : EntityController,IPlayerClickable
 {
     private GameController gameController;
-    private Enemy enemy;
+    public Enemy enemy;
     public GameObject main;
     public EnemySkill[] skills;
 
-    [SerializeField] protected PlayerController focusCharacter = null;
+    [SerializeField] public PlayerController focusCharacter = null;
     [SerializeField] protected float maxVision = 20f;
 
     [SerializeField] private Animator animator;
@@ -62,6 +62,11 @@ public class EnemyController : EntityController,IPlayerClickable
             case EntityState.ATTACK :
                 //if (focusCharacter != null && enemy.CallAttack(focusCharacter)) focusCharacter = null;
                 if (focusCharacter != null) agent.SetDestination((transform.position - focusCharacter.transform.position) + transform.position);
+                Debug.Log(animator == null);
+                if (animator == null)
+                {
+                    enemy.CallAttack(focusCharacter);
+                }
                 agent.speed = enemy.walkbackSpeed;
                 break;
         }

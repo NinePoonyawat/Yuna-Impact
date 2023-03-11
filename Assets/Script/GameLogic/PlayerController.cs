@@ -6,7 +6,7 @@ using UnityEngine.AI;
 public class PlayerController : EntityController
 {
     private GameController gameController;
-    [SerializeField] private PlayableCharacter playableCharacter;
+    [SerializeField] public PlayableCharacter playableCharacter;
 
     public PlayerSkill[] skills;
 
