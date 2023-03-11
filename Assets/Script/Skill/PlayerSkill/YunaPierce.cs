@@ -12,6 +12,7 @@ public class YunaPierce : PlayerSkill
     [Header ("Skill Information")]
     public int damage = 30;
     public Vector3 areaEffect;
+    public GameObject bleedingPf;
     public int bleedingDamage = 2;
     public float statusDuration = 3f;
     public float bleedingDuration = 1f;
@@ -31,8 +32,10 @@ public class YunaPierce : PlayerSkill
             if (target != null)
             {
                 target.TakeDamage(40,AttackType.Melee);
-                BleedingStatus status = target.gameObject.AddComponent<BleedingStatus>();
-                status = (BleedingStatus) target.statusController.AddStatus(status);
+                GameObject GO = Instantiate(bleedingPf,target.transform);
+                BleedingStatus status = GO.GetComponent<BleedingStatus>();
+                // BleedingStatus status = target.gameObject.AddComponent<BleedingStatus>();
+                target.statusController.AddStatus(status);
                 status.SetUp(bleedingDamage,bleedingDuration,statusDuration);
             }
         }
