@@ -9,6 +9,7 @@ public abstract class EntityController : MonoBehaviour
     protected bool isSetState = false;
     protected bool isSilent = false;
 
+    public StatusController statusController;
     public NavMeshAgent agent;
     [SerializeField] private Transform entityTransform;
     private Vector3 prevPosition;

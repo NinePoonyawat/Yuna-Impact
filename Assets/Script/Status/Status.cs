@@ -5,7 +5,7 @@ using UnityEngine;
 public abstract class Status : MonoBehaviour
 {
 
-    protected EntityController entity;
+    protected EntityController entityController;
     public bool isStackable;
     public string statusName;
     protected float statusPeriod = 0f;
@@ -13,7 +13,7 @@ public abstract class Status : MonoBehaviour
 
     protected virtual void Start()
     {
-        entity = gameObject.GetComponent<EntityController>();
+        entityController = gameObject.GetComponent<EntityController>();
     }
 
     protected virtual void Update()
@@ -38,7 +38,7 @@ public abstract class Status : MonoBehaviour
 
     public void SetEntity(EntityController newEntity)
     {
-        entity = newEntity;
+        entityController = newEntity;
     }
 
     public static bool operator ==(Status l,Status r)

@@ -19,7 +19,7 @@ public abstract class Skill : MonoBehaviour
         gameController = FindObjectOfType<GameController>();
         mask = LayerMask.GetMask("Entity");
 
-        cooldown = profile.cooldown;
+        cooldown = (profile != null)? profile.cooldown : cooldown;
         cooldownCount = cooldown;
     }
 

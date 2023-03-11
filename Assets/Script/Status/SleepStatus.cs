@@ -15,7 +15,7 @@ public class SleepStatus : Status
 
     public override void StatusEnd()
     {
-        entity.SetEntityState(EntityState.IDLE);
+        entityController.SetEntityState(EntityState.IDLE);
         base.StatusEnd();
     }
 

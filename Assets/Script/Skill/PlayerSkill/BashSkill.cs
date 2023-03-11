@@ -59,13 +59,13 @@ public class BashSkill : PlayerSkill
 
     public override void AIActivate()
     {
-        target = player.focusEnemy;
+        target = playerController.focusEnemy;
         ActivateSkill();
     }
 
     public override int AICalculate()
     {
-        if (Vector3.Distance(player.focusEnemy.transform.position,transform.position) < range - 0.1f)
+        if (Vector3.Distance(playerController.focusEnemy.transform.position,transform.position) < range - 0.1f)
         {
             return 10;
         }

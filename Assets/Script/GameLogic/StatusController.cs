@@ -9,6 +9,13 @@ public class StatusController : MonoBehaviour
     [SerializeField] private Entity entity;
     private List<Status> statuses = new List<Status>();
 
+    void Start()
+    {
+        gameController = GameObject.Find("GameLogic").GetComponent<GameController>();
+        entityController = gameObject.GetComponent<EntityController>();
+        entity = gameObject.GetComponent<Entity>();
+    }
+
     public Status AddStatus(Status status)
     {
         if (!status.isStackable)

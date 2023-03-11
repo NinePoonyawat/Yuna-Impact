@@ -14,7 +14,7 @@ public class Silent : Status
 
     public override void StatusEnd()
     {
-        entity.SetSilent(false);
+        entityController.SetSilent(false);
         base.StatusEnd();
     }
 
@@ -23,6 +23,6 @@ public class Silent : Status
         statusPeriod = duration;
         statusCount = 0;
         SetEntity(entityController);
-        entity.SetSilent(true);
+        entityController.SetSilent(true);
     }
 }

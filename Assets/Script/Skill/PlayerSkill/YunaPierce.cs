@@ -58,13 +58,13 @@ public class YunaPierce : PlayerSkill
 
     public override void AIActivate()
     {
-        playerPos = player.focusEnemy.transform.position;
+        playerPos = playerController.focusEnemy.transform.position;
         ActivateSkill();
     }
 
     public override int AICalculate()
     {
-        if (Vector3.Distance(player.focusEnemy.transform.position,transform.position) <= areaEffect.x / 2) return 10;
+        if (Vector3.Distance(playerController.focusEnemy.transform.position,transform.position) <= areaEffect.x / 2) return 10;
         return -1;
     }
 }

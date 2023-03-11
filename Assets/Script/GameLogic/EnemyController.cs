@@ -8,7 +8,7 @@ public class EnemyController : EntityController,IPlayerClickable
     private GameController gameController;
     private Enemy enemy;
     public GameObject main;
-    public StatusController statusController;
+    public EnemySkill[] skills;
 
     [SerializeField] protected PlayerController focusCharacter = null;
     [SerializeField] protected float maxVision = 20f;
@@ -37,6 +37,14 @@ public class EnemyController : EntityController,IPlayerClickable
     // Update is called once per frame
     void Update()
     {
+        foreach(var skill in skills)
+        {
+            if (skill.AICalculate() > 0)
+            {
+                skill.ActivateSkill();
+            }
+        }
+
         UpdateDirection();
         UpdateState();
         GetNextState();
