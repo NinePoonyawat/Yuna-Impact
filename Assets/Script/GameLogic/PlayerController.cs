@@ -34,7 +34,7 @@ public class PlayerController : EntityController
         uiController = FindObjectOfType<UIController>();
         playableCharacter = GetComponent<PlayableCharacter>();
         cam = FindObjectOfType<Camera>();
-        agent = GetComponent<NavMeshAgent>();
+        agent = GetComponentInParent<NavMeshAgent>();
         animator = GetComponentInChildren<Animator>();
         skills = GetComponents<PlayerSkill>();
 
@@ -287,6 +287,12 @@ public class PlayerController : EntityController
     public override bool Attack(EntityController enemy)
     {
         return enemy.TakeDamage(playableCharacter.GetAttack(),playableCharacter.attackType);
+    }
+
+    public void AttackFocus()
+    {
+        if (focusEnemy == null) return;
+        focusEnemy.TakeDamage(playableCharacter.GetAttack(),playableCharacter.attackType);
     }
 
     public bool Targetable(EnemyController enemy)
