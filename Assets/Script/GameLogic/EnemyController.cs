@@ -62,7 +62,6 @@ public class EnemyController : EntityController,IPlayerClickable
             case EntityState.ATTACK :
                 //if (focusCharacter != null && enemy.CallAttack(focusCharacter)) focusCharacter = null;
                 if (focusCharacter != null) agent.SetDestination((transform.position - focusCharacter.transform.position) + transform.position);
-                Debug.Log(animator == null);
                 if (animator == null)
                 {
                     enemy.CallAttack(focusCharacter);

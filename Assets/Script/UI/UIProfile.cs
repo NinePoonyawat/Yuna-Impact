@@ -17,7 +17,7 @@ public class UIProfile : MonoBehaviour
     [SerializeField] private Slider characterHPBar;
     [SerializeField] private Slider characterSPBar;
     [SerializeField] private UISkillIcon[] skillIcons;
-    [SerializeField] private GameObject skillPanel;
+    [SerializeField] private UISkillDescription skillPanel;
 
     public void Init(PlayerController playerController)
     {
@@ -57,21 +57,13 @@ public class UIProfile : MonoBehaviour
     public void HoldSkill(int idx)
     {
         skillIcons[idx].Hold();
-        skillPanel.SetActive(true);
-        UpdatePanel(idx);
+        skillPanel.UpdateUI(skills[idx]);
     }
 
     public void CastSkill(int idx)
     {
         skillIcons[idx].Cast();
-        skillPanel.SetActive(false);
-    }
-
-    void UpdatePanel(int idx)
-    {
-        TMP_Text[] texts = skillPanel.GetComponentsInChildren<TMP_Text>();
-        texts[0].text = skills[idx].name;
-        texts[1].text = skills[idx].description;
+        skillPanel.HideUI();
     }
 
     public void HideUI()

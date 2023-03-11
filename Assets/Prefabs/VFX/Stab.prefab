@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 6032667677240842777}
   - component: {fileID: 8080238756975135216}
   m_Layer: 0
-  m_Name: Smack
+  m_Name: Stab
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

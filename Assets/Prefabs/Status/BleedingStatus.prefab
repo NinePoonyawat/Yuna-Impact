@@ -47,3 +47,4 @@ MonoBehaviour:
   statusController: {fileID: 0}
   isStackable: 1
   statusName: Bleeding
+  sprite: {fileID: 21300000, guid: 06ed2da3b2b11d34e932f0995e755448, type: 3}

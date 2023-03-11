@@ -10,12 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 21e31ba70ea9c764eb2e3f61e178cfcc, type: 3}
-  m_Name: ShieldS1
+  m_Name: YunaS1
   m_EditorClassIdentifier: 
-  name: Wide Heal
-  icon: {fileID: 0}
-  description: Heal every allies within range for 15.
+  name: Pierce Stab
+  icon: {fileID: 21300000, guid: db0013039d96bbf4594f832b32a3fb85, type: 3}
+  description: Deal AOE damage to enemies in line area, apply Bleed to them.
+  targetType: 1
   duration: 0
-  cooldown: 12
+  cooldown: 5
   cost: 0
   damage: 0

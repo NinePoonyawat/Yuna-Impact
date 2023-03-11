@@ -28,11 +28,6 @@ public class PlayableCharacter : Entity
     {
         return healthController.getMaxValue();
     }
-
-    public void SetProfileSkill(PlayerSkill[] skills)
-    {
-        characterProfile.SetSkill(skills);
-    }
     
     public CharacterProfile GetProfile()
     {

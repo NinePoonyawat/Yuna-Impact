@@ -14,8 +14,8 @@ public class YunaPierce : PlayerSkill
     public Vector3 areaEffect;
     public GameObject bleedingPf;
     public int bleedingDamage = 2;
-    public float statusDuration = 3f;
-    public float bleedingDuration = 1f;
+    public float bleedingDuration = 5f;
+    public float bleedingPeriod = 1f;
 
     public override void ActivateSkill()
     {
@@ -36,7 +36,7 @@ public class YunaPierce : PlayerSkill
                 BleedingStatus status = GO.GetComponent<BleedingStatus>();
                 // BleedingStatus status = target.gameObject.AddComponent<BleedingStatus>();
                 target.statusController.AddStatus(status);
-                status.SetUp(bleedingDamage,bleedingDuration,statusDuration);
+                status.SetUp(bleedingDamage,bleedingPeriod,bleedingDuration);
             }
         }
         skillIndicator.SetActive(false);

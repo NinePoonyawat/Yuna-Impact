@@ -95,13 +95,6 @@ GameObject:
   - component: {fileID: 2387304245466047881}
   - component: {fileID: 2387304245466047888}
   - component: {fileID: 2387304245466047889}
-  - component: {fileID: 2387304245466047886}
-  - component: {fileID: 2387304245466047887}
-  - component: {fileID: 2387304245466047884}
-  - component: {fileID: 2387304245466047885}
-  - component: {fileID: 2387304245466047882}
-  - component: {fileID: 2387304245466047883}
-  - component: {fileID: 2387304245466047880}
   m_Layer: 6
   m_Name: Reserve (Shield))
   m_TagString: Untagged
@@ -168,152 +161,6 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 5
   m_ObstacleAvoidanceType: 4
---- !u!114 &2387304245466047886
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2387304245466047878}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 05088642718a7dc42af4b0bb34c8c2e6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  entityController: {fileID: 2387304245466047887}
-  healthController: {fileID: 2387304245466047884}
-  manaController: {fileID: 2387304245466047885}
-  attack: 15
-  defense: 0
-  buffedAttack: 0
-  buffedDefense: 0
-  attackRange: 1.5
-  defaultSpeed: 3.5
-  walkbackSpeed: 1
-  attackPeriod: 1.5
-  isAttackable: 0
-  attackType: 0
-  projectilePf: {fileID: 0}
-  projectileSpeed: 5
-  characterProfile:
-    name: Reserve (Hammer)
-    icon: {fileID: 21300000, guid: a738f32d679d67847ac2d0f0e1127e2a, type: 3}
-    description: 
-    skills: []
-  blockCount: 3
---- !u!114 &2387304245466047887
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2387304245466047878}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bc8291d725b57db44a05a90e9e3c6074, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  entityState: 0
-  statusController: {fileID: 0}
-  agent: {fileID: 2387304245466047889}
-  entityTransform: {fileID: 2387304245466047881}
-  isRight: 0
-  currentArea: 0
-  playableCharacter: {fileID: 2387304245466047886}
-  skills: []
-  cam: {fileID: 0}
-  focusEnemy: {fileID: 0}
-  blockedEnemy: []
-  animator: {fileID: 0}
-  uiController: {fileID: 0}
-  isTaking: 0
-  isPlayerMoving: 0
-  isPlayerTarget: 0
---- !u!114 &2387304245466047884
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2387304245466047878}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f8391fe6baa332649a849a82dc3b22df, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  defaultHealth: 200
-  currentHealth: 0
---- !u!114 &2387304245466047885
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2387304245466047878}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5fd8c92f4a773454cb3ef90cb93799bf, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  defaultMaxMana: 0
-  initialMana: 0
---- !u!114 &2387304245466047882
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2387304245466047878}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 987dfa5dedc0a1146a48fe91d66753b6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  profile: {fileID: 11400000, guid: 506da57efbd6e754a81adb866103a2b4, type: 2}
-  cooldown: 0
-  cooldownCount: 0
-  isActivatable: 1
-  type: 1
-  healAmount: 20
-  range: 3
-  rangeIndicator: {fileID: 2387304245927987244}
-  targetIndicator: {fileID: 2387304245299242770}
-  target: {fileID: 0}
---- !u!114 &2387304245466047883
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2387304245466047878}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 58efa1aab99d71f4c858888069d34bfd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  profile: {fileID: 11400000, guid: ad24673b9b7e7f0419c435c7157e2bd4, type: 2}
-  cooldown: 0
-  cooldownCount: 0
-  isActivatable: 1
-  damage: 50
-  range: 1.5
-  damageType: 0
-  rangeIndicator: {fileID: 2387304246272785013}
-  targetIndicator: {fileID: 2387304246705427974}
-  target: {fileID: 0}
---- !u!65 &2387304245466047880
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2387304245466047878}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 0
-  serializedVersion: 2
-  m_Size: {x: 0.4393525, y: 1.3942156, z: 1}
-  m_Center: {x: 0.16131616, y: 0.7775898, z: 0}
 --- !u!1 &2387304245927987244
 GameObject:
   m_ObjectHideFlags: 0
@@ -340,7 +187,7 @@ Transform:
   m_GameObject: {fileID: 2387304245927987244}
   m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 0.1, z: 0}
-  m_LocalScale: {x: 3, y: 3, z: 1}
+  m_LocalScale: {x: 3.5, y: 3.5, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2387304245466047881}
@@ -1237,6 +1084,19 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 2387304246100382553}
   m_PrefabAsset: {fileID: 0}
+--- !u!65 &2861951224497243019
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2794104580819317476}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 4, y: 12, z: 4}
+  m_Center: {x: 2, y: 6, z: 0}
 --- !u!95 &2387304246100382556
 Animator:
   serializedVersion: 4
@@ -1272,18 +1132,6 @@ MonoBehaviour:
   effects: {fileID: 262107338717606654, guid: e363e662e1156c44fa695fab636b3392, type: 3}
   point: {fileID: 5212736973130062999}
   onThis: 1
---- !u!114 &2387304246100382559
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2794104580819317476}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 37649e19b1023ac4f96ecad71e3f0847, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &2387304246100382558
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1299,7 +1147,7 @@ MonoBehaviour:
   gameController: {fileID: 0}
   entityController: {fileID: 0}
   entity: {fileID: 0}
---- !u!114 &2387304246100382561
+--- !u!114 &2387304246100382559
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1308,11 +1156,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 2794104580819317476}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5fd8c92f4a773454cb3ef90cb93799bf, type: 3}
+  m_Script: {fileID: 11500000, guid: 37649e19b1023ac4f96ecad71e3f0847, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  defaultMaxMana: 0
-  initialMana: 0
 --- !u!114 &2387304246100382560
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1327,7 +1173,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   defaultHealth: 200
   currentHealth: 0
---- !u!114 &2387304246100382563
+--- !u!114 &2387304246100382561
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1336,30 +1182,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 2794104580819317476}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 05088642718a7dc42af4b0bb34c8c2e6, type: 3}
+  m_Script: {fileID: 11500000, guid: 5fd8c92f4a773454cb3ef90cb93799bf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  entityController: {fileID: 2387304246100382562}
-  healthController: {fileID: 2387304246100382560}
-  manaController: {fileID: 2387304246100382561}
-  attack: 20
-  defense: 10
-  buffedAttack: 0
-  buffedDefense: 0
-  attackRange: 1.5
-  defaultSpeed: 3.5
-  walkbackSpeed: 1
-  attackPeriod: 1.5
-  isAttackable: 0
-  attackType: 0
-  projectilePf: {fileID: 0}
-  projectileSpeed: 5
-  characterProfile:
-    name: Reserve (Shield)
-    icon: {fileID: 21300000, guid: a738f32d679d67847ac2d0f0e1127e2a, type: 3}
-    description: 
-    skills: []
-  blockCount: 3
+  defaultMaxMana: 0
+  initialMana: 0
 --- !u!114 &2387304246100382562
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1388,6 +1215,57 @@ MonoBehaviour:
   isTaking: 0
   isPlayerMoving: 0
   isPlayerTarget: 0
+--- !u!114 &2387304246100382563
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2794104580819317476}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 05088642718a7dc42af4b0bb34c8c2e6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  entityController: {fileID: 2387304246100382562}
+  healthController: {fileID: 2387304246100382560}
+  manaController: {fileID: 2387304246100382561}
+  attack: 20
+  defense: 10
+  buffedAttack: 0
+  buffedDefense: 0
+  attackRange: 1.5
+  defaultSpeed: 3.5
+  walkbackSpeed: 1
+  attackPeriod: 1.5
+  isAttackable: 0
+  attackType: 0
+  projectilePf: {fileID: 0}
+  projectileSpeed: 5
+  characterProfile: {fileID: 11400000, guid: 494ab80c1a45bdc40b7676c57dace570, type: 2}
+  blockCount: 3
+--- !u!114 &2508927242739295341
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2794104580819317476}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 987dfa5dedc0a1146a48fe91d66753b6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  profile: {fileID: 11400000, guid: 75a5c73dd47dd00408a372457b514327, type: 2}
+  cooldown: 12
+  cooldownCount: 0
+  isActivatable: 1
+  type: 2
+  healAmount: 15
+  range: 3.5
+  rangeIndicator: {fileID: 2387304245927987244}
+  targetIndicator: {fileID: 0}
+  target: {fileID: 0}
 --- !u!4 &3895260301348416135 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -7552582706839291426, guid: 224746312755cfb4d8ecdb2d4faf58d2,

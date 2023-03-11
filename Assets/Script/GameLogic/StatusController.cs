@@ -16,7 +16,7 @@ public class StatusController : MonoBehaviour
         entity = gameObject.GetComponent<Entity>();
     }
 
-    public void AddStatus(Status status)
+    public Status AddStatus(Status status)
     {
         statuses.Add(status);
         if (!status.isStackable)

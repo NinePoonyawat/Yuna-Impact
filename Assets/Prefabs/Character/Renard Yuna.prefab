@@ -287,12 +287,6 @@ GameObject:
   - component: {fileID: 7678337465846290813}
   - component: {fileID: 7678337465846290811}
   - component: {fileID: 7678337465846290810}
-  - component: {fileID: 7678337465846290814}
-  - component: {fileID: 7678337465846290809}
-  - component: {fileID: 7678337465846290800}
-  - component: {fileID: 7678337465846290815}
-  - component: {fileID: 7678337465846290801}
-  - component: {fileID: 7678337465846290802}
   m_Layer: 6
   m_Name: Renard Yuna
   m_TagString: Untagged
@@ -357,132 +351,6 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 5
   m_ObstacleAvoidanceType: 4
---- !u!114 &7678337465846290814
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7678337465846290808}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 05088642718a7dc42af4b0bb34c8c2e6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  entityController: {fileID: 7678337465846290809}
-  healthController: {fileID: 7678337465846290800}
-  manaController: {fileID: 7678337465846290815}
-  attack: 20
-  defense: 0
-  buffedAttack: 0
-  buffedDefense: 0
-  attackRange: 1.5
-  defaultSpeed: 3.5
-  walkbackSpeed: 1
-  attackPeriod: 1.5
-  isAttackable: 0
-  attackType: 0
-  projectilePf: {fileID: 0}
-  projectileSpeed: 5
-  characterProfile:
-    name: Renard Yuna
-    icon: {fileID: 21300000, guid: ea2d221ce74c2da4fb665387d73c3df8, type: 3}
-    description: 
-    skills: []
-  blockCount: 3
---- !u!114 &7678337465846290809
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7678337465846290808}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bc8291d725b57db44a05a90e9e3c6074, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  entityState: 0
-  statusController: {fileID: 0}
-  agent: {fileID: 7678337465846290810}
-  entityTransform: {fileID: 7678337465846290813}
-  isRight: 0
-  currentArea: 0
-  playableCharacter: {fileID: 7678337465846290814}
-  skills: []
-  cam: {fileID: 0}
-  focusEnemy: {fileID: 0}
-  blockedEnemy: []
-  animator: {fileID: 0}
-  uiController: {fileID: 0}
-  isTaking: 0
-  isPlayerMoving: 0
-  isPlayerTarget: 0
---- !u!114 &7678337465846290800
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7678337465846290808}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f8391fe6baa332649a849a82dc3b22df, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  defaultHealth: 200
-  currentHealth: 0
---- !u!114 &7678337465846290815
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7678337465846290808}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5fd8c92f4a773454cb3ef90cb93799bf, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  defaultMaxMana: 0
-  initialMana: 0
---- !u!114 &7678337465846290801
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7678337465846290808}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 28b9eef90bc0c0441b05035d2a31f326, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  profile: {fileID: 11400000, guid: 72f956d6bcde3dc4d8fde3d2d5c26c4a, type: 2}
-  cooldown: 0
-  cooldownCount: 0
-  isActivatable: 1
-  skillIndicator: {fileID: 7678337465591729056}
-  floorTransform: {fileID: 7678337466272015476}
-  damage: 30
-  areaEffect: {x: 3.5, y: 1, z: 1}
-  bleedingPf: {fileID: 0}
-  bleedingDamage: 2
-  statusDuration: 3
-  bleedingDuration: 1
---- !u!65 &7678337465846290802
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7678337465846290808}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 0
-  serializedVersion: 2
-  m_Size: {x: 0.440135, y: 1.4418797, z: 1}
-  m_Center: {x: 0.16254139, y: 0.76785386, z: 0}
 --- !u!1 &7678337466272015475
 GameObject:
   m_ObjectHideFlags: 0
@@ -1406,6 +1274,19 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 7678337466388494133}
   m_PrefabAsset: {fileID: 0}
+--- !u!65 &5239908722937923235
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7883868776502269576}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 4, y: 12, z: 4}
+  m_Center: {x: 2, y: 6, z: 0}
 --- !u!95 &7678337466388494121
 Animator:
   serializedVersion: 4
@@ -1449,8 +1330,8 @@ MonoBehaviour:
   bleedingPf: {fileID: 1931329429115002955, guid: 641e0b8a3a645924299fb38bacc9071d,
     type: 3}
   bleedingDamage: 2
-  statusDuration: 3
-  bleedingDuration: 1
+  bleedingDuration: 5
+  bleedingPeriod: 1
 --- !u!114 &7678337466388494113
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1491,6 +1372,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   effects: {fileID: 6032667677240842778, guid: 53830e3b56aa4ee4fa51c27b5088388b, type: 3}
+  effects2: {fileID: 262107338717606654, guid: 7c5d60fcc4269b84aaebb0c940e4250d, type: 3}
   point: {fileID: 7538103687662084431}
   onThis: 0
 --- !u!114 &7678337466388494124
@@ -1520,11 +1402,7 @@ MonoBehaviour:
   attackType: 0
   projectilePf: {fileID: 0}
   projectileSpeed: 5
-  characterProfile:
-    name: Renard Yuna
-    icon: {fileID: 21300000, guid: ea2d221ce74c2da4fb665387d73c3df8, type: 3}
-    description: 
-    skills: []
+  characterProfile: {fileID: 11400000, guid: 11cb38f27d98d634790e97397e30ac2e, type: 2}
   blockCount: 3
 --- !u!114 &7678337466388494125
 MonoBehaviour:

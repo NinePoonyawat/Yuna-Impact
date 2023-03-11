@@ -43,8 +43,8 @@ public class HealSkill : PlayerSkill
             target.TakeHeal(healAmount);
         }
 
-        rangeIndicator.SetActive(false);
-        targetIndicator.SetActive(false);
+        if (rangeIndicator != null) rangeIndicator.SetActive(false);
+        if (targetIndicator != null) targetIndicator.SetActive(false);
     }
 
     public override void PlayerInput()

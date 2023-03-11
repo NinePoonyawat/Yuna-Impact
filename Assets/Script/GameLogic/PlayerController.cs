@@ -38,8 +38,6 @@ public class PlayerController : EntityController
         animator = GetComponentInChildren<Animator>();
         skills = GetComponents<PlayerSkill>();
 
-        playableCharacter.SetProfileSkill(skills);
-
         layerClickMask = LayerMask.GetMask("Entity");
     }
 

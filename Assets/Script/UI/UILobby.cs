@@ -8,16 +8,16 @@ public class UILobby : MonoBehaviour
 {
     public CharacterProfile[] characterProfiles;
     public GameObject characterPanel;
-    public GameObject skillPanel;
     public Button[] skillIcons;
+    public UISkillDescription skillPanel;
 
-    public int characterIdx = -1;
-    public int skillIdx = -1;
+    int characterIdx = -1;
+    int skillIdx = -1;
 
     void Awake()
     {
         CloseCharacterPanel();
-        CloseSkillPanel();
+        skillPanel.HideUI();
 
         skillIcons = characterPanel.GetComponentsInChildren<Button>();
     }
@@ -43,12 +43,12 @@ public class UILobby : MonoBehaviour
         if (skillIdx != idx)
         {
             skillIdx = idx;
-            UpdateSkillPanel(idx);
+            skillPanel.UpdateUI(characterProfiles[characterIdx].skills[skillIdx]);
         }
         else
         {
             skillIdx = -1;
-            CloseSkillPanel();
+            skillPanel.HideUI();
         }
     }
 
@@ -76,19 +76,5 @@ public class UILobby : MonoBehaviour
                 skillIcons[i].gameObject.SetActive(false);
             }
         }
-    }
-
-    void CloseSkillPanel()
-    {
-        skillPanel.SetActive(false);
-    }
-
-    void UpdateSkillPanel(int idx)
-    {
-        skillPanel.SetActive(true);
-        TMP_Text[] texts = skillPanel.GetComponentsInChildren<TMP_Text>();
-        SkillProfile skill = characterProfiles[characterIdx].skills[skillIdx];
-        texts[0].text = skill.name;
-        texts[1].text = skill.description;
     }
 }
