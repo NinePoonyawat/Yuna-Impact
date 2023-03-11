@@ -6,6 +6,7 @@ public abstract class Status : MonoBehaviour
 {
 
     protected EntityController entityController;
+    public StatusController statusController;
     public bool isStackable;
     public string statusName;
     protected float statusPeriod = 0f;
@@ -14,6 +15,7 @@ public abstract class Status : MonoBehaviour
     protected virtual void Start()
     {
         entityController = gameObject.GetComponent<EntityController>();
+        statusController = entityController.statusController;
     }
 
     protected virtual void Update()
@@ -27,6 +29,7 @@ public abstract class Status : MonoBehaviour
 
     public virtual void StatusEnd()
     {
+        statusController.RemoveStatus(this);
         Destroy(this);
     }
 

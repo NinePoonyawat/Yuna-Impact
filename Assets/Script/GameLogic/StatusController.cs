@@ -31,4 +31,9 @@ public class StatusController : MonoBehaviour
         }
         return status;
     }
+
+    public void RemoveStatus(Status status)
+    {
+        statuses.Remove(status);
+    }
 }
