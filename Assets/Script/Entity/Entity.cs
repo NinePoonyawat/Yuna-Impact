@@ -4,24 +4,31 @@ using UnityEngine;
 
 public abstract class Entity : MonoBehaviour
 {
+    [Header ("Controller")]
     protected GameController gameController;
     public EntityController entityController;
 
-    [SerializeField] protected HealthController healthController;
-    [SerializeField] protected ManaController manaController;
+    public HealthController healthController;
+    public ManaController manaController;
+
+    [Header ("Status")]
+    public int attack;
+    public int defense;
+    public int buffedAttack = 0;
+    public int buffedDefense = 0;
+    public float attackRange;
+    public float defaultSpeed = 3.5f;
+    public float walkbackSpeed = 1f;
 
     [SerializeField] protected float attackPeriod = 1.5f;
     protected float attackCount;
     public bool isAttackable = false;
 
-    [SerializeField] protected int attack;
-    [SerializeField] protected int defense;
-    [SerializeField] public AttackType attackType;
+    public AttackType attackType;
+
+    [Header ("Range Entity Setting")]
     [SerializeField] protected GameObject projectilePf;
     [SerializeField] protected float projectileSpeed = 5f;
-
-    public float defaultSpeed = 3.5f;
-    public float walkbackSpeed = 1f;
 
     public virtual void Awake()
     {
@@ -45,7 +52,7 @@ public abstract class Entity : MonoBehaviour
 
     public int CalculateDamage(int damage)
     {
-        return (damage *  100) / (100 + defense);
+        return (damage *  100) / (100 + (defense + buffedDefense));
     }
 
     public virtual bool CallAttack(EntityController toAttack)
@@ -124,7 +131,7 @@ public abstract class Entity : MonoBehaviour
 
     public virtual bool Attack(EntityController toAttack)
     {
-        return toAttack.TakeDamage(attack,attackType);
+        return toAttack.TakeDamage(attack + buffedAttack,attackType);
     }
 
     public virtual bool Attack(EntityController toAttack,int dam)

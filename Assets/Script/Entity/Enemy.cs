@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class Enemy : Entity
 {
-    [SerializeField] protected float attackRange;
 
     [SerializeField] protected float attackCooldownPeriod = 1.5f;
     protected float attackCooldownCount;
