@@ -29,11 +29,28 @@ public class StatusController : MonoBehaviour
                 }
             }
         }
+        UpdateUI();
+
         return status;
     }
 
     public void RemoveStatus(Status status)
     {
         statuses.Remove(status);
+
+        UpdateUI();
+    }
+
+    void UpdateUI()
+    {
+        if (entityController is EnemyController)
+        {
+            EnemyController enemy = (EnemyController) entityController;
+            enemy.GetProfile().UpdateStatus(statuses);
+        }
+        if (entityController is PlayerController)
+        {
+            PlayerController player = (PlayerController) entityController;
+        }
     }
 }

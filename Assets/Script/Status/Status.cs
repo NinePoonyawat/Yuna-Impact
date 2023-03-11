@@ -11,6 +11,7 @@ public abstract class Status : MonoBehaviour
     public string statusName;
     protected float statusPeriod = 0f;
     protected float statusCount = -10f;
+    public Sprite sprite;
 
     protected virtual void Start()
     {

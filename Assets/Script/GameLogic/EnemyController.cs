@@ -222,4 +222,9 @@ public class EnemyController : EntityController,IPlayerClickable
         playerController.focusEnemy = this;
         playerController.isPlayerTarget = true;
     }
+
+    public UIEnemyProfile GetProfile()
+    {
+        return uiEnemy;
+    }
 }

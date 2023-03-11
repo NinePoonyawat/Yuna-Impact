@@ -30,7 +30,7 @@ public class YunaPierce : PlayerSkill
             EnemyController target = collider.gameObject.GetComponent<EnemyController>();
             if (target != null)
             {
-                target.TakeDamage(40,AttackType.Melee);
+                target.TakeDamage(damage ,AttackType.Melee);
                 BleedingStatus status = target.gameObject.AddComponent<BleedingStatus>();
                 status = (BleedingStatus) target.statusController.AddStatus(status);
                 status.SetUp(bleedingDamage,bleedingDuration,statusDuration);

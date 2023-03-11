@@ -11,6 +11,7 @@ public class UIEnemyProfile : MonoBehaviour
 
     [Header ("Visualize")]
     [SerializeField] private Slider characterHPBar;
+    [SerializeField] private Image[] statusIcons;
 
     void Awake()
     {
@@ -27,5 +28,18 @@ public class UIEnemyProfile : MonoBehaviour
 
         currentHealth = current;
         maxHealth = max;
+    }
+
+    public void UpdateStatus(List<Status> statuses)
+    {
+        for (int i = 0; i < statusIcons.Length; i++)
+        {
+            if (i < statuses.Count)
+            {
+                statusIcons[i].sprite = statuses[i].sprite;
+                statusIcons[i].enabled = true;
+            }
+            else statusIcons[i].enabled = false;
+        }
     }
 }
