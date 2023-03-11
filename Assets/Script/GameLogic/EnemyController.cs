@@ -28,6 +28,7 @@ public class EnemyController : EntityController,IPlayerClickable
 
     public void Start()
     {
+        currentArea = gameObject.GetComponentInParent<AreaController>().areaIdx;
         agent.speed = enemy.defaultSpeed;
         if (currentArea != -1) gameController.AddEnemy(this,currentArea);
         entityState = EntityState.IDLE;
