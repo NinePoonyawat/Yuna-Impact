@@ -24,7 +24,7 @@ public class PlayerController : EntityController
     [SerializeField] private bool isTaking = false; // is this character taking by player
     [SerializeField] public bool isPlayerMoving = false;
     [SerializeField] public bool isPlayerTarget = false;
-    [SerializeField] private int usingSkill = -1;
+    private int usingSkill = -1;
 
     private LayerMask layerClickMask;
 
@@ -126,6 +126,8 @@ public class PlayerController : EntityController
                 uiController.CastSkill(idx);
                 usingSkill = -1;
                 Time.timeScale = 1f;
+                if (idx == 0) animator.SetTrigger("Skill1");
+                if (idx == 1) animator.SetTrigger("Skill2");
             }
         }
     }

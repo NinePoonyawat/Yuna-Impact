@@ -10,7 +10,7 @@ public class UIController : MonoBehaviour
     [Header ("Color")]
     [SerializeField] private Color[] partyColors;
 
-    void Start()
+    void Awake()
     {
         partyProfiles = GetComponentsInChildren<UIPartyProfile>();
         playerProfile = GetComponentInChildren<UIProfile>();
