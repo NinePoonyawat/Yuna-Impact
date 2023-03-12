@@ -1204,6 +1204,21 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 6
       objectReference: {fileID: 0}
+    - target: {fileID: 7449565565033702481, guid: 805ac26eae8142d45af6fe38c507ced0,
+        type: 3}
+      propertyPath: m_Bounds.m_Center.x
+      value: 0.0046499968
+      objectReference: {fileID: 0}
+    - target: {fileID: 7449565565033702481, guid: 805ac26eae8142d45af6fe38c507ced0,
+        type: 3}
+      propertyPath: m_Bounds.m_Center.y
+      value: 0.02002287
+      objectReference: {fileID: 0}
+    - target: {fileID: 7449565565033702481, guid: 805ac26eae8142d45af6fe38c507ced0,
+        type: 3}
+      propertyPath: m_Bounds.m_Extent.x
+      value: 0.7703496
+      objectReference: {fileID: 0}
     - target: {fileID: 7505647773577042693, guid: 805ac26eae8142d45af6fe38c507ced0,
         type: 3}
       propertyPath: m_Bounds.m_Center.x
@@ -1286,7 +1301,7 @@ BoxCollider:
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 4, y: 12, z: 4}
-  m_Center: {x: 2, y: 6, z: 0}
+  m_Center: {x: 2, y: 8, z: 0}
 --- !u!95 &7678337466388494121
 Animator:
   serializedVersion: 4

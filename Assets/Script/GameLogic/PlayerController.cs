@@ -71,10 +71,6 @@ public class PlayerController : EntityController
             //skill1
             if (skills.Length > 0 && skills[0].isActivatable)
             {
-                if (Input.GetKeyDown(KeyCode.Q))
-                {
-                    Time.timeScale = 0.3f;
-                }
                 if (Input.GetKey(KeyCode.Q))
                 {
                     UsingSkill(0, true);
@@ -88,10 +84,6 @@ public class PlayerController : EntityController
             if (skills.Length > 1 && skills[1].isActivatable)
             {
                 //skill2
-                if (Input.GetKeyDown(KeyCode.W))
-                {
-                    Time.timeScale = 0.3f;
-                }
                 if (Input.GetKey(KeyCode.W))
                 {
                     UsingSkill(1, true);
@@ -115,6 +107,7 @@ public class PlayerController : EntityController
             if (keyDown)
             {
                 if (!playableCharacter.isManaEnough(skills[idx].profile.cost)) return;
+                Time.timeScale = 0.3f;
                 skills[idx].PlayerInput();
                 usingSkill = idx;
                 uiController.HoldSkill(idx);
