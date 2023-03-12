@@ -47,7 +47,17 @@ public class UIPartyProfile : MonoBehaviour
         }
     }
 
-    public void UpdateHPBar(int current, int max)
+    public void UpdateUI(StatusValueSet statusValue)
+    {
+        int hp = statusValue.getHp();
+        int maxHp = statusValue.getMaxHp();
+        int mp = statusValue.getMp();
+        int maxMp = statusValue.getMaxMp();
+        UpdateHPBar(hp, maxHp);
+        UpdateSPBar(mp, maxMp);
+    }
+
+    void UpdateHPBar(int current, int max)
     {
         if (KO) return;
 
@@ -65,6 +75,12 @@ public class UIPartyProfile : MonoBehaviour
 
         currentHealth = current;
         maxHealth = max;
+    }
+
+    void UpdateSPBar(int current, int max)
+    {
+        characterSPBar.maxValue = max;
+        characterSPBar.value = current;
     }
 
     public void HideUI()

@@ -14,7 +14,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: Reserve (Hammer)
   icon: {fileID: 21300000, guid: 5a11cfc80b86d494493a7962f20b3f0e, type: 3}
-  description: 
+  description: 'Weapon : Hammer
+
+    ATK : 20
+
+    ASPD : Slow
+
+    DEF : Low
+
+    HP
+    : 200'
   skills:
   - {fileID: 11400000, guid: 506da57efbd6e754a81adb866103a2b4, type: 2}
   - {fileID: 11400000, guid: ad24673b9b7e7f0419c435c7157e2bd4, type: 2}

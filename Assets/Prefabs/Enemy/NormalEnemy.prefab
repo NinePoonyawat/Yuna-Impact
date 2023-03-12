@@ -1204,7 +1204,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f8391fe6baa332649a849a82dc3b22df, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  defaultHealth: 50
+  defaultHealth: 100
   currentHealth: 0
 --- !u!114 &7995116107352743792
 MonoBehaviour:
@@ -1219,6 +1219,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   effects: {fileID: 6032667677240842778, guid: 53830e3b56aa4ee4fa51c27b5088388b, type: 3}
+  effects2: {fileID: 0}
   point: {fileID: 0}
   onThis: 0
 --- !u!114 &8554279895464610615

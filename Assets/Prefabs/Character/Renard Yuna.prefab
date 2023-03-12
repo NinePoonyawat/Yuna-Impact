@@ -1390,11 +1390,11 @@ MonoBehaviour:
   entityController: {fileID: 0}
   healthController: {fileID: 0}
   manaController: {fileID: 0}
-  attack: 20
+  attack: 15
   defense: 10
   buffedAttack: 0
   buffedDefense: 0
-  attackRange: 1.5
+  attackRange: 2
   defaultSpeed: 3.5
   walkbackSpeed: 1
   attackPeriod: 1.5
@@ -1416,7 +1416,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5fd8c92f4a773454cb3ef90cb93799bf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  defaultMaxMana: 0
+  defaultMaxMana: 20
   initialMana: 0
 --- !u!114 &7678337466388494126
 MonoBehaviour:

@@ -27,7 +27,7 @@ Transform:
   m_GameObject: {fileID: 6343395541966022598}
   m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
   m_LocalPosition: {x: 1.31, y: 0.13480175, z: 40.25}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 3, y: 3, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -76,7 +76,7 @@ SpriteRenderer:
   m_SortingOrder: 0
   m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b,
     type: 3}
-  m_Color: {r: 1, g: 0.4764879, b: 0.19339621, a: 1}
+  m_Color: {r: 1, g: 0, b: 0.008803844, a: 0.39215687}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 1
@@ -98,10 +98,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ea6623a21b82dbf41b60d4fa672d9786, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  indicator: {fileID: 0}
-  floorDuration: 0
+  effectPrefab: {fileID: 262107338717606654, guid: 772b949e626dda2429275add12d92847,
+    type: 3}
   explodeDuration: 1.5
   count: -10
-  radius: 0.5
+  radius: 1.5
   enemyController: {fileID: 0}
   enemy: {fileID: 0}

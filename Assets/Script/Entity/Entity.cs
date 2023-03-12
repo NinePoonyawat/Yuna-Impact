@@ -102,6 +102,16 @@ public abstract class Entity : MonoBehaviour
         return (healthController.Heal(amount));
     }
 
+    public virtual bool isManaEnough(int amount)
+    {
+        return manaController.getValue() >= amount;
+    }
+
+    public virtual bool SpendMana(int amount)
+    {
+        return manaController.spendMana(amount);
+    }
+
     public abstract bool isInAttackRange(Vector3 position);
 
     public virtual void AfterAttack()
@@ -147,6 +157,16 @@ public abstract class Entity : MonoBehaviour
     public int GetDefense()
     {
         return defense;
+    }
+
+    public int getHp()
+    {
+        return healthController.getValue();
+    }
+
+    public int getMaxHp()
+    {
+        return healthController.getMaxValue();
     }
 
     public GameObject GetPrefab()

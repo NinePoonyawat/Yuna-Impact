@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class FireFloorCasting : MonoBehaviour
 {
-    public GameObject indicator;
+    public GameObject effectPrefab;
     public float explodeDuration;
     public float count = -10f;
     public float radius;
@@ -53,6 +53,7 @@ public class FireFloorCasting : MonoBehaviour
                 }
             }
         }
+        Instantiate(effectPrefab, transform.position, transform.rotation);
         Destroy(gameObject);
     }
 }

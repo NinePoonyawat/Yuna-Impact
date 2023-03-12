@@ -47,11 +47,26 @@ public class UIProfile : MonoBehaviour
         }
     }
 
-    public void UpdateHPBar(int current, int max)
+    public void UpdateUI(StatusValueSet statusValue)
+    {
+        int hp = statusValue.getHp();
+        int maxHp = statusValue.getMaxHp();
+        int mp = statusValue.getMp();
+        int maxMp = statusValue.getMaxMp();
+        UpdateHPBar(hp, maxHp);
+        UpdateSPBar(mp, maxMp);
+    }
+
+    void UpdateHPBar(int current, int max)
     {
         characterHPBar.value = current;
 
         currentHealth = current;
+    }
+    
+    void UpdateSPBar(int current, int max)
+    {
+        characterSPBar.value = current;
     }
 
     public void HoldSkill(int idx)

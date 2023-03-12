@@ -14,6 +14,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: Reynard Yuna
   icon: {fileID: 21300000, guid: e40121e03a326594eab53669f545d729, type: 3}
-  description: 
+  description: 'Weapon : Rapier
+
+    ATK : 15
+
+    ASPD : Fast
+
+    DEF : Low
+
+    HP
+    : 200'
   skills:
   - {fileID: 11400000, guid: 72f956d6bcde3dc4d8fde3d2d5c26c4a, type: 2}

@@ -16,6 +16,6 @@ public class SkillProfile : ScriptableObject
     public TargetType targetType;
     public float duration;
     public float cooldown;
-    public float cost;
-    public float damage;
+    public int cost;
+    public int damage;
 }

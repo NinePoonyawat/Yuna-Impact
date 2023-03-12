@@ -498,6 +498,37 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &5187898116652489566
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3729903310000289085}
+  m_Layer: 0
+  m_Name: Point
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3729903310000289085
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5187898116652489566}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -3.95, y: 7.75, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 3895260301348416135}
+  m_RootOrder: 22
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &2387304246100382553
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -630,6 +661,11 @@ PrefabInstance:
       propertyPath: m_Bounds.m_Extent.x
       value: 2.4382546
       objectReference: {fileID: 0}
+    - target: {fileID: -7452909390714953622, guid: 224746312755cfb4d8ecdb2d4faf58d2,
+        type: 3}
+      propertyPath: m_Bounds.m_Extent.y
+      value: 4.1232243
+      objectReference: {fileID: 0}
     - target: {fileID: -7195458860090352018, guid: 224746312755cfb4d8ecdb2d4faf58d2,
         type: 3}
       propertyPath: m_Bounds.m_Center.x
@@ -644,6 +680,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Bounds.m_Center.z
       value: -0.000015258789
+      objectReference: {fileID: 0}
+    - target: {fileID: -7195458860090352018, guid: 224746312755cfb4d8ecdb2d4faf58d2,
+        type: 3}
+      propertyPath: m_Bounds.m_Extent.x
+      value: 1.600575
       objectReference: {fileID: 0}
     - target: {fileID: -7195458860090352018, guid: 224746312755cfb4d8ecdb2d4faf58d2,
         type: 3}
@@ -692,6 +733,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -7006494148666262701, guid: 224746312755cfb4d8ecdb2d4faf58d2,
         type: 3}
+      propertyPath: m_Bounds.m_Extent.x
+      value: 1.8099551
+      objectReference: {fileID: 0}
+    - target: {fileID: -7006494148666262701, guid: 224746312755cfb4d8ecdb2d4faf58d2,
+        type: 3}
       propertyPath: m_Bounds.m_Extent.y
       value: 2.2187998
       objectReference: {fileID: 0}
@@ -709,6 +755,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Bounds.m_Center.z
       value: -0.000015258789
+      objectReference: {fileID: 0}
+    - target: {fileID: -6230025740060627306, guid: 224746312755cfb4d8ecdb2d4faf58d2,
+        type: 3}
+      propertyPath: m_Bounds.m_Extent.x
+      value: 1.2991498
       objectReference: {fileID: 0}
     - target: {fileID: -6230025740060627306, guid: 224746312755cfb4d8ecdb2d4faf58d2,
         type: 3}
@@ -942,6 +993,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1929037168168095455, guid: 224746312755cfb4d8ecdb2d4faf58d2,
         type: 3}
+      propertyPath: m_Bounds.m_Extent.x
+      value: 2.9049997
+      objectReference: {fileID: 0}
+    - target: {fileID: 1929037168168095455, guid: 224746312755cfb4d8ecdb2d4faf58d2,
+        type: 3}
       propertyPath: m_Bounds.m_Extent.y
       value: 3.730935
       objectReference: {fileID: 0}
@@ -962,6 +1018,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2163263349847722359, guid: 224746312755cfb4d8ecdb2d4faf58d2,
         type: 3}
+      propertyPath: m_Bounds.m_Extent.x
+      value: 0.5109
+      objectReference: {fileID: 0}
+    - target: {fileID: 2163263349847722359, guid: 224746312755cfb4d8ecdb2d4faf58d2,
+        type: 3}
       propertyPath: m_Bounds.m_Extent.y
       value: 0.61244506
       objectReference: {fileID: 0}
@@ -979,6 +1040,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Bounds.m_Center.z
       value: -0.000015258789
+      objectReference: {fileID: 0}
+    - target: {fileID: 2921392922288709171, guid: 224746312755cfb4d8ecdb2d4faf58d2,
+        type: 3}
+      propertyPath: m_Bounds.m_Extent.x
+      value: 0.8149998
+      objectReference: {fileID: 0}
+    - target: {fileID: 2921392922288709171, guid: 224746312755cfb4d8ecdb2d4faf58d2,
+        type: 3}
+      propertyPath: m_Bounds.m_Extent.y
+      value: 1.4633555
       objectReference: {fileID: 0}
     - target: {fileID: 2921392922288709171, guid: 224746312755cfb4d8ecdb2d4faf58d2,
         type: 3}
@@ -1075,6 +1146,16 @@ PrefabInstance:
       propertyPath: m_Bounds.m_Center.z
       value: -0.000015258789
       objectReference: {fileID: 0}
+    - target: {fileID: 7505647773577042693, guid: 224746312755cfb4d8ecdb2d4faf58d2,
+        type: 3}
+      propertyPath: m_Bounds.m_Extent.x
+      value: 1.8150005
+      objectReference: {fileID: 0}
+    - target: {fileID: 7505647773577042693, guid: 224746312755cfb4d8ecdb2d4faf58d2,
+        type: 3}
+      propertyPath: m_Bounds.m_Extent.y
+      value: 2.5631604
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 4843985084834002234, guid: 224746312755cfb4d8ecdb2d4faf58d2,
     type: 3}
@@ -1130,6 +1211,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   effects: {fileID: 262107338717606654, guid: e363e662e1156c44fa695fab636b3392, type: 3}
+  effects2: {fileID: 3325744170348590401, guid: f4a370d6d8f580d4e9ca4fd5f5de80e0,
+    type: 3}
   point: {fileID: 5212736973130062999}
   onThis: 1
 --- !u!114 &2387304246100382558
@@ -1185,7 +1268,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5fd8c92f4a773454cb3ef90cb93799bf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  defaultMaxMana: 0
+  defaultMaxMana: 20
   initialMana: 0
 --- !u!114 &2387304246100382562
 MonoBehaviour:
@@ -1230,14 +1313,14 @@ MonoBehaviour:
   entityController: {fileID: 2387304246100382562}
   healthController: {fileID: 2387304246100382560}
   manaController: {fileID: 2387304246100382561}
-  attack: 20
-  defense: 10
+  attack: 10
+  defense: 15
   buffedAttack: 0
   buffedDefense: 0
-  attackRange: 1.5
-  defaultSpeed: 3.5
+  attackRange: 1.25
+  defaultSpeed: 3
   walkbackSpeed: 1
-  attackPeriod: 1.5
+  attackPeriod: 2
   isAttackable: 0
   attackType: 0
   projectilePf: {fileID: 0}

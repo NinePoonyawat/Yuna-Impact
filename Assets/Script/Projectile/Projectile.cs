@@ -7,6 +7,7 @@ public class Projectile : MonoBehaviour
     protected EntityController caller;
     protected EntityController destination;
     protected float speed;
+    public GameObject effectPrefab;
 
     protected Vector3 entityPosition;
 
@@ -30,7 +31,13 @@ public class Projectile : MonoBehaviour
         if (Mathf.Abs(Vector3.Distance(entityPosition,transform.position)) <= 0.001f)
         {
             caller.Attack(destination);
-            Destroy(gameObject);
+            Hit();
         }
+    }
+
+    void Hit()
+    {
+        if (effectPrefab != null) Instantiate(effectPrefab, transform.position, transform.rotation);
+        Destroy(gameObject);
     }
 }

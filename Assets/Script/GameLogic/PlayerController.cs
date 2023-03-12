@@ -114,14 +114,18 @@ public class PlayerController : EntityController
         {
             if (keyDown)
             {
+                if (!playableCharacter.isManaEnough(skills[idx].profile.cost)) return;
                 skills[idx].PlayerInput();
                 usingSkill = idx;
                 uiController.HoldSkill(idx);
             }
             else
             {
+                if (!playableCharacter.isManaEnough(skills[idx].profile.cost)) return;
                 skills[idx].ActivateSkill();
                 uiController.CastSkill(idx);
+                playableCharacter.SpendMana(skills[idx].profile.cost);
+                UpdateUI();
                 usingSkill = -1;
                 Time.timeScale = 1f;
                 if (idx == 0) animator.SetTrigger("Skill1");
@@ -302,13 +306,13 @@ public class PlayerController : EntityController
     {
         if (playableCharacter.TakeDamage(damage,attackType))
         {
-            uiController.UpdateStatusBar(gameController.getUIIndex(this), isTaking, playableCharacter.GetStatusValue());
+            UpdateUI();
             SetEntityState(EntityState.DEAD);
             if (animator != null) animator.SetTrigger("Stun");
             return true;
         }
         
-        uiController.UpdateStatusBar(gameController.getUIIndex(this), isTaking, playableCharacter.GetStatusValue());
+        UpdateUI();
         return false;
     }
 
@@ -318,9 +322,14 @@ public class PlayerController : EntityController
         {
             return false;
         }
-
-        uiController.UpdateStatusBar(gameController.getUIIndex(this), isTaking, playableCharacter.GetStatusValue());
+        UpdateUI();
+        
         return true;
+    }
+
+    public void UpdateUI()
+    {
+        uiController.UpdateStatusBar(gameController.getUIIndex(this), isTaking, playableCharacter.GetStatusValue());
     }
 
     public override void AfterAttack()

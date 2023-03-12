@@ -18,16 +18,6 @@ public class PlayableCharacter : Entity
     {
         return Vector3.Distance(position,transform.position) <= attackRange;
     }
-
-    public int getHp()
-    {
-        return healthController.getValue();
-    }
-
-    public int getMaxHp()
-    {
-        return healthController.getMaxValue();
-    }
     
     public CharacterProfile GetProfile()
     {

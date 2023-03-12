@@ -19,7 +19,8 @@ public class ManaController : MonoBehaviour,Ivalueable
     void Start()
     {
         maxMana = defaultMaxMana;
-        currentMana = initialMana;
+        currentMana = defaultMaxMana;
+        //currentMana = initialMana;
     }
 
     public bool spendMana(int spend)

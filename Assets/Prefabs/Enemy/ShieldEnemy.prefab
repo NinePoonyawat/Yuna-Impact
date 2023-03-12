@@ -1126,7 +1126,7 @@ MonoBehaviour:
   attackCooldownPeriod: 1.5
   isAttackCooldown: 0
   isShieldActivate: 1
-  shieldMaxHp: 200
+  shieldMaxHp: 150
   shieldCurrentHp: 0
 --- !u!114 &2102864706212782220
 MonoBehaviour:
@@ -1141,6 +1141,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   effects: {fileID: 6032667677240842778, guid: 53830e3b56aa4ee4fa51c27b5088388b, type: 3}
+  effects2: {fileID: 0}
   point: {fileID: 0}
   onThis: 0
 --- !u!114 &3506070314536468185
@@ -1196,7 +1197,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f8391fe6baa332649a849a82dc3b22df, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  defaultHealth: 50
+  defaultHealth: 100
   currentHealth: 0
 --- !u!114 &9119632072732258340
 MonoBehaviour:

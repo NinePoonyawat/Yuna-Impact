@@ -14,9 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: Quick Aid
   icon: {fileID: 21300000, guid: cfb83dd92e4b4b14e94030569585cf31, type: 3}
-  description: Heal Friendly target for 20.
+  description: Heal Ally target for 40.
   targetType: 0
   duration: 0
   cooldown: 10
-  cost: 0
+  cost: 10
   damage: 0

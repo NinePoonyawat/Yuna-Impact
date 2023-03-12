@@ -40,10 +40,8 @@ public class UIController : MonoBehaviour
 
     public void UpdateStatusBar(int idx, bool isTaking, StatusValueSet statusValue)
     {
-        int currentHealth = statusValue.getHp();
-        int maxHealth = statusValue.getMaxHp();
-        if (isTaking) playerProfile.UpdateHPBar(currentHealth, maxHealth);
-        partyProfiles[idx].UpdateHPBar(currentHealth, maxHealth);
+        if (isTaking) playerProfile.UpdateUI(statusValue);
+        partyProfiles[idx].UpdateUI(statusValue);
     }
 
     public void HoldSkill(int idx)

@@ -6975,7 +6975,7 @@ ScriptedImporter:
     parentGroupIndex: -1
     uvTransform: {x: 1070, y: 1431}
     spritePosition: {x: 601, y: 210}
-  - name: Layer 2
+  - name: R lower leg
     originalName: 
     pivot: {x: 0.5, y: 0.5}
     alignment: 0
@@ -8927,23 +8927,13 @@ ScriptedImporter:
     flatten: 0
     isImported: 1
     isVisible: 1
-  - name: Layer 2
-    spriteName: Layer 2
+  - name: R lower leg
+    spriteName: R lower leg
     isGroup: 0
     parentIndex: -1
     spriteID: 8ff81acb4b519c542b6ae737eb1d296f
     layerID: 49
     mosaicPosition: {x: 904, y: 1590}
-    flatten: 0
-    isImported: 1
-    isVisible: 1
-  - name: Back Hair
-    spriteName: Back Hair
-    isGroup: 0
-    parentIndex: -1
-    spriteID: 8ca250eb408b43a40a0aa86d6bd0d0c8
-    layerID: 25
-    mosaicPosition: {x: 4, y: 4}
     flatten: 0
     isImported: 1
     isVisible: 1
@@ -8954,6 +8944,16 @@ ScriptedImporter:
     spriteID: ee8bcd5e7f9589c45be39d088a57dbfd
     layerID: 27
     mosaicPosition: {x: 4, y: 1427}
+    flatten: 0
+    isImported: 1
+    isVisible: 1
+  - name: Back Hair
+    spriteName: Back Hair
+    isGroup: 0
+    parentIndex: -1
+    spriteID: 8ca250eb408b43a40a0aa86d6bd0d0c8
+    layerID: 25
+    mosaicPosition: {x: 4, y: 4}
     flatten: 0
     isImported: 1
     isVisible: 1
