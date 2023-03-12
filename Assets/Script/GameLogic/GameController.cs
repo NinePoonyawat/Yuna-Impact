@@ -11,7 +11,7 @@ public class GameController : MonoBehaviour
 
     [SerializeField] public Transform projectileRoot;
 
-    [Header ("Visualize and UI")]
+    [Header ("Visualize and UI ")]
     [SerializeField] private CamFollowing cam;
     [SerializeField] private UIController uiController;
     [SerializeField] private UITarget uiTarget;
