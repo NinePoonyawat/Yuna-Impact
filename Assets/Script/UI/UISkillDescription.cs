@@ -9,6 +9,7 @@ public class UISkillDescription : MonoBehaviour
     [SerializeField] private TMP_Text name;
     [SerializeField] private TMP_Text description;
     [SerializeField] private TMP_Text cooldown;
+    [SerializeField] private TMP_Text cost;
     [SerializeField] private TMP_Text targetType;
     [SerializeField] private Image targetBox;
     [SerializeField] private Color[] targetColors;
@@ -25,7 +26,8 @@ public class UISkillDescription : MonoBehaviour
 
         name.text = skill.name;
         description.text = skill.description;
-        cooldown.text = skill.cooldown.ToString();
+        cooldown.text = skill.cooldown.ToString() + " s";
+        cost.text = skill.cost.ToString() + " mp";
 
         targetType.text = targetTexts[(int)skill.targetType];
         targetBox.color = targetColors[(int)skill.targetType];
