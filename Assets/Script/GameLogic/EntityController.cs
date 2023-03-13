@@ -18,23 +18,41 @@ public abstract class EntityController : MonoBehaviour
 
     [SerializeField] public int currentArea = -1;
 
-    public void UpdateDirection()
+    public void UpdateMovingDirection()
     {
         Vector3 newPosition = transform.position;
         float x = newPosition.x - prevPosition.x;
+        float z = newPosition.z - prevPosition.z;
 
-        if (isRight && x < -0.01f)
+        if (isRight && z < -x - 0.01f)
         {
             isRight = false;
             entityTransform.localScale = new Vector3(entityTransform.localScale.x * -1, entityTransform.localScale.y, entityTransform.localScale.z);
         }
-        if (!isRight && x > 0.01f)
+        if (!isRight && z > -x + 0.01f)
         {
             isRight = true;
             entityTransform.localScale = new Vector3(entityTransform.localScale.x * -1, entityTransform.localScale.y, entityTransform.localScale.z);
         }
 
         prevPosition = newPosition;
+    }
+
+    public void UpdateAttackPosition(Vector3 toAttackPos)
+    {
+        float x = toAttackPos.x - transform.position.x;
+        float z = toAttackPos.z - transform.position.z;
+
+        if (isRight && z < -x - 0.01f)
+        {
+            isRight = false;
+            entityTransform.localScale = new Vector3(entityTransform.localScale.x * -1, entityTransform.localScale.y, entityTransform.localScale.z);
+        }
+        if (!isRight && z > -x + 0.01f)
+        {
+            isRight = true;
+            entityTransform.localScale = new Vector3(entityTransform.localScale.x * -1, entityTransform.localScale.y, entityTransform.localScale.z);
+        }
     }
 
     public void SetEntityState(EntityState state)

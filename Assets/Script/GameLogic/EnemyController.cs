@@ -16,7 +16,6 @@ public class EnemyController : EntityController,IPlayerClickable
     [SerializeField] private Animator animator;
 
     [SerializeField] private UIEnemyProfile uiEnemy;
-    [SerializeField] private SpriteFacingCam spriteFacingCam;
 
     public void Awake()
     {
@@ -24,7 +23,6 @@ public class EnemyController : EntityController,IPlayerClickable
         gameController = GameObject.Find("GameLogic").GetComponent<GameController>();
         uiEnemy = GetComponentInChildren<UIEnemyProfile>();
         animator = GetComponentInChildren<Animator>();
-        spriteFacingCam = GetComponent<SpriteFacingCam>();
         if (main == null) main = transform.parent.gameObject;
     }
 
@@ -49,7 +47,6 @@ public class EnemyController : EntityController,IPlayerClickable
             }
         }
 
-        UpdateDirection();
         UpdateState();
         GetNextState();
        // UpdateEnemy();
@@ -61,6 +58,7 @@ public class EnemyController : EntityController,IPlayerClickable
         {
             case EntityState.MOVE :
                 if (focusCharacter != null) agent.SetDestination(focusCharacter.transform.position);
+                UpdateMovingDirection();
                 break;
             case EntityState.ATTACK :
                 //if (focusCharacter != null && enemy.CallAttack(focusCharacter)) focusCharacter = null;
@@ -113,6 +111,7 @@ public class EnemyController : EntityController,IPlayerClickable
                     entityState = EntityState.ATTACK;
                     if (enemy.attackType != AttackType.Range) focusCharacter.blockedEnemy.Add(this);
                     if(animator != null) animator.SetTrigger("LAttack");
+                    UpdateAttackPosition(focusCharacter.transform.position);
                 }
                 break;
             case EntityState.PREATTACK :
@@ -125,18 +124,15 @@ public class EnemyController : EntityController,IPlayerClickable
                 {
                     if (enemy.isAttackable)
                     {
-                        Debug.Log("enter0");
                         agent.speed = enemy.defaultSpeed;
                         if (enemy.isInAttackRange(focusCharacter.transform.position))
                         {
                             agent.SetDestination(this.transform.position);
                             entityState = EntityState.ATTACK;
-                            Debug.Log("enter1");
                             if(animator != null) animator.SetTrigger("LAttack");
                         }
                         else
                         {
-                            Debug.Log("enter2");
                             entityState = EntityState.MOVE;
                         }
                     }
@@ -151,38 +147,6 @@ public class EnemyController : EntityController,IPlayerClickable
          {
             agent.SetDestination((transform.position - focusCharacter.transform.position) + transform.position);
          }
-    }
-
-    public void MeleeAttack()
-    {
-        if (Attack(focusCharacter)) focusCharacter = null;
-        entityState = EntityState.ATTACK;
-        enemy.AfterAttack(); // get attack cooldown;
-    }
-
-    public void RangeAttack()
-    {
-        GameObject GO = Instantiate(enemy.GetPrefab(),gameController.projectileRoot) as GameObject;
-        Projectile projectile = GO.GetComponent<Projectile>();
-        projectile.SetUp(this,focusCharacter,enemy.GetProjectileSpeed());
-        entityState = EntityState.ATTACK;
-        enemy.AfterAttack(); // get attack cooldown;
-    }
-
-    void UpdateMoving()
-    {
-        if(focusCharacter != null && focusCharacter.GetEntityState() == EntityState.DEAD) focusCharacter = null;
-
-        if (focusCharacter == null)
-        {
-            focusCharacter = gameController.FindNearestCharacter(transform.position, maxVision,currentArea);
-            if (focusCharacter != null) agent.SetDestination(focusCharacter.transform.position);
-        }
-        else
-        {
-            agent.SetDestination(focusCharacter.transform.position);
-            UpdateDirection();
-        }
     }
 
     public override bool TakeDamage(int damage,AttackType attackType)
@@ -205,7 +169,6 @@ public class EnemyController : EntityController,IPlayerClickable
             return true;
         }
         uiEnemy.UpdateHPBar(enemy.GetStatusValue());
-        spriteFacingCam.TakeDamage();
         return false;
     }
 

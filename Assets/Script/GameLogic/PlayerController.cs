@@ -56,7 +56,6 @@ public class PlayerController : EntityController
     {
         if (entityState == EntityState.DEAD) return;
         if (isStun) return;
-        UpdateDirection();
 
         if (isPlayerMoving) UpdatePlayerClickMoving();
         if (isPlayerTarget)
@@ -136,6 +135,7 @@ public class PlayerController : EntityController
         {
             case EntityState.MOVE :
                 if(focusEnemy != null && !isPlayerMoving) agent.SetDestination(focusEnemy.transform.position);
+                UpdateMovingDirection();
                 break;
             // case EntityState.ATTACK :
             //     if (playableCharacter.CallAttack(focusEnemy)) focusEnemy = null;
@@ -148,6 +148,7 @@ public class PlayerController : EntityController
                     {
                         focusTeleport = null;
                     }
+                    else UpdateMovingDirection();
                 }
                 break;
         }
@@ -175,6 +176,7 @@ public class PlayerController : EntityController
                     {
                         if(animator != null) animator.SetTrigger("Attack1");
                         entityState = EntityState.ATTACK;
+                        UpdateAttackPosition(focusEnemy.transform.position);
                     }
                 }
                 break;
@@ -192,6 +194,7 @@ public class PlayerController : EntityController
                     {
                         if(animator != null) animator.SetTrigger("Attack1");
                         entityState = EntityState.ATTACK;
+                        UpdateAttackPosition(focusEnemy.transform.position);
                     }
                 }
                 // else
@@ -224,6 +227,7 @@ public class PlayerController : EntityController
                     agent.SetDestination(this.transform.position);
                     if(animator != null) animator.SetTrigger("Attack1");
                     entityState = EntityState.ATTACK;
+                    UpdateAttackPosition(focusEnemy.transform.position);
                 }
                 break;
             // case EntityState.ATTACK :
@@ -244,6 +248,7 @@ public class PlayerController : EntityController
                         {
                             if(animator != null) animator.SetTrigger("Attack1");
                             entityState = EntityState.ATTACK;
+                            UpdateAttackPosition(focusEnemy.transform.position);
                         }
                         else entityState = EntityState.MOVE;
                     }
