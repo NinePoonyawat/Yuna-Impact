@@ -17,7 +17,7 @@ public class PlayerController : EntityController
     private float AIvision = 5f;
     public EnemyController focusEnemy;
     public List<EnemyController> blockedEnemy;
-    private TeleportController focusTeleport;
+    public TeleportController focusTeleport;
     [SerializeField] private Animator animator;
 
     [SerializeField] private UIController uiController;
@@ -39,7 +39,7 @@ public class PlayerController : EntityController
         animator = GetComponentInChildren<Animator>();
         skills = GetComponents<PlayerSkill>();
 
-        layerClickMask = LayerMask.GetMask("Entity");
+        layerClickMask = LayerMask.GetMask("Entity","PlayerClickable");
     }
 
     void Start()
@@ -277,6 +277,12 @@ public class PlayerController : EntityController
 
             if (Physics.Raycast(ray,out hit,999f,layerClickMask))
             {
+                IPlayerClickable playerClick = hit.transform.GetComponent<IPlayerClickable>();
+                if (playerClick != null)
+                {
+                    playerClick.click(this);
+                }
+                
                 EnemyController enim = hit.transform.GetComponent<EnemyController>();
                 if (enim == null)
                 {
