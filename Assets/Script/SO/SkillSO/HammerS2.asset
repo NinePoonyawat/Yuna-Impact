@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: HammerS2
   m_EditorClassIdentifier: 
   name: Hammer Smash
-  icon: {fileID: 21300000, guid: 00bf0fdaa1081fb4ca589f1ddf282171, type: 3}
+  icon: {fileID: 21300000, guid: 70f3a69ffc1f4744bab4f7d24ea4157e, type: 3}
   description: Perform a Heavy attack deal 50 dmg.
   targetType: 1
   duration: 0
