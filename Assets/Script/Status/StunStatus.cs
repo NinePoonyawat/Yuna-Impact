@@ -10,7 +10,7 @@ public class StunStatus : Status
         base.StatusEnd();
     }
 
-    void Setting(int duration,EntityController entityController)
+    public void Setting(float duration,EntityController entityController)
     {
         statusPeriod = duration;
         statusCount = 0;

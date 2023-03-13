@@ -1481,7 +1481,7 @@ MonoBehaviour:
   walkbackSpeed: 1
   attackPeriod: 2.5
   isAttackable: 0
-  attackType: 0
+  attackType: 2
   projectilePf: {fileID: 0}
   projectileSpeed: 5
   characterProfile: {fileID: 11400000, guid: 174f64a608a846a45883cebe23e59767, type: 2}
@@ -1499,6 +1499,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   entityState: 0
+  isStun: 0
   statusController: {fileID: 0}
   agent: {fileID: 0}
   entityTransform: {fileID: 7232537768121252983}

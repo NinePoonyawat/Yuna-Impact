@@ -1125,9 +1125,13 @@ MonoBehaviour:
   projectileSpeed: 5
   attackCooldownPeriod: 1.5
   isAttackCooldown: 0
+  stunPrefab: {fileID: 1931329429115002955, guid: 154afe61693db61409bc4c007282d544,
+    type: 3}
+  shield: {fileID: 6982826492036702363}
   isShieldActivate: 1
   shieldMaxHp: 150
   shieldCurrentHp: 0
+  stunDuration: 3
 --- !u!114 &2102864706212782220
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1212,6 +1216,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   entityState: 0
+  isStun: 0
   statusController: {fileID: 3506070314536468185}
   agent: {fileID: 5885452641415626851}
   entityTransform: {fileID: 5885452641415626863}
@@ -1224,6 +1229,13 @@ MonoBehaviour:
   maxVision: 12
   animator: {fileID: 0}
   uiEnemy: {fileID: 0}
+  spriteFacingCam: {fileID: 0}
+--- !u!1 &6982826492036702363 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: -173277133426701441, guid: ad323d76251eb2c4eb5b11690025146b,
+    type: 3}
+  m_PrefabInstance: {fileID: 2125592302040624100}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &9063664437681976229
 PrefabInstance:
   m_ObjectHideFlags: 0
