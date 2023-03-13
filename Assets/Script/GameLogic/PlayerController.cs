@@ -277,11 +277,16 @@ public class PlayerController : EntityController
             if (Physics.Raycast(ray,out hit,999f,layerClickMask))
             {
                 EnemyController enim = hit.transform.GetComponent<EnemyController>();
+                if (enim == null)
+                {
+                    enim = gameController.FindNearestEnemy(hit.transform.position,currentArea,0.3f);
+                }
                 if (enim != null)
                 {
                     gameController.SetNewTarget(enim);
                     focusEnemy = enim;
                     isPlayerTarget = true;
+                    if (isPlayerMoving) isPlayerMoving = false;
                 }
             }
         }

@@ -126,6 +126,7 @@ public class GameController : MonoBehaviour
         for (int idx = 0; idx < players.Count; idx++)
         {
             if (players[idx].GetEntityState() == EntityState.DEAD) continue;
+            if (players[idx].GetEntityState() == EntityState.PLAYERSTART) continue;
             
             if (players[idx].IsBlockable() && Vector3.Distance(position,players[idx].transform.position) <= maxDistance)
             {
