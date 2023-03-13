@@ -1,0 +1,5 @@
+Character1, Character2
+1--0--Welcome.
+2--0--Explain something.
+1--0--Explain Something.
+2--0--Let's check the menu.

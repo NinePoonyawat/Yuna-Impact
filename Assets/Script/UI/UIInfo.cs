@@ -2,10 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 using TMPro;
 
 public class UIInfo : MonoBehaviour
 {
+    public string nextScene;
+
     public int page;
 
     [Header ("Character Info")]
@@ -73,34 +76,38 @@ public class UIInfo : MonoBehaviour
 
     void SetPage(bool next)
     {
-        if (page == 3)
+        if (page == 1)
         {
-            characterAnim.SetTrigger("Hide");
-            CloseCharacterPanel();
+            mapPanel.SetTrigger("Hide");
         }
         if (page == 2)
         {
             enemyPanel.SetTrigger("Hide");
         }
-        if (page == 1)
+        if (page == 3)
         {
-            mapPanel.SetTrigger("Hide");
+            characterAnim.SetTrigger("Hide");
+            CloseCharacterPanel();
         }
 
         if (!next && page > 0) page--;
         if (next) page++;
 
-        if (page == 3)
+        if (page == 1)
         {
-            characterAnim.SetTrigger("Appear");
+            mapPanel.SetTrigger("Appear");
         }
         if (page == 2)
         {
             enemyPanel.SetTrigger("Appear");
         }
-        if (page == 1)
+        if (page == 3)
         {
-            mapPanel.SetTrigger("Appear");
+            characterAnim.SetTrigger("Appear");
+        }
+        if (page == 4)
+        {
+            SceneManager.LoadScene(nextScene);
         }
     }
 

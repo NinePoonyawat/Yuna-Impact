@@ -5182,7 +5182,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e76a613f0022ce84d97e1b5fa74c3e0d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nextScene: Lobby
+  nextScene: Street01
   CanvasBox: {fileID: 1820896537}
   nameText: {fileID: 2133010473}
   dialogueText: {fileID: 377996058}
@@ -5193,7 +5193,7 @@ MonoBehaviour:
   - {r: 1, g: 1, b: 1, a: 1}
   - {r: 0.5283019, g: 0.5283019, b: 0.5283019, a: 1}
   dialogues: []
-  textAsset: {fileID: 4900000, guid: 7d63b4aff9dda3049a839aed07c5a8a5, type: 3}
+  textAsset: {fileID: 4900000, guid: 3950e90fe59e934429096138987c8b17, type: 3}
   characters: []
 --- !u!1 &2133010471
 GameObject:

@@ -1,0 +1,5 @@
+Character1, Character2
+1--0--(Talk about stage).
+2--0--(Talk about mission).
+1--0--Blah blah.
+2--0--Get Ready.
