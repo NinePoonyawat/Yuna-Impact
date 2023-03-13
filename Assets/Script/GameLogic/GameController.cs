@@ -127,7 +127,7 @@ public class GameController : MonoBehaviour
         {
             if (players[idx].GetEntityState() == EntityState.DEAD) continue;
             
-            if (players[idx].IsBlockable())
+            if (players[idx].IsBlockable() && Vector3.Distance(position,players[idx].transform.position) <= maxDistance)
             {
                 return players[idx];
             }

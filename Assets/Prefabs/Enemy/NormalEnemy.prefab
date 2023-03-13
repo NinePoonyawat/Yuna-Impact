@@ -1273,7 +1273,7 @@ MonoBehaviour:
   main: {fileID: 0}
   skills: []
   focusCharacter: {fileID: 0}
-  maxVision: 20
+  maxVision: 12
   animator: {fileID: 0}
   uiEnemy: {fileID: 0}
 --- !u!1001 &6647033110692476828
