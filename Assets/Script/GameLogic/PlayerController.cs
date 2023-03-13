@@ -14,6 +14,7 @@ public class PlayerController : EntityController
 
     private Vector3 moveToPos;              //for Gizmos visualize
     private float acceptanceRadius = 0.8f;
+    private float AIvision = 5f;
     public EnemyController focusEnemy;
     public List<EnemyController> blockedEnemy;
     private TeleportController focusTeleport;
@@ -45,15 +46,16 @@ public class PlayerController : EntityController
     {
         gameController.AddCharacter(this);
         gameController.areas[currentArea].AddCharacter(this);
-        entityState = EntityState.IDLE;
+        entityState = EntityState.PLAYERSTART;
+        if(animator != null) animator.Play("Base-Idle");
 
         agent.speed = playableCharacter.defaultSpeed;
     }
 
     void Update()
     {
-        UpdateDirection();
         if (entityState == EntityState.DEAD) return;
+        UpdateDirection();
 
         if (isPlayerMoving) UpdatePlayerClickMoving();
         if (isPlayerTarget)
@@ -134,9 +136,9 @@ public class PlayerController : EntityController
             case EntityState.MOVE :
                 if(focusEnemy != null && !isPlayerMoving) agent.SetDestination(focusEnemy.transform.position);
                 break;
-            case EntityState.ATTACK :
-                if (playableCharacter.CallAttack(focusEnemy)) focusEnemy = null;
-                break;
+            // case EntityState.ATTACK :
+            //     if (playableCharacter.CallAttack(focusEnemy)) focusEnemy = null;
+            //     break;
             case EntityState.MOVETOTELEPORT :
                 if (focusTeleport != null)
                 {
@@ -159,35 +161,57 @@ public class PlayerController : EntityController
         }
         switch (entityState)
         {
+            case EntityState.PLAYERSTART :
+                if (focusEnemy != null)
+                {
+                    if (!playableCharacter.isInAttackRange(focusEnemy.transform.position))
+                    {
+                        agent.SetDestination(focusEnemy.transform.position);
+                        entityState = EntityState.MOVE;
+                    }
+                    else
+                    {
+                        if(animator != null) animator.SetTrigger("Attack1");
+                        entityState = EntityState.ATTACK;
+                    }
+                }
+                break;
             case EntityState.IDLE :
-                if (!isPlayerTarget && !isTaking) focusEnemy = gameController.FindNearestEnemy(this.transform.position,currentArea);
+                if (!isPlayerTarget && !isTaking) focusEnemy = gameController.FindNearestEnemy(this.transform.position,currentArea,AIvision);
                 if (focusEnemy != null)
                 {
                     if(isTaking) gameController.SetNewTarget(focusEnemy);
                     if(animator != null) animator.SetBool("isWalk",true);
                     if(!playableCharacter.isInAttackRange(focusEnemy.transform.position)) entityState = EntityState.MOVE;
-                    else entityState = EntityState.ATTACK;
-                }
-                else
-                {
-                    if (isTaking)
-                    {
-                        focusEnemy = gameController.FindNearestEnemy(this.transform.position,currentArea);
-                        if (focusEnemy != null) gameController.SetNewTarget(focusEnemy);
-                    }
                     else
                     {
-                        if(animator != null) animator.SetBool("isWalk",true);
-                        if(gameController.areas[currentArea].areaEnemies.Count == 0) focusTeleport = gameController.FindTeleport(transform.position,currentArea);
-                        entityState = EntityState.MOVETOTELEPORT;
+                        if(animator != null) animator.SetTrigger("Attack1");
+                        entityState = EntityState.ATTACK;
                     }
                 }
+                // else
+                // {
+                //     if (isTaking)
+                //     {
+                //         focusEnemy = gameController.FindNearestEnemy(this.transform.position,currentArea);
+                //         if (focusEnemy != null) gameController.SetNewTarget(focusEnemy);
+                //     }
+                //     else
+                //     {
+                //         if(animator != null) animator.SetBool("isWalk",true);
+                //         if(gameController.areas[currentArea].areaEnemies.Count == 0) focusTeleport = gameController.FindTeleport(transform.position,currentArea);
+                //         entityState = EntityState.MOVETOTELEPORT;
+                //     }
+                // }
                 break;
             case EntityState.MOVE :
                 if (focusEnemy == null)
                 {
-                    if(animator != null) animator.SetBool("isWalk",false);
-                    entityState = EntityState.IDLE;
+                    if (!isPlayerMoving)
+                    {
+                        if(animator != null) animator.SetBool("isWalk",false);
+                        entityState = EntityState.IDLE;
+                    }
                 }
                 else if (playableCharacter.isInAttackRange(focusEnemy.transform.position) && playableCharacter.isAttackable && !isPlayerMoving)
                 {
@@ -195,9 +219,9 @@ public class PlayerController : EntityController
                     entityState = EntityState.ATTACK;
                 }
                 break;
-            case EntityState.ATTACK :
-                entityState = EntityState.PREATTACK;
-                break;
+            // case EntityState.ATTACK :
+            //     entityState = EntityState.PREATTACK;
+            //     break;
             case EntityState.PREATTACK :
                 if (focusEnemy == null)
                 {
@@ -209,7 +233,11 @@ public class PlayerController : EntityController
                     if (playableCharacter.isAttackable)
                     {
                         if(animator != null) animator.SetBool("isWalk",true);
-                        if (playableCharacter.isInAttackRange(focusEnemy.transform.position)) entityState = EntityState.ATTACK;
+                        if (playableCharacter.isInAttackRange(focusEnemy.transform.position))
+                        {
+                            if(animator != null) animator.SetTrigger("Attack1");
+                            entityState = EntityState.ATTACK;
+                        }
                         else entityState = EntityState.MOVE;
                     }
                 }
@@ -238,6 +266,7 @@ public class PlayerController : EntityController
                 moveToPos = hit.point;
                 isPlayerMoving = true;
                 if(animator != null) animator.SetBool("isWalk",true);
+                SetEntityState(EntityState.MOVE);
             }
         }
         if (Input.GetMouseButtonDown(1))
