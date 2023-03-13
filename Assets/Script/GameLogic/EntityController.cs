@@ -8,6 +8,7 @@ public abstract class EntityController : MonoBehaviour
     public EntityState entityState;
     protected bool isSetState = false;
     protected bool isSilent = false;
+    public bool isStun = false;
 
     public StatusController statusController;
     public NavMeshAgent agent;
@@ -54,7 +55,6 @@ public abstract class EntityController : MonoBehaviour
     public void SetState(EntityState newState)
     {
         entityState = newState;
-        Debug.Log(newState);
         isSetState = true;
     }
 

@@ -1312,7 +1312,7 @@ Animator:
   m_GameObject: {fileID: 7883868776502269576}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 8fb13f239a5a71b4eaded97c7f748952, type: 2}
+  m_Controller: {fileID: 9100000, guid: de6c933fba668c248b83f35188d6455b, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -1471,6 +1471,7 @@ MonoBehaviour:
   cam: {fileID: 0}
   focusEnemy: {fileID: 0}
   blockedEnemy: []
+  focusTeleport: {fileID: 0}
   animator: {fileID: 0}
   uiController: {fileID: 0}
   isTaking: 0
