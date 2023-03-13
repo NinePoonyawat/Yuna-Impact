@@ -61,11 +61,14 @@ public class EnemyController : EntityController,IPlayerClickable
                 break;
             case EntityState.ATTACK :
                 //if (focusCharacter != null && enemy.CallAttack(focusCharacter)) focusCharacter = null;
-                if (focusCharacter != null) agent.SetDestination((transform.position - focusCharacter.transform.position) + transform.position);
                 if (animator == null)
                 {
                     enemy.CallAttack(focusCharacter);
                 }
+                agent.speed = 0f;
+                break;
+            case EntityState.PREATTACK :
+                if (focusCharacter != null) agent.SetDestination((transform.position - focusCharacter.transform.position) + transform.position);
                 agent.speed = enemy.walkbackSpeed;
                 break;
         }
@@ -73,6 +76,12 @@ public class EnemyController : EntityController,IPlayerClickable
 
     public void GetNextState()
     {
+        if (isSetState)
+        {
+            isSetState = false;
+            return;
+        }
+
         switch (entityState)
         {
             case EntityState.IDLE :
@@ -84,6 +93,7 @@ public class EnemyController : EntityController,IPlayerClickable
                 }
                 break;
             case EntityState.MOVE :
+                agent.speed = enemy.defaultSpeed;
                 if (!focusCharacter.IsBlockable())
                 {
                     if (enemy.attackType != AttackType.Range) focusCharacter.blockedEnemy.Remove(this);
@@ -117,7 +127,11 @@ public class EnemyController : EntityController,IPlayerClickable
                             entityState = EntityState.ATTACK;
                             if(animator != null) animator.SetTrigger("LAttack");
                         }
-                        else entityState = EntityState.MOVE;
+                        else
+                        {
+                            agent.speed = enemy.walkbackSpeed;
+                            entityState = EntityState.MOVE;
+                        }
                     }
                 }
                 break;
@@ -200,11 +214,13 @@ public class EnemyController : EntityController,IPlayerClickable
 
     public override bool Attack(EntityController player)
     {
+        enemy.AfterAttack();
         return player.TakeDamage(enemy.GetAttack(),enemy.attackType);
     }
 
     public bool AttackFocus()
     {
+        enemy.AfterAttack();
         if (enemy.isInAttackRange(focusCharacter.transform.position)) return focusCharacter.TakeDamage(enemy.GetAttack(),enemy.attackType);
         else return false;
     }

@@ -18,6 +18,7 @@ public class Enemy : Entity
             if (attackCooldownCount >= attackCooldownPeriod)
             {
                 isAttackCooldown = false;
+                isAttackable = true;
                 entityController.AfterAttack();
             }
         }
