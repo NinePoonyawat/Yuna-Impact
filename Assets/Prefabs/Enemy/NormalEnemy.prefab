@@ -1264,6 +1264,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   entityState: 0
+  isStun: 0
   statusController: {fileID: 3506070314536468185}
   agent: {fileID: 5885452641415626851}
   entityTransform: {fileID: 5885452641415626863}
