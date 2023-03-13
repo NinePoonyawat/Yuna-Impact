@@ -166,7 +166,7 @@ public class PlayerController : EntityController
                 {
                     if (!playableCharacter.isInAttackRange(focusEnemy.transform.position))
                     {
-                        agent.SetDestination(focusEnemy.transform.position);
+                        //agent.SetDestination(focusEnemy.transform.position);
                         entityState = EntityState.MOVE;
                     }
                     else
@@ -215,6 +215,7 @@ public class PlayerController : EntityController
                 }
                 else if (playableCharacter.isInAttackRange(focusEnemy.transform.position) && playableCharacter.isAttackable && !isPlayerMoving)
                 {
+                    agent.SetDestination(this.transform.position);
                     if(animator != null) animator.SetTrigger("Attack1");
                     entityState = EntityState.ATTACK;
                 }
