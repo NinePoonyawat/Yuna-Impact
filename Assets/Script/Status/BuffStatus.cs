@@ -21,9 +21,11 @@ public class BuffStatus : Status
         if(entity == null) entity = gameObject.GetComponent<Entity>();
     }
 
-    public void SetUp(int duration,int newBuffAttack,int newBuffDefense,bool isPercentage)
+    public void SetUp(int duration,int newBuffAttack,int newBuffDefense,bool isPercentage,Entity newEntity,EntityController newEntityController)
     {
-        if (entity == null) entity = gameObject.GetComponent<Entity>();
+        entityController = newEntityController;
+        statusController = entityController.statusController;
+        entity = newEntity;
         buffAttack = (isPercentage)? (entity.attack * newBuffAttack) / 100 : newBuffAttack;
         buffDefense = (isPercentage)? (entity.defense * newBuffDefense) / 100 : newBuffDefense;
         entity.buffedAttack += buffAttack;

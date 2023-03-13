@@ -36,6 +36,7 @@ public abstract class Status : MonoBehaviour
 
     public void StartStatus(float duration)
     {
+        statusController.AddStatus(this);
         statusPeriod = duration;
         statusCount = 0;
     }

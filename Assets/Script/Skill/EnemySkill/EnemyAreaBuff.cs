@@ -5,6 +5,7 @@ using UnityEngine;
 public class EnemyAreaBuff : EnemySkill
 {
     [Header ("Skill Data")]
+    public GameObject buffPrefab;
     public float effectRadius;
     public int buffDuration;
     public int buffAttack;
@@ -22,9 +23,9 @@ public class EnemyAreaBuff : EnemySkill
             Enemy toBuff = collider.GetComponent<Enemy>();
             if (toBuff != null)
             {
-                BuffStatus status = collider.gameObject.AddComponent<BuffStatus>();
-                status = (BuffStatus) toBuff.entityController.statusController.AddStatus(status);
-                status.SetUp(buffDuration,buffAttack,buffDefense,isPercentage);
+                GameObject GO = Instantiate(buffPrefab,toBuff.transform);
+                BuffStatus status = GO.GetComponent<BuffStatus>();
+                status.SetUp(buffDuration,buffAttack,buffDefense,isPercentage,toBuff,toBuff.entityController);
             }
         }
     }
