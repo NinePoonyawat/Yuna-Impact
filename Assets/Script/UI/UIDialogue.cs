@@ -8,18 +8,24 @@ using System;
 
 public class UIDialogue : MonoBehaviour
 {
+    public string nextScene;
+
     [Serializable]
     public struct Dialogue
     {
+        public int idx;
         public string name;
         [TextArea(3, 10)]
         public string sentence;
         public int setSprite;
     }
 
+    [Header ("Visualize")]
     public GameObject CanvasBox;
     public TMP_Text nameText;
     public TMP_Text dialogueText;
+    public Image[] sprites;
+    public Color[] colors;
 
     public Queue<Dialogue> dialogueQueue;
     public Dialogue[] dialogues;
@@ -37,7 +43,7 @@ public class UIDialogue : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Space) || Input.GetMouseButtonDown(0))
         {
             DisplayNextSentence(characters);
         }
@@ -67,7 +73,8 @@ public class UIDialogue : MonoBehaviour
             tmp = line.Split(new string[] {"--"}, StringSplitOptions.None);
             
             Dialogue dialogue = new Dialogue();
-            dialogue.name = tmp[0];
+            dialogue.idx = int.Parse(tmp[0]) - 1;
+            dialogue.name = characters[dialogue.idx];
             dialogue.setSprite = int.Parse(tmp[1]);
             dialogue.sentence = tmp[2];
             dialogues[idx++] = dialogue;
@@ -99,8 +106,15 @@ public class UIDialogue : MonoBehaviour
         
         nameText.text = dialogue.name;
         string sentence = dialogue.sentence;
+
         StopAllCoroutines();
         StartCoroutine(TypeSentence(sentence));
+
+        for (int idx = 0; idx < sprites.Length; idx++)
+        {
+            if (idx == dialogue.idx) sprites[idx].color = colors[0];
+            else sprites[idx].color = colors[1];
+        }
     }
 
     IEnumerator TypeSentence (string sentence)
@@ -115,6 +129,12 @@ public class UIDialogue : MonoBehaviour
 
     void EndDialogue()
     {
-        SceneManager.LoadScene("Lobby");
+        StartCoroutine(SwitchScene());
+    }
+
+    IEnumerator SwitchScene()
+    {
+        yield return new WaitForSeconds(2f);
+        SceneManager.LoadScene(nextScene);
     }
 }

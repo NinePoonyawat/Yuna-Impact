@@ -4,20 +4,29 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
-public class UILobby : MonoBehaviour
+public class UIInfo : MonoBehaviour
 {
-    public CharacterProfile[] characterProfiles;
+    public int page;
+
+    [Header ("Character Info")]
     public GameObject characterPanel;
+    public CharacterProfile[] characterProfiles;
     public Button[] skillIcons;
     public UISkillDescription skillPanel;
+    public Animator characterAnim;
 
     int characterIdx = -1;
     int skillIdx = -1;
 
+    [Header ("Enemy Info")]
+    public Animator enemyPanel;
+
+    [Header ("Map Info")]
+    public Animator mapPanel;
+
     void Awake()
     {
         CloseCharacterPanel();
-        skillPanel.HideUI();
 
         skillIcons = characterPanel.GetComponentsInChildren<Button>();
     }
@@ -52,9 +61,53 @@ public class UILobby : MonoBehaviour
         }
     }
 
+    public void Next()
+    {
+        SetPage(true);
+    }
+
+    public void Back()
+    {
+        SetPage(false);
+    }
+
+    void SetPage(bool next)
+    {
+        if (page == 3)
+        {
+            characterAnim.SetTrigger("Hide");
+            CloseCharacterPanel();
+        }
+        if (page == 2)
+        {
+            enemyPanel.SetTrigger("Hide");
+        }
+        if (page == 1)
+        {
+            mapPanel.SetTrigger("Hide");
+        }
+
+        if (!next && page > 0) page--;
+        if (next) page++;
+
+        if (page == 3)
+        {
+            characterAnim.SetTrigger("Appear");
+        }
+        if (page == 2)
+        {
+            enemyPanel.SetTrigger("Appear");
+        }
+        if (page == 1)
+        {
+            mapPanel.SetTrigger("Appear");
+        }
+    }
+
     void CloseCharacterPanel()
     {
         characterPanel.SetActive(false);
+        skillPanel.HideUI();
     }
 
     void UpdateCharacterPanel(int idx)

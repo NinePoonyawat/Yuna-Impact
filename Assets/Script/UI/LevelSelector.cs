@@ -5,10 +5,9 @@ using UnityEngine.SceneManagement;
 
 public class LevelSelector : MonoBehaviour
 {
-    public void PlayScene()
-    {
-        SceneManager.LoadScene("Street01");
-    }
+    public string nextScene;
+
+    public Animator CharacterInfo;
 
     public void Exit()
 	{
