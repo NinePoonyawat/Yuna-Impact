@@ -21,6 +21,7 @@ public class EnemyController : EntityController,IPlayerClickable
     {
         enemy = gameObject.GetComponent<Enemy>();
         gameController = GameObject.Find("GameLogic").GetComponent<GameController>();
+        statusController = GetComponent<StatusController>();
         uiEnemy = GetComponentInChildren<UIEnemyProfile>();
         animator = GetComponentInChildren<Animator>();
         if (main == null) main = transform.parent.gameObject;
