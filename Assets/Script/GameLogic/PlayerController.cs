@@ -55,6 +55,7 @@ public class PlayerController : EntityController
     void Update()
     {
         if (entityState == EntityState.DEAD) return;
+        if (isStun) return;
         UpdateDirection();
 
         if (isPlayerMoving) UpdatePlayerClickMoving();
@@ -167,6 +168,7 @@ public class PlayerController : EntityController
                     if (!playableCharacter.isInAttackRange(focusEnemy.transform.position))
                     {
                         //agent.SetDestination(focusEnemy.transform.position);
+                        if(animator != null) animator.SetBool("isWalk",true);
                         entityState = EntityState.MOVE;
                     }
                     else
@@ -181,8 +183,11 @@ public class PlayerController : EntityController
                 if (focusEnemy != null)
                 {
                     if(isTaking) gameController.SetNewTarget(focusEnemy);
-                    if(animator != null) animator.SetBool("isWalk",true);
-                    if(!playableCharacter.isInAttackRange(focusEnemy.transform.position)) entityState = EntityState.MOVE;
+                    if(!playableCharacter.isInAttackRange(focusEnemy.transform.position))
+                    {
+                        if(animator != null) animator.SetBool("isWalk",true);
+                        entityState = EntityState.MOVE;
+                    }
                     else
                     {
                         if(animator != null) animator.SetTrigger("Attack1");
@@ -215,6 +220,7 @@ public class PlayerController : EntityController
                 }
                 else if (playableCharacter.isInAttackRange(focusEnemy.transform.position) && playableCharacter.isAttackable && !isPlayerMoving)
                 {
+                    if(animator != null) animator.SetBool("isWalk",false);
                     agent.SetDestination(this.transform.position);
                     if(animator != null) animator.SetTrigger("Attack1");
                     entityState = EntityState.ATTACK;
@@ -329,6 +335,12 @@ public class PlayerController : EntityController
     {
         if (focusEnemy == null) return;
         focusEnemy.TakeDamage(playableCharacter.GetAttack(),playableCharacter.attackType);
+    }
+
+    public void CallAttackFocus()
+    {
+        if (focusEnemy == null) return;
+        playableCharacter.CallAttack(focusEnemy);
     }
 
     public bool Targetable(EnemyController enemy)

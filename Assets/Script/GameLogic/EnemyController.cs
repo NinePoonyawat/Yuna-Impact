@@ -39,6 +39,8 @@ public class EnemyController : EntityController,IPlayerClickable
     // Update is called once per frame
     void Update()
     {
+        if (isStun) return;
+        
         foreach(var skill in skills)
         {
             if (skill.AICalculate() > 0)
@@ -107,6 +109,7 @@ public class EnemyController : EntityController,IPlayerClickable
                 }
                 else if (enemy.isInAttackRange(focusCharacter.transform.position) && enemy.isAttackable)
                 {
+                    agent.SetDestination(this.transform.position);
                     entityState = EntityState.ATTACK;
                     if (enemy.attackType != AttackType.Range) focusCharacter.blockedEnemy.Add(this);
                     if(animator != null) animator.SetTrigger("LAttack");
@@ -122,15 +125,18 @@ public class EnemyController : EntityController,IPlayerClickable
                 {
                     if (enemy.isAttackable)
                     {
+                        Debug.Log("enter0");
                         agent.speed = enemy.defaultSpeed;
                         if (enemy.isInAttackRange(focusCharacter.transform.position))
                         {
+                            agent.SetDestination(this.transform.position);
                             entityState = EntityState.ATTACK;
+                            Debug.Log("enter1");
                             if(animator != null) animator.SetTrigger("LAttack");
                         }
                         else
                         {
-                            agent.speed = enemy.walkbackSpeed;
+                            Debug.Log("enter2");
                             entityState = EntityState.MOVE;
                         }
                     }
@@ -193,10 +199,10 @@ public class EnemyController : EntityController,IPlayerClickable
                         break;
                     }
                 }
-                gameController.DeleteEnemy(this,currentArea);
-                Destroy(main);
-                return true;
             }
+            gameController.DeleteEnemy(this,currentArea);
+            Destroy(main);
+            return true;
         }
         uiEnemy.UpdateHPBar(enemy.GetStatusValue());
         spriteFacingCam.TakeDamage();

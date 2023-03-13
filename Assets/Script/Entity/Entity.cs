@@ -63,7 +63,7 @@ public abstract class Entity : MonoBehaviour
             if (Attack(toAttack)) return true;
             AfterAttack();
         }
-        else
+        else if (attackType == AttackType.Range)
         {
             GameObject GO = Instantiate(GetPrefab(),transform.position,Quaternion.identity,gameController.projectileRoot) as GameObject;
             Projectile projectile = GO.GetComponent<Projectile>();
