@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Absinthe
   m_EditorClassIdentifier: 
   name: Reynard Absinthe
-  icon: {fileID: 21300000, guid: ea2d221ce74c2da4fb665387d73c3df8, type: 3}
+  icon: {fileID: 21300000, guid: f414dd49d595c4f47ab4d96797e9d073, type: 3}
   description: 'Weapon : Gun
 
     ATK : 15

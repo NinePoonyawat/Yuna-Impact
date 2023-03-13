@@ -16,6 +16,7 @@ public class EnemyController : EntityController,IPlayerClickable
     [SerializeField] private Animator animator;
 
     [SerializeField] private UIEnemyProfile uiEnemy;
+    [SerializeField] private SpriteFacingCam spriteFacingCam;
 
     public void Awake()
     {
@@ -23,6 +24,7 @@ public class EnemyController : EntityController,IPlayerClickable
         gameController = GameObject.Find("GameLogic").GetComponent<GameController>();
         uiEnemy = GetComponentInChildren<UIEnemyProfile>();
         animator = GetComponentInChildren<Animator>();
+        spriteFacingCam = GetComponent<SpriteFacingCam>();
         if (main == null) main = transform.parent.gameObject;
     }
 
@@ -197,6 +199,7 @@ public class EnemyController : EntityController,IPlayerClickable
             }
         }
         uiEnemy.UpdateHPBar(enemy.GetStatusValue());
+        spriteFacingCam.TakeDamage();
         return false;
     }
 
