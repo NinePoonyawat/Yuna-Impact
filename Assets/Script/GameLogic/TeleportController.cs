@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TeleportController : MonoBehaviour
+public class TeleportController : MonoBehaviour,IPlayerClickable
 {
     public int startAreaIdx;
     public int destinateAreaIdx;
@@ -12,6 +12,12 @@ public class TeleportController : MonoBehaviour
     public Transform destinateTransform;
 
     public bool isHighGround = false;
+
+    public void click(PlayerController playerController)
+    {
+        playerController.focusTeleport = this;
+        playerController.SetEntityState(EntityState.MOVETOTELEPORT);
+    }
 
     public bool Teleport(EntityController entity)
     {

@@ -17,7 +17,7 @@ public class PlayerController : EntityController
     private float AIvision = 5f;
     public EnemyController focusEnemy;
     public List<EnemyController> blockedEnemy;
-    private TeleportController focusTeleport;
+    public TeleportController focusTeleport;
     [SerializeField] private Animator animator;
 
     [SerializeField] private UIController uiController;
@@ -39,7 +39,7 @@ public class PlayerController : EntityController
         animator = GetComponentInChildren<Animator>();
         skills = GetComponents<PlayerSkill>();
 
-        layerClickMask = LayerMask.GetMask("Entity");
+        layerClickMask = LayerMask.GetMask("Entity","PlayerClickable");
     }
 
     void Start()
@@ -166,7 +166,7 @@ public class PlayerController : EntityController
                 {
                     if (!playableCharacter.isInAttackRange(focusEnemy.transform.position))
                     {
-                        agent.SetDestination(focusEnemy.transform.position);
+                        //agent.SetDestination(focusEnemy.transform.position);
                         entityState = EntityState.MOVE;
                     }
                     else
@@ -215,6 +215,7 @@ public class PlayerController : EntityController
                 }
                 else if (playableCharacter.isInAttackRange(focusEnemy.transform.position) && playableCharacter.isAttackable && !isPlayerMoving)
                 {
+                    agent.SetDestination(this.transform.position);
                     if(animator != null) animator.SetTrigger("Attack1");
                     entityState = EntityState.ATTACK;
                 }
@@ -276,6 +277,12 @@ public class PlayerController : EntityController
 
             if (Physics.Raycast(ray,out hit,999f,layerClickMask))
             {
+                IPlayerClickable playerClick = hit.transform.GetComponent<IPlayerClickable>();
+                if (playerClick != null)
+                {
+                    playerClick.click(this);
+                }
+                
                 EnemyController enim = hit.transform.GetComponent<EnemyController>();
                 if (enim == null)
                 {
