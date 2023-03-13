@@ -16,9 +16,11 @@ public class AoeSkill : PlayerSkill
     {
         SetCooldown();
 
+        Debug.Log("YES");
         List<EnemyController> characters = gameController.FindAllNearestEnemy(transform.position, range);
         foreach(EnemyController target in characters)
         {
+            Debug.Log(target);
             target.TakeDamage(damage, damageType);
         }
         

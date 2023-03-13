@@ -47,5 +47,5 @@ MonoBehaviour:
   statusController: {fileID: 0}
   isStackable: 0
   statusName: Buff
-  sprite: {fileID: 0}
+  sprite: {fileID: 21300000, guid: bbf296f476e918c44913809be9e16cc6, type: 3}
   entity: {fileID: 0}

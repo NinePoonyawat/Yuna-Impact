@@ -4,14 +4,14 @@ using UnityEngine;
 
 public abstract class Status : MonoBehaviour
 {
+    public string statusName;
+    public Sprite sprite;
 
     protected EntityController entityController;
     public StatusController statusController;
     public bool isStackable;
-    public string statusName;
     protected float statusPeriod = 0f;
     protected float statusCount = -10f;
-    public Sprite sprite;
 
     protected virtual void Start()
     {
