@@ -9,18 +9,27 @@ EditorBuildSettings:
     path: 
     guid: 00000000000000000000000000000000
   - enabled: 1
-    path: Assets/Scene/Lobby.unity
-    guid: 9ea78383bc375984f80b0ab18a56f15e
-  - enabled: 1
-    path: Assets/Scene/Street01.unity
-    guid: 5a7ee5a3d80ef394b8c532eaad617083
-  - enabled: 1
-    path: Assets/Scene/Stage1Dialogue.unity
-    guid: 7e813ef209bd21c45a2e513c277c9ebc
+    path: Assets/Scene/StartMenu.unity
+    guid: bc9e105b5fd2ff649b472d16a1e8a356
   - enabled: 1
     path: Assets/Scene/StartDialogue.unity
     guid: 221035e146f83014eaab892361666034
   - enabled: 1
-    path: Assets/Scene/StartMenu.unity
-    guid: bc9e105b5fd2ff649b472d16a1e8a356
+    path: Assets/Scene/Lobby.unity
+    guid: 9ea78383bc375984f80b0ab18a56f15e
+  - enabled: 1
+    path: Assets/Scene/Stage1Dialogue.unity
+    guid: 7e813ef209bd21c45a2e513c277c9ebc
+  - enabled: 1
+    path: Assets/Scene/Stage2Dialogue.unity
+    guid: 24c53c052be163d47b02d8d0da548429
+  - enabled: 1
+    path: Assets/Scene/Stage3Dialogue.unity
+    guid: 5c7946b774004de459e9e572caea9ce6
+  - enabled: 1
+    path: Assets/Scene/Stage4Dialogue.unity
+    guid: 6bfa0e8f95d7d3c4ea1f8cf148876706
+  - enabled: 1
+    path: Assets/Scene/Street01.unity
+    guid: 5a7ee5a3d80ef394b8c532eaad617083
   m_configObjects: {}

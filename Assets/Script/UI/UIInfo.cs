@@ -7,7 +7,7 @@ using TMPro;
 
 public class UIInfo : MonoBehaviour
 {
-    public string nextScene;
+    public string[] nextScene;
 
     public int page;
 
@@ -18,8 +18,16 @@ public class UIInfo : MonoBehaviour
     public UISkillDescription skillPanel;
     public Animator characterAnim;
 
+    [Header ("Button")]
+    public GameObject[] stageButtons;
+    public GameObject backButton;
+    public GameObject nextButton;
+    public GameObject startButton;
+    public TMP_Text countText;
+
     int characterIdx = -1;
     int skillIdx = -1;
+    int stageIdx;
 
     [Header ("Enemy Info")]
     public Animator enemyPanel;
@@ -29,9 +37,12 @@ public class UIInfo : MonoBehaviour
 
     void Awake()
     {
-        CloseCharacterPanel();
-
         skillIcons = characterPanel.GetComponentsInChildren<Button>();
+
+        CloseCharacterPanel();
+        startButton.SetActive(false);
+        backButton.SetActive(false);
+        nextButton.SetActive(false);
     }
 
     public void ToggleCharacter(int idx)
@@ -74,40 +85,67 @@ public class UIInfo : MonoBehaviour
         SetPage(false);
     }
 
+    public void ChooseStage(int idx)
+    {
+        stageIdx = idx;
+        SetPage(true);
+    }
+
     void SetPage(bool next)
     {
+        if (page == 0)
+        {
+            foreach (GameObject button in stageButtons)
+            {
+                button.SetActive(false);
+            }
+            characterAnim.SetTrigger("Appear");
+        }
         if (page == 1)
         {
-            mapPanel.SetTrigger("Hide");
+            
         }
         if (page == 2)
         {
-            enemyPanel.SetTrigger("Hide");
+            mapPanel.SetTrigger("Hide");
         }
         if (page == 3)
         {
-            characterAnim.SetTrigger("Hide");
-            CloseCharacterPanel();
+            //enemyPanel.SetTrigger("Hide");
         }
 
         if (!next && page > 0) page--;
         if (next) page++;
 
+        if (page == 0)
+        {
+            foreach (GameObject button in stageButtons)
+            {
+                button.SetActive(true);
+            }
+            nextButton.SetActive(false);
+            backButton.SetActive(false);
+            characterAnim.SetTrigger("Hide");
+            CloseCharacterPanel();
+        }
         if (page == 1)
         {
-            mapPanel.SetTrigger("Appear");
+            nextButton.SetActive(true);
         }
         if (page == 2)
         {
-            enemyPanel.SetTrigger("Appear");
+            backButton.SetActive(true);
+            mapPanel.SetTrigger("Appear");
+            startButton.SetActive(false);
         }
         if (page == 3)
         {
-            characterAnim.SetTrigger("Appear");
+            enemyPanel.SetTrigger("Appear");
+            startButton.SetActive(true);
         }
         if (page == 4)
         {
-            SceneManager.LoadScene(nextScene);
+            StartStage();
         }
     }
 
@@ -136,5 +174,21 @@ public class UIInfo : MonoBehaviour
                 skillIcons[i].gameObject.SetActive(false);
             }
         }
+    }
+
+    public void StartStage()
+    {
+        StartCoroutine(SwitchScene());
+    }
+
+    IEnumerator SwitchScene()
+    {
+        for (int time = 3; time >= 0; time--)
+        {
+            yield return new WaitForSeconds(1f);
+            countText.text = time.ToString();
+        }
+        yield return new WaitForSeconds(0.5f);
+        SceneManager.LoadScene(nextScene[stageIdx]);
     }
 }
