@@ -18,7 +18,6 @@ public class StatusController : MonoBehaviour
 
     public Status AddStatus(Status status)
     {
-        statuses.Add(status);
         if (!status.isStackable)
         {
             foreach (var member in statuses)
@@ -30,6 +29,8 @@ public class StatusController : MonoBehaviour
                 }
             }
         }
+        statuses.Add(status);
+        Debug.Log("enter");
         UpdateUI();
 
         return status;

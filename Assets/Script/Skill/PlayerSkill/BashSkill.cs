@@ -8,6 +8,7 @@ public class BashSkill : PlayerSkill
     public int damage = 1;
     public float range = 1.5f;
     public AttackType damageType;
+    public GameObject statusPf;
     
     [Header ("Indicator")]
     public GameObject rangeIndicator;
@@ -20,6 +21,17 @@ public class BashSkill : PlayerSkill
         if (target != null)
         {
             target.TakeDamage(damage, damageType);
+            if (statusPf != null)
+            {
+                GameObject GO = Instantiate(statusPf,target.transform);
+                Status status = GO.GetComponent<Status>();
+                switch (status.GetType().Name)
+                {
+                    case ("StunStatus") :
+                        ((StunStatus) status).Setting(3,target);
+                        break;
+                }
+            }
             target = null;
         }
         rangeIndicator.SetActive(false);

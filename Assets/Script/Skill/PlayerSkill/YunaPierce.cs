@@ -35,8 +35,8 @@ public class YunaPierce : PlayerSkill
                 GameObject GO = Instantiate(bleedingPf,target.transform);
                 BleedingStatus status = GO.GetComponent<BleedingStatus>();
                 // BleedingStatus status = target.gameObject.AddComponent<BleedingStatus>();
+                status.SetUp(bleedingDamage,bleedingPeriod,bleedingDuration,target);
                 target.statusController.AddStatus(status);
-                status.SetUp(bleedingDamage,bleedingPeriod,bleedingDuration);
             }
         }
         skillIndicator.SetActive(false);

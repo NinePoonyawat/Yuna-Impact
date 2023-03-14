@@ -1558,7 +1558,7 @@ MonoBehaviour:
   isActivatable: 1
   damage: 50
   range: 1.5
-  damageType: 0
+  damageType: 2
   rangeIndicator: {fileID: 8318417672727585279}
   targetIndicator: {fileID: 8318417671552517363}
   target: {fileID: 0}

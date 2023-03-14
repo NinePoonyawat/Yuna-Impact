@@ -30,10 +30,12 @@ public class ContinuousDamageStatus : Status
         damagePeriod = newDamagePeriod;
     }
 
-    public void SetUp(int newDamage,float newDamagePeriod,float duration)
+    public void SetUp(int newDamage,float newDamagePeriod,float duration,EntityController newEntityController)
     {
-        StartStatus(duration);
+        entityController = newEntityController;
+        statusController = entityController.statusController;
         damage = newDamage;
         damagePeriod = newDamagePeriod;
+        StartStatus(duration);
     }
 }

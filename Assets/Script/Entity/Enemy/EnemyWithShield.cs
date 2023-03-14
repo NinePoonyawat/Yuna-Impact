@@ -30,7 +30,6 @@ public class EnemyWithShield : Enemy
             {
                 shieldCurrentHp -= damage;
                 if (shieldCurrentHp <= 0) ShieldBreak();
-                Debug.Log("Pass");
                 return false;
             }
         }
@@ -41,8 +40,9 @@ public class EnemyWithShield : Enemy
     {
         isShieldActivate = false;
         shield.SetActive(false);
-        GameObject GO = Instantiate(stunPrefab,transform);
+        GameObject GO = Instantiate(stunPrefab,transform) as GameObject;
         StunStatus stunStatus = GO.GetComponent<StunStatus>();
+        Debug.Log(stunStatus);
         stunStatus.Setting(stunDuration,entityController);
     }
 }

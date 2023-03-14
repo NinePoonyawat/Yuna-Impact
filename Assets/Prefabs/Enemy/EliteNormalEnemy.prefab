@@ -96,7 +96,7 @@ GameObject:
   - component: {fileID: 5885452641415626863}
   - component: {fileID: 5885452641415626851}
   m_Layer: 6
-  m_Name: NormalEnemy
+  m_Name: EliteNormalEnemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -581,12 +581,12 @@ PrefabInstance:
     - target: {fileID: -1915221433328328581, guid: ad323d76251eb2c4eb5b11690025146b,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: -1441264184804785857, guid: ad323d76251eb2c4eb5b11690025146b,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: -953401465320447754, guid: ad323d76251eb2c4eb5b11690025146b,
         type: 3}
@@ -1237,14 +1237,14 @@ MonoBehaviour:
   entityController: {fileID: 9119632072732258340}
   healthController: {fileID: 7977949485025700240}
   manaController: {fileID: 3909182185520037578}
-  attack: 10
+  attack: 15
   defense: 0
   buffedAttack: 0
   buffedDefense: 0
   attackRange: 2
   defaultSpeed: 2.5
   walkbackSpeed: 0.5
-  attackPeriod: 5
+  attackPeriod: 3.5
   isAttackable: 0
   attackType: 0
   projectilePf: {fileID: 0}
@@ -1263,7 +1263,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fda819de3e9605242a4f018b146b2f83, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  entityState: 0
+  entityState: 1
   isStun: 0
   statusController: {fileID: 3506070314536468185}
   agent: {fileID: 5885452641415626851}

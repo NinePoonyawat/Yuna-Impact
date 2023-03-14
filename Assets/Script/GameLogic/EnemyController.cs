@@ -21,9 +21,9 @@ public class EnemyController : EntityController,IPlayerClickable
     {
         enemy = gameObject.GetComponent<Enemy>();
         gameController = GameObject.Find("GameLogic").GetComponent<GameController>();
-        statusController = GetComponent<StatusController>();
         uiEnemy = GetComponentInChildren<UIEnemyProfile>();
         animator = GetComponentInChildren<Animator>();
+        statusController = GetComponent<StatusController>();
         if (main == null) main = transform.parent.gameObject;
     }
 
@@ -131,6 +131,7 @@ public class EnemyController : EntityController,IPlayerClickable
                             agent.SetDestination(this.transform.position);
                             entityState = EntityState.ATTACK;
                             if(animator != null) animator.SetTrigger("LAttack");
+                            UpdateAttackPosition(focusCharacter.transform.position);
                         }
                         else
                         {
@@ -196,6 +197,13 @@ public class EnemyController : EntityController,IPlayerClickable
         if (enemy.isInAttackRange(focusCharacter.transform.position)) return focusCharacter.TakeDamage(enemy.GetAttack(),enemy.attackType);
         else return false;
     }
+
+    public void CallAttackFocus()
+    {
+        if (focusCharacter == null) return;
+        enemy.CallAttack(focusCharacter);
+    }
+
 
     public override void SetCurrentArea(int newArea)
     {

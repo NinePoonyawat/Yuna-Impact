@@ -21,9 +21,11 @@ public abstract class Status : MonoBehaviour
 
     protected virtual void Update()
     {
+        Debug.Log("update");
         statusCount += Time.deltaTime;
         if (statusCount >= statusPeriod)
         {
+            Debug.Log("called");
             StatusEnd();
         }
     }
@@ -31,7 +33,7 @@ public abstract class Status : MonoBehaviour
     public virtual void StatusEnd()
     {
         statusController.RemoveStatus(this);
-        Destroy(this);
+        Destroy(gameObject);
     }
 
     public void StartStatus(float duration)

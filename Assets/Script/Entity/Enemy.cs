@@ -12,16 +12,16 @@ public class Enemy : Entity
     public override void Update()
     {
         base.Update();
-        if (attackCooldownCount <= attackCooldownPeriod)
-        {
-            attackCooldownCount += Time.deltaTime;
-            if (attackCooldownCount >= attackCooldownPeriod)
-            {
-                isAttackCooldown = false;
-                isAttackable = true;
-                entityController.AfterAttack();
-            }
-        }
+        // if (attackCooldownCount <= attackCooldownPeriod)
+        // {
+        //     attackCooldownCount += Time.deltaTime;
+        //     if (attackCooldownCount >= attackCooldownPeriod)
+        //     {
+        //         isAttackCooldown = false;
+        //         isAttackable = true;
+        //         entityController.AfterAttack();
+        //     }
+        // }
     }
 
     public override bool CallAttack(EntityController toAttack)

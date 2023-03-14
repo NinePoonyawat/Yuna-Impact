@@ -11,11 +11,13 @@ public class StunStatus : Status
         base.StatusEnd();
     }
 
-    public void Setting(float duration,EntityController entityController)
+    public void Setting(float duration,EntityController newEntityController)
     {
         statusPeriod = duration;
         statusCount = 0;
-        SetEntity(entityController);
+        entityController = newEntityController;
+        statusController = entityController.statusController;
+        StartStatus(duration);
         entityController.isStun = true;
     }
 }

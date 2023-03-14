@@ -17,8 +17,8 @@ public abstract class Entity : MonoBehaviour
     public int buffedAttack = 0;
     public int buffedDefense = 0;
     public float attackRange;
-    public float defaultSpeed = 3.5f;
-    public float walkbackSpeed = 1f;
+    public float defaultSpeed = 2.5f;
+    public float walkbackSpeed = 0.25f;
 
     [SerializeField] protected float attackPeriod = 1.5f;
     protected float attackCount;
