@@ -111,7 +111,7 @@ public class UIInfo : MonoBehaviour
         }
         if (page == 3)
         {
-            //enemyPanel.SetTrigger("Hide");
+            enemyPanel.SetTrigger("Hide");
         }
 
         if (!next && page > 0) page--;
