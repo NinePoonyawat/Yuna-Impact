@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class StunStatus : Status
 {
+
     public override void StatusEnd()
     {
         entityController.isStun = false;

@@ -16,8 +16,6 @@ public abstract class Status : MonoBehaviour
     protected virtual void Start()
     {
         entityController = gameObject.GetComponentInParent<EntityController>();
-        Debug.Log(entityController);
-        Debug.Log(entityController.statusController);
         statusController = entityController.statusController;
     }
 

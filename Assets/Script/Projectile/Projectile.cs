@@ -10,12 +10,23 @@ public class Projectile : MonoBehaviour
     public GameObject effectPrefab;
 
     protected Vector3 entityPosition;
+    protected bool isSkillCalling = false;
+    public ISkillProjectile skill;
 
     public void SetUp(EntityController newCaller,EntityController newDestination,float newSpeed)
     {
         caller = newCaller;
         destination = newDestination;
         speed = newSpeed;
+    }
+
+    public void SetUp(EntityController newCaller,EntityController newDestination,float newSpeed,ISkillProjectile newSkillCalling)
+    {
+        caller = newCaller;
+        destination = newDestination;
+        speed = newSpeed;
+        isSkillCalling = true;
+        skill = newSkillCalling;
     }
 
     // Update is called once per frame
@@ -30,8 +41,16 @@ public class Projectile : MonoBehaviour
         transform.position = Vector3.MoveTowards(transform.position,entityPosition,speed * Time.deltaTime);
         if (Mathf.Abs(Vector3.Distance(entityPosition,transform.position)) <= 0.001f)
         {
-            caller.Attack(destination);
-            Hit();
+            if(isSkillCalling)
+            {
+                skill.Hit(destination);
+                Destroy(gameObject);
+            }
+            else
+            {
+                caller.Attack(destination);
+                Hit();
+            }
         }
     }
 

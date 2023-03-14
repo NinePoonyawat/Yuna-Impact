@@ -336,6 +336,11 @@ public class PlayerController : EntityController
         return enemy.TakeDamage(playableCharacter.GetAttack(),playableCharacter.attackType);
     }
 
+    public bool Attack(EntityController enemy,int damage,AttackType attackType)
+    {
+        return enemy.TakeDamage(damage,attackType);
+    }
+
     public void AttackFocus()
     {
         if (focusEnemy == null) return;
