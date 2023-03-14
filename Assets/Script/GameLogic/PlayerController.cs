@@ -260,6 +260,10 @@ public class PlayerController : EntityController
                     if(animator != null) animator.SetBool("isWalk",false);
                     entityState = EntityState.IDLE;
                 }
+                else
+                {
+                    if(animator != null) animator.SetBool("isWalk",true);
+                }
                 break;                
         }
     }

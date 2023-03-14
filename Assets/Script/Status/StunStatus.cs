@@ -7,7 +7,7 @@ public class StunStatus : Status
 
     public override void StatusEnd()
     {
-        entityController.isStun = false;
+        entityController.SetStun(false);
         base.StatusEnd();
     }
 
@@ -18,6 +18,6 @@ public class StunStatus : Status
         entityController = newEntityController;
         statusController = entityController.statusController;
         StartStatus(duration);
-        entityController.isStun = true;
+        entityController.SetStun(true);
     }
 }

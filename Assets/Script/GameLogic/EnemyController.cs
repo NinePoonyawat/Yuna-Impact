@@ -218,6 +218,20 @@ public class EnemyController : EntityController,IPlayerClickable
         playerController.isPlayerTarget = true;
     }
 
+    public override void SetStun(bool newStun)
+    {
+        if (newStun)
+        {
+            animator.SetTrigger("Stun");
+            isStun = newStun;
+        }
+        else
+        {
+            animator.SetTrigger("notStun");
+            isStun = newStun;
+        }
+    }
+
     public UIEnemyProfile GetProfile()
     {
         return uiEnemy;

@@ -65,6 +65,11 @@ public abstract class EntityController : MonoBehaviour
         isSilent = newSilent;
     }
 
+    public virtual void SetStun(bool newStun)
+    {
+        isStun = newStun;
+    }
+
     public EntityState GetEntityState()
     {
         return entityState;
