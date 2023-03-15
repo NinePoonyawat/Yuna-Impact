@@ -14,9 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: Crag Split
   icon: {fileID: 21300000, guid: 00bf0fdaa1081fb4ca589f1ddf282171, type: 3}
-  description: Deal 20 Damage to all enemies in range.
+  description: Deal 40 Damage to all enemies in range.
   targetType: 2
   duration: 0
   cooldown: 10
-  cost: 2
+  cost: 4
   damage: 0

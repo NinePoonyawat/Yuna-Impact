@@ -6,6 +6,7 @@ public class VFXManager : MonoBehaviour
 {
     [SerializeField] private GameObject effects;
     [SerializeField] private GameObject effects2;
+    [SerializeField] private GameObject[] VFXs;
     [SerializeField] private Transform point;
     [SerializeField] private bool onThis;
 
@@ -23,5 +24,12 @@ public class VFXManager : MonoBehaviour
 
         if (onThis) Instantiate(effects2, point.position, point.rotation, point);
         else Instantiate(effects2, point.position, point.rotation);
+    }
+
+    public void PlayVFX(int idx)
+    {
+        if (VFXs.Length <= idx || transform == null) return;
+
+        else Instantiate(VFXs[idx], point.position, Quaternion.identity);
     }
 }

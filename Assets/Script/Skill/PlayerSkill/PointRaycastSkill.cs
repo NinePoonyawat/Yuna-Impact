@@ -7,6 +7,7 @@ public abstract class PointRaycastSkill : PlayerSkill
     [Header ("Ability")]
     public AttackType damageType;
     public float range = 10f;
+    public GameObject effectPrefab;
     
     [Header ("Indicator")]
     public GameObject rangeIndicator;
@@ -20,6 +21,8 @@ public abstract class PointRaycastSkill : PlayerSkill
         {
             PointAt(target);
         }
+        if (effectPrefab != null) Instantiate(effectPrefab, target.transform.position, Quaternion.identity);
+        
         rangeIndicator.SetActive(false);
         targetIndicator.SetActive(false);
     }
@@ -30,6 +33,7 @@ public abstract class PointRaycastSkill : PlayerSkill
         RaycastHit hit;
 
         rangeIndicator.SetActive(true);
+        targetIndicator.SetActive(true);
 
         if (Physics.Raycast(ray, out hit, 999f, mask))
         {

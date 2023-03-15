@@ -1507,8 +1507,8 @@ MonoBehaviour:
   currentArea: 0
   playableCharacter: {fileID: 0}
   skills:
-  - {fileID: 8318417672304003878}
   - {fileID: 8318417672304003879}
+  - {fileID: 8318417672304003878}
   cam: {fileID: 0}
   focusEnemy: {fileID: 0}
   blockedEnemy: []
@@ -1530,7 +1530,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 987dfa5dedc0a1146a48fe91d66753b6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  profile: {fileID: 11400000, guid: 506da57efbd6e754a81adb866103a2b4, type: 2}
+  profile: {fileID: 11400000, guid: ad24673b9b7e7f0419c435c7157e2bd4, type: 2}
   cooldown: 0
   cooldownCount: 0
   isActivatable: 1
@@ -1552,7 +1552,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 58efa1aab99d71f4c858888069d34bfd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  profile: {fileID: 11400000, guid: ad24673b9b7e7f0419c435c7157e2bd4, type: 2}
+  profile: {fileID: 11400000, guid: 506da57efbd6e754a81adb866103a2b4, type: 2}
   cooldown: 0
   cooldownCount: 0
   isActivatable: 1

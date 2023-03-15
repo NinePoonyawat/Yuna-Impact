@@ -15,7 +15,9 @@ public class UIProfile : MonoBehaviour
     [Header ("Visualize")]
     [SerializeField] private TMP_Text characterName;
     [SerializeField] private Slider characterHPBar;
+    [SerializeField] private TMP_Text characterHPText;
     [SerializeField] private Slider characterSPBar;
+    [SerializeField] private TMP_Text characterSPText;
     [SerializeField] private UISkillIcon[] skillIcons;
     [SerializeField] private UISkillDescription skillPanel;
 
@@ -32,8 +34,10 @@ public class UIProfile : MonoBehaviour
 
         characterHPBar.maxValue = statusValue.getMaxHp();
         characterHPBar.value = statusValue.getHp();
+        characterHPText.text = statusValue.getHp().ToString() + " / " + statusValue.getMaxHp().ToString();
         characterSPBar.maxValue = statusValue.getMaxMp();
         characterSPBar.value = statusValue.getMp();
+        characterSPText.text = statusValue.getMp().ToString() + " / " + statusValue.getMaxMp().ToString();
 
         skills.Clear();
         for (int idx = 0; idx < skillIcons.Length; idx++)
@@ -60,6 +64,7 @@ public class UIProfile : MonoBehaviour
     void UpdateHPBar(int current, int max)
     {
         characterHPBar.value = current;
+        characterHPText.text = current.ToString() + " / " + max.ToString();
 
         currentHealth = current;
     }
@@ -67,6 +72,7 @@ public class UIProfile : MonoBehaviour
     void UpdateSPBar(int current, int max)
     {
         characterSPBar.value = current;
+        characterSPText.text = current.ToString() + " / " + max.ToString();
     }
 
     public void HoldSkill(int idx)
