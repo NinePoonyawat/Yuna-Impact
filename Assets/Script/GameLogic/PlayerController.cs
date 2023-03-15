@@ -178,11 +178,12 @@ public class PlayerController : EntityController
                         if(animator != null) animator.SetTrigger("Attack1");
                         entityState = EntityState.ATTACK;
                         UpdateAttackPosition(focusEnemy.transform.position);
+                        playableCharacter.AfterAttack();
                     }
                 }
                 break;
             case EntityState.IDLE :
-                if (!isPlayerTarget && !isTaking) focusEnemy = gameController.FindNearestEnemy(this.transform.position,currentArea,AIvision);
+                if (!isPlayerTarget) focusEnemy = gameController.FindNearestEnemy(this.transform.position,currentArea,AIvision);
                 if (focusEnemy != null)
                 {
                     if(isTaking) gameController.SetNewTarget(focusEnemy);
@@ -196,6 +197,7 @@ public class PlayerController : EntityController
                         if(animator != null) animator.SetTrigger("Attack1");
                         entityState = EntityState.ATTACK;
                         UpdateAttackPosition(focusEnemy.transform.position);
+                        playableCharacter.AfterAttack();
                     }
                 }
                 // else
@@ -228,6 +230,7 @@ public class PlayerController : EntityController
                     agent.SetDestination(this.transform.position);
                     if(animator != null) animator.SetTrigger("Attack1");
                     entityState = EntityState.ATTACK;
+                    playableCharacter.AfterAttack();
                     UpdateAttackPosition(focusEnemy.transform.position);
                 }
                 break;
@@ -249,6 +252,7 @@ public class PlayerController : EntityController
                         {
                             if(animator != null) animator.SetTrigger("Attack1");
                             entityState = EntityState.ATTACK;
+                            playableCharacter.AfterAttack();
                             UpdateAttackPosition(focusEnemy.transform.position);
                         }
                         else entityState = EntityState.MOVE;
@@ -302,7 +306,7 @@ public class PlayerController : EntityController
                 EnemyController enim = hit.transform.GetComponent<EnemyController>();
                 if (enim == null)
                 {
-                    enim = gameController.FindNearestEnemy(hit.transform.position,currentArea,0.3f);
+                    enim = gameController.FindNearestEnemy(hit.transform.position,currentArea,1f);
                 }
                 if (enim != null)
                 {
@@ -311,6 +315,18 @@ public class PlayerController : EntityController
                     isPlayerTarget = true;
                     if (isPlayerMoving) isPlayerMoving = false;
                 }
+            }
+        }
+
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            EnemyController enim = gameController.FindNearestEnemy(transform.position,currentArea);
+            if (enim != null)
+            {
+                gameController.SetNewTarget(enim);
+                focusEnemy = enim;
+                isPlayerTarget = true;
+                if (isPlayerMoving) isPlayerMoving = false;
             }
         }
     }
@@ -349,7 +365,10 @@ public class PlayerController : EntityController
     public void AttackFocus()
     {
         if (focusEnemy == null) return;
-        focusEnemy.TakeDamage(playableCharacter.GetAttack(),playableCharacter.attackType);
+        if (focusEnemy.TakeDamage(playableCharacter.GetAttack(),playableCharacter.attackType))
+        {
+            focusEnemy = null;
+        }
     }
 
     public void CallAttackFocus()

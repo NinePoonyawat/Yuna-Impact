@@ -28,6 +28,7 @@ public class PlayerAreaBuff : PlayerSkill
                 status.SetUp(buffDuration,buffInterval,toBuff,toBuff.entityController);
             }
         }
+        rangeIndicator.SetActive(false);
     }
 
     public override void AIActivate()
