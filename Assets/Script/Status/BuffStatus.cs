@@ -8,6 +8,9 @@ public class BuffStatus : Status
 
     protected int buffAttack;
     protected int buffDefense;
+    protected float currentInterval;
+    protected float buffInterval;
+    protected bool isIntervalBuff;
 
     void Awake()
     {
@@ -21,7 +24,7 @@ public class BuffStatus : Status
         if(entity == null) entity = gameObject.GetComponent<Entity>();
     }
 
-    public void SetUp(int duration,int newBuffAttack,int newBuffDefense,bool isPercentage,Entity newEntity,EntityController newEntityController)
+    public void SetUp(float duration,int newBuffAttack,int newBuffDefense,bool isPercentage,Entity newEntity,EntityController newEntityController)
     {
         entityController = newEntityController;
         statusController = entityController.statusController;
@@ -30,13 +33,33 @@ public class BuffStatus : Status
         buffDefense = (isPercentage)? (entity.defense * newBuffDefense) / 100 : newBuffDefense;
         entity.buffedAttack += buffAttack;
         entity.buffedDefense += buffDefense;
+        isIntervalBuff = false;
+        StartStatus(duration);
+    }
+
+    public void SetUp(float duration,int newBuffInterval,Entity newEntity,EntityController newEntityController)
+    {
+        entityController = newEntityController;
+        statusController = entityController.statusController;
+        entity = newEntity;
+        currentInterval = entity.attackPeriod;
+        buffInterval = (currentInterval * (100 - newBuffInterval)) / 100;
+        entity.attackPeriod = buffInterval;
+        isIntervalBuff = true;
         StartStatus(duration);
     }
 
     public override void StatusEnd()
     {
-        entity.buffedAttack -= buffAttack;
-        entity.buffedDefense -= buffDefense;
+        if (isIntervalBuff)
+        {
+            entity.attackPeriod = currentInterval;
+        }
+        else
+        {
+            entity.buffedAttack -= buffAttack;
+            entity.buffedDefense -= buffDefense;
+        }
         base.StatusEnd();
     }
 }

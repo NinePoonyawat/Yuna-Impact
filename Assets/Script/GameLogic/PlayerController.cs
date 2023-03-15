@@ -38,6 +38,7 @@ public class PlayerController : EntityController
         agent = GetComponentInParent<NavMeshAgent>();
         animator = GetComponentInChildren<Animator>();
         skills = GetComponents<PlayerSkill>();
+        statusController = GetComponent<StatusController>();
 
         layerClickMask = LayerMask.GetMask("Entity","PlayerClickable");
     }

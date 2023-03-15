@@ -20,7 +20,7 @@ public abstract class Entity : MonoBehaviour
     public float defaultSpeed = 2.5f;
     public float walkbackSpeed = 0.25f;
 
-    [SerializeField] protected float attackPeriod = 1.5f;
+    [SerializeField] public float attackPeriod = 1.5f;
     protected float attackCount;
     public bool isAttackable = false;
 

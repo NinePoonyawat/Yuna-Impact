@@ -21,7 +21,6 @@ public abstract class Status : MonoBehaviour
 
     protected virtual void Update()
     {
-        Debug.Log("update");
         statusCount += Time.deltaTime;
         if (statusCount >= statusPeriod)
         {

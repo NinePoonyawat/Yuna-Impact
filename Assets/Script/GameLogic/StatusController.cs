@@ -30,7 +30,6 @@ public class StatusController : MonoBehaviour
             }
         }
         statuses.Add(status);
-        Debug.Log("enter");
         UpdateUI();
 
         return status;

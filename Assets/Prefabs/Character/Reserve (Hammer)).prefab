@@ -1556,9 +1556,11 @@ MonoBehaviour:
   cooldown: 0
   cooldownCount: 0
   isActivatable: 1
-  damage: 50
+  damage: 30
   range: 1.5
   damageType: 2
+  statusPf: {fileID: 1931329429115002955, guid: 154afe61693db61409bc4c007282d544,
+    type: 3}
   rangeIndicator: {fileID: 8318417672727585279}
   targetIndicator: {fileID: 8318417671552517363}
   target: {fileID: 0}
