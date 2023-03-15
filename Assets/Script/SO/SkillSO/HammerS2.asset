@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: HammerS2
   m_EditorClassIdentifier: 
   name: Quick Aid
-  icon: {fileID: 21300000, guid: cfb83dd92e4b4b14e94030569585cf31, type: 3}
+  icon: {fileID: 21300000, guid: 5584628a3afc46e469e533af4f2baf1d, type: 3}
   description: Heal herself for 40.
   targetType: 2
   duration: 0

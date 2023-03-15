@@ -31,9 +31,13 @@ public class UIInfo : MonoBehaviour
 
     [Header ("Enemy Info")]
     public Animator enemyPanel;
+    public Image enemyInfo;
+    public Sprite[] enemyPages;
 
     [Header ("Map Info")]
     public Animator mapPanel;
+    public Image mapInfo;
+    public Sprite[] mapPages;
 
     void Awake()
     {
@@ -88,6 +92,8 @@ public class UIInfo : MonoBehaviour
     public void ChooseStage(int idx)
     {
         stageIdx = idx;
+        enemyInfo.sprite = enemyPages[idx];
+        mapInfo.sprite = mapPages[idx];
         SetPage(true);
     }
 

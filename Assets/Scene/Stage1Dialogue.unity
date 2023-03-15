@@ -5182,7 +5182,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e76a613f0022ce84d97e1b5fa74c3e0d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nextScene: Street01
+  nextScene: Stage1
   CanvasBox: {fileID: 1820896537}
   nameText: {fileID: 2133010473}
   dialogueText: {fileID: 377996058}

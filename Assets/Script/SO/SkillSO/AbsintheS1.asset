@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: AbsintheS1
   m_EditorClassIdentifier: 
   name: Silence
-  icon: {fileID: 21300000, guid: db0013039d96bbf4594f832b32a3fb85, type: 3}
+  icon: {fileID: 21300000, guid: f542f24b6c31a1e499bac58f414d33eb, type: 3}
   description: Deal damage to an enemiy in range, apply Silience to it.
   targetType: 1
   duration: 0.1

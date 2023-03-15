@@ -510,9 +510,9 @@ RectTransform:
   - {fileID: 1210199731}
   - {fileID: 1567119674}
   - {fileID: 583122924}
-  - {fileID: 194963662}
-  - {fileID: 780758835}
   - {fileID: 949862126}
+  - {fileID: 780758835}
+  - {fileID: 194963662}
   - {fileID: 1438585737}
   m_Father: {fileID: 0}
   m_RootOrder: 6
@@ -562,7 +562,13 @@ MonoBehaviour:
   startButton: {fileID: 1210199727}
   countText: {fileID: 1438585735}
   enemyPanel: {fileID: 780758837}
+  enemyInfo: {fileID: 1666338670}
+  enemyPages:
+  - {fileID: 21300000, guid: 0e0f01b8f90cedc4abcb4c5a5aad27bf, type: 3}
   mapPanel: {fileID: 194963663}
+  mapInfo: {fileID: 17795031}
+  mapPages:
+  - {fileID: 21300000, guid: 6e26feacd5b277a488877cb842a5c6b9, type: 3}
 --- !u!1 &157207112
 GameObject:
   m_ObjectHideFlags: 0
@@ -902,7 +908,7 @@ RectTransform:
   m_Children:
   - {fileID: 17795030}
   m_Father: {fileID: 135341831}
-  m_RootOrder: 6
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
@@ -2120,7 +2126,7 @@ RectTransform:
   - {fileID: 1785939514}
   - {fileID: 1829148023}
   m_Father: {fileID: 135341831}
-  m_RootOrder: 8
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}

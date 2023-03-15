@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: YunaS2
   m_EditorClassIdentifier: 
   name: Brave
-  icon: {fileID: 21300000, guid: 00bf0fdaa1081fb4ca589f1ddf282171, type: 3}
+  icon: {fileID: 21300000, guid: 4ea863e1737fd15408d6f29e11e8fc64, type: 3}
   description: 
   targetType: 0
   duration: 0

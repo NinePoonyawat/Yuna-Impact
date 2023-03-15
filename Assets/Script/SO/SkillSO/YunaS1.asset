@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: YunaS1
   m_EditorClassIdentifier: 
   name: Pierce Stab
-  icon: {fileID: 21300000, guid: db0013039d96bbf4594f832b32a3fb85, type: 3}
+  icon: {fileID: 21300000, guid: 70893f06248e26245a2ce835b22946d1, type: 3}
   description: Deal AOE damage to enemies in line area, apply Bleed to them.
   targetType: 1
   duration: 0
