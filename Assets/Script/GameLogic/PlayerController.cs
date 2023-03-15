@@ -37,7 +37,7 @@ public class PlayerController : EntityController
         cam = FindObjectOfType<Camera>();
         agent = GetComponentInParent<NavMeshAgent>();
         animator = GetComponentInChildren<Animator>();
-        skills = GetComponents<PlayerSkill>();
+        //skills = GetComponents<PlayerSkill>();
         statusController = GetComponent<StatusController>();
 
         layerClickMask = LayerMask.GetMask("Entity","PlayerClickable");

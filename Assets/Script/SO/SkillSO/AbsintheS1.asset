@@ -10,13 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 21e31ba70ea9c764eb2e3f61e178cfcc, type: 3}
-  m_Name: HammerS1
+  m_Name: AbsintheS1
   m_EditorClassIdentifier: 
-  name: Hammer Smash
-  icon: {fileID: 21300000, guid: 70f3a69ffc1f4744bab4f7d24ea4157e, type: 3}
-  description: Perform a Heavy attack deal 30 dmg, and stun it for 2 seconds.
+  name: Silence
+  icon: {fileID: 21300000, guid: db0013039d96bbf4594f832b32a3fb85, type: 3}
+  description: Deal damage to an enemiy in range, apply Silience to it.
   targetType: 1
-  duration: 0
-  cooldown: 3
-  cost: 3
+  duration: 0.1
+  cooldown: 5
+  cost: 2
   damage: 0

@@ -12,11 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 21e31ba70ea9c764eb2e3f61e178cfcc, type: 3}
   m_Name: ShieldS1
   m_EditorClassIdentifier: 
-  name: Wide Heal
-  icon: {fileID: 21300000, guid: 4b556dcecbfd5b2498f5a3ef854fa8c4, type: 3}
-  description: Heal all Allies within range for 30.
+  name: Crag Split
+  icon: {fileID: 21300000, guid: 00bf0fdaa1081fb4ca589f1ddf282171, type: 3}
+  description: Deal 20 Damage to all enemies in range.
   targetType: 2
   duration: 0
-  cooldown: 12
-  cost: 6
+  cooldown: 10
+  cost: 2
   damage: 0

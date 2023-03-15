@@ -25,5 +25,5 @@ MonoBehaviour:
     HP
     : 150'
   skills:
-  - {fileID: 11400000, guid: 506da57efbd6e754a81adb866103a2b4, type: 2}
-  - {fileID: 11400000, guid: ad24673b9b7e7f0419c435c7157e2bd4, type: 2}
+  - {fileID: 11400000, guid: a1f7b1b834a395142bdebdd54c50d43c, type: 2}
+  - {fileID: 11400000, guid: af45e28040d263845a8eabe5d8496cd9, type: 2}
