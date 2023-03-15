@@ -26,3 +26,4 @@ MonoBehaviour:
     : 200'
   skills:
   - {fileID: 11400000, guid: 72f956d6bcde3dc4d8fde3d2d5c26c4a, type: 2}
+  - {fileID: 11400000, guid: e6d6c966c3583b542b600993c7061617, type: 2}
