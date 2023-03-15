@@ -1186,6 +1186,7 @@ MonoBehaviour:
   playableCharacter: {fileID: 0}
   skills:
   - {fileID: 9215014859862330753}
+  - {fileID: 1681894948375714275}
   cam: {fileID: 0}
   focusEnemy: {fileID: 0}
   blockedEnemy: []
@@ -1214,6 +1215,7 @@ MonoBehaviour:
   damage: 50
   range: 10
   damageType: 1
+  statusPf: {fileID: 0}
   rangeIndicator: {fileID: 6470608025254264605}
   targetIndicator: {fileID: 321234495385682620}
   target: {fileID: 0}
@@ -1223,3 +1225,29 @@ MonoBehaviour:
   projectilePf: {fileID: 8178185800508563784, guid: aed4d7b5f2a54574c93d4e7b2735ecf1,
     type: 3}
   projectileSpeed: 15
+--- !u!114 &1681894948375714275
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4435678046231930777}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c87359fa1ea533342b68d933ccc8ae72, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  profile: {fileID: 11400000, guid: f131bae8330647f45aa797e74fe79a27, type: 2}
+  cooldown: 2
+  cooldownCount: 0
+  isActivatable: 1
+  damageType: 1
+  range: 10
+  rangeIndicator: {fileID: 6470608025254264605}
+  targetIndicator: {fileID: 321234495385682620}
+  target: {fileID: 0}
+  damage: 10
+  explodeRange: 2.5
+  stunPrefab: {fileID: 1931329429115002955, guid: 154afe61693db61409bc4c007282d544,
+    type: 3}
+  stunDuration: 1.5
