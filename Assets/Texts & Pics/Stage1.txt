@@ -1,5 +1,5 @@
-Character1, Character2
-1--0--(Talk about stage).
-2--0--(Talk about mission).
-1--0--Blah blah.
-2--0--Get Ready.
+Character1, Character2, Character3, Character4
+-1---1--1--อา ง่วงจังเลย.
+2--0--0--(Talk about mission).
+1--0--0--Blah blah.
+2--0--0--Get Ready.

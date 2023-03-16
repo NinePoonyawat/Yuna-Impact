@@ -13,8 +13,14 @@ public class UIDialogue : MonoBehaviour
     [Serializable]
     public struct Dialogue
     {
-        public int idx;
-        public string name;
+        public int lIdx;
+        public string lName;
+
+        public int rIdx;
+        public string rName;
+
+        public string speaker;
+
         [TextArea(3, 10)]
         public string sentence;
         public int setSprite;
@@ -22,9 +28,11 @@ public class UIDialogue : MonoBehaviour
 
     [Header ("Visualize")]
     public GameObject CanvasBox;
+    public GameObject panel;
     public TMP_Text nameText;
     public TMP_Text dialogueText;
-    public Image[] sprites;
+    public Image[] Lsprites;
+    public Image[] Rsprites;
     public Color[] colors;
 
     public Queue<Dialogue> dialogueQueue;
@@ -33,6 +41,9 @@ public class UIDialogue : MonoBehaviour
     public TextAsset textAsset;
 
     public string[] characters;
+
+    private int lCurrentSprite = -1;
+    private int rCurrentSprite = -1;
 
 
     void Start()
@@ -73,10 +84,16 @@ public class UIDialogue : MonoBehaviour
             tmp = line.Split(new string[] {"--"}, StringSplitOptions.None);
             
             Dialogue dialogue = new Dialogue();
-            dialogue.idx = int.Parse(tmp[0]) - 1;
-            dialogue.name = characters[dialogue.idx];
-            dialogue.setSprite = int.Parse(tmp[1]);
-            dialogue.sentence = tmp[2];
+            dialogue.lIdx = int.Parse(tmp[0]);
+            dialogue.lName = (dialogue.lIdx < 0)? "" : characters[dialogue.lIdx];
+
+            dialogue.rIdx = int.Parse(tmp[1]);
+            dialogue.rName = (dialogue.rIdx < 0)? "" : characters[dialogue.rIdx];
+
+            dialogue.speaker = (int.Parse(tmp[2]) == 1)? dialogue.rName : dialogue.lName; 
+
+            //dialogue.setSprite = int.Parse(tmp[1]);
+            dialogue.sentence = tmp[3];
             dialogues[idx++] = dialogue;
         }
 
@@ -104,17 +121,50 @@ public class UIDialogue : MonoBehaviour
         }
         Dialogue dialogue = dialogueQueue.Dequeue();
         
-        nameText.text = dialogue.name;
+        nameText.text = dialogue.speaker;
         string sentence = dialogue.sentence;
 
         StopAllCoroutines();
         StartCoroutine(TypeSentence(sentence));
 
-        for (int idx = 0; idx < sprites.Length; idx++)
+        if (lCurrentSprite != dialogue.lIdx)
         {
-            if (idx == dialogue.idx) sprites[idx].color = colors[0];
-            else sprites[idx].color = colors[1];
+            if (lCurrentSprite >= 0) Lsprites[lCurrentSprite].gameObject.SetActive(false);
+            if (dialogue.lIdx >= 0)
+            {
+                Lsprites[dialogue.lIdx].gameObject.SetActive(true);
+            }
+
+            lCurrentSprite = dialogue.lIdx;
         }
+
+        if (rCurrentSprite != dialogue.rIdx)
+        {
+            if (rCurrentSprite >= 0) Rsprites[rCurrentSprite].gameObject.SetActive(false);
+            if (dialogue.rIdx >= 0)
+            {
+                Rsprites[dialogue.rIdx].gameObject.SetActive(true);
+            }
+
+            rCurrentSprite = dialogue.rIdx;
+        }
+
+        if (dialogue.lName == dialogue.speaker)
+        {
+            if(lCurrentSprite >= 0) Lsprites[lCurrentSprite].color = colors[0];
+            if(rCurrentSprite >= 0) Rsprites[rCurrentSprite].color = colors[1];
+        }
+        else
+        {
+            if(lCurrentSprite >= 0) Lsprites[lCurrentSprite].color = colors[1];
+            if(rCurrentSprite >= 0) Rsprites[rCurrentSprite].color = colors[0];
+        }
+
+        // for (int idx = 0; idx < sprites.Length; idx++)
+        // {
+        //     if (idx == dialogue.idx) sprites[idx].color = colors[0];
+        //     else sprites[idx].color = colors[1];
+        // }
     }
 
     IEnumerator TypeSentence (string sentence)
