@@ -45,7 +45,6 @@ public abstract class Entity : MonoBehaviour
             attackCount += Time.deltaTime;
             if (attackCount >= attackPeriod)
             {
-                if(gameObject.transform.parent.name == "Character 1") Debug.Log(attackCount);
                 isAttackable = true;
             }
         }

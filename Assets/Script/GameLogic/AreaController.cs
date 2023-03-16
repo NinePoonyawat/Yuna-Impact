@@ -8,6 +8,20 @@ public class AreaController : MonoBehaviour
     public List<PlayerController> areaCharacter;
     public List<EnemyController> areaEnemies;
     public List<TeleportController> teleports;
+    public List<IAreaClearEvent> areaClearEvents;
+    private bool isClear = false;
+
+    public void Update()
+    {
+         if (isAreaClear() && !isClear)
+         {
+             isClear = true;
+             foreach (IAreaClearEvent member in areaClearEvents)
+             {
+                 member.Clear();
+             }
+         }
+    }
 
     public void AddCharacter(PlayerController character)
     {
@@ -101,5 +115,10 @@ public class AreaController : MonoBehaviour
             if (member.isHighGround && member.destinateAreaIdx == destinate) return member;
         }
         return null;
+    }
+
+    public bool isAreaClear()
+    {
+        return (gameObject.activeSelf && areaEnemies.Count == 0);
     }
 }

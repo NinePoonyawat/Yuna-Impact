@@ -240,4 +240,9 @@ public class GameController : MonoBehaviour
         }
         return 0;
     }
+
+    public bool isGameEnd()
+    {
+        return areas[areas.Count - 1].isAreaClear();
+    }
 }
