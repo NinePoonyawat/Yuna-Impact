@@ -57,6 +57,7 @@ public abstract class EntityController : MonoBehaviour
 
     public void SetEntityState(EntityState state)
     {
+        isSetState = true;
         entityState = state;
     }
 
