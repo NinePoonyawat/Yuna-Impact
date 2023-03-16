@@ -8,7 +8,7 @@ public class AreaController : MonoBehaviour
     public List<PlayerController> areaCharacter;
     public List<EnemyController> areaEnemies;
     public List<TeleportController> teleports;
-    public List<IAreaClearEvent> areaClearEvents;
+    //public IAreaClearEvent[] areaClearEvents;
     private bool isClear = false;
 
     public void Update()
@@ -16,10 +16,11 @@ public class AreaController : MonoBehaviour
          if (isAreaClear() && !isClear)
          {
              isClear = true;
-             foreach (IAreaClearEvent member in areaClearEvents)
-             {
-                 member.Clear();
-             }
+
+            //  foreach (IAreaClearEvent member in areaClearEvents)
+            //  {
+            //      member.Clear();
+            //  }
          }
     }
 

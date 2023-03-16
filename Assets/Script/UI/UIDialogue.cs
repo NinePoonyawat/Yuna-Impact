@@ -72,16 +72,20 @@ public class UIDialogue : MonoBehaviour
             if (characters.Length == 0)
             {
                 idx = 0;
-                tmp = line.Split(new string[] {", "}, StringSplitOptions.None);
+                tmp = line.Split(new string[] {","}, StringSplitOptions.None);
                 characters = new string[tmp.Length];
                 foreach (string text in tmp)
                 {
                     characters[idx++] = text;
                 }
+                if(characters.Length != 0)
+                {
+                    characters[0] = characters[0].Substring(1);
+                }
                 idx = 0;
                 continue;
             }
-            tmp = line.Split(new string[] {"--"}, StringSplitOptions.None);
+            tmp = line.Split(new string[] {","}, StringSplitOptions.None);
             
             Dialogue dialogue = new Dialogue();
             dialogue.lIdx = int.Parse(tmp[0]);
