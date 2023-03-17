@@ -48,6 +48,7 @@ public class UIDialogue : MonoBehaviour
 
     void Start()
     {
+        Time.timeScale = 1f;
         dialogueQueue = new Queue<Dialogue>();
         ReadTextAsset();
     }

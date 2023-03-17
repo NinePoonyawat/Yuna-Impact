@@ -41,6 +41,8 @@ public class UIInfo : MonoBehaviour
 
     void Awake()
     {
+        Time.timeScale = 1f;
+
         skillIcons = characterPanel.GetComponentsInChildren<Button>();
 
         CloseCharacterPanel();

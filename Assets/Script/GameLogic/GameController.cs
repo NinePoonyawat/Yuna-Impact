@@ -308,7 +308,9 @@ public class GameController : MonoBehaviour
 
     IEnumerator SwitchScene(string s)
     {
-        yield return new WaitForSeconds(2f);
+        //yield return new WaitForSeconds(2f);
+        Debug.Log(s);
         SceneManager.LoadScene(s);
+        yield return null;
     }
 }
