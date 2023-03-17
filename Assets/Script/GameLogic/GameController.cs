@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 using UnityEngine.SceneManagement;
 
 public class GameController : MonoBehaviour
@@ -13,6 +14,9 @@ public class GameController : MonoBehaviour
 
     [SerializeField] public Transform projectileRoot;
 
+    public int enemyNum = 0;
+    public int enemyKilled = 0;
+
     public string currentScene;
     public string nextScene;
 
@@ -23,6 +27,9 @@ public class GameController : MonoBehaviour
 
     public GameObject WinUI;
     public GameObject LoseUI;
+
+    public TMP_Text enemyCount;
+    public TMP_Text killCount;
 
     void Awake()
     {
@@ -76,11 +83,15 @@ public class GameController : MonoBehaviour
     public void AddEnemy(EnemyController enemy,int idx)
     {
         areas[idx].areaEnemies.Add(enemy);
+        enemyNum++;
+        //UpdateEnemyPanel();
     }
 
     public void DeleteEnemy(EnemyController enemyController,int idx)
     {
         areas[idx].areaEnemies.Remove(enemyController);
+        enemyKilled++;
+        //UpdateEnemyPanel();
     }
 
     public void TakingCharacter(int idx)
@@ -287,6 +298,12 @@ public class GameController : MonoBehaviour
     public void toMenu()
     {
         StartCoroutine(SwitchScene("Lobby"));
+    }
+
+    public void UpdateEnemyPanel()
+    {
+        enemyCount.text = enemyNum + "";
+        killCount.text = enemyKilled + "";
     }
 
     IEnumerator SwitchScene(string s)

@@ -7735,6 +7735,30 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0fe113ffcf23f2c4789e737c6e6d2f49, type: 3}
+--- !u!114 &1536885353 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3553773066996407097, guid: 0fe113ffcf23f2c4789e737c6e6d2f49,
+    type: 3}
+  m_PrefabInstance: {fileID: 1536885352}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1536885354 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6180556404353750138, guid: 0fe113ffcf23f2c4789e737c6e6d2f49,
+    type: 3}
+  m_PrefabInstance: {fileID: 1536885352}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1567595160
 GameObject:
   m_ObjectHideFlags: 0
@@ -10879,9 +10903,19 @@ PrefabInstance:
       objectReference: {fileID: 1241764192}
     - target: {fileID: 4762595045445392394, guid: 211a4c0b512aaba4aa6a83a2d3480ef7,
         type: 3}
+      propertyPath: killCount
+      value: 
+      objectReference: {fileID: 1536885354}
+    - target: {fileID: 4762595045445392394, guid: 211a4c0b512aaba4aa6a83a2d3480ef7,
+        type: 3}
       propertyPath: nextScene
       value: Stage2Dialogue
       objectReference: {fileID: 0}
+    - target: {fileID: 4762595045445392394, guid: 211a4c0b512aaba4aa6a83a2d3480ef7,
+        type: 3}
+      propertyPath: enemyCount
+      value: 
+      objectReference: {fileID: 1536885353}
     - target: {fileID: 4762595045445392394, guid: 211a4c0b512aaba4aa6a83a2d3480ef7,
         type: 3}
       propertyPath: currentScene
