@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class GameController : MonoBehaviour
 {
@@ -11,10 +13,16 @@ public class GameController : MonoBehaviour
 
     [SerializeField] public Transform projectileRoot;
 
+    public string currentScene;
+    public string nextScene;
+
     [Header ("Visualize and UI ")]
     [SerializeField] private CamFollowing cam;
     [SerializeField] private UIController uiController;
     [SerializeField] private UITarget uiTarget;
+
+    public GameObject WinUI;
+    public GameObject LoseUI;
 
     void Awake()
     {
@@ -25,6 +33,17 @@ public class GameController : MonoBehaviour
 
     void Update()
     {
+        if (isGameLose())
+        {
+            Time.timeScale = 0f;
+            LoseUI.SetActive(true);
+        }
+        else if (isGameWin())
+        {
+            Time.timeScale = 0f;
+            WinUI.SetActive(true);
+        }
+
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
             TakingCharacter(0);
@@ -241,8 +260,38 @@ public class GameController : MonoBehaviour
         return 0;
     }
 
-    public bool isGameEnd()
+    public bool isGameWin()
     {
         return areas[areas.Count - 1].isAreaClear();
+    }
+
+    public bool isGameLose()
+    {
+        for(int i = 0; i != characters.Count; i++)
+        {
+            if (characters[i].entityState != EntityState.DEAD) return false;
+        }
+        return true;
+    }
+
+    public void toNextLevel()
+    {
+        StartCoroutine(SwitchScene(nextScene));
+    }
+
+    public void RestartLevel()
+    {
+        StartCoroutine(SwitchScene(currentScene));
+    }
+
+    public void toMenu()
+    {
+        StartCoroutine(SwitchScene("Lobby"));
+    }
+
+    IEnumerator SwitchScene(string s)
+    {
+        yield return new WaitForSeconds(2f);
+        SceneManager.LoadScene(s);
     }
 }
