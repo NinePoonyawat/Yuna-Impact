@@ -39,7 +39,7 @@ public class UISkillIcon : MonoBehaviour
     void UpdateTimer()
     {
         float cooldownLeft = cooldownTime - cooldownTimer;
-        if (cooldownLeft > 0) text.text = cooldownLeft.ToString("#.##");
+        if (cooldownLeft > 0) text.text = cooldownLeft.ToString("#");
         else text.text = "";
         CooldownIcon.fillAmount = cooldownLeft / cooldownTime;
     }

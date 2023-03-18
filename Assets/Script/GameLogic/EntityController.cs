@@ -24,12 +24,12 @@ public abstract class EntityController : MonoBehaviour
         float x = newPosition.x - prevPosition.x;
         float z = newPosition.z - prevPosition.z;
 
-        if (isRight && z < -x - 0.01f)
+        if (isRight && z < -Mathf.Abs(x) - 0.01f)
         {
             isRight = false;
             entityTransform.localScale = new Vector3(entityTransform.localScale.x * -1, entityTransform.localScale.y, entityTransform.localScale.z);
         }
-        if (!isRight && z > -x + 0.01f)
+        else if (!isRight && z > Mathf.Abs(x) + 0.01f)
         {
             isRight = true;
             entityTransform.localScale = new Vector3(entityTransform.localScale.x * -1, entityTransform.localScale.y, entityTransform.localScale.z);
