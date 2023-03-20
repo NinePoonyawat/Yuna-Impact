@@ -25,6 +25,7 @@ public class PlayerController : EntityController
     [SerializeField] private bool isTaking = false; // is this character taking by player
     [SerializeField] public bool isPlayerMoving = false;
     [SerializeField] public bool isPlayerTarget = false;
+    private Vector3 lastAttackPos = new Vector3(0,1000,0);
     private int usingSkill = -1;
 
     private LayerMask layerClickMask;
@@ -183,7 +184,7 @@ public class PlayerController : EntityController
                 }
                 break;
             case EntityState.IDLE :
-                if (!isPlayerTarget) focusEnemy = gameController.FindNearestEnemy(this.transform.position,currentArea,AIvision);
+                if (!isPlayerTarget) focusEnemy = gameController.FindNearestEnemy(lastAttackPos,currentArea,AIvision);
                 if (focusEnemy != null)
                 {
                     if(isTaking) gameController.SetNewTarget(focusEnemy);
@@ -256,6 +257,10 @@ public class PlayerController : EntityController
                             UpdateAttackPosition(focusEnemy.transform.position);
                         }
                         else entityState = EntityState.MOVE;
+                    }
+                    else if (playableCharacter.isInAttackRange(focusEnemy.transform.position))
+                    {
+                        if(animator != null) animator.SetBool("isWalk",false);
                     }
                 }
                 break;
@@ -354,17 +359,20 @@ public class PlayerController : EntityController
 
     public override bool Attack(EntityController enemy)
     {
+        lastAttackPos = enemy.transform.position;
         return enemy.TakeDamage(playableCharacter.GetAttack(),playableCharacter.attackType);
     }
 
     public bool Attack(EntityController enemy,int damage,AttackType attackType)
     {
+        lastAttackPos = enemy.transform.position;
         return enemy.TakeDamage(damage,attackType);
     }
 
     public void AttackFocus()
     {
         if (focusEnemy == null) return;
+        lastAttackPos = focusEnemy.transform.position;
         if (focusEnemy.TakeDamage(playableCharacter.GetAttack(),playableCharacter.attackType))
         {
             focusEnemy = null;
@@ -374,6 +382,7 @@ public class PlayerController : EntityController
     public void CallAttackFocus()
     {
         if (focusEnemy == null) return;
+        lastAttackPos = focusEnemy.transform.position;
         playableCharacter.CallAttack(focusEnemy);
     }
 
