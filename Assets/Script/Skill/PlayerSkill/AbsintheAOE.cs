@@ -10,9 +10,9 @@ public class AbsintheAOE : PointRaycastSkill
     public GameObject stunPrefab;
     public float stunDuration;
     
-    public override void PointAt(Transform target)
+    public override void PointAt(Vector3 target)
     {
-        Vector3 start = target.position;
+        Vector3 start = target;
         Collider[] colliders = Physics.OverlapCapsule(new Vector3(start.x,start.y + 1,start.z),new Vector3(start.x,start.y - 1,start.z),
             explodeRange,mask);
         foreach (var collider in colliders)
