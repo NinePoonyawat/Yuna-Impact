@@ -535,9 +535,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   nextScene:
+  - Stage1Dialogue
   - Stage2Dialogue
   - Stage3Dialogue
-  - Stage4Dialogue
   page: 0
   characterPanel: {fileID: 1785939511}
   characterProfiles:
@@ -564,10 +564,13 @@ MonoBehaviour:
   enemyPages:
   - {fileID: 21300000, guid: 0e0f01b8f90cedc4abcb4c5a5aad27bf, type: 3}
   - {fileID: 21300000, guid: 6fde7d37f93ac0e4d8db521d42d328b2, type: 3}
+  - {fileID: 21300000, guid: 987b361cd38376044afda508301dc3da, type: 3}
   mapPanel: {fileID: 194963663}
   mapInfo: {fileID: 17795031}
   mapPages:
   - {fileID: 21300000, guid: 6e26feacd5b277a488877cb842a5c6b9, type: 3}
+  - {fileID: 21300000, guid: 4654a9249cdcc9d408dd2e85bea9e7bf, type: 3}
+  - {fileID: 21300000, guid: 6e1f9213f0850b245963e10758122a82, type: 3}
 --- !u!1 &157207112
 GameObject:
   m_ObjectHideFlags: 0
@@ -1554,7 +1557,7 @@ GameObject:
   m_Component:
   - component: {fileID: 583122924}
   m_Layer: 5
-  m_Name: Buttons
+  m_Name: Stage Select Buttons
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
