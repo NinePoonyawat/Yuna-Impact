@@ -46,7 +46,7 @@ public class PlayerController : EntityController
 
     void Start()
     {
-        gameController.AddCharacter(this);
+        //gameController.AddCharacter(this);
         gameController.areas[currentArea].AddCharacter(this);
         entityState = EntityState.PLAYERSTART;
         if(animator != null) animator.Play("Base-Idle");

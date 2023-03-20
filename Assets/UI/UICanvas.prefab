@@ -4100,6 +4100,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: SkillIcon3
       objectReference: {fileID: 0}
+    - target: {fileID: 8221282189357845625, guid: 26b41a5cb72630a4c89b59e3cb4cade1,
+        type: 3}
+      propertyPath: m_text
+      value: E
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 26b41a5cb72630a4c89b59e3cb4cade1, type: 3}
 --- !u!224 &959235735949673235 stripped
@@ -4236,6 +4241,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: SkillIcon2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8221282189357845625, guid: 26b41a5cb72630a4c89b59e3cb4cade1,
+        type: 3}
+      propertyPath: m_text
+      value: W
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 26b41a5cb72630a4c89b59e3cb4cade1, type: 3}
