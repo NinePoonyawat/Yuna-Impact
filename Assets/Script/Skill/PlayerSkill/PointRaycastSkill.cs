@@ -52,4 +52,10 @@ public abstract class PointRaycastSkill : PlayerSkill
     }
 
     public abstract void PointAt(Vector3 target);
+
+    public override void CancelSkill()
+    {
+        rangeIndicator.SetActive(false);
+        targetIndicator.SetActive(false);
+    }
 }

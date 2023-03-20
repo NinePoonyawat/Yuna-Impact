@@ -70,4 +70,9 @@ public class YunaPierce : PlayerSkill
         if (Vector3.Distance(playerController.focusEnemy.transform.position,transform.position) <= areaEffect.x / 2) return 10;
         return -1;
     }
+
+    public override void CancelSkill()
+    {
+        skillIndicator.SetActive(false);
+    }
 }

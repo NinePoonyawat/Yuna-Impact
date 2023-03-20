@@ -91,4 +91,10 @@ public class HealSkill : PlayerSkill
     {
         return 0;
     }
+
+    public override void CancelSkill()
+    {
+        rangeIndicator.SetActive(false);
+        targetIndicator.SetActive(false);
+    }
 }

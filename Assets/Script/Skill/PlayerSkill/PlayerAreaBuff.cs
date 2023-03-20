@@ -45,4 +45,9 @@ public class PlayerAreaBuff : PlayerSkill
     {
         rangeIndicator.SetActive(true);
     }
+
+    public override void CancelSkill()
+    {
+        rangeIndicator.SetActive(false);
+    }
 }

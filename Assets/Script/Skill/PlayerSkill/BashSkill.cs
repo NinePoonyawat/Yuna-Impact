@@ -83,4 +83,10 @@ public class BashSkill : PlayerSkill
         }
         return -1;
     }
+
+    public override void CancelSkill()
+    {
+        rangeIndicator.SetActive(false);
+        targetIndicator.SetActive(false);
+    }
 }

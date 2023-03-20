@@ -4,6 +4,8 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using UnityEngine.SceneManagement;
+using System;
+using UnityEngine.AI;
 
 public class GameController : MonoBehaviour
 {
@@ -17,11 +19,14 @@ public class GameController : MonoBehaviour
     public int enemyNum = 0;
     public int enemyKilled = 0;
 
+    private bool isTakingAll = false;
+
     public string currentScene;
     public string nextScene;
 
     [Header ("Visualize and UI ")]
     [SerializeField] private CamFollowing cam;
+    public Camera camera;
     [SerializeField] private UIController uiController;
     [SerializeField] private UITarget uiTarget;
 
@@ -31,14 +36,18 @@ public class GameController : MonoBehaviour
     public TMP_Text enemyCount;
     public TMP_Text killCount;
 
+    private LayerMask layerClickMask;
+
     void Awake()
     {
         uiController = FindObjectOfType<UIController>();
         cam = FindObjectOfType<CamFollowing>();
         uiTarget = FindObjectOfType<UITarget>();
-
+        camera = FindObjectOfType<Camera>();
         uiController.SetProfile(characters);
         FindObjectOfType<CamFollowing>().Follow(characters[0].gameObject.transform);
+
+        layerClickMask = LayerMask.GetMask("Entity","PlayerClickable");
     }
 
     void Update()
@@ -54,21 +63,113 @@ public class GameController : MonoBehaviour
             WinUI.SetActive(true);
         }
 
+        if (isTakingAll)
+        {
+            UpdatePlayerClick();
+        }
+        if ((Input.GetKeyDown(KeyCode.LeftShift) || Input.GetKeyDown(KeyCode.RightShift)) && !isTakingAll)
+        {
+            isTakingAll = true;
+        }
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
+            isTakingAll = false;
             TakingCharacter(0);
         }
         if (Input.GetKeyDown(KeyCode.Alpha2))
         {
+            isTakingAll = false;
             TakingCharacter(1);
         }
         if (Input.GetKeyDown(KeyCode.Alpha3))
         {
+            isTakingAll = false;
             TakingCharacter(2);
         }
         if (Input.GetKeyDown(KeyCode.Alpha4))
         {
+            isTakingAll = false;
             TakingCharacter(3);
+        }
+    }
+
+    public void UpdatePlayerClick()
+    {
+        if (Input.GetMouseButtonDown(0))
+        {
+            Ray ray = camera.ScreenPointToRay(Input.mousePosition);
+            RaycastHit hit;
+
+            if (Physics.Raycast(ray,out hit))
+            {
+                for (int i = 0; i != characters.Count; i++)
+                {
+                    Vector3 destination = hit.point;
+                    if (i == 1)
+                    {
+                        destination.x += 3;
+                    }
+                    else if (i == 2)
+                    {
+                        destination.x -= 3;
+                    }
+                    else if (i == 3)
+                    {
+                        destination.z += 3;
+                    }
+                    else
+                    {
+                        destination.z -= 3;
+                    }
+                    characters[i].agent.SetDestination(hit.point);
+                    characters[i].moveToPos = hit.point;
+                    characters[i].isPlayerMoving = true;
+                    if(characters[i].animator != null) characters[i].animator.SetBool("isWalk",true);
+                    characters[i].SetEntityState(EntityState.MOVE);
+                }
+            }
+        }
+
+        if (Input.GetMouseButtonDown(1))
+        {
+            Ray ray = camera.ScreenPointToRay(Input.mousePosition);
+            RaycastHit hit;
+
+            if (Physics.Raycast(ray,out hit,999f,layerClickMask))
+            {
+                IPlayerClickable playerClick = hit.transform.GetComponent<IPlayerClickable>();
+                if (playerClick != null)
+                {
+                    for(int i = 0; i != characters.Count; i++) playerClick.click(characters[i]);
+                }
+                
+                EnemyController enim = hit.transform.GetComponent<EnemyController>();
+                if (enim != null)
+                {
+                    SetNewTarget(enim);
+                    for(int i = 0; i != characters.Count; i++)
+                    {
+                        characters[i].focusEnemy = enim;
+                        characters[i].isPlayerTarget = true;
+                        if (characters[i].isPlayerMoving) characters[i].isPlayerMoving = false;
+                    }
+                }
+            }
+        }
+
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            EnemyController enim = FindNearestEnemy(transform.position,characters[0].currentArea);
+            if (enim != null)
+            {
+                SetNewTarget(enim);
+                for(int i = 0; i != characters.Count; i++)
+                {
+                    characters[i].focusEnemy = enim;
+                    characters[i].isPlayerTarget = true;
+                    if (characters[i].isPlayerMoving) characters[i].isPlayerMoving = false;
+                }
+            }
         }
     }
 

@@ -58,4 +58,9 @@ public class AoeSkill : PlayerSkill
     {
         return 0;
     }
+
+    public override void CancelSkill()
+    {
+        rangeIndicator.SetActive(false);
+    }
 }

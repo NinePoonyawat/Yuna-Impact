@@ -12,13 +12,13 @@ public class PlayerController : EntityController
 
     public Camera cam;
 
-    private Vector3 moveToPos;              //for Gizmos visualize
+    public Vector3 moveToPos;              //for Gizmos visualize
     private float acceptanceRadius = 0.8f;
     private float AIvision = 5f;
     public EnemyController focusEnemy;
     public List<EnemyController> blockedEnemy;
     public TeleportController focusTeleport;
-    [SerializeField] private Animator animator;
+    [SerializeField] public Animator animator;
 
     [SerializeField] private UIController uiController;
 
@@ -72,6 +72,12 @@ public class PlayerController : EntityController
         {
             UpdatePlayerClick();
 
+            //cancel skill
+            if (Input.GetKeyDown(KeyCode.X))
+            {
+                usingSkill = -2;
+            }
+
             //skill1
             if (skills.Length > 0 && skills[0].isActivatable)
             {
@@ -81,20 +87,22 @@ public class PlayerController : EntityController
                 }
                 if (Input.GetKeyUp(KeyCode.Q))
                 {
-                    UsingSkill(0, false);
+                    if(usingSkill != -2) UsingSkill(0, false);
+                    else CancelSkill(0);
                 }
             }
 
+            //skill2
             if (skills.Length > 1 && skills[1].isActivatable)
             {
-                //skill2
                 if (Input.GetKey(KeyCode.W))
                 {
                     UsingSkill(1, true);
                 }
                 if (Input.GetKeyUp(KeyCode.W))
                 {
-                    UsingSkill(1, false);
+                    if(usingSkill != -2) UsingSkill(1, false);
+                    else CancelSkill(1);
                 }
             }
         }
@@ -129,6 +137,13 @@ public class PlayerController : EntityController
                 if (idx == 1) animator.SetTrigger("Skill2");
             }
         }
+    }
+
+    void CancelSkill(int idx)
+    {
+        usingSkill = -1;
+        Time.timeScale = 1f;
+        skills[idx].CancelSkill();
     }
 
     void UpdateState()
