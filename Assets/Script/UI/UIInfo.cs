@@ -111,13 +111,9 @@ public class UIInfo : MonoBehaviour
         }
         if (page == 1)
         {
-            
-        }
-        if (page == 2)
-        {
             mapPanel.SetTrigger("Hide");
         }
-        if (page == 3)
+        if (page == 2)
         {
             enemyPanel.SetTrigger("Hide");
         }
@@ -139,19 +135,16 @@ public class UIInfo : MonoBehaviour
         if (page == 1)
         {
             nextButton.SetActive(true);
-        }
-        if (page == 2)
-        {
             backButton.SetActive(true);
             mapPanel.SetTrigger("Appear");
             startButton.SetActive(false);
         }
-        if (page == 3)
+        if (page == 2)
         {
             enemyPanel.SetTrigger("Appear");
             startButton.SetActive(true);
         }
-        if (page == 4)
+        if (page == 3)
         {
             StartStage();
         }
