@@ -15,7 +15,7 @@ public class FireCaster : Enemy
         GameObject GO = Instantiate(fireAreaPf,gameController.projectileRoot);
         GO.transform.position = toAttack.transform.position;
         FireFloorCasting fireFloorCasting = GO.GetComponent<FireFloorCasting>();
-        fireFloorCasting.SetUp(explodeDuration,explodeRadius,(EnemyController) entityController,this);
+        fireFloorCasting.SetUp(explodeDuration,explodeRadius,entityController.currentArea,(EnemyController) entityController,this);
         entityController.SetEntityState(EntityState.PREATTACK);
         return false;
     }
