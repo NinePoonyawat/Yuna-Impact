@@ -88,10 +88,14 @@ public class EnemyController : EntityController,IPlayerClickable
         {
             case EntityState.IDLE :
                 focusCharacter = gameController.FindBestCharacter(transform.position,maxVision,currentArea);
-                if (focusCharacter != null)
+                if (focusCharacter != null && focusCharacter.entityState != EntityState.DEAD)
                 {
                     if(animator != null) animator.SetBool("isWalk", true);
                     entityState = EntityState.MOVE;
+                }
+                else
+                {
+                    if(animator != null) animator.SetBool("isWalk", false);
                 }
                 break;
             case EntityState.MOVE :
@@ -101,8 +105,9 @@ public class EnemyController : EntityController,IPlayerClickable
                     if (enemy.attackType != AttackType.Range) focusCharacter.blockedEnemy.Remove(this);
                     focusCharacter = null;
                 }
-                if (focusCharacter == null)
+                if (focusCharacter == null || (focusCharacter != null && focusCharacter.entityState == EntityState.DEAD))
                 {
+                    focusCharacter = null;
                     entityState = EntityState.IDLE;
                     if(animator != null) animator.SetBool("isWalk", false);
                 }
@@ -116,8 +121,9 @@ public class EnemyController : EntityController,IPlayerClickable
                 }
                 break;
             case EntityState.PREATTACK :
-                if (focusCharacter == null)
+                if (focusCharacter == null || focusCharacter.entityState == EntityState.DEAD)
                 {
+                    focusCharacter = null;
                     entityState = EntityState.IDLE;
                     agent.speed = enemy.defaultSpeed;
                 }
