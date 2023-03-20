@@ -16,14 +16,16 @@ MonoBehaviour:
   icon: {fileID: 21300000, guid: e40121e03a326594eab53669f545d729, type: 3}
   description: 'Weapon : Rapier
 
-    ATK : 15
+    ATK : Melee
 
     ASPD : Fast
 
     DEF : Low
 
     HP
-    : 200'
+    : 200
+
+    MP : 20'
   skills:
   - {fileID: 11400000, guid: 72f956d6bcde3dc4d8fde3d2d5c26c4a, type: 2}
   - {fileID: 11400000, guid: e6d6c966c3583b542b600993c7061617, type: 2}

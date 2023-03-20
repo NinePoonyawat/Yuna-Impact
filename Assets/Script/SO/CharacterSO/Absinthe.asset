@@ -16,14 +16,16 @@ MonoBehaviour:
   icon: {fileID: 21300000, guid: f414dd49d595c4f47ab4d96797e9d073, type: 3}
   description: 'Weapon : Gun
 
-    ATK : 15
+    ATK : Range
 
     ASPD : Fast
 
     DEF : Low
 
     HP
-    : 150'
+    : 150
+
+    MP : 20'
   skills:
   - {fileID: 11400000, guid: a1f7b1b834a395142bdebdd54c50d43c, type: 2}
   - {fileID: 11400000, guid: af45e28040d263845a8eabe5d8496cd9, type: 2}

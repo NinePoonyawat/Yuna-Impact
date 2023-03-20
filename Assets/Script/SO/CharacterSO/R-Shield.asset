@@ -12,18 +12,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9cd85cf2baa66284890927e7f7e35fdc, type: 3}
   m_Name: R-Shield
   m_EditorClassIdentifier: 
-  name: Reserve (Shield)
+  name: Reynard Lucia
   icon: {fileID: 21300000, guid: b02fc755c19d7db4dae6fae4a02afdb4, type: 3}
   description: 'Weapon : Shield
 
-    ATK : 10
+    ATK : Melee
 
     ASPD : Slow
 
     DEF : High
 
     HP
-    : 200'
+    : 200
+
+    MP : 20'
   skills:
   - {fileID: 11400000, guid: f131bae8330647f45aa797e74fe79a27, type: 2}
   - {fileID: 11400000, guid: 75a5c73dd47dd00408a372457b514327, type: 2}

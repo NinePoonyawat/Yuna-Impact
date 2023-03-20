@@ -763,4 +763,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 599c2204a3442c249a30a7b73692b69c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nextScene: StartDialogue
+  nextScene: Lobby
