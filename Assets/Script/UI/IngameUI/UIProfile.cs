@@ -20,6 +20,7 @@ public class UIProfile : MonoBehaviour
     [SerializeField] private TMP_Text characterSPText;
     [SerializeField] private UISkillIcon[] skillIcons;
     [SerializeField] private UISkillDescription skillPanel;
+    [SerializeField] private GameObject skillCancel;
 
     public void Init(PlayerController playerController)
     {
@@ -79,12 +80,14 @@ public class UIProfile : MonoBehaviour
     {
         skillIcons[idx].Hold();
         skillPanel.UpdateUI(skills[idx]);
+        skillCancel.SetActive(true);
     }
 
     public void CastSkill(int idx)
     {
         skillIcons[idx].Cast();
         skillPanel.HideUI();
+        skillCancel.SetActive(false);
     }
 
     public void HideUI()

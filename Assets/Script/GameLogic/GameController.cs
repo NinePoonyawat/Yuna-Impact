@@ -37,7 +37,7 @@ public class GameController : MonoBehaviour
         cam = FindObjectOfType<CamFollowing>();
         uiTarget = FindObjectOfType<UITarget>();
 
-        TakingCharacter(0);
+        uiController.SetProfile(characters);
         FindObjectOfType<CamFollowing>().Follow(characters[0].gameObject.transform);
     }
 
