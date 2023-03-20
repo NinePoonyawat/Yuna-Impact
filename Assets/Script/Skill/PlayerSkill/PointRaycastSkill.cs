@@ -12,7 +12,7 @@ public abstract class PointRaycastSkill : PlayerSkill
     [Header ("Indicator")]
     public GameObject rangeIndicator;
     public GameObject targetIndicator;
-    public Transform target;
+    public Vector3 target;
 
     public override void ActivateSkill()
     {
@@ -20,7 +20,7 @@ public abstract class PointRaycastSkill : PlayerSkill
         if (target != null)
         {
             PointAt(target);
-            if (effectPrefab != null) Instantiate(effectPrefab, target.transform.position, Quaternion.identity);
+            if (effectPrefab != null) Instantiate(effectPrefab, target, Quaternion.identity);
         }
         //if (effectPrefab != null) Instantiate(effectPrefab, target.transform.position, Quaternion.identity);
         
@@ -38,12 +38,11 @@ public abstract class PointRaycastSkill : PlayerSkill
 
         if (Physics.Raycast(ray, out hit))
         {
-            targetIndicator.transform.position = hit.transform.position;
+            targetIndicator.transform.position = hit.point;
             if (range >= Vector3.Distance(hit.transform.position, transform.position))
             {
-                target = hit.transform;
-                Debug.Log(target.position);
-                targetIndicator.transform.position = hit.transform.position;
+                target = hit.point;
+                targetIndicator.transform.position = hit.point;
             }
             else
             {
@@ -52,5 +51,5 @@ public abstract class PointRaycastSkill : PlayerSkill
         }
     }
 
-    public abstract void PointAt(Transform target);
+    public abstract void PointAt(Vector3 target);
 }
