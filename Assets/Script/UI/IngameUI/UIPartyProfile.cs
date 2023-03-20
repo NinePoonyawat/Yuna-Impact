@@ -42,8 +42,8 @@ public class UIPartyProfile : MonoBehaviour
         if (isTake)
         {
             animator.SetBool("Control", true);
-            characterHPBar.gameObject.SetActive(false);
-            characterSPBar.gameObject.SetActive(false);
+            //characterHPBar.gameObject.SetActive(false);
+            //characterSPBar.gameObject.SetActive(false);
         }
     }
 
