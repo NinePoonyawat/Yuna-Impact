@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 21e31ba70ea9c764eb2e3f61e178cfcc, type: 3}
   m_Name: ShieldS1
   m_EditorClassIdentifier: 
-  name: Crag Split
+  name: Shockwave Pound
   icon: {fileID: 21300000, guid: 20865bd5100d18b4d99a286f81c24314, type: 3}
   description: Deal 40 Damage to all enemies in range.
   targetType: 2

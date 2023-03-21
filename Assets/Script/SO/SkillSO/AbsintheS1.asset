@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 21e31ba70ea9c764eb2e3f61e178cfcc, type: 3}
   m_Name: AbsintheS1
   m_EditorClassIdentifier: 
-  name: Silence
+  name: Nullfire Shell
   icon: {fileID: 21300000, guid: f542f24b6c31a1e499bac58f414d33eb, type: 3}
   description: Deal damage to an enemiy in range, apply Silience to it.
   targetType: 1

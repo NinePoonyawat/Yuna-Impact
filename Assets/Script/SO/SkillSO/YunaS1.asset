@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 21e31ba70ea9c764eb2e3f61e178cfcc, type: 3}
   m_Name: YunaS1
   m_EditorClassIdentifier: 
-  name: Pierce Stab
+  name: Frostpoint Thrust
   icon: {fileID: 21300000, guid: 70893f06248e26245a2ce835b22946d1, type: 3}
   description: Deal AOE damage to enemies in line area, apply Bleed to them.
   targetType: 1
