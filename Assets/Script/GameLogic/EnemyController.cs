@@ -242,4 +242,6 @@ public class EnemyController : EntityController,IPlayerClickable
     {
         return uiEnemy;
     }
+
+    override public void SetStateTrigger() {}
 }

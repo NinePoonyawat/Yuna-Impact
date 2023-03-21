@@ -463,4 +463,9 @@ public class PlayerController : EntityController
     {
         return playableCharacter;
     }
+
+    override public void SetStateTrigger()
+    {
+        UpdateUI();
+    }
 }

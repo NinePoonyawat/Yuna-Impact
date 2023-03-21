@@ -136,7 +136,8 @@ public abstract class Entity : MonoBehaviour
         int maxHp = healthController.getMaxValue();
         int mp = manaController.getValue();
         int maxMp = manaController.getMaxValue();
-        return new StatusValueSet(hp, maxHp, mp, maxMp);
+        EntityState state = entityController.GetEntityState();
+        return new StatusValueSet(hp, maxHp, mp, maxMp, state);
     }
 
     public virtual bool Attack(EntityController toAttack)

@@ -80,6 +80,7 @@ public abstract class EntityController : MonoBehaviour
     {
         entityState = newState;
         isSetState = true;
+        SetStateTrigger();
     }
 
     public abstract bool Attack(EntityController entity);
@@ -87,4 +88,5 @@ public abstract class EntityController : MonoBehaviour
     public abstract bool TakeHeal(int amount);
     public abstract void AfterAttack();
     public abstract void SetCurrentArea(int newArea);
+    public abstract void SetStateTrigger();
 }

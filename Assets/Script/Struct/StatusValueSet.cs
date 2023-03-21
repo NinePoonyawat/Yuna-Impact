@@ -10,12 +10,15 @@ public struct StatusValueSet
     public int mp;
     public int maxMp;
 
-    public StatusValueSet(int hp, int maxHp, int mp, int maxMp)
+    public EntityState state;
+
+    public StatusValueSet(int hp, int maxHp, int mp, int maxMp, EntityState state)
     {
         this.hp = hp;
         this.maxHp = maxHp;
         this.mp = mp;
         this.maxMp = maxMp;
+        this.state = state;
     }
 
     public int getHp() { return hp; }
@@ -25,4 +28,6 @@ public struct StatusValueSet
     public int getMp() { return mp; }
 
     public int getMaxMp() { return maxMp; }
+
+    public EntityState getState() { return state; }
 }

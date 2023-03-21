@@ -17,7 +17,11 @@ public class UIPartyProfile : MonoBehaviour
     [SerializeField] private Slider characterHPBar;
     [SerializeField] private Slider characterSPBar;
     [SerializeField] private TMP_Text numkey;
+    [SerializeField] private Image stateIcon;
     [SerializeField] private Animator animator;
+
+    [Space (20)]
+    [SerializeField] private Sprite[] stateIconList;
 
     public void Init(PlayableCharacter character, int idx, bool isTake)
     {
@@ -55,6 +59,24 @@ public class UIPartyProfile : MonoBehaviour
         int maxMp = statusValue.getMaxMp();
         UpdateHPBar(hp, maxHp);
         UpdateSPBar(mp, maxMp);
+
+        EntityState state = statusValue.getState();
+        if (state == EntityState.IDLE)
+        {
+            stateIcon.color = new Color(255, 255, 255, 1);
+            stateIcon.sprite = stateIconList[0];
+        }
+        else if (state == EntityState.MOVE)
+        {
+            stateIcon.color = new Color(255, 255, 255, 1);
+            stateIcon.sprite = stateIconList[1];
+        }
+        else if (state == EntityState.ATTACK || state == EntityState.PREATTACK)
+        {
+            stateIcon.color = new Color(255, 255, 255, 1);
+            stateIcon.sprite = stateIconList[2];
+        }
+        else stateIcon.color = new Color(255, 255, 255, 0);
     }
 
     void UpdateHPBar(int current, int max)
