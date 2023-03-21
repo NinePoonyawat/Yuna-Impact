@@ -33,12 +33,17 @@ public class UIProfile : MonoBehaviour
 
         characterName.text = profile.name;
 
-        characterHPBar.maxValue = statusValue.getMaxHp();
-        characterHPBar.value = statusValue.getHp();
-        characterHPText.text = statusValue.getHp().ToString() + " / " + statusValue.getMaxHp().ToString();
-        characterSPBar.maxValue = statusValue.getMaxMp();
-        characterSPBar.value = statusValue.getMp();
-        characterSPText.text = statusValue.getMp().ToString() + " / " + statusValue.getMaxMp().ToString();
+        int hp = statusValue.getHp();
+        int maxhp = statusValue.getMaxHp();
+        int mp = statusValue.getMp();
+        int maxmp = statusValue.getMaxMp();
+
+        characterHPBar.maxValue = maxhp;
+        characterHPBar.value = hp;
+        characterHPText.text = hp.ToString() + " / " + maxhp.ToString();
+        characterSPBar.maxValue = maxmp;
+        characterSPBar.value = mp;
+        characterSPText.text = mp.ToString() + " / " + maxmp.ToString();
 
         skills.Clear();
         for (int idx = 0; idx < skillIcons.Length; idx++)

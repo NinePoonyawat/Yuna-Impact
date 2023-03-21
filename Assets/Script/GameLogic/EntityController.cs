@@ -59,6 +59,7 @@ public abstract class EntityController : MonoBehaviour
     {
         isSetState = true;
         entityState = state;
+        SetStateTrigger();
     }
 
     public void SetSilent(bool newSilent)

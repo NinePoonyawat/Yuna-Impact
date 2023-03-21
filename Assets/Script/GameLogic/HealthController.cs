@@ -24,6 +24,7 @@ public class HealthController : MonoBehaviour,Ivalueable
     public bool TakeDamage(int damage)
     {
         currentHealth -= damage;
+        if (currentHealth < 0) currentHealth = 0;
         return currentHealth <= 0;
     }
 

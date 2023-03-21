@@ -187,12 +187,12 @@ public class PlayerController : EntityController
                     {
                         //agent.SetDestination(focusEnemy.transform.position);
                         if(animator != null) animator.SetBool("isWalk",true);
-                        entityState = EntityState.MOVE;
+                        SetEntityState(EntityState.MOVE);
                     }
                     else
                     {
                         if(animator != null) animator.SetTrigger("Attack1");
-                        entityState = EntityState.ATTACK;
+                        SetEntityState(EntityState.ATTACK);
                         UpdateAttackPosition(focusEnemy.transform.position);
                         playableCharacter.AfterAttack();
                     }
@@ -206,12 +206,12 @@ public class PlayerController : EntityController
                     if(!playableCharacter.isInAttackRange(focusEnemy.transform.position))
                     {
                         if(animator != null) animator.SetBool("isWalk",true);
-                        entityState = EntityState.MOVE;
+                        SetEntityState(EntityState.MOVE);
                     }
                     else
                     {
                         if(animator != null) animator.SetTrigger("Attack1");
-                        entityState = EntityState.ATTACK;
+                        SetEntityState(EntityState.ATTACK);
                         UpdateAttackPosition(focusEnemy.transform.position);
                         playableCharacter.AfterAttack();
                     }
@@ -237,7 +237,7 @@ public class PlayerController : EntityController
                     if (!isPlayerMoving)
                     {
                         if(animator != null) animator.SetBool("isWalk",false);
-                        entityState = EntityState.IDLE;
+                        SetEntityState(EntityState.IDLE);
                     }
                 }
                 else if (playableCharacter.isInAttackRange(focusEnemy.transform.position) && playableCharacter.isAttackable && !isPlayerMoving)
@@ -245,7 +245,7 @@ public class PlayerController : EntityController
                     if(animator != null) animator.SetBool("isWalk",false);
                     agent.SetDestination(this.transform.position);
                     if(animator != null) animator.SetTrigger("Attack1");
-                    entityState = EntityState.ATTACK;
+                    SetEntityState(EntityState.ATTACK);
                     playableCharacter.AfterAttack();
                     UpdateAttackPosition(focusEnemy.transform.position);
                 }
@@ -257,7 +257,7 @@ public class PlayerController : EntityController
                 if (focusEnemy == null)
                 {
                     if(animator != null) animator.SetBool("isWalk",false);
-                    entityState = EntityState.IDLE;
+                    SetEntityState(EntityState.IDLE);
                 }
                 else
                 {
@@ -267,11 +267,11 @@ public class PlayerController : EntityController
                         if (playableCharacter.isInAttackRange(focusEnemy.transform.position))
                         {
                             if(animator != null) animator.SetTrigger("Attack1");
-                            entityState = EntityState.ATTACK;
+                            SetEntityState(EntityState.ATTACK);
                             playableCharacter.AfterAttack();
                             UpdateAttackPosition(focusEnemy.transform.position);
                         }
-                        else entityState = EntityState.MOVE;
+                        else SetEntityState(EntityState.MOVE);
                     }
                     else if (playableCharacter.isInAttackRange(focusEnemy.transform.position))
                     {
@@ -283,7 +283,7 @@ public class PlayerController : EntityController
                 if (focusTeleport == null)
                 {
                     if(animator != null) animator.SetBool("isWalk",false);
-                    entityState = EntityState.IDLE;
+                    SetEntityState(EntityState.IDLE);
                 }
                 else
                 {
