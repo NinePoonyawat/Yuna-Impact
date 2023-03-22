@@ -44,10 +44,15 @@ public class GameController : MonoBehaviour
         cam = FindObjectOfType<CamFollowing>();
         uiTarget = FindObjectOfType<UITarget>();
         camera = FindObjectOfType<Camera>();
-        uiController.SetProfile(characters);
+        //uiController.SetProfile(characters);
         FindObjectOfType<CamFollowing>().Follow(characters[0].gameObject.transform);
 
         layerClickMask = LayerMask.GetMask("Entity","PlayerClickable");
+    }
+
+    void Start()
+    {
+        uiController.SetProfile(characters);
     }
 
     void Update()

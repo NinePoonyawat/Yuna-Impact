@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class UIController : MonoBehaviour
 {
+    private GameController gameController;
     [SerializeField] private UIPartyProfile[] partyProfiles;
     [SerializeField] private UIProfile playerProfile;
 
@@ -12,12 +13,17 @@ public class UIController : MonoBehaviour
 
     void Awake()
     {
+        gameController = GameObject.Find("GameLogic").GetComponent<GameController>();
         partyProfiles = GetComponentsInChildren<UIPartyProfile>();
         playerProfile = GetComponentInChildren<UIProfile>();
     }
 
     public void SetProfile(List<PlayerController> characters)
     {
+        for(int i = 0; i != 3;i++)
+        {
+            Debug.Log(characters[i]);
+        }
         bool isTake = false;
         for (int i = 0; i < characters.Count; i++)
         {
@@ -26,7 +32,8 @@ public class UIController : MonoBehaviour
                 playerProfile.Init(characters[i]);
                 isTake = true;
             }
-            partyProfiles[i].Init(characters[i].GetCharacter(), i+1, characters[i].getTaking());
+            Debug.Log(characters[i].playableCharacter);
+            partyProfiles[i].Init(characters[i].playableCharacter, i+1, characters[i].getTaking());
         }
         if (!isTake)
         {
