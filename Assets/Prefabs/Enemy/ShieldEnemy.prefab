@@ -941,6 +941,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   effects: {fileID: 6032667677240842778, guid: 53830e3b56aa4ee4fa51c27b5088388b, type: 3}
   effects2: {fileID: 0}
+  VFXs: []
   point: {fileID: 0}
   onThis: 0
 --- !u!114 &5565112442237547446
@@ -1016,7 +1017,7 @@ MonoBehaviour:
   defense: 15
   buffedAttack: 0
   buffedDefense: 0
-  attackRange: 0
+  attackRange: 1.5
   defaultSpeed: 2.5
   walkbackSpeed: 0.5
   attackPeriod: 2
