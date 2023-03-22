@@ -4,21 +4,26 @@ using UnityEngine;
 
 public class UITarget : MonoBehaviour
 {
-    [SerializeField] private Transform target;
+    [SerializeField] private Transform[] enemyCircles;
+    [SerializeField] private Transform[] targets;
 
     void Update()
     {
-        if (target == null) 
+        for (int i = 0; i < 4; i++)
         {
-            gameObject.SetActive(false);
-            return;
+            if (targets[i] == null) 
+            {
+                enemyCircles[i].gameObject.SetActive(false);
+                return;
+            }
+            enemyCircles[i].position = Vector3.Lerp(enemyCircles[i].position, targets[i].position, 1f);
         }
-        transform.position = Vector3.Lerp(transform.position, target.position, 1f);
+        
     }
 
-    public void SetTarget(EnemyController enemy)
+    public void SetTarget(EnemyController enemy, int idx)
     {
-        gameObject.SetActive(true);
-        target = enemy.transform.parent;
+        enemyCircles[idx].gameObject.SetActive(true);
+        targets[idx] = enemy.transform.parent;
     }
 }

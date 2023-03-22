@@ -151,9 +151,9 @@ public class GameController : MonoBehaviour
                 EnemyController enim = hit.transform.GetComponent<EnemyController>();
                 if (enim != null)
                 {
-                    SetNewTarget(enim);
                     for(int i = 0; i != characters.Count; i++)
                     {
+                        SetNewTarget(enim, i);
                         characters[i].focusEnemy = enim;
                         characters[i].isPlayerTarget = true;
                         if (characters[i].isPlayerMoving) characters[i].isPlayerMoving = false;
@@ -167,9 +167,9 @@ public class GameController : MonoBehaviour
             EnemyController enim = FindNearestEnemy(transform.position,characters[0].currentArea);
             if (enim != null)
             {
-                SetNewTarget(enim);
                 for(int i = 0; i != characters.Count; i++)
                 {
+                    SetNewTarget(enim, i);
                     characters[i].focusEnemy = enim;
                     characters[i].isPlayerTarget = true;
                     if (characters[i].isPlayerMoving) characters[i].isPlayerMoving = false;
@@ -225,7 +225,7 @@ public class GameController : MonoBehaviour
         uiController.SetProfile(characters);
         cam.Follow(takingCharacter.gameObject.transform);
 
-        if (takingCharacter.focusEnemy != null) SetNewTarget(takingCharacter.focusEnemy);
+        if (takingCharacter.focusEnemy != null) SetNewTarget(takingCharacter.focusEnemy, idx);
     }
 
     public PlayerController FindNearestCharacter(Vector3 position, float maxDistance,int area)
@@ -327,9 +327,9 @@ public class GameController : MonoBehaviour
         return toReturn;
     }
 
-    public void SetNewTarget(EnemyController enemy)
+    public void SetNewTarget(EnemyController enemy, int idx)
     {
-        uiTarget.SetTarget(enemy);
+        uiTarget.SetTarget(enemy, idx);
     }
 
     public EnemyController FindNearestEnemy(Vector3 position,int idx,float maxDistance)
