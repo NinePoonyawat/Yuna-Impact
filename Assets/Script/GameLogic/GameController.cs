@@ -59,12 +59,12 @@ public class GameController : MonoBehaviour
     {
         if (isGameLose())
         {
-            Time.timeScale = 0f;
+            //Time.timeScale = 0f;
             LoseUI.SetActive(true);
         }
         else if (isGameWin())
         {
-            Time.timeScale = 0f;
+            //Time.timeScale = 0f;
             WinUI.SetActive(true);
         }
 
@@ -407,6 +407,7 @@ public class GameController : MonoBehaviour
 
     public void toMenu()
     {
+        Debug.Log("click");
         StartCoroutine(SwitchScene("Lobby"));
     }
 
