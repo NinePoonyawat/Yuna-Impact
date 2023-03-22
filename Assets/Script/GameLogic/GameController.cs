@@ -223,6 +223,7 @@ public class GameController : MonoBehaviour
         takingCharacter.SetTaking(true);
 
         uiController.SetProfile(characters);
+        uiTarget.SetPlayer(characters[idx]);
         cam.Follow(takingCharacter.gameObject.transform);
 
         if (takingCharacter.focusEnemy != null) SetNewTarget(takingCharacter.focusEnemy, idx);

@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class UITarget : MonoBehaviour
 {
+    [SerializeField] private Transform playerCircle;
+    [SerializeField] private Transform player;
     [SerializeField] private Transform[] enemyCircles;
     [SerializeField] private Transform[] targets;
 
@@ -14,16 +16,31 @@ public class UITarget : MonoBehaviour
             if (targets[i] == null) 
             {
                 enemyCircles[i].gameObject.SetActive(false);
-                return;
             }
-            enemyCircles[i].position = Vector3.Lerp(enemyCircles[i].position, targets[i].position, 1f);
+            else
+            {
+                enemyCircles[i].position = Vector3.Lerp(enemyCircles[i].position, targets[i].position, 1f);
+            }
         }
-        
+        if (player == null)
+        {
+            playerCircle.gameObject.SetActive(false);
+        }
+        else
+        {
+            playerCircle.position = Vector3.Lerp(playerCircle.position, player.position, 1f);
+        }
     }
 
     public void SetTarget(EnemyController enemy, int idx)
     {
         enemyCircles[idx].gameObject.SetActive(true);
         targets[idx] = enemy.transform.parent;
+    }
+
+    public void SetPlayer(PlayerController player)
+    {
+        playerCircle.gameObject.SetActive(true);
+        this.player = player.transform.parent;
     }
 }
