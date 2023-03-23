@@ -111,6 +111,7 @@ public class GameController : MonoBehaviour
             {
                 for (int i = 0; i != characters.Count; i++)
                 {
+                    if (characters[i].entityState == EntityState.DEAD) continue;
                     Vector3 destination = hit.point;
                     if (i == 1)
                     {
@@ -147,7 +148,11 @@ public class GameController : MonoBehaviour
                 IPlayerClickable playerClick = hit.transform.GetComponent<IPlayerClickable>();
                 if (playerClick != null)
                 {
-                    for(int i = 0; i != characters.Count; i++) playerClick.click(characters[i]);
+                    for(int i = 0; i != characters.Count; i++)
+                    {
+                        if (characters[i].entityState == EntityState.DEAD) continue;
+                        playerClick.click(characters[i]);
+                    }
                 }
                 
                 EnemyController enim = hit.transform.GetComponent<EnemyController>();
@@ -155,6 +160,7 @@ public class GameController : MonoBehaviour
                 {
                     for(int i = 0; i != characters.Count; i++)
                     {
+                        if (characters[i].entityState == EntityState.DEAD) continue;
                         SetNewTarget(enim, i);
                         characters[i].focusEnemy = enim;
                         characters[i].isPlayerTarget = true;
@@ -171,6 +177,7 @@ public class GameController : MonoBehaviour
             {
                 for(int i = 0; i != characters.Count; i++)
                 {
+                    if (characters[i].entityState == EntityState.DEAD) continue;
                     SetNewTarget(enim, i);
                     characters[i].focusEnemy = enim;
                     characters[i].isPlayerTarget = true;
