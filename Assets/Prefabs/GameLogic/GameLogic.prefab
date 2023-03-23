@@ -51,6 +51,15 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   projectileRoot: {fileID: 0}
+  enemyNum: 0
+  enemyKilled: 0
+  currentScene: 
+  nextScene: 
   cam: {fileID: 0}
+  camera: {fileID: 0}
   uiController: {fileID: 0}
   uiTarget: {fileID: 0}
+  WinUI: {fileID: 0}
+  LoseUI: {fileID: 0}
+  enemyCount: {fileID: 0}
+  killCount: {fileID: 0}

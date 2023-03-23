@@ -29,6 +29,7 @@ public class GameController : MonoBehaviour
     public Camera camera;
     [SerializeField] private UIController uiController;
     [SerializeField] private UITarget uiTarget;
+    private CameraVibrate cameraVibrate;
 
     public GameObject WinUI;
     public GameObject LoseUI;
@@ -44,6 +45,7 @@ public class GameController : MonoBehaviour
         cam = FindObjectOfType<CamFollowing>();
         uiTarget = FindObjectOfType<UITarget>();
         camera = FindObjectOfType<Camera>();
+        cameraVibrate = GetComponent<CameraVibrate>();
         //uiController.SetProfile(characters);
         FindObjectOfType<CamFollowing>().Follow(characters[0].gameObject.transform);
 
@@ -415,6 +417,11 @@ public class GameController : MonoBehaviour
     {
         enemyCount.text = enemyNum + "";
         killCount.text = enemyKilled + "";
+    }
+
+    public void CameraVibrate(float duration, float magnitude)
+    {
+        cameraVibrate.Vibrate(duration,magnitude);
     }
 
     IEnumerator SwitchScene(string s)

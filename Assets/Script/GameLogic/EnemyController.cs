@@ -236,11 +236,13 @@ public class EnemyController : EntityController,IPlayerClickable
         if (newStun)
         {
             animator.SetTrigger("Stun");
+            agent.speed = 0f;
             isStun = newStun;
         }
         else
         {
             animator.SetTrigger("notStun");
+            agent.speed = enemy.defaultSpeed;
             isStun = newStun;
         }
     }

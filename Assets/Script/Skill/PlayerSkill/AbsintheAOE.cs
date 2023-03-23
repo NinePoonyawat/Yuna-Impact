@@ -12,6 +12,7 @@ public class AbsintheAOE : PointRaycastSkill
     
     public override void PointAt(Vector3 target)
     {
+        int enemyCount = 0;
         Vector3 start = target;
         Collider[] colliders = Physics.OverlapCapsule(new Vector3(start.x,start.y + 1,start.z),new Vector3(start.x,start.y - 1,start.z),
             explodeRange,mask);
@@ -24,8 +25,12 @@ public class AbsintheAOE : PointRaycastSkill
                 GameObject GO = GameObject.Instantiate(stunPrefab,enemyController.transform);
                 StunStatus stun = GO.GetComponent<StunStatus>();
                 stun.Setting(stunDuration,enemyController);
+                enemyCount++;
             }
         }
+        //if (enemyCount >= 7) gameController.CameraVibrate(.4f,.3f);
+        //else if (enemyCount >= 4) gameController.CameraVibrate(.2f,.15f);
+        //else gameController.CameraVibrate(100f,10f);
     }
 
     public override void AIActivate()
