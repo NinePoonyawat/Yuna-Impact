@@ -200,8 +200,15 @@ public class EnemyController : EntityController,IPlayerClickable
     public bool AttackFocus()
     {
         enemy.AfterAttack();
-        if (enemy.isInAttackRange(focusCharacter.transform.position)) return focusCharacter.TakeDamage(enemy.GetAttack(),enemy.attackType);
-        else return false;
+        if (enemy.isInAttackRange(focusCharacter.transform.position))
+        {
+            if(focusCharacter.entityState == EntityState.IDLE) focusCharacter.GetAttackAt(transform.position,this);
+            return focusCharacter.TakeDamage(enemy.GetAttack(),enemy.attackType);
+        }
+        else
+        {
+            return false;
+        }
     }
 
     public void CallAttackFocus()

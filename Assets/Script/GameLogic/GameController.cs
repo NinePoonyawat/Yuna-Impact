@@ -112,22 +112,22 @@ public class GameController : MonoBehaviour
                     Vector3 destination = hit.point;
                     if (i == 1)
                     {
-                        destination.x += 3;
+                        destination.x += 1;
                     }
                     else if (i == 2)
                     {
-                        destination.x -= 3;
+                        destination.x -= 1;
                     }
                     else if (i == 3)
                     {
-                        destination.z += 3;
+                        destination.z += 1;
                     }
                     else
                     {
-                        destination.z -= 3;
+                        destination.z -= 1;
                     }
-                    characters[i].agent.SetDestination(hit.point);
-                    characters[i].moveToPos = hit.point;
+                    characters[i].agent.SetDestination(destination);
+                    characters[i].moveToPos = destination;
                     characters[i].isPlayerMoving = true;
                     if(characters[i].animator != null) characters[i].animator.SetBool("isWalk",true);
                     characters[i].SetEntityState(EntityState.MOVE);

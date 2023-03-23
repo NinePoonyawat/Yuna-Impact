@@ -27,6 +27,7 @@ public class PlayerController : EntityController
     [SerializeField] public bool isPlayerTarget = false;
     private Vector3 lastAttackPos = new Vector3(0,1000,0);
     private int usingSkill = -1;
+    private bool isCancelSkill = false;
 
     private LayerMask layerClickMask;
 
@@ -75,7 +76,9 @@ public class PlayerController : EntityController
             //cancel skill
             if (Input.GetKeyDown(KeyCode.X))
             {
+                if(usingSkill >= 0) CancelSkill(usingSkill);
                 usingSkill = -2;
+                isCancelSkill = true;
             }
 
             //skill1
@@ -88,7 +91,7 @@ public class PlayerController : EntityController
                 if (Input.GetKeyUp(KeyCode.Q))
                 {
                     if(usingSkill != -2) UsingSkill(0, false);
-                    else CancelSkill(0);
+                    else usingSkill = -1;
                 }
             }
 
@@ -102,7 +105,7 @@ public class PlayerController : EntityController
                 if (Input.GetKeyUp(KeyCode.W))
                 {
                     if(usingSkill != -2) UsingSkill(1, false);
-                    else CancelSkill(1);
+                    else usingSkill = -1;
                 }
             }
         }
@@ -144,6 +147,7 @@ public class PlayerController : EntityController
         usingSkill = -1;
         Time.timeScale = 1f;
         skills[idx].CancelSkill();
+        isCancelSkill = false;
     }
 
     void UpdateState()
@@ -439,6 +443,14 @@ public class PlayerController : EntityController
     public override void AfterAttack()
     {
         return;
+    }
+
+    public void GetAttackAt(Vector3 position,EnemyController enemy)
+    {
+        if (Vector3.Distance(transform.position,position) <= AIvision)
+        {
+            focusEnemy = enemy;
+        }
     }
 
     void OnDrawGizmos()

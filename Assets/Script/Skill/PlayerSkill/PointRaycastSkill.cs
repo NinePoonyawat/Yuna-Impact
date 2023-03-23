@@ -39,7 +39,7 @@ public abstract class PointRaycastSkill : PlayerSkill
         if (Physics.Raycast(ray, out hit))
         {
             targetIndicator.transform.position = hit.point;
-            if (range >= Vector3.Distance(hit.transform.position, transform.position))
+            if (range >= Vector3.Distance(hit.point, transform.position))
             {
                 target = hit.point;
                 targetIndicator.transform.position = hit.point;
