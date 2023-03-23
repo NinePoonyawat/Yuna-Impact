@@ -66,7 +66,7 @@ public class UIPartyProfile : MonoBehaviour
             stateIcon.color = new Color(255, 255, 255, 1);
             stateIcon.sprite = stateIconList[0];
         }
-        else if (state == EntityState.MOVE)
+        else if (state == EntityState.MOVE || state == EntityState.MOVETOTELEPORT)
         {
             stateIcon.color = new Color(255, 255, 255, 1);
             stateIcon.sprite = stateIconList[1];

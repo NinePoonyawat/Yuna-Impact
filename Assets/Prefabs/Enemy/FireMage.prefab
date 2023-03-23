@@ -1388,12 +1388,12 @@ MonoBehaviour:
   attackRange: 30
   defaultSpeed: 2.5
   walkbackSpeed: 0.5
-  attackPeriod: 1.5
+  attackPeriod: 3
   isAttackable: 0
   attackType: 0
   projectilePf: {fileID: 0}
   projectileSpeed: 5
-  attackCooldownPeriod: 2.5
+  attackCooldownPeriod: 4
   isAttackCooldown: 0
   fireAreaPf: {fileID: 6343395541966022598, guid: 98944df628d555342a6cea0bff37582e,
     type: 3}

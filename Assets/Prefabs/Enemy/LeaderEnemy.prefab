@@ -1251,7 +1251,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f8391fe6baa332649a849a82dc3b22df, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  defaultHealth: 150
+  defaultHealth: 200
   currentHealth: 0
 --- !u!114 &2289282393784298168
 MonoBehaviour:
@@ -1358,7 +1358,7 @@ MonoBehaviour:
   skills:
   - {fileID: 4100118423898044978}
   focusCharacter: {fileID: 0}
-  maxVision: 20
+  maxVision: 10
   animator: {fileID: 0}
   uiEnemy: {fileID: 0}
 --- !u!114 &6916995232245250550
