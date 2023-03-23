@@ -60,4 +60,9 @@ public class UIController : MonoBehaviour
     {
         playerProfile.CastSkill(idx);
     }
+
+    public void CancelSkill(int idx)
+    {
+        playerProfile.CancelSkill(idx);
+    }
 }

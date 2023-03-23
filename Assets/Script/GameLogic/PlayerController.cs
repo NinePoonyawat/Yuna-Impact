@@ -147,6 +147,7 @@ public class PlayerController : EntityController
         usingSkill = -1;
         Time.timeScale = 1f;
         skills[idx].CancelSkill();
+        uiController.CancelSkill(idx);
         isCancelSkill = false;
     }
 

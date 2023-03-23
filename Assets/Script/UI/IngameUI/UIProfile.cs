@@ -100,4 +100,9 @@ public class UIProfile : MonoBehaviour
         gameObject.SetActive(false);
     }
 
+    public void CancelSkill(int idx)
+    {
+        skillCancel.SetActive(false);
+    }
+
 }
