@@ -68,8 +68,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: "\u0E07\u0E48\u0E27\u0E07\u0E08\u0E31\u0E07\u0E40\u0E25\u0E22"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: d7ffd9f54503ab44390fa3ffee1a7973, type: 2}
-  m_sharedMaterial: {fileID: -7824922984949768536, guid: d7ffd9f54503ab44390fa3ffee1a7973,
+  m_fontAsset: {fileID: 11400000, guid: 049630edb8cfc8c4eb02ff0d91e27135, type: 2}
+  m_sharedMaterial: {fileID: -1384527565159369338, guid: 049630edb8cfc8c4eb02ff0d91e27135,
     type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -171,7 +171,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -143.63782, y: 25}
+  m_AnchoredPosition: {x: -143.63782, y: 49}
   m_SizeDelta: {x: 300, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1522550341665277109
@@ -202,7 +202,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Press space or LMB.
+  m_text: 'Press space or LMB.
+
+    Hold to skip.'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -954,8 +956,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -680, y: 67}
-  m_SizeDelta: {x: 190.4237, y: 50}
+  m_AnchoredPosition: {x: -705.312, y: 74}
+  m_SizeDelta: {x: 241.0477, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1522550343238750345
 CanvasRenderer:
@@ -989,8 +991,9 @@ MonoBehaviour:
 
 '
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 99e41d6147b048548b8f005697e6de08, type: 2}
+  m_sharedMaterial: {fileID: 8175982160446493162, guid: 99e41d6147b048548b8f005697e6de08,
+    type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1014,8 +1017,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 36
-  m_fontSizeBase: 36
+  m_fontSize: 45
+  m_fontSizeBase: 45
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18

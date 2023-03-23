@@ -14,8 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: Courageous Chill
   icon: {fileID: 21300000, guid: 4ea863e1737fd15408d6f29e11e8fc64, type: 3}
-  description: Give all Allies within range a buff which increase their Attack and
-    Defense.
+  description: Give all Allies within range a buff which increase their Attack speed.
   targetType: 2
   duration: 0
   cooldown: 12

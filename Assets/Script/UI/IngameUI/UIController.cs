@@ -20,10 +20,6 @@ public class UIController : MonoBehaviour
 
     public void SetProfile(List<PlayerController> characters)
     {
-        for(int i = 0; i != 3;i++)
-        {
-            Debug.Log(characters[i]);
-        }
         bool isTake = false;
         for (int i = 0; i < characters.Count; i++)
         {
@@ -32,8 +28,29 @@ public class UIController : MonoBehaviour
                 playerProfile.Init(characters[i]);
                 isTake = true;
             }
-            Debug.Log(characters[i].playableCharacter);
             partyProfiles[i].Init(characters[i].playableCharacter, i+1, characters[i].getTaking());
+        }
+        if (!isTake)
+        {
+            playerProfile.HideUI();
+        }
+        for (int i = characters.Count; i < 4; i++)
+        {
+            partyProfiles[i].HideUI();
+        }
+    }
+
+    public void SetProfile(List<PlayerController> characters, bool isSelectAll)
+    {
+        bool isTake = false;
+        for (int i = 0; i < characters.Count; i++)
+        {
+            if (characters[i].getTaking())
+            {
+                playerProfile.Init(characters[i]);
+                isTake = true;
+            }
+            partyProfiles[i].Init(characters[i].playableCharacter, i+1, isSelectAll);
         }
         if (!isTake)
         {

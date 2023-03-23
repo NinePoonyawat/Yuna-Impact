@@ -26,7 +26,7 @@ public class UIInfo : MonoBehaviour
     public TMP_Text countText;
 
     int characterIdx = -1;
-    int skillIdx = -1;
+    int skillIdx = -2;
     int stageIdx;
 
     [Header ("Enemy Info")]
@@ -188,6 +188,7 @@ public class UIInfo : MonoBehaviour
         {
             yield return new WaitForSeconds(1f);
             countText.text = time.ToString();
+            countText.GetComponent<AudioSource>().Play();
         }
         yield return new WaitForSeconds(0.5f);
         SceneManager.LoadScene(nextScene[stageIdx]);

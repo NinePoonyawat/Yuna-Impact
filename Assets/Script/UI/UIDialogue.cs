@@ -45,6 +45,8 @@ public class UIDialogue : MonoBehaviour
     private int lCurrentSprite = -1;
     private int rCurrentSprite = -1;
 
+    private float holdTime = 0;
+    private bool isHold;
 
     void Start()
     {
@@ -58,7 +60,15 @@ public class UIDialogue : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space) || Input.GetMouseButtonDown(0))
         {
             DisplayNextSentence(characters);
+            isHold = true;
         }
+        if (Input.GetKeyUp(KeyCode.Space) || Input.GetMouseButtonUp(0))
+        {
+            holdTime = 0;
+            isHold = false;
+        }
+        if (isHold) holdTime += Time.deltaTime;
+        if (holdTime >= 2f) EndDialogue();
     }
 
     void ReadTextAsset()
@@ -178,7 +188,7 @@ public class UIDialogue : MonoBehaviour
         foreach (char letter in sentence.ToCharArray())
         {
             dialogueText.text += letter;
-            yield return new WaitForSeconds(0.05f);
+            yield return new WaitForSeconds(0.02f);
         }
     }
 

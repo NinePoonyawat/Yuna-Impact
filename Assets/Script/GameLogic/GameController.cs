@@ -77,6 +77,7 @@ public class GameController : MonoBehaviour
         if ((Input.GetKeyDown(KeyCode.LeftShift) || Input.GetKeyDown(KeyCode.RightShift)) && !isTakingAll)
         {
             isTakingAll = true;
+            uiController.SetProfile(characters, true);
         }
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
