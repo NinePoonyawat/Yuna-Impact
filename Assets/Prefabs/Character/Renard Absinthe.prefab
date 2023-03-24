@@ -26,7 +26,7 @@ Transform:
   m_GameObject: {fileID: 321234495385682620}
   m_LocalRotation: {x: 0.7071068, y: -0, z: -0, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.2, y: 1.2, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 7678337465846290813}
@@ -73,8 +73,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 6de85c229b2039c45a5d44de00011827, type: 3}
-  m_Color: {r: 0.7490196, g: 0, b: 0.07058824, a: 1}
+  m_Sprite: {fileID: 21300000, guid: 9902555e27f51194dbeea12ae7306b03, type: 3}
+  m_Color: {r: 0.5647059, g: 0.4392157, b: 0.22352941, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -273,7 +273,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 6de85c229b2039c45a5d44de00011827, type: 3}
-  m_Color: {r: 0.7490196, g: 0, b: 0.07058824, a: 0.5882353}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.5882353}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -1182,7 +1182,7 @@ MonoBehaviour:
     type: 3}
   rangeIndicator: {fileID: 6470608025254264605}
   targetIndicator: {fileID: 5656120818707785754}
-  target: {fileID: 0}
+  target: {x: 0, y: 0, z: 0}
   damage: 10
   explodeRange: 2.5
   stunPrefab: {fileID: 1931329429115002955, guid: 154afe61693db61409bc4c007282d544,
@@ -1303,6 +1303,7 @@ MonoBehaviour:
   - {fileID: 9215014859862330753}
   - {fileID: 1681894948375714275}
   cam: {fileID: 0}
+  moveToPos: {x: 0, y: 0, z: 0}
   focusEnemy: {fileID: 0}
   blockedEnemy: []
   focusTeleport: {fileID: 0}

@@ -42,7 +42,6 @@ public class EnemyWithShield : Enemy
         shield.SetActive(false);
         GameObject GO = Instantiate(stunPrefab,transform) as GameObject;
         StunStatus stunStatus = GO.GetComponent<StunStatus>();
-        Debug.Log(stunStatus);
         stunStatus.Setting(stunDuration,entityController);
     }
 }

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 
-public enum TargetType {Ally = 0, Enemy = 1, Auto = 2}
+public enum TargetType {AOE = 0, Enemy = 1, Auto = 2}
 
 [CreateAssetMenu]
 [Serializable]

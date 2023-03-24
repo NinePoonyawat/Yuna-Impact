@@ -16,7 +16,7 @@ MonoBehaviour:
   icon: {fileID: 21300000, guid: fede4510460b1954da9e2a203b2d2fd6, type: 3}
   description: Launch a projectile to the position within range. It deals damage
     to every enemies in radius, Stun them.
-  targetType: 1
+  targetType: 0
   duration: 0.1
   cooldown: 12
   cost: 6
